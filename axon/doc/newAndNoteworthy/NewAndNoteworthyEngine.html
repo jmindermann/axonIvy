@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>New and Noteworthy Axon.ivy Engine Jakobshorn</title>
+    <link rel="shortcut icon" href="../shared/images/ivy_favicon_48.png" />
+    <link href="../shared/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../shared/css/docs.min.css" rel="stylesheet" type="text/css">
+    <link href="../shared/css/ivy-common-6.css" rel="stylesheet" type="text/css">
+    <link href="../shared/css/ivy-designer-doc.css" rel="stylesheet" type="text/css">
+    <script src="../shared/js/jquery.min.js"></script>
+    <script src="../shared/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div id="mainContent">
+
+      <!-- start-top-navigation -->
+      <div class="navbar navbar-top" role="navigation">
+        <div class="container" id="headerdiv">
+          <div class="navbar-header">
+            <a class="ivy-logo" href="http://developer.axonivy.com">
+              <img src="../shared/images/axon_ivy_logo.png" alt="Axon.ivy" />
+            </a>
+          </div>
+
+          <div class="navbar">
+            <ul class="nav nav-pills" id="navbar-ivy-links">
+            <li><a href="http://developer.axonivy.com/download/" target="blank"><span class="glyphicon glyphicon-download" aria-hidden="true"></span><br>Download</a></li>
+            <li><a href="http://developer.axonivy.com/doc/" target="blank"><span class="glyphicon glyphicon-book" aria-hidden="true"></span><br>Documentation</a></li>
+            <li><a href="http://answers.axonivy.com" target="blank"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Q &amp; A</a></li>
+            <li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><br>Blog</a></li>
+            </ul>
+          </div>
+
+        </div><!-- /.container -->
+      </div>
+      <div class="navbar ivy-subnav">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="row">
+              <ul class="nav nav-pills">
+                <li><a href="NewAndNoteworthyDesigner.html">N&amp;N Designer</a></li>
+                <li class="active"><a href="NewAndNoteworthyEngine.html">N&amp;N Engine</a></li>
+                <li><a href="../../ReleaseNotes.txt">Release Notes</a></li>
+                <li><a href="../../MigrationNotes.html">Migration Notes</a></li>
+                <li><a href="../../ReadMe.html">Read Me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end-top-navigation -->
+
+      <div class="container">
+
+        <h1 class="page-header">New and Noteworthy for Axon.ivy Engine 7.0 (Jakobshorn)</h1>
+
+        <p class="lead">This document describes all new and noteworthy features of the Axon.ivy
+        <em>Engine 7.0 (Jakobshorn)</em> release.</p>
+
+        <p>Only a brief overview of important new features is provided here. It is
+        recommended that you consult the respective sections of the updated <span
+        style="font-style: italic;">Engine Guide</span> if you desire more detailed
+        information about individual new features.</p>
+
+        <p>If you are interested in features introduced in the previous release have a look at the <a href="NewAndNoteworthyEngine6.0.html">Axon.ivy Engine 6.0 New and Noteworthy</a></p>
+
+        <p>The contents of this file have been grouped into different sections with
+        related content: </p>
+        <ul>
+          <li><a href="#osgi">OSGi</a>  </li>
+          <li><a href="#engineConfigUi">Engine Config</a>  </li>
+          <li><a href="#adminUI">Administration Tool</a></li>
+          <li><a href="#deployment">Deployment</a></li>
+          <li><a href="#portal">Portal</a></li>
+          <li><a href="#monitoring">Monitoring</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#misc">Miscellaneous</a> </li>
+        </ul>
+
+        <div class="bs-callout bs-callout-info">
+          <h4>MIGRATION OF 6.0 ENGINE INSTALLATIONS</h4>
+          <p>See the separate <a
+              href="../migrationNotes/MigrationNotesEngine.html">Migration Notes</a> to learn
+              about what needs to be done to get your projects running with Axon.ivy 7.0 (Jakobshorn).</p>
+        </div>
+
+        <h1 class="page-header">Selected Features</h1>
+
+        <h2><a id="osgi"></a>OSGi </h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>OSGi based Engine</h4></div>
+          <div class="col-md-10">
+            <p>The Axon.ivy Engine is now, like the Designer, based on a technology called OSGi.</p>
+            <p>Therefore, the runtime environment of an Engine and a Designer is nearly the same now. 
+               This prevents problems where a Axon.ivy project runs on the Designer but not on the Engine (class loading, different library versions, etc.)</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Axon.ivy Extensions</h4> </div>
+          <div class="col-md-10">
+            <p>The extension mechanism of the Axon.ivy Designer and the Engine is now the same since they both run in OSGi mode:</p>
+            <ul>
+              <li>The installation of extensions like the <a href="https://github.com/ivy-supplements/birt-reporting">BIRT process elements</a> is now streamlined. Simply copy your JAR to <code>dropins</code> and it will be available at runtime. The <code>plugins</code> directory should only be used for automatically installed plugins.<br/>
+              <img src="images/67_libDropins.png"/></li>
+              <li>Like in the Axon.ivy Designer the Engine now also supports the Eclipse extension point mechanism.
+              <br>Therefore, extensions can be registered in the plugin.xml that is in your Axon.ivy extension bundle (*.jar file). </li>
+            </ul>
+            <p>See <i>Help > Designer Guide > Concepts > Extensions</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2><a id="engineConfigUi"></a>Engine Config</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>New Engine Config</h4></div>
+          <div class="col-md-10">
+            <p>The old ServerConfiguration is replaced by the new Engine Config, which is now based on JSF.</p>
+            <p>Now, you can upload the licence directly in the config.</p>
+            <img src="images/67_licenceEngineConfigUi.png">
+            <p>See <i>Engine Guide > Configuration > Engine Configuration > Licence</i> for more information. </p>
+            <br/>
+            <img src="images/67_systemDatabaseEngineConfigUi.png">
+            <p>See <i>Engine Guide > Configuration > Engine Configuration > System Database</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>EngineConfigCli</h4></div>
+            <div class="col-md-10">
+              <p>The new console program can be used to configure the Axon.ivy Engine.</p>
+              <img src="images/67_EngineConfigCli.png">
+              <p>Execute <i>EngineConfigCli help</i> or <i>EngineConfigCli &lt;command&gt; help</i> for more information. </p>
+            </div>
+        </div>
+
+        <hr />
+
+	      <h2><a id="adminUI"></a>Administration Tool</h2>
+
+        <hr />
+
+	      <div class="row">
+          <div class="col-md-2"><h4>REST Clients</h4></div>
+	        <div class="col-md-10">
+	          <p>REST Clients can now be configured in the environment editor.</p>
+	          <img src="images/65_AdminUiRestClients.png">
+	          <p>See <i>Engine Guide > Administration > Environments > REST Clients</i> for more information. </p>
+	        </div>
+	      </div>
+
+	      <hr />
+        <div class="row">
+          <div class="col-md-2"><h4>Primefaces Theme per Application</h4></div>
+          <div class="col-md-10">
+            <p>The Primefaces theme can now be configured per application and session.
+            There is a new application configuration property available in the Admin UI to configure it. If it is not configured the default theme is used.
+            <img src="images/61_PrimefacesTheme.png">
+            <p>See <i>Engine Guide > Miscellaneous > Html Dialogs > Primefaces Theme</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2><a id="deployment"></a>Deployment</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Deployment directory</h4></div>
+          <div class="col-md-10">
+            <p>A running Axon.ivy Engine has now an auto deployment directory.
+            It makes simple deployment of Axon.ivy projects to an Axon.ivy Engine possible by copying the project into the <code>deploy</code> directory of the Engine.</p>
+            <p>See <i>Engine Guide > Administration > Project deployment > Deployment directory</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          
+          <div class="col-md-2"><h4>Maven command line deployment</h4></div>
+          <div class="col-md-10">
+            <p>The deployment of Axon.ivy project to a running Engine is now possible with Maven.</p>
+            <p>The following example deploys the project 'myProject.iar' to the application 'Portal' of the Engine location under 'c:/axonivy/engine':</p>
+            <p><code>mvn com.axonivy.ivy.ci:project-build-plugin:7.0.0-SNAPSHOT:deploy-iar -Divy.deploy.iarFile=myProject.iar -Divy.deploy.engine.dir=c:/axonviy/engine -Divy.deploy.engine.app=Portal</code>
+            </p>
+            <p>See the 'iar-deploy' <a href="http://axonivy.github.io/project-build-plugin/release/6.1/deploy-iar-mojo.html">goal documentation</a> on GitHub for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Process Model Version activity and release states</h4></div>
+          <div class="col-md-10">
+            <p>The process model version activity and release state handling has been optimized. <code>ARCHIVED</code> process model versions are no longer started and therefore do not waste resources (memory, CPU).
+            </p>
+            <p>See <a href="../migrationNotes/MigrationNotesEngine.html#pmvStates">Migration Notes</a> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2><a id="portal"></a>Portal</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Redesigned Portal</h4></div>
+          <div class="col-md-10"><p>The whole Portal has been redesigned and extensively improved in UI and UX.
+
+            <img style="width: 100%;" src="images/61_Portal_Dashborad.png">
+            <p>
+	         The standard Portal is bundled with the Engine. It is implemented by developers for developers.
+	         Feel free to customize it.</p>
+	         <p>See <i><a href="http://developer.axonivy.com/doc/6.7.latest/PortalKitHtml">Axon.ivy Portal Documentation</a></i> for more information. </p>
+	       </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Task search</h4></div>
+          <div class="col-md-10"><p>Axon.ivy Portal offers now users to filter tasks by various criteria. Additional conditions can even be added in your customized Portal.
+            <img style="width: 100%;" src="images/67_taskFilter.png">
+            <p>See <i><a href="http://developer.axonivy.com/doc/6.7.latest/PortalKitHtml">Axon.ivy Portal Documentation</a></i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Axon.ivy Express</h4></div>
+          <div class="col-md-10"><p>Axon.ivy Express allows to create and run simple processes directly on the Engine (No Designer or deployment is needed).
+            It is very simple to define a new process. You don't need to know BPMN or a scripting language.
+            <img style="width: 100%;" src="images/67_express.png">
+            <p>See <i><a href="http://developer.axonivy.com/doc/6.7.latest/PortalKitHtml">Axon.ivy Portal Documentation</a></i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2><a id="monitoring"></a>Monitoring</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>System Database and CMS Cache</h4></div>
+          <div class="col-md-10">
+            <p>System Database and CMS Caches can now be monitored with JMX. The caches provide attributes for:
+            <ul>
+	            <li><code>readHits</code>: Number of times an object was found in the cache.</li>
+	            <li><code>readMisses</code>: Number of times an object was not found in the cache.</li>
+	            <li><code>writes</code>: Number of writes into the cache.</li>
+	            <li><code>cachedObjects</code>: Number of objects in the cache.</li>
+	          </ul>
+            <p>The attributes of the cache strategies can be manipulated and the caches can be cleared with JMX during runtime.</p>
+	
+            <p>See <i>Engine Guide > Monitoring > Java Management Extensions (JMX) > Provided MBeans</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><a id="threadPoolMonitoring"></a><h4>Thread Pools</h4></div>
+          <div class="col-md-10">
+            <p>The following attributes of thread pools can now be monitored with JMX:</p>
+            <ul>
+              <li><code>corePoolSize</code>: Number of threads used at least by the thread pool.</li>
+              <li><code>maximumPoolSize</code>: Maximum number of threads used by the thread pool.</li>
+              <li><code>poolSize</code>: Current number of threads in the thread pool.</li>
+              <li><code>activeCount</code>: Number of threads currently in use (not idle).</li>
+              <li><code>queueSize</code>: Number of jobs in the queue waiting for a free thread to execute it.</li>
+            </ul>
+
+            <p>See <a href="#threadPoolConfig">Miscellaneous > Thread Pool Configuration</a> to learn how to configure thread pools.</p>
+            <p>See <i>Engine Guide > Monitoring > Java Management Extensions (JMX) > Provided MBeans</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><a id="MonitoringRest"></a><h4>External REST Web Services</h4></div>
+          <div class="col-md-10">
+            <p>The following attributes of external REST Web Services calls can now be monitored with JMX:</p>
+            <ul>
+              <li><code>calls</code>: Number of calls executed.</li>
+              <li><code>callsTotalExecutionTimeInMicroSeconds</code>: Total time used to execute the calls.</li>
+              <li><code>errors</code>: Number of errors occured.</li>
+              <li><code>callHistory</code>: Detailed information about the last executed calls.</li>
+              <li><code>slowestCalls</code>: Detailed information about the slowest executed calls.</li>
+              <li>...</li>
+            </ul>
+
+            <p>See <i>Engine Guide > Monitoring > Java Management Extensions (JMX) > Provided MBeans</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2><a id="security"></a>Security</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Security Headers</h4></div>
+          <div class="col-md-10">
+            <p>The Axon.ivy Engine comes now with some predefined Security Headers which are set on HTTP Responses.</p>
+            <p>See <i>Engine Guide > Configuration > Configure Tomcat > Security Headers</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Stronger password encryption</h4></div>
+          <div class="col-md-10">
+            <p>The passwords stored in the system database are now protected by using state of the art hashing (bcrypt) and encryption (AES) algorithms.</p>
+            <p>With the migration to 7.0 (or at least 6.2) old passwords are automatically converted to the new algorithms during the first server startup.</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>SSO valve for WAF/IAM</h4></div>
+          <div class="col-md-10">
+            <p>There is a new Single Sign On Valve (<code>ch.ivyteam.ivy.webserver.security.SingleSignOnValve</code>) available that can be activated in the <code>context.xml</code> file.
+            The valve can be used to integrate the Axon.ivy Engine into a Web Application Firewall (WAF) / Identity and Access Management (IAM) environment and support SSO.</p>
+            <p>See <i>Engine Guide > Integration > Web Application Firewall</i> for more information.</p>
+          </div>
+        </div>
+        <hr />
+
+        <h2><a id="misc"></a>Miscellaneous</h2>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4><a id="threadPoolConfig"></a>Thread Pool Configuration</h4></div>
+          <div class="col-md-10">
+            <p>The number of threads that are used by thread pools in Axon.ivy can now be configured with system properties: </p>
+              <ul>
+                <li><code>ThreadPool.*.CorePoolSize</code>: Number of threads used at least by the thread pool.</li>
+                <li><code>ThreadPool.*.MaximumPoolSize</code>: Maximum number of threads used by the thread pool.</li>
+              </ul>
+
+            <p>See <a href="#threadPoolMonitoring">Monitoring > Thread Pools</a> to learn how to monitor thread pools.</p>
+
+            <p>See <i>Engine Guide > Administration > System Properties</i> and <i>Engine Guide > Monitoring > Java Management Extensions (JMX) > Provided MBeans</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>System Task Failure Behaviour</h4></div>
+          <div class="col-md-10">
+            <p>The default behaviour for failing system tasks can now be configured with the system property
+            <code>SystemTask.Failure.Behaviour</code>. As with old versions of the engine, it's still possible to
+            override the failure behaviour for a single task. </p>
+
+            <p>See <i>Public API > ch.ivyteam.ivy.workflow.SystemTaskFailureBehaviour</i> for more information. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Linux service based on systemd</h4></div>
+          <div class="col-md-10">
+            <p>The scripts to run the Axon.ivy Engine as a service under Linux are now based on systemd (<code>AxonIvyEngine.service</code>).</p>
+
+            <p>See <i>Engine Guide > Miscellaneous > Tool Reference > InstallService</i> for more information.</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>REST API</h4></div>
+          <div class="col-md-10">
+            <p>There is a new workflow REST API to get all process starts that can be started by the authenticated user.</p>
+            <code>HTTP GET /ivy/api/{application name}/workflow/processstarts</code>
+          </div>
+        </div>
+
+        <hr />
+
+	      <div class="row">
+	        <div class="col-md-2"><h4>Tomcat 8.5</h4></div>
+	        <div class="col-md-10">
+	          The Tomcat Webserver of the Axon.ivy Engine has been updated to version 8.5. This updated version of Tomcat implements the Servlet 3.1 specification.
+	        </div>
+	      </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Elasticsearch 5.5</h4></div>
+          <div class="col-md-10">
+            <p>Elasticsearch which is used to index business data and provides the search functionality has been updated from 2.3.4 to 5.5.0.</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <div class="col-md-2"><h4>Windows Server 2016<br />SQL Server 2016</h4></div>
+          <div class="col-md-10">
+            <p>Windows Server 2016 and Microsoft SQL Server 2016 is now officially supported.</p>
+          </div>
+        </div>
+
+        <hr />
+
+      </div>
+    </div>
+  </body>
+</html>

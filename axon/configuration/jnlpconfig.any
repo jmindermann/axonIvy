@@ -1,0 +1,220 @@
+{
+	# /title and /vendor tags are required
+	/information {
+		/title		"Axon.ivy Rich Internet Application"
+		/vendor		"AXON IVY AG"
+		/homepage	"http://www.axonivy.com"
+		
+		# the following tag is optional. if defined, then /default is required
+		# /short, /one-line and /tooltip are optional
+		/descriptions {
+			/default	"Axon.ivy Rich Internet Application"
+		}
+		
+		# defines the icon for the application. the icon is visible during the first start
+		# of the application, when a certificate messages is shown or in the java cache viewer.
+		/icons {
+			# several icons can be defined, they must be either .gif or .jpg
+			# the names of the icon slots are ignored, except the reserved 
+			# key "splash" which is used to define a splash icon. other
+			# icons can be defined in size 64x64 or 32x32, only /href is required
+			# optionally also /width and /height may be specified.
+			# /href paths are interpreted relative to the base uri ("http://server:port/ivy/")
+			# of the Axon.ivy Engine that serves the JNLP file.
+			# with /base-uri another base uri for the /href may be specified (e.g. "http://myserver.com")
+			
+			/splash	{
+				/href		*	# will not be rendered because href = null
+				/base-uri	*
+			}
+			
+			/big {
+				/href		*	# will not be rendered because href = null
+				/width		64
+				/height		64
+			}
+			
+			# example for a custom icon which replaces the default java coffee cup icon (uncomment lines to enable)
+			#/small {
+			#	/base-uri		"http://git.eclipse.org"
+			#	/href			"/c/platform/eclipse.platform.git/plain/platform/org.eclipse.platform/eclipse32.gif"
+			#}
+		}
+	}
+	
+	/java {
+		# the java args are optional, but it is recommended to define them
+		/version			"1.8"
+		/initial-heap-size	"64m"
+		/max-heap-size		"512m"
+		
+		# vm-args are optional, they may or may not have a value defined. 
+		# if they do, then the arg will be added as "-arg=val" otherwise 
+		# only "-arg" will be added (e.g. /Xms64m will result in "-Xms64m").
+		# Please note that keys that contain special chars, such as :, must
+		# be enclosed in quotes.
+		/java-vm-args {
+		}
+		
+		# optional argument, if jars should be downloaded lazy (at time, when needed) 
+		# or already on startup. the default value is false. for slow internet 
+		# connections it's recommended to enable lazy downloading. 
+		/lazy-download-jars		false
+	}
+	
+	/application-desc {
+		# the following arguments are required, other arguments may be added
+		/arguments {
+			/keep-alive-interval	900
+			
+			# optional tag. It defines the inactivity time-out in seconds for rich dialogs.
+			# If there is no user interaction for the defined period of time, then a message
+			# is displayed to the user. You can choose if the message is displayed as a rich
+			# dialog message box (default) or in the browser. The application is closed 
+			# automatically. Note too that the session user is logged out and the HTTP session
+			# is invalidated. If the tag is not set, then no timeout will happen.			
+			#/session-timeout { 
+			#	/time 600
+			#	/description "Description for session time out"
+			#	/view-message-in-browser false
+			#}	
+			
+			# configure ULC logging on the client. if you want to log for a specific 
+			# user only or force the use of a log-to-file on the client, then simply 
+			# modify and uncomment the lines below. the log level of the /default slot
+			# will be used for all other users. when a file is given (e.g. "ivy.log")
+			# then Axon.ivy will add the user name (if per user logging is switched on),  
+			# the ID of the HTTP session and the session of the internal application ID.
+			# The file name may be relative or absolute. If it is given relative, then the
+			# file is created into the system temporary directory. Use double backslashes
+			# on windows! 			 			
+			# the logging level must be one of SEVERE, WARNING, INFO, FINE, FINER, FINEST
+			/log-level	{
+				/user-specific {
+					#/johndoe	FINE
+				}
+				/default		WARNING
+				#/log-to-file   "ivy_ulc_client.log"
+			}
+			
+			# configure the use of a splash screen that will be shown between 
+			# start of the application until the first RD appears. /show is
+			# true by default and will enable/disable the splash-screen. /href
+			# and /base-uri are handled identically to the /icons config above
+			# if no /href is defined but /show is set to true, then a default 
+			# ivy splash-screen will be shown. /bg-color and /fg-color are 
+			# "r,g,b" strings that will set the color of the splash screen 
+			# border and text (default is black and white, respectively), 
+			# /border-width sets the width of the border in pixels, 
+			# /msg defines an optional short string to display
+			# on the splash screen. /progress indicates the number of seconds
+			# that the progress bar should take to fill to 100%, use 0 to hide
+			# progress bar or -1 to show indeterminate progress bar. /max-show
+			# is an optional indication on how long to show the 
+			# splash-screen maximally in seconds (0=forever).
+			/splash-screen {
+				/show 			true
+				/bg-color		"102,102,102"
+				/fg-color		"255,255,255"
+				/border-width	1
+				/progress		-1
+				/msg			"Please wait..."
+				/max-show		90
+				
+				# example for custom image (uncomment lines to enable)
+				#/base-uri		"http://www.javalobby.org"
+				#/href			"/articles/ultimate-image/duke.gif"
+			}
+			
+			#Tool Tip behavior
+			/tool-tip {
+				
+				# Specifies the initial delay value in miliseconds.
+		  		# It is the number of milliseconds to delay
+		        # (after the cursor has paused) before displaying the
+		        # tooltip.        
+		        /initial-delay 750
+		        
+		        # Specifies the dismissal delay value in miliseconds.
+		     	# It is the number of milliseconds to delay
+		        # before taking away the tooltip
+		        /dismiss-delay 16000
+		        
+		        # Used to specify the amount of time before the user has to wait
+		        # <initialDelay> milliseconds before a tooltip will be
+		        # shown. That is, if the tooltip is hidden, and the user moves into
+		        # a region of the same Component that has a valid tooltip within
+		        # <milliseconds> milliseconds the tooltip will immediately
+		        # be shown. Otherwise, if the user moves into a region with a valid
+		        # tooltip after <milliseconds> milliseconds, the user
+		        # will have to wait an additional <initialDelay>
+		        # milliseconds before the tooltip is shown again.
+		        /reshow-delay 500
+			}
+			
+			# behavior of client side file choosers
+			/file-chooser {
+				# When opening a file chooser, then Synthetica automatically opens always the parent folder of the file/directory
+				# that was chosen the last time. Uncomment this option if you do not want this behavior, e.g. if you want to open
+				# a file chooser with your own directory.
+				# /remember-last-directory false
+			}			
+			
+			# options for clients running on a 64bit JVM
+			/client-operating-system-64-bit
+			{
+				# configure whether the user should see a warning if his client is a 64-bit JVM.
+				# this may be used to warn the user about compatibility problems.
+				# e.g. because the RBrowser behaves differently when used to show a PDF document.
+				/show-warning	false
+				# the title of the warning message
+				/warn-title		"64 bit client detected"
+				# the warning which will be displayed if a user runs the application on a 64-bit JVM.
+				/warn-message	"You are running this application on a 64-bit client. Some parts of the application may not behave as expected. \nWe recommend to use a 32-bit browser to start the application."
+			}
+		}
+	}
+
+	#/security-forwarding {
+	# --------------------------------------------------------------------------------------------------------------
+	# The security forwarding mechanism can be used to to establish a communication between the Axon.ivy Rich Internet Application and the 
+	# Axon.ivy Engine through a Web Application Firewall (WAF) or a Hardware Load Balancer (LB). 
+	#
+	# It allows to receive a cookie value from the WAF or LB on server side and to send the value in the 
+	# *.jnlp request as HTTP get parameter and in Axon.ivy Rich Internet Application requests as HTTP cookie. 
+	# The value can be used on the WAF/LB to identify the client and check security permissions, etc.
+	#
+	# Simplified Communication Example:
+	#
+	# cookie-name: SEC
+	# http-get-parameter: SEC
+	#
+	# RIA                JAVA-WS                Browser                WAF/LB                Engine 
+	#                                           *.ivp       ->   *.ivp (Cookie SEC=XYZ) -> Read Cookie SEC   
+	#                                                       <-           <-             <- 302 - *.jnlp?SEC=XYZ      
+	#                                        *.jnlp?SEC=XYZ ->      Check SEC ok        ->
+	#                 Analyse JNLP File   <-   JNLP-File    <-           <-             <- 200 - JNLP File (Param SEC=XYZ)      
+	#                  *.jnlp?SEC=XYZ     ->                ->      Check SEC ok        ->
+	# Read Param SEC <-   Start RIA       <-                             <-             <- 200 - JNLP File (Param SEC=XYZ)
+	# RIA Request (Cookie SEC=XZY)                          ->      Check SEC ok        ->
+	#                                                                                   <- 200 - RIA Response
+	# RIA Request (Cookie SEC=XZY)                          ->      Check SEC ok        ->
+	# --------------------------------------------------------------------------------------------------------------
+	#  /on-server-receive-as {
+	#    /http-cookie {
+	#      /cookie-name  "SEC"
+	#    }
+	#  }
+    
+	#  /on-client-send-as {
+	#    /http-cookie {
+	#      /cookie-name "SEC"
+	#    }
+      
+	#    /http-get-parameter {
+	#      /parameter-name "SEC"
+	#    }
+	#  }
+	#}
+	
+}

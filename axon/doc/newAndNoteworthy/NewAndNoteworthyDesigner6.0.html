@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>New and Noteworthy Axon.ivy Designer Säntis</title>
+  <link rel="shortcut icon" href="../shared/images/ivy_favicon_48.png" />
+  <link href="../shared/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/docs.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-common-6.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-designer-doc.css" rel="stylesheet" type="text/css">
+  <script src="../shared/js/jquery.min.js"></script>
+  <script src="../shared/js/bootstrap.min.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div id="mainContent">
+
+	<!-- start-top-navigation -->
+		<div class="navbar navbar-top" role="navigation">
+		  <div class="container" id="headerdiv">
+			<div class="navbar-header">
+			  <a class="ivy-logo" href="http://developer.axonivy.com">
+                <img src="../shared/images/axon_ivy_logo.png" alt="Axon.ivy" />
+              </a>
+			</div>
+			
+			<div class="navbar">
+			  <ul class="nav nav-pills" id="navbar-ivy-links">
+				<li><a href="http://developer.axonivy.com/download/" target="blank"><span class="glyphicon glyphicon-download" aria-hidden="true"></span><br>Download</a></li>
+				<li><a href="http://developer.axonivy.com/doc/" target="blank"><span class="glyphicon glyphicon-book" aria-hidden="true"></span><br>Documentation</a></li>
+				<li><a href="http://answers.axonivy.com" target="blank"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Q &amp; A</a></li>
+				<li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><br>Blog</a></li>
+			  </ul>
+			</div>
+
+		  </div><!-- /.container -->
+		</div>
+    <div class="navbar ivy-subnav">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <ul class="nav nav-pills">
+              <li class="active"><a href="NewAndNoteworthyDesigner.html">N&N Designer</a></li>
+              <li><a href="NewAndNoteworthyEngine.html">N&N Engine</a></li>
+              <li><a href="../../ReleaseNotes.txt">Realease Notes</a></li>
+              <li><a href="../../MigrationNotes.html">Migration Notes</a></li>
+              <li><a href="../../ReadMe.html">Read Me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end-top-navigation -->
+
+<div class="container">
+	<h1 class="page-header">New and Noteworthy for Axon.ivy Designer 6.0 (Säntis)</h1>
+	
+	<p class="lead">This document describes all new and noteworthy features of the Axon.ivy
+	<em>Designer 6.0 (Säntis)</em> release.</p>
+
+	<p>Only a brief overview of important new features is provided here. It is
+	recommended that you consult the respective sections of the updated <span style="font-style: italic;">Designer Guide</span> (<em>via <em>Help &gt; Help
+	Contents &gt; Axon.ivy Designer Guide</em>) if you desire more detailed information about individual new features. <span style="font-style: italic;"></span></em></p>
+
+	<p>If you are interested in features introduced in the previous release have a look at the <a href="https://developer.axonivy.com/doc/5.1.latest/newAndNoteworthy/NewAndNoteworthyDesigner.html">Axon.ivy Designer 5.1 New and Noteworthy</a></p>
+
+	<p>The contents of this file have been grouped into different sections with related content:</p>
+	<ul>
+		<li><a href="#error">Error Handling</a></li>
+		<li><a href="#htmlDialogEditor">New Html Dialog Editor</a></li>
+		<li><a href="#offlinetask">User Task, Offline Dialog (Offline Tasks) and Mobile App</a></li>
+		<li><a href="#documents">Documents</a></li>
+    <li><a href="#ci">Continuous Integration</a></li>
+    <li><a href="#newengine">New Process Engine</a></li>
+    <li><a href="#userdialog">User Dialog</a></li>
+		<li><a href="#editor">Editor Improvements</a></li>
+		<li><a href="#misc">Miscellaneous</a></li>
+	</ul>
+
+	<div class="bs-callout bs-callout-info">
+		<h4>MIGRATION OF 5.1 PROJECTS</h4>
+		<p>5.1 projects (and older) need to be converted for Axon.ivy 6.0!</p>
+		<p>See the separate <a href="../migrationNotes/MigrationNotesDesigner.html">Migration Notes</a> to learn about what needs to be done to get your projects running with Axon.ivy 6.0 (Säntis).</p>
+	</div>
+
+		<h1 class="page-header">Selected Features</h1>
+		
+    <h2><a id="error"></a>Error Handling</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error Handling Concept</h4></div>
+      <div class="col-md-10">
+        <p>There is a new section in the designer guide that explains the Error Handling Concept.</p><p> See <i>Help > Designer Guide > Concepts > Error Handling</i></p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error Boundary Event</h4></div>
+      <div class="col-md-10">
+        <p>There is a new Error Boundary Event process element that can be attached to any Activity process element including Script Step, Program Interface, Embedded Subprocess, Subprocess Call, etc. 
+        The Error Boundary Event catches errors that appear inside of the Activity. The error can be handled by connecting an error handling process to the Error Boundary Event.
+        </p>
+        <p> <img src="images/60_ErrorBoundaryOnEmbedded.png"/>
+            <img src="images/60_ErrorBoundaryOnScript.png"/></p>
+        <p>See <i>Help > Designer Guide > Process Modeling > Process Elements Reference > Error Boundary Event</i> for more information. </p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error End Event</h4></div>
+      <div class="col-md-10">
+        <p>The new Error End Event can be used to leave the happy path of a process by throwing an error (e.g. if there is not enough stock). It can also be used to rethrow previously catched errors.
+        </p>
+        <p> <img src="images/60_ErrorEndEvent.png"/>
+        <p>See <i>Help > Designer Guide > Process Modeling > Process Elements Reference > Error End Event</i> for more information. </p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error End Event in Html Dialog</h4></div>
+      <div class="col-md-10">
+        <p>With the new Error End Event it is possible to exit an Html Dialog by an Error End process element. This is useful to leave the happy path of the calling business process. 
+        </p>
+        <p> <img src="images/60_ErrorFromHtmlDialog.png"/>
+        <p>See <i>Help > Designer Guide > Process Modeling > Process Elements Reference > Error End Event</i> for more information. </p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error Start Event</h4></div>
+      <div class="col-md-10">
+        <p>The former Exception Element is now called Error Start Event. It can be used to catch errors which were thrown in the same process or inside a subprocess if the configured Error Code matches the occurred error.
+        </p>
+        <p>See <i>Help > Designer Guide > Process Modeling > Process Elements Reference > Error Start Event</i></p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Project Error Process</h4></div>
+      <div class="col-md-10">
+        <p>A project error process catches errors from the whole project. The name of a global error process must start with Error and can contain one or more Error Start Events.
+        </p>
+        <p> See <i>Help > Designer Guide > Concepts > Error Handling > Project Error Process</i></p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Error Object</h4></div>
+      <div class="col-md-10">
+        <p>There is a new error object available at the Error Intermediate Boundary and Error Start Event process element. The object provides information about the error that occurred, like:
+        <ul>
+          <li>Unique Error ID</li>
+          <li>Error Code</li>
+          <li>Technical Cause (Java Exception)</li>
+          <li>Throwing process element</li>
+          <li>Throwing process call stack</li>
+          <li>User defined error attributes</li>
+        </ul>     
+        </p>
+        <p>See Public API <code>ch.ivyteam.ivy.bpm.error.BpmError</code> for more information.</p>
+        <p> <img src="images/60_ErrorObject.png"/></p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>New Default Error Page</h4></div>
+      <div class="col-md-10"><p>The new default error page provides a lot more information about the error:
+      <ul>
+        <li>Error Id</li>
+        <li>Error Code</li>
+        <li>Error Message</li>
+        <li>Process element and process callstack where the error happened</li>
+        <li>Additional error attributes</li>
+        <li>Technical error stack trace</li>
+        <li>etc</li>
+      </ul>
+      </p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Customizable Error Pages</h4></div>
+      <div class="col-md-10"><p>The content and appearance of the ivy
+       error page for the Designer can be customized the same way as for the Engine.</p>
+       <p> It is possible to adjust the
+       default error page <i>webapps/ivy/ivy-error-page.xhtml</i>. Alternatively
+       custom error pages can be defined in <i>webapps/ivy/WEB-INF/web.xml</i>.
+       <p>See also the chapter <i>Configuration -> Configure Tomcat -> web.xml</i> in 
+       the Engine Guide.</p>
+       </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><a name="StatusCodes"></a><h4>Enhanced Error Messages and Status Codes</h4></div>
+      <div class="col-md-10"><p>The responses and corresponding HTTP status codes have been enhanced for task-resume requests.  
+        Now, the following status codes are returned in case of failure:
+        <ul>
+          <li><code>403 - FORBIDDEN</code>: The user is not allowed to work on the task.</li>
+          <li><code>404 - NOT FOUND</code>: 
+            <ul>
+              <li>The task does not exist.</li>
+              <li>The task is in an unavailable state.</li>
+              <li>The task was finished and the user was not allowed to work on it.</li>
+            </ul>
+          </li>
+          <li><code>409 - CONFLICT</code>: The user is allowed to work on the task but:
+            <ul>
+              <li>The task was finished by another user.</li>
+              <li>Another user is currently working on the task.</li>
+            </ul>
+          </li>
+        </ul>     
+        The error message for <code>409 - CONFLICT</code> will additionally mention the user that has finished or is currently working on the task.
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Boundary Event Icons</h4></div>
+      <div class="col-md-10"><p>For documentation reason the icon of an error boundary event can be changed:      
+      </p>
+      <img src="images/60_BoundaryIconMenu.png"/>
+      <div class="bs-callout bs-callout-info">Only the visual icon is changed, the behavior of the error boundary event is still the same.</div>
+       </div>
+    </div>
+    <hr>
+    <h2><a id="htmlDialogEditor"></a>New Html Dialog Editor</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>New Html Dialog Editor</h4></div>
+      <div class="col-md-10"><p>The graphical part of the Html Dialog Editor has been rewritten completely. We now provide a 95% realistic preview of Html Dialogs. It supports the most often used PrimeFaces and JSF elements. Hence, for most dialogs, you now see how they will look like at runtime.
+      </p>          
+      <img src="images/60_HtmlDialogEditor_GE.png" alt="Realistic preview in the graphical part of the Html Dialog Editor"/>
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Template visible</h4></div>
+      <div class="col-md-10"><p>The template part of the dialog is now visible too. But you cannot edit it directly. Just open the template in its own editor and edit it there.
+      </p>                
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>
+    <hr />    
+    <div class="row">
+      <div class="col-md-2"><h4>Display composite components</h4></div>
+      <div class="col-md-10"><p>The new editor can display components in the graphical part. You cannot edit the component in place but with a double click you can open it in a new editor window and edit there.</p>  
+            <img src="images/60_HtmlDialogEditor_IvyComponents.png" alt="Ivy components are now displayed in the editor"/>    
+      
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Visual Markers for CMS, Data and Logic</h4></div>
+      <div class="col-md-10"><p>You can now see with one look if your forms are properly translated and bound to data. See the overlay markers for Primefaces components. </p>  
+            <img src="images/60_HtmlDialogEditor_Markers.png" alt="Visual markers for CMS, data and logic"/>    
+      
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />
+    
+        <div class="row">
+      <div class="col-md-2"><h4>Default action for Primefaces components</h4></div>
+      <div class="col-md-10"><p>Double click on a Primefaces component in the graphical part to edit the most important attributes of the component directly. For Ivy Component Dialogs the double click opens the component in its own editor window.</p> 
+            <img src="images/60_HtmlDialogEditor_DefaultAction.png" alt="Double click to open the default action for Primefaces elements"/>   
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />
+        <div class="row">
+      <div class="col-md-2"><h4>Simplified palette</h4></div>
+      <div class="col-md-10"><p>We only have the most important Primefaces component in the palette so that novice users find the components they need.</p> 
+            <img src="images/60_HtmlDialogEditor_Palette.png" alt="Simplified palette"/>    
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Select tab to see its children</h4></div>
+      <div class="col-md-10"><p>Click on a tab in the graphical part of the Html Dialog Editor to see and edit its children. </p> 
+                <table>                    
+                    <td><img src="images/60_HtmlDialogEditor_Tabs2.png" alt="Second tab selected to see its children"/></td>
+                    <td><img src="images/60_HtmlDialogEditor_Tabs.png" alt="Select the third tab to see and edit its children"/></td>
+                </table>
+      
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />    
+    <div class="row">
+      <div class="col-md-2"><h4>Preferences for the Html Dialog Editor</h4></div>
+      <div class="col-md-10"><p>You can now define which view mode you prefer and use it as default. You can turn on/off the visual markers for data binding, logic mapping and CMS use                too.</p> 
+            <img src="images/60_HtmlDialogEditor_Preferences.png" alt="Preferences for the Html Dialog Editor"/>    
+      
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>    
+    <hr />    
+    <div class="row">
+      <div class="col-md-2"><h4>Icon browser</h4></div>
+      <div class="col-md-10"><p>You can now select your icons for buttons in a visual way. Double click on the button to start the default action and open the icon browser to choose your icon.</p> 
+            <img src="images/60_HtmlDialogEditor_IconBrowser.png" alt="Icon Browser to select icons"/>    
+      
+            <br/>See <i>Help > Designer Guide > User Dialogs > Html Dialogs > Html Dialog Editor</i> for more information.
+      </div>
+    </div>      
+    <hr />    
+    
+
+  <h2><a id="offlinetask"></a>User Task, Offline Dialog (Offline Tasks) and Mobile App</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>User Task element</h4></div>
+      <div class="col-md-10"><p>The User Task element is used to call a User Dialog in a new task. Thus it combines a Task Switch Event and an Html Dialog.</p>
+      The dialog can either be a normal Html Dialog or an Offline Dialog. An Offline Dialog is an Html Dialog that is designed to be capable 
+      of running offline on a mobile device.  
+       <p> <img src="images/60_userTaskElement.png"></p></div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Offline Dialog</h4></div>
+      <div class="col-md-10">
+        <p>The User Task element can be defined to call a normal Html Dialog or an Offline Dialog. The goal of using an Offline Dialog is that the task can be
+    processed offline by a user on a mobile device.</p>
+    <img src="images/60_offlineTasks.png">
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Offline Task Concept</h4></div>
+      <div class="col-md-10">
+        <p>There is a new section in the designer guide that explains the Offline Task Concept.</p><p> See <i>Help > Designer Guide > Concepts > Offline Tasks</i></p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Mobile App</h4></div>
+      <div class="col-md-10">
+        <p>Soon we will have a new Axon.ivy App for iOS devices available in the App store. The app provides a list of all your Axon.ivy tasks and you will be able to work on your offline tasks when the device is offline.</p>
+        <p><img src="images/60_MobileApp.png"/></p>
+      </div>
+    </div>
+    <hr />
+    <h2><a id="documents"></a>Documents</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Document API</h4></div>
+      <div class="col-md-10">
+        <p>There is a new API available that allows you to manage documents and to attach them to workflow cases.</p>
+        <img src="images/60_document_api.png">
+        <p>Examples:</p>
+        <p>Attach a new document to a case:<br/>
+        <code>IDocument document = ivy.case.documents().add(new Path("Offers/FirstOffer.txt")).write().withContentFrom("Offer: 1 Axon.ivy License for 10000 CHF");</code>
+        </p>
+        <p>Get all documents that are attached to a case:<br/>
+        <code>List&lt;IDocument&gt; documents = ivy.case.documents().getAll();</code>
+        </p>
+        <p>Get all documents of an application that are stored below a certain path:<br/>
+        <code>List&lt;IDocument&gt; templates = ivy.wf.documents().getAllBelow(new Path("/Templates));</code>
+        </p>
+        <p>See Public API <code>ch.ivyteam.ivy.workflow.document.IDocumentService</code> for more information.</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Document User Interfaces</h4></div>
+      <div class="col-md-10">
+        <p>Documents can be managed using the following user interfaces:
+        <ul>
+          <li>RIA File Manager from the IvyAddOns project</li>
+          <li>RIA Workflow UI</li>
+          <li>Axon.ivy Portal</li>
+          <li>Axon.ivy Mobile App</li>
+        </ul>
+        </p>
+      </div>
+    </div>
+    <hr />
+  <h2><a id="ci"></a>Continuous Integration</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Maven Build Plugin</h4></div>
+      <div class="col-md-10"><p>Ivy Projects are now designed to be built with Maven, so that 
+      Ivy Projects can be built on a continuous integration (CI) server like Jenkins with 
+      minimal configuration effort.<br>
+      Therefore the project deployment descriptor is now stored as a Maven <code>pom.xml</code> and pre-configured to 
+      build the Ivy Project with the new Maven Plugin <code>com.axonivy.ivy.ci:project-build-plugin</code>.</p>
+      <p>The Maven Build plugin provides the following main features:</p>
+      <ul>
+        <li><code>Compilation</code> of Ivy Projects</li>
+        <li><code>Packaging</code> of built Ivy Projects as IAR (ivy archive) artifacts</li>
+        <li><code>Installation</code> of IAR artifacts into the local Maven repository</li>
+        <li><code>Deployment</code> of IAR artifacts to a remote Maven repository</li>
+      </ul>
+      
+      <p>The Designer Guide chapter <i>Concepts -> Continuous Integration</i> provides more detailed informations.</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Project Graph</h4></div>
+      <div class="col-md-10"><p>The dependencies of Projects in the Designer workspace can now be visualized with a graph. 
+      The new 'Project Graph' view comes with auto layout functionality and allows quick navigation to the Deployment Descriptor editor 
+      by double click on a node.</p>
+      <p>The Project Graph can be opened with the menu <i>Window -> Show View -> Other -> Axon.ivy -> Project Graph</i><br/>
+      or with the new toolbar button within the Project Deployment Descriptor Editor.</p>
+        <img src="images/60_LibraryGraphViewOpenAction.png">
+        <img src="images/60_ProjectGraphView.png">
+      </div>
+    </div>
+    <hr />
+  <h2><a id="newengine"></a>New Process Engine</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>New Process Engine</h4></div>
+      <div class="col-md-10"><p>Completely new and rewritten process engine. Based on the latest available technologies.</p></div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>100% Java</h4></div>
+      <div class="col-md-10"><p>100% implemented in Java.<br>
+      IvyScript is no longer used in the engine itself.<br>
+      Completely new Java based execution model. There is no longer a PetriNet model used to execute your processes.</p></div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Improved Debugging</h4></div>
+      <div class="col-md-10"><p>While debugging its now possible to ...</p>
+      <ul>
+      <li><b>Jump into</b> a callable or embedded process</li>
+      <li><b>Jump over</b> a callable or embedded process (or process element)</li>
+      <li><b>Return</b> from inside a callable or embedded process to the caller process</li>
+      </ul>
+      <img src="images/60_debugging_improvement.png">
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Additional simulation options</h4></div>
+      <div class="col-md-10">
+        Two new simulation options have been added to the Engine Preferences. One of them doesn't simulate user dialog logic. The other allows simulating only top level business processes.<br/>
+        <img src="images/60_SimulateOnlyTopLevelBusinessProcesses.png"/>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Improved Performance</h4></div>
+      <div class="col-md-10"><p>The new process engine is 20% faster. This really boosts your processes.</p>
+      <p>The building of the engine model is about 50% faster.</div>
+    </div>
+    <hr />
+    <h2><a id="userdialog"></a>User Dialog</h2>
+    <hr />
+       <div class="row">
+      <div class="col-md-2"><h4>PrimeFaces 5.3</h4></div>
+      <div class="col-md-10"><p>Upgraded PrimeFaces to a newer version. The new version includes several fixes, improvements and new components like diagrams and steps.</p>
+      
+      <img src="images/60_Primefaces_Steps.png">
+      <p>The steps component is an indicator for the different steps in a workflow, it's optimized for responsive design. </p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>PrimeFaces Extensions 4.0.0</h4></div>
+      <div class="col-md-10"><p>Upgraded PrimeFaces Extensions to a newer version. The new version includes new components like gravatar and analogClock.</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Faces Validator support</h4></div>
+      <div class="col-md-10"><p>Ivy projects can now declare and use their own <a href="http://docs.oracle.com/javaee/6/api/javax/faces/validator/package-summary.html">FacesValidator</a> implementations. 
+      So you can easily write a custom validator for Html Dialog attributes in your project.</p><img src="images/60_customFacesValidator.png" alt="Custom Validator in HtmlDialogDemos - FormDemo View"/>
+      </div>
+    </div>
+    <hr />
+            
+    <div class="row">
+      <div class="col-md-2"><h4>New certificate</h4></div>
+      <div class="col-md-10"><p>The client libraries for the Rich Dialog technology in this release are signed with a new certificate. The certificate is now issued to AXON IVY AG. ivyTeam the former provider company of Axon.ivy Designer and Engine was merged into this new company. All users of Rich Dialog UI's will see a security warning dialog the first time they start the process/application on a new Designer/Engine. 
+                </p>
+                <p>See also the <a href="http://java.com/en/download/help/appsecuritydialogs.xml">official information on the Java website</a> for more information.</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Session timeout</h4></div>
+      <div class="col-md-10"><p>You can define now a session timeout for rich dialogs if 
+      you want to close a Rich Dialog application and to log out the user after a configurable 
+      period of time. Go to the configuration folder in your installation and edit the file 
+      <i>jnlpconfig.any</i> to turn the feature on.</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Look and Feel support</h4></div>
+      <div class="col-md-10"><p>We dropped support for the Nimbus, JGoodies and Java default Look and Feels. We now support only Synthetica Look and Feels and the Xpert.Line Look And Feel (which is based on Synthetica).</p>
+      <p>See also the Q&amp;A entry <a href="http://answers.axonivy.com/questions/1115/which-look-and-feels-are-supported-for-rich-dialogs">Which Look and Feels are supported for Rich Dialogs</a> for more information.</p>
+      </div>
+    </div>
+    <hr />
+        
+  <h2><a id="editor"></a>Editor Improvements</h2>
+		<hr />
+		<div class="row">
+		  <div class="col-md-2"><h4>Start Process in process editor</h4></div>
+		  <div class="col-md-10"><p>A process can now be started directly on the 
+      Request Start element.</p>
+		   <p> <img src="images/60_StartProcessOnRequestStartElement.png"></p></div>
+		</div>
+		<hr />
+		<div class="row">
+		  <div class="col-md-2"><h4>Copy Process as Image to Clipboard in process editor</h4></div>
+		  <div class="col-md-10"><p>The copy command (via shortcut &lt;ctrl&gt;+c or via editor menu) now copies the complete process or the current selection as image to the clipboard. The image clipboard content can then be pasted into other programs like MS Word.</p>
+		   <p> <img src="images/60_CopyProcessAsImage.png"></p></div>
+		</div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Jump to Data Class from process editor</h4></div>
+      <div class="col-md-10"><p>Use the new <code>Jump to Data Class</code> command (via shortcut <code>c</code> or via process editor context menu) to navigate from a process to the associated data class editor.</p>
+       <p> <img src="images/60_JumpToDataClass.png"></p></div>
+    </div>
+    
+		<hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Improved data class field input in data class editor</h4></div>
+			<div class="col-md-10">
+				<p>
+					If you configure the name of a data class field you can use the
+					format
+					<code>fieldName : fieldType</code>
+					to specify not only the name but also the type of the data class
+					field in one step.
+				</p>
+				<img src="images/60_DataClassFieldNameWithType.png"><br>
+				<p>If only one type matches the entered simple type name then
+					the matching one is choosen.</p>
+				<img src="images/60_DataClassFieldNameWithTypeResult.png">
+				<p>If more than one matches then the type browser is displayed
+					with the simple name as predefined filter.</p>
+				<p>More concrete fitlers can be used.</p>
+				<ul>
+					<li><code>java.u.List</code> for <code>java.util.List</code>.</li>
+					<li><code>List&lt;Calendar&gt;</code> for <code>List&lt;java.util.Calendar&gt;</code>.</li>
+				</ul>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-2"><h4>Orphan removal support in entity class editor</h4></div>
+				<div class="col-md-10">
+					<p>JPA entity class fields, which reference another entity class, now support the <a href="https://docs.oracle.com/cd/E19798-01/821-1841/giqxy/">orphanRemoval</a> option. 
+					This reduces the code needed to remove an associated entity.<br/>
+					The new option can be enabled in the association column of the entity class editor.</p>
+					<img src="images/60_entityFieldAssociationEditor.png"/>
+				</div>
+			</div>
+		</div>
+	  
+		<hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Add co from URL in CMS view</h4></div>
+			<div class="col-md-10"><p>You can add a co now directly from an URL. Just copy the URL and use it for the import.</div>
+		</div>
+    <hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Multi select in CMS view</h4></div>
+			<div class="col-md-10"><p>You can select multiple content objects in the view and perform the same action to that selection. For example you can now delete multiple content objects at once.
+			</div>
+		</div>
+		
+		<hr />
+
+    <div class="row">
+      <div class="col-md-2"><h4>New Web Service configuration editor</h4></div>
+      <div class="col-md-10">
+        <p>The new Web Service Configuration editor has a cleaned up and more intuitive user interface. Many bugs that the old editor was suffering from are solved with the new editor.</p>
+        <img src="images/60_WebService_Editor.png"/>  
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>NTLM Authentication in web service configuration editor</h4></div>
+      <div class="col-md-10">
+        <p>NTLM authentication can now be configured in the Web Service Configuration editor. Until now NTLM authentication was only available at the web service process element directly.</p>
+        <img src="images/60_WebService_NTLM.png"/>
+      </div>
+    </div>
+    <hr />
+		<h2><a id="misc"></a>Miscellaneous</h2>
+		<hr />
+		<div class="row">
+			<div class="col-md-2"><h4>REST API</h4></div>
+			<div class="col-md-10">There is a REST API available that uses HTTP, JSON (application/json) as content type and HTTP basic as authentication method. Over this interface the following services are available:<br>
+				<ul>
+					<li>HTTP GET /ivy/api/{application name}/engine/info - Returns the version and the name of the engine.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/task/{taskId} - Returns the task with the given task identifier.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/tasks - Returns the tasks the authenticated user can work on.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/tasks/count - Returns the number of tasks the authenticated user can work on.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/case/{caseId}/document/{documentId} - Returns the content of the document.</li>					
+				</ul>
+			</div>
+		</div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Custom Properties API</h4></div>
+      <div class="col-md-10">
+        <p>
+          There is a new API available to store custom specific data. 
+          This can be used in projects to store small project specific information without the overhead of using an own database.
+        </p>
+        <p>
+          <code>ivy.wf.getApplication().customProperties().property("hrm.user.showDetails").setValue(true);</code>
+        </p>
+        <p>
+          <code>boolean showDetails = ivy.wf.getApplication().customProperties().property("hrm.user.showDetails").getBooleanValue();</code>
+        </p>
+        <p>
+          <code>List&lt;ICustomProperty&gt; properties = ivy.wf.getApplication().customProperties().findAllStartingWith("hrm.user.");</code>
+        </p>        
+      </div>
+    </div>
+    <hr />
+		<div class="row">
+			<div class="col-md-2"><h4>New Eclipse Platform Version</h4></div>
+			<div class="col-md-10">Axon.ivy Designer is now based on the Eclipse platform version 4.4.2 (Luna).</div>
+		</div>
+    <hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Java 8</h4></div>
+            <div class="col-md-10">
+                <p>Axon.ivy Designer is now bundled with the Java 8 JRE. You can now use new Java 8 features like Lambda expressions or the stream API.</p>
+                <p>If you use Rich Dialogs in your project, then you and your users must use Java 8.</p>                
+            </div>
+		</div>
+    <hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Disable Permission Checks in Script Step</h4></div>
+			<div class="col-md-10">
+			Added new possibility in Script Step to disable security permission checks (Execute Script Step as System).
+			With this option enabled the scripts from the Output and Code Tab runs without security permission checks.
+			The execution of the scripts will never throw any PermissionDeniedException.
+			<img src="images/60_DisablePermissionChecksScriptStep.png"/>
+			</div>
+		</div>
+    <hr />
+		<div class="row">
+			<div class="col-md-2"><h4>Jump to Process Element out of an Engine log</h4></div>
+			<div class="col-md-10">
+			Engine log file analyzation has become simpler. Logs can now be posted into the JavaStackTrace console. 
+			Process Element Ids (PIDs) within these logs will be linked so that the navigation into
+			the log throwing element is instantly possible.
+			<img src="images/60_linkedPidInLog.png"/>
+			</div>
+		</div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Log Web Service Message</h4></div>
+      <div class="col-md-10">
+      Web service SOAP HTTP messages that are sent and received to the remote web service are logged into the Designer Runtime Log or the Server log file if the web service runtime log level is set to <code>DEBUG</code>. 
+      This helps debug web service problems.
+      <pre style="font-size:8pt"><code>Web Service Element: Call to http://zugtstweb:8080/axis2/services/Version.VersionHttpSoap11Endpoint/ (Operation /name=getVersion /port=VersionHttpSoap11Endpoint /parameters=[]) successfully executed in 17598 milli seconds!
+
+*** SOAP Request ***
+POST /axis2/services/Version.VersionHttpSoap11Endpoint/ HTTP/1.1
+Content-Type: text/xml; charset=UTF-8
+SOAPAction: "urn:getVersion"
+User-Agent: Axis2
+Host: zugtstweb:8080
+Content-Length: 233
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;soapenv:Body&gt;&lt;ns1:getVersion xmlns:ns1="http://axisversion.sample"&gt;&lt;/ns1:getVersion&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;
+
+*** SOAP Response ***
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: text/xml;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Wed, 30 Sep 2015 15:23:01 GMT
+12c
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&gt;&lt;soapenv:Body&gt;&lt;ns:getVersionResponse xmlns:ns="http://axisversion.sample"&gt;&lt;ns:return&gt;Hi - the Axis2 version is 1.6.1&lt;/ns:return&gt;&lt;/ns:getVersionResponse&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;
+0</code></pre>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Task/Case Query API Improvement</h4></div>
+      <div class="col-md-10">
+      The task and case query API now supports to search tasks and cases that contain or do not contain a certain text in the task or case description.
+      <pre><code>TaskQuery.create().where().description().isLike("%John Smith%");
+CaseQuery.create().where().description().isNotLike("%Peter Q. Public%");</code></pre>
+      </div>
+    </div>
+    <hr />
+		
+	<br><br>
+</div>
+
+
+		
+</div>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
+  <title>Migration Notes Designer 4.3</title>
+  <link href="./resources/mn.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table class="mn" border="0" cellpadding="10" cellspacing="0">
+  <tbody>
+    <tr class="mnheader">
+      <td>Migration Notes for Xpert.ivy Designer 4.2 (Rigi) ... 4.3 (Pilatus)
+      </td>
+    </tr>
+    <tr>
+      <td>This document informs you in detail about <span
+        style="font-weight: bold;">incompatibilities that were introduced
+        between Xpert.ivy versions 4.2 (Rigi) and 4.3 (Pilatus)</span> and
+        tells you what needs to be done to get your existing 4.2 projects
+        working with Xpert.ivy 4.3. 
+        <ul style="margin-bottom:30px;">
+          <li><a href="#AutomaticConversion">Automatic project conversion</a></li>
+          <li><a href="#DeprecatedAPI">Deprecated APIs</a></li>
+          <li><a href="#ivyAddOns">IvyAddOns</a></li>
+          <li><a href="#39Conversion">Conversion of 3.x projects</a></li>
+        </ul>
+
+        <div class="mainsection_header">
+        <a name="AutomaticConversion">Automatic migration of projects (project
+        conversion)</a></div>
+
+        <p>Most of the incompatibilities can be resolved automatically by
+        invoking the <a href="ProjectConversion.html">project conversion</a> in
+        the Designer.</p>
+
+        <p>However,�some issues may have to be fixed manually (after the
+        automatic conversion). Those are described in the next section.<br>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="mainsection_header">
+        <a name="DeprecatedAPI">Deprecated APIs</a></div>
+
+        <p>Due to some changes in version 4.3, it may be that your projects are
+        using APIs that are now deprecated. Although it is not absolutely
+        necessary that you fix the deprecated parts, it is strongly recommended
+        to do so.</p>
+
+        <p>The changes that were introduced with version 4.3 are described with
+        more detail in the sections below, along with suggestions on how to fix
+        existing code.</p>
+        <ol>
+          <li><a href="#Replace_ValidationConstants"><span
+            style="font-style: italic;">ch.ivyteam.ivy.ulc.shared.validation.ValidationConstants</span>
+            </a></li>
+          <li><a href="#Replace_toJavaDate"><span
+            style="font-style: italic;">Date.toDate()</span>, <span
+            style="font-style: italic;">Time.toDate()</span>, <span
+            style="font-style: italic;">DateTime.toDate()</span></a></li>
+          <li><a href="#Replace_toIvyDate"><span
+            style="font-style: italic;">String.toDate()</span></a></li>
+          <li><a href="#Replace_getApplicationCache"><span
+            style="font-style: italic;">Data Caches</span> with scope <span
+            style="font-style: italic;">Application</span></a></li>
+          <li><a href="#SerializationErrors">Process data serialization
+            errors</a></li>
+          <li><a href="#WorkflowAPI">Usage of <em>find</em>(...) with
+            <em>count=0</em> on <em>Workflow API</em> </a></li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <span style="font-style: italic;"><a
+        name="Replace_ValidationConstants">ch.ivyteam.ivy.ulc.shared.validation.ValidationConstants</a></span></div>
+
+        <p>The interface <span
+        style="font-family: monospace;">ch.ivyteam.ivy.ulc.shared.validation.ValidationConstants</span>
+        was moved to package <span
+        style="font-family: monospace;">ch.ivyteam.ivy.ulc.server.validation.ValidationConstants</span>.
+        The old interface is still available but <span
+        style="font-style: italic;">deprecated</span>.</p>
+
+        <p></p>
+
+        <div style="margin-left: 40px; font-family: monospace;">
+        <span style="color: rgb(0, 153, 0);">//example usage</span><br>
+        import ch.ivyteam.ivy.ulc.shared.validation.ValidationConstants;<br>
+        import com.ulcjava.base.application.util.Color;<br>
+        Color errorColor = ValidationConstants.ERROR_BACKGROUND;<br>
+        </div>
+
+        <p></p>
+
+        <p>To fix all usage of the <span
+        style="font-style: italic;">deprecated</span> class in your projects,
+        you only have to perform a global search/replace operation on your
+        workspace:<br>
+        </p>
+        <ol>
+          <li>Go to menu <span style="font-style: italic;">Search &gt;
+            File...</span> </li>
+          <li>Enter�<span
+            style="font-family: monospace;">ch.ivyteam.ivy.ulc.shared.validation.ValidationConstants</span>
+            as search text and <span style="font-family: monospace;">*.*</span>
+            as file name pattern, then�hit <span
+            style="font-style: italic;">Replace...</span> </li>
+          <li>In the appearing Dialog enter the replacement value <span
+            style="font-family: monospace;">ch.ivyteam.ivy.ulc.server.validation.ValidationConstants</span>
+            and hit <span style="font-style: italic;">Replace All</span><br>
+          </li>
+        </ol>
+        This will fix all usages of the interface, including import
+        statements.<br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <a name="Replace_toJavaDate"><span
+        style="font-style: italic;">Date.toDate()</span>, <span
+        style="font-style: italic;">Time.toDate()</span>, <span
+        style="font-style: italic;">DateTime.toDate()</span></a></div>
+
+        <p>To get the <code>java.util.Date</code> from an ivy Date, Time or
+        DateTime type, the hidden method <code>toDate()</code> was provided.
+        This method is now deprecated and should not be used anymore. Favor the
+        <code>toJavaDate()</code> method which was introduced on the ivy date
+        classes.</p>
+
+        <p>It is strongly recommended to fix all uses of the methods <span
+        style="font-style: italic;">Date.toDate()</span>, <span
+        style="font-style: italic;">Time.toDate()</span>, <span
+        style="font-style: italic;">DateTime.toDate()</span> in your projects.
+        You could perform a global search operation on your workspace and
+        replace the corresponding usages of <span
+        style="font-style: italic;">toDate()</span> with <span
+        style="font-style: italic;">toJavaDate()</span>. Please check each
+        replacement, e.g. String.toDate() must not be converted in this way,
+        see below! </p>
+
+        <p>This final refactoring was necessary to avoid migration problems
+        from ivy 3.x projects. </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <a name="Replace_toIvyDate"><span
+        style="font-style: italic;">String.toDate()</span> </a></div>
+
+        <p>To get an ivy Date from a String the method <code>toDate()</code>
+        was provided in earlier versions. This method is now deprecated and
+        should not be used anymore. Favor the <code>toIvyDate()</code> method
+        which was introduced to provide a consistent API. The String class now
+        provides the same method like the Date, Time, DateTime and Object
+        classes to get an ivy Date.</p>
+
+        <p>It is strongly recommended to fix all uses of the method String<span
+        style="font-style: italic;">.toDate()</span> in your projects. You
+        could perform a global search operation on your workspace and replace
+        the corresponding usages of <span
+        style="font-style: italic;">toDate()</span> with <span
+        style="font-style: italic;">toIvyDate()</span>. Please check each
+        replacement, e.g. Date.toDate() must not be converted in this way, see
+        above! </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <a name="Replace_getApplicationCache">Usage of <span
+        style="font-style: italic;">Data Caches</span> with scope <span
+        style="font-style: italic;">Application</span></a></div>
+
+        <p>With the release of Xpert.ivy 4.2, data caches that used the
+        application scope where silently changed to be dependent not only from
+        the application but from the environment too. This was very helpful to
+        handle different tenants within one application (a situation for which
+        you prefer that data caches are depending from the environment too). On
+        the other hand real application data caches were no more available.
+        This is true for both usage of data cache in the inscription masks of
+        the database and web service steps and as well for usage in IvyScript.
+        </p>
+
+        <p>To fill this gap and to prevent wrong usage of data cache scopes
+        because of the misinterpreting names, we changed the following:</p>
+        <ul>
+          <li>All data caches in inscription masks that had the scope
+            <em>Application</em> in 4.2, have now the scope
+            <em>Environment</em>. This is performed silently, you do not have
+            to do something.</li>
+          <li>To get the data cache for the current application in IvyScript,
+            use the new method <em>getAppCache()</em></li>
+          <li>To get the data cache for the current environment in IvyScript of
+            the current application, use the new method
+            <em>getEnvironmentCache()</em></li>
+          <li>The method <em>getApplicationCache()</em> still returns the data
+            cache for the current environment, but is deprecated now.</li>
+        </ul>
+        It is strongly recommended to fix all IvyScript calls of the method
+        <em>IDataCacheContext.getApplicationCache()</em> in your projects. 
+
+        <p>Perform a global search operation on your workspace and replace the
+        corresponding usages of <em>getApplicationCache()</em> with
+        <em>getEnvironmentCache()</em>. Please check each replacement for the
+        correct scope of your data caches! </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <a name="SerializationErrors">Process data serialization
+        errors</a></div>
+
+        <p>Errors while serializing/deserializing workflow or event data are
+        not compensated silently any more. So far, the
+        serialization/deserialization silently ignored values that could not be
+        serialized and used <code>null</code> values instead. This caused
+        inexplicable exceptions. <br>
+        </p>
+
+        <p>With Xpert.ivy 4.3 serialization/deserialization exceptions are
+        logged. Please analyze your log files after upgrading to 4.3 and
+        consider fixing those serialization/deserialization problems. <br>
+        </p>
+
+        <p>If you do not require to serialize a value of a dataclass you can
+        fix the problem by setting the persistence flag to <code>false</code>.
+        Otherwise you will have to fix the Java classes which could not be
+        serialized. Normally adding a default constructor is sufficient. </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="subsection_header">
+        <a name="WorkflowAPI">Usage of <em>find(...)</em> with <em>count=0</em>
+        on <em>Workflow API</em></a></div>
+
+        <p>The behaviour of some <em>Workflow API</em> methods has been
+        fixed.</p>
+
+        <p>If 0 (zero)�was provided for the parameter <code>count</code> of the
+        following methods then the behaviour of the methods was not
+        as�documented. Instead of�returning no results, all results were
+        returned. This has been fixed to match the description. </p>
+
+        <p>Existing code that provides 0 (zero) for the parameter
+        <code>count</code> and which relies on the (previously erraneous)
+        returning of all results will fail. This code must be updated to
+        provide -1�instead of��0 for the <code>count</code> parameter.<br>
+        </p>
+
+        <h3>Affected API's:</h3>
+        Interface
+        <em><code>ch.ivyteam.ivy.worklfow.IWorkflowContext</code></em><em></em> 
+        <ul>
+          <li><code>public IQueryResult&lt;ICase&gt; findCases(String
+            propertyName, String propertyValue, int startIndex, int count,
+            boolean returnAllCount) throws PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ICase&gt;
+            findCases(IPropertyFilter&lt;CaseProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order, int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt; findTasks(String
+            propertyName, String propertyValue, int startIndex, int count,
+            boolean returnAllCount) throws PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt;
+            findTasks(IPropertyFilter&lt;TaskProperty&gt; filter,
+            List&lt;PropertyOrder&lt;TaskProperty&gt;&gt; order, int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt; findWorkTasks(final IUser
+            user, final int startIndex, final int count)<br>
+            ��������� throws PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt; findWorkTasks(final IUser
+            user, final IPropertyFilter&lt;TaskProperty&gt; filter,<br>
+            ��������� final List&lt;PropertyOrder&lt;TaskProperty&gt;&gt;
+            order, final int startIndex, final int count, final boolean
+            returnAllCount,<br>
+            ��������� final EnumSet&lt;TaskState&gt; includeTaskStates) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;IWorkflowEvent&gt;
+            findWorkflowEvents(IPropertyFilter&lt;WorkflowEventProperty&gt;
+            filter, List&lt;PropertyOrder&lt;WorkflowEventProperty&gt;&gt;
+            order, int startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;IIntermediateEvent&gt;
+            findIntermediateEvents(IPropertyFilter&lt;IntermediateEventProperty&gt;
+            filter, List&lt;PropertyOrder&lt;IntermediateEventProperty&gt;&gt;
+            order, int startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>IQueryResult&lt;IEventLog&gt;
+            findEventLogs(IPropertyFilter&lt;EventLogProperty&gt; filter,
+            List&lt;PropertyOrder&lt;EventLogProperty&gt;&gt; order, int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>IQueryResult&lt;IEventLog&gt; findEventLogs(EventLogStatus
+            status, IPropertyFilter&lt;EventLogProperty&gt; filter,
+            List&lt;PropertyOrder&lt;EventLogProperty&gt;&gt; order, int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+        </ul>
+        Interface
+        <code><em>ch.ivyteam.ivy.workflow.IWorkflowSession</em></code> 
+        <ul>
+          <li><code>public IQueryResult&lt;ITask&gt;
+            findWorkTasks(IPropertyFilter&lt;TaskProperty&gt; filter,
+            List&lt;PropertyOrder&lt;TaskProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount,
+            EnumSet&lt;TaskState&gt; includeTaskStates) throws
+            PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt; findSuspendedWorkTasks(int
+            startIndex, int count) throws PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt;
+            findSuspendedAndParkedWorkTasks(int startIndex, int count) throws
+            PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt; findParkedWorkTasks(int
+            startIndex, int count) throws PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt; findResumedWorkTasks(int
+            startIndex, int count) throws PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt; findCreatedAndResumedWorkTasks(int
+            startIndex, int count) throws PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt;
+            findLockedWorkTasks(IPropertyFilter&lt;TaskProperty&gt; filter,
+            List&lt;PropertyOrder&lt;TaskProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount,
+            EnumSet&lt;TaskState&gt; includeTaskStates) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ICase&gt;
+            findStartedCases(IPropertyFilter&lt;CaseProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public List&lt;ICase&gt; findStartedCases(int startIndex,
+            int count, Date caseStartTimestampFilter) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ICase&gt;
+            findStartedCasesByRole(List&lt;IRole&gt; roles,
+            IPropertyFilter&lt;CaseProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt;
+            findWorkedOnTasks(IPropertyFilter&lt;TaskProperty&gt; filter,
+            List&lt;PropertyOrder&lt;TaskProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public List&lt;ITask&gt; findWorkedOnTasks(int startIndex,
+            int count, Date taskEndTimestampFilter) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ITask&gt;
+            findWorkedOnTasksByRole(List&lt;IRole&gt; roles,
+            IPropertyFilter&lt;TaskProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+          <li><code>public IQueryResult&lt;ICase&gt;
+            findInvolvedCases(IPropertyFilter&lt;CaseProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order,int startIndex,
+            int count, boolean returnAllCount) throws PersistencyException;
+            </code></li>
+          <li><code>public IQueryResult&lt;ICase&gt;
+            findInvolvedCasesByRole(List&lt;IRole&gt; roles,
+            IPropertyFilter&lt;CaseProperty&gt; filter,
+            List&lt;PropertyOrder&lt;CaseProperty&gt;&gt; order,�int
+            startIndex, int count, boolean returnAllCount) throws
+            PersistencyException;</code></li>
+        </ul>
+        <br>
+
+		<div class="mainsection_header">
+        <a name="ivyAddOns">IvyAddOns migration</a></div>
+        The IvyAddOns project, which was delivered with Xpert.ivy 4.2, is not compatible
+        with Xpert.ivy 4.3.
+        
+        <p>If you use the IvyAddOns project in your workspace then delete the 
+        existing IvyAddOns project and import the Xpert.ivy 4.3 
+        compatible IvyAddOns version from the <em>applications/utilities/IvyAddOns</em> 
+        directory.<br></p>
+
+
+        <div class="mainsection_header">
+        <a name="39Conversion">Migration of 3.x projects</a></div>
+        Since <em>Xpert.ivy Designer 4.3</em> the import of old 3.9 projects
+        (<em>*.csp</em>) is supported. However, most projects will require a
+        good deal of manual adjustments before they can be run on a 4.3 server
+        (or inside the Designer). 
+
+        <p>Please consult the <em>Xpert.ivy 4.3 Designer Guide</em> (<em>&gt;
+        Projects &gt; Converting old 3.x projects</em>) to learn more about how
+        to import and migrate 3.9 projects, so that they can be executed on a
+        4.3 installation.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

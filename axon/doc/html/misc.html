@@ -1,0 +1,492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="css/images/ivy_favicon_48.png"><title>Miscellaneous - Axon.ivy 7.0 | Engine Guide</title><link href="css/bootstrap.min.css" rel="stylesheet"><link media="screen" rel="stylesheet" href="css/docs.min.css"><link href="css/ivy-common-6.css" rel="stylesheet"><link href="css/ivy-userguide.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#sidebar" style="height: 100%"><!-- start-top-navigation --><div class="navbar navbar-top" role="navigation"><div class="container" id="headerdiv"><div class="navbar-header"><a class="ivy-logo" href="http://developer.axonivy.com"><img src="css/images/axon_ivy_logo.png" alt="Axon.ivy"></a><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav" id="navbar-ivy-links"><li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li></ul></div></div></div><!-- end-top-navigation --><div id="content"><div class="container"><div class="navbar"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-book"></span> Axon.ivy 7.0 | <b>Engine Guide</b></a></div></div><div class="row"><div><ul class="nav nav-tabs" role="tablist"><li><a accesskey="h" href="introduction.html">Introduction</a></li><li><a accesskey="h" href="gettingstarted.html">Getting Started</a></li><li><a accesskey="h" href="installation.html">Installation</a></li><li><a accesskey="h" href="configuration.html">Configuration</a></li><li><a accesskey="h" href="integration.html">Integration</a></li><li><a accesskey="h" href="administration.html">Administration</a></li><li><a accesskey="h" href="monitoring.html">Monitoring</a></li><li class="active"><a accesskey="h" href="misc.html">Miscellaneous</a></li><li><a accesskey="h" href="troubleshooting.html">Troubleshooting</a></li></ul></div></div></div></div><div class="jumbotron"><div class="container"><h1>Miscellaneous</h1></div></div><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="col-xs-12 col-sm-9"><div class="row"><div class="col-sm-12 "><div class="chapter">
+    
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="d5e5652" class="title" style="clear: both"><a name="d5e5652"></a>Rich Dialogs</h2></div></div></div>
+        
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e5654" class="title"><a name="d5e5654"></a>Provide Custom ULC Widgets</h3></div></div></div>
+            
+            <p>The chapter <span class="italic">Concepts &gt; Extensions &gt; Rich Dialog Clientside
+                    Libraries &gt; Provide custom ULC Widgets</span> in the <span class="italic">Axon.ivy Designer Guide</span> explains how to provide Custom ULC
+                Widgets.</p>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-certificate" class="title"><a name="misc.certificate"></a>Provide Customer Rich Dialog Client Certificate</h3></div></div></div>
+            
+            <p>If a client starts the first time a Rich Dialog a security information dialog box pops
+                up showing information about the publisher of Axon.ivy and its certificate. For some
+                clients it may be confusing that a certificate from the provider of Axon.ivy is
+                displayed instead of the certificate of the web site or the company they working
+                for.</p>
+            <p>The chapter <span class="italic">Extensions &gt; Rich Dialog Clientside Libraries &gt;
+                Provide Customer Certificate</span> in the <span class="italic">Axon.ivy
+                    Designer Guide</span> explains how to provide customer Rich Dialog client
+                certificate.</p>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e5665" class="title"><a name="d5e5665"></a>Rich Dialog Session Timeout</h3></div></div></div>
+            
+            <p>The normal <a class="link" href="configuration.html#configuration.tomcat.session.timeout" title="Session Timeout">session timeout</a>
+                has no effect to Rich Dialogs because they send recurring requests to the server in
+                shorter intervals than the session timeout. Therefore you can configure a special
+                timeout feature for Rich Dialogs. It detects if an open Rich Dialog was not touched for
+                the configured time and stops that Rich Dialog application. The user will receive a
+                message so that he knows why the Rich Dialog has been closed. You can choose whether you
+                want to have a Rich Dialog message box or if you want to see the message in your
+                browser. With the former, the Rich Dialog and the session is closed only after the user
+                confirmed the message. With the latter, the Rich Dialog and the session is closed
+                immediately when the timeout happens thus freeing the server side memory. In this case
+                you can even adapt the HTML file that is used. It is the file
+                <span class="emphasis"><em>webapps/ivy/info/time_out.jsp</em></span>. </p>
+            <p>To configure the Rich Dialog session timeout just go to the file
+                <span class="emphasis"><em>configuration/jnlpconfig.any</em></span> and adapt the settings for it.
+            </p>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e5672" class="title"><a name="d5e5672"></a>Rich Dialog Look and Feel</h3></div></div></div>
+            
+            <p>The look and feel that is used for Rich Dialogs can be configured per
+                applications. To change it open in the AdminUI the application and change the
+                configuration property <code class="code">ria.lookandfeel</code>.</p>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e5676" class="title"><a name="d5e5676"></a>Compressed client libraries</h3></div></div></div>
+            
+            <p>Rich Dialog clients download many jars during the first startup. If the network
+                connection of the client is poor, it is possible to speed-up the download by sending
+                compressed <a class="ulink" href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/pack200.html" target="_top">pack200</a> jars. It will speed-up the download time, but the client will
+                require more resources to unpack the downloaded jars.</p>
+            <p>In order to send compressed jars they must be provided within the <code class="code">/clientlib</code>
+                directory of the engine. The following sample script will create these pack.gz
+                files. The script must be run within the engines clientlib directory. Note that the
+                pack200 binary comes from a JRE or JDK. </p>
+            <p>On Windows:</p>
+            <pre class="screen">for /R %f in (.\*.jar) do pack200 "%f.pack.gz" "%f" </pre>
+            <p>On Linux:</p>
+            <pre class="screen">for f in `find signed -name '*.jar'`; do
+  echo "packing $f"
+  pack200 $f.pack.gz $f
+done</pre>
+            <p>If the script runs successfully the clientlib directory contains files ending with
+                pack.gz next to the normal jars.</p>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-ulcloadtests" class="title"><a name="misc.ulcloadtests"></a>ULC Load Tests</h3></div></div></div>
+            
+            <p>ULC Load is a product from Canoo Engineering AG to make load tests on ULC Applications (such as Rich Dialogs are). 
+                This chapter describes how to use ULC Load together with an Axon.ivy Engine.</p>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5690" class="title"><a name="d5e5690"></a>Requirements</h4></div></div></div>
+                
+                <p>
+                    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                            <p>Axon.ivy Designer installation</p>
+                        </li><li class="listitem">
+                            <p>Axon.ivy Engine installation</p>
+                        </li><li class="listitem">
+                            <p>ULC Load 3.0.4</p>
+                        </li><li class="listitem">
+                            <p>Java Runtime Environment (JRE) 1.6</p>
+                        </li></ul></div><p>
+                </p>
+                <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>ULC Load is not shipped with Axon.ivy and needs a separate licence. It can be
+                        obtained from Canoo Engineering AG (http://www.canooo.com).</p>
+                    <p>IvyTeam AG does not provide any support for ULC Load. Please contact Canoo
+                        Engineering AG to get support for ULC Load.</p></div>
+                <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>If you run ULC Load with JRE 1.7 you cannot save your test plan. Ensure you
+                        have installed a JRE 1.6. If it is not possible to uninstall JRE 1.7
+                        reconfigured the property <code class="code">lax.nl.valid.vm.list=1.5+</code> to
+                        <code class="code">lax.nl.valid.vm.list=1.6</code> in the property file <span class="italic">bin/ULC Load 3.0.4 UI.lax</span> of your ULC Load
+                        installation directory.</p>
+                </div>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5710" class="title"><a name="d5e5710"></a>Install ULC Load</h4></div></div></div>
+                
+                <p>    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                        <p>Start the installation of ULC Load.</p>
+                    </li><li class="listitem">
+                        <p>At the Step Named <span class="italic">Choose Canoo RIA Suite
+                        </span>select the <span class="italic">ulc</span> directory
+                            of your Axon.ivy Designer Installation. </p>
+                        <p><span class="inlinemediaobject"><img src="images/Misc/install.png"></span>
+                            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The Axon.ivy Designer must have been started at least one time. Otherwise the ulc directory
+                                needed for the ULC Load installation is not available. </p></div>
+                    </li><li class="listitem">
+                        <p>Finish the installation of ULC Load</p>
+                    </li><li class="listitem">
+                        <p>Edit the File <span class="italic">ULC Load 3.0.4 UI.lax</span>
+                            in the <span class="italic">bin</span> directory of your UlcLoad
+                            installation. </p>
+                        <p>Look for the line which starts with <span class="italic">lax.class.path=</span>.</p>
+                        <p>Add an entry to the end of this line which points to the <span class="italic">ivyUlcExtension-*.jar</span> file in the <span class="italic">clientlib/signed</span> folder of your engine
+                            installation.</p>
+                        <p>Add an entry to the end of this line for each library in the <span class="italic">clientlib/signed/windows_64_native</span> folder
+                            of your engine installation. If you are using an other operating system
+                            than Windows 64 bit, use the libraries of the operating system you are
+                            running ULC Load with.</p>
+                    </li></ul></div><p>
+                </p>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5739" class="title"><a name="d5e5739"></a>Prepare Engine</h4></div></div></div>
+                
+                <p>ULC Load will only work correctly with Axon.ivy Engine (Designer) if you change
+                    the following line in the <em class="filename">context.xml</em> file in the directory
+                    <em class="filename">webapps/ivy/META-INF/</em> of the engine/designer installation
+                    directory:</p><pre class="screen">&lt;Context antiResourceLocking="false" privileged="true"&gt;</pre><p>change
+                    to:</p><pre class="screen">&lt;Context antiResourceLocking="false" privileged="true"<span class="bold"><strong> useHttpOnly="false"</strong></span>&gt;</pre>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5747" class="title"><a name="d5e5747"></a>Record a Test Scenario</h4></div></div></div>
+                
+                <p>
+                    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                            <p>Start ULC Load</p>
+                        </li><li class="listitem">
+                            <p>Create a Recorder</p>
+                            <p><span class="inlinemediaobject"><img src="images/Misc/recorder.png"></span></p>
+                        </li><li class="listitem"><p>Configure the Recorder </p>
+                            <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem">
+                                    <p>Add all jars in the clientlib/signed folder of your
+                                        Axon.ivy Engine installation to the classpath.</p>
+                                </li><li class="listitem">
+                                    <p>Choose the <span class="italic">IvyClientCoderRegistryProvider</span> as <span class="italic">Client Coder Registry
+                                        Provider</span></p>
+                                </li><li class="listitem">
+                                    <p>Copy the URL of the process you want to start to the
+                                        Application URL Field and replace the prefix <span class="italic">/ivy/pro</span> with <span class="italic">/ivy/ulcload</span>.</p>
+                                    <p>Example: If you want to test the process with the
+                                        URL<span class="italic">
+                                            http://localhost:8080/ivy/pro/abc/IvyDemos/1215975017F13818/demoRunner.ivp</span>
+                                        you have to use the Application URL <span class="italic">http://localhost:8080/ivy/ulcload/abc/IvyDemos/1215975017F13818/demoRunner.ivp</span></p>
+                                </li></ul></div>
+                            <p><span class="inlinemediaobject"><img src="images/Misc/recorder_config.png"></span>
+                            </p></li><li class="listitem"><p>Click the Record button. This starts the application and records every action you do. The
+                            recording automatically stops when the application is closed.</p></li></ul></div><p>
+                </p>
+                <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>It's not possible to change the look and feel for recording tests. The application will always
+                    start with the default swing look and feel. As ULC Load does not run any client
+                    side code when executing the tests, the look and feel wouldn't have any effect
+                    on the testruns anyway. </p></div>
+                <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3><p>It's not possible to test processes which use Html Pages. When the process comes to an Html
+                    Page step ULC Load will display an error. </p></div>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5785" class="title"><a name="d5e5785"></a>Run Load Test</h4></div></div></div>
+                
+                <p>
+                    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                            <p>There are no special configuration necessary to run a Load
+                                Test.</p>
+                        </li><li class="listitem">
+                            <p>When recording a test, ULC Load creates a <span class="italic">Thread Group</span> which contains all recorded actions. With
+                                the menu Run -&gt; Start these actions can be replayed.</p>
+                        </li><li class="listitem">
+                            <p>On the <span class="italic">Thread Group</span> itself its
+                                possible to configure how often the actions are replayed and with how
+                                many concurrent users.</p>
+                        </li></ul></div><p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="d5e5797" class="title" style="clear: both"><a name="d5e5797"></a>HTML Dialogs</h2></div></div></div>
+        
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e5799" class="title"><a name="d5e5799"></a>Primefaces Theme</h3></div></div></div>
+            
+            <p>The default Primefaces theme that is used in Html Dialogs can be configured in the
+                web.xml. It can also be configure per application. To change it open in the AdminUI
+                the application and change the configuration property
+                    <code class="code">jsf.primesface.theme</code>. Moreover, the theme can also be set per
+                session. See Java class
+                    <code class="code">ch.ivyteam.ivy.jsf.primefaces.theme.IvyPrimefacesThemeResolver</code> in
+                Public API for details.</p>
+        </div>
+    </div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="misc-replacejdk" class="title" style="clear: both"><a name="misc.replacejdk"></a>Replacing Java Runtime with newer version</h2></div></div></div>
+        
+        <p>If you want to use profiling tools such as <a class="ulink" href="https://visualvm.github.io/" target="_top">VisualVM</a> it may be required to
+            replace the bundled Java Runtime (JRE) with a newer one. To do so, just perform the
+            following steps:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p>Download the full Java Development Kit (JDK) that suits best for your OS
+                        and Ivy-Installation (a 32 bit Ivy Engine cannot be run with a 64 bit
+                        runtime). It is important that you download the JDK and not the JRE. You
+                        will find the JDK at the <a class="ulink" href="http://java.sun.com/javase/downloads/" target="_top">Sun/Oracle Java
+                            website</a></p>
+                </li><li class="listitem">
+                    <p>Install the downloaded JDK on the server (or on any computer with the same
+                        OS) </p>
+                </li><li class="listitem">
+                    <p>Move the whole content of the directory <em class="filename">jre</em> in the
+                        installation folder of your Axon.ivy Engine to some other folder (to have a
+                        backup).</p>
+                </li><li class="listitem">
+                    <p>Copy the whole content of the folder <em class="filename">jre</em> in the
+                        installation directory of the JDK to the <em class="filename">jre</em> folder in
+                        the installation folder of your Axon.ivy Engine (the one you moved in the
+                        step above)</p>
+                </li></ol></div><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+                <p>Changing the Java Runtime that is packaged with Axon.ivy Engine is not
+                    recommended and should only be done when requested by Axon.ivy support or when
+                    required for testing purposes. </p>
+            </div>
+    </div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="misc-updatenotification" class="title" style="clear: both"><a name="misc.updatenotification"></a>Update Notification</h2></div></div></div>
+        
+        <p>When newer Axon.ivy versions are available a message will be displayed on the Axon.ivy
+            Engine main web page. The message contains information about the new versions and where
+            those can be downloaded. </p>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+            <p>While checking for new versions the following statistic information are sent to
+                the update server. These information are only used to improve the product.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                        <p>Engine (version, up time)</p>
+                    </li><li class="listitem">
+                        <p>Configuration (number of: cluster nodes, users, licenced users,
+                            applications, process model, process model version, deleted process
+                            model version, running cases, running tasks)</p>
+                    </li><li class="listitem">
+                        <p>Licence information (number, organisation, individual)</p>
+                    </li><li class="listitem">
+                        <p>Operating system information (name, version, architecture, number of
+                            processors)</p>
+                    </li><li class="listitem">
+                        <p>System database (product name and version, driver, identification
+                            number)</p>
+                    </li><li class="listitem">
+                        <p>Java memory information (maximum heap memory, maximum non heap
+                            memory)</p>
+                    </li><li class="listitem">
+                        <p>JVM (Java virtual machine) information (version, vendor, name)</p>
+                    </li><li class="listitem">
+                        <p>Host information (host name, SHA-256 hashes of IP address and MAC
+                            address to identify the host without being able to read the original IP
+                            address and MAC address itself)</p>
+                    </li></ul></div>
+        </div>
+        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+            <p>If you do not want that update notification messages are shown or that statistic
+                information are sent to the update server then you can set the system property
+                    <code class="code">UpdateChecker.Enabled</code> in the <a class="link" href="administration.html#administration.systemproperties" title="System Properties">Admin UI</a> to false.
+                This will turn of the whole update checker service.</p>
+        </div>
+    </div>
+	
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="misc-toolreference" class="title" style="clear: both"><a name="misc.toolreference"></a>Tool Reference</h2></div></div></div>
+    
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-xpertivyserver" class="title"><a name="misc.toolreference.xpertivyserver"></a>AxonIvyEngine</h3></div></div></div>
+        
+        <p>Axon.ivy Engine program. This program starts an instance of the Axon.ivy Engine.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                <p>On Windows Axon.ivy Engine can also be started as a Windows Service. More
+                    information about Axon.ivy Engine Windows Service can be found in the section
+                        <a class="link" href="misc.html#misc.toolreference.xpertivyserverservice" title="AxonIvyEngineService">AxonIvyEngineService</a> tool reference chapter.</p>
+            </div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                <p>On Linux an instance of Axon.ivy Engine can also be started as a systemd
+                    service. More information how to install Axon.ivy Engine as a systemd service
+                    can be found in the section <a class="link" href="misc.html#misc.toolreference.installservice" title="InstallService">InstallService</a> of the tool reference chapter.</p>
+            </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5860" class="title"><a name="d5e5860"></a>Options</h4></div></div></div>
+            
+            <p>The following options are available for the Axon.ivy Engine program:</p><div class="table"><a name="d5e5863"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="AxonIvyEngineConfig Options"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Option</th><th>Description</th><th>Mandatory</th></tr></thead><tbody><tr><td>-start</td><td>Starts the engine. Same behaviour as if no options are given.
+                                    Allows to stop the engine by pressing a key in the console if a
+                                    console is available.</td><td>no</td></tr><tr><td>-startdaemon</td><td>Starts the engine. Does not allow to stop the engine by
+                                    pressing a key in the console.</td><td>no</td></tr><tr><td>-stop</td><td>Stops the engine. Only initiate the stop but will not wait
+                                    until the engine has really stopped. </td><td>no</td></tr><tr><td>-stopdaemon</td><td>Stops the engine. Will wait until the engine has really
+                                    stopped.</td><td>no</td></tr><tr><td>-status</td><td>Prints the current status of the engine.</td><td>no</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.1.&nbsp;AxonIvyEngineConfig Options</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5895" class="title"><a name="d5e5895"></a>Launchers</h4></div></div></div>
+            
+            <p>The following program launchers are available for the Axon.ivy Engine
+                    program:</p><div class="table"><a name="d5e5898"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="AxonIvyEngine Launchers"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Platform</th><th>Console support</th><th>Launcher</th></tr></thead><tbody><tr><td>Windows</td><td>no</td><td>bin/AxonIvyEngine.exe</td></tr><tr><td>Windows</td><td>yes</td><td>bin/AxonIvyEngineC.exe</td></tr><tr><td>Linux</td><td>yes</td><td>bin/AxonIvyEngine</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.2.&nbsp;AxonIvyEngine Launchers</p></div><p><br class="table-break"></p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-xpertivyserverconfig" class="title"><a name="misc.toolreference.xpertivyserverconfig"></a>AxonIvyEngineConfig</h3></div></div></div>
+        
+        <p>Axon.ivy Engine Configuration program. The program is used to configure the Axon.ivy
+            Engine. The program supports two modes: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                    <p>graphical user interface mode and </p>
+                </li><li class="listitem">
+                    <p>headless mode which needs no graphical user interface on the server
+                        machine.</p>
+                </li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                <p>More information can be found in the chapter <a class="link" href="configuration.html" title="Chapter&nbsp;4.&nbsp;Configuration">Configuration</a></p>
+            </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5933" class="title"><a name="d5e5933"></a>Options</h4></div></div></div>
+            
+            <p>The following options are available for the Axon.ivy Engine Configuration
+                program:</p><div class="table"><a name="d5e5936"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="AxonIvyEngineConfig Options"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Option</th><th>Description</th><th>Mandatory</th></tr></thead><tbody><tr><td>-headless</td><td>Activates the headless mode. Useful if no graphical user
+                                    interface is installed on the server machine.</td><td>no</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.3.&nbsp;AxonIvyEngineConfig Options</p></div><p><br class="table-break">
+            </p>            
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5952" class="title"><a name="d5e5952"></a>Launchers</h4></div></div></div>
+            
+            <p>The following program launchers are available for the Axon.ivy Engine
+                Configuration program:</p><div class="table"><a name="d5e5955"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="AxonIvyEngineConfig Launchers"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Platform</th><th>Console support</th><th>Launcher</th></tr></thead><tbody><tr><td>Windows</td><td>no</td><td>bin/AxonIvyEngineConfig.exe</td></tr><tr><td>Windows</td><td>yes</td><td>bin/AxonIvyEngineConfigC.exe</td></tr><tr><td>Linux</td><td>yes</td><td>bin/AxonIvyEngineConfig</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.4.&nbsp;AxonIvyEngineConfig Launchers</p></div><p><br class="table-break"></p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-xpertivyserverservice" class="title"><a name="misc.toolreference.xpertivyserverservice"></a>AxonIvyEngineService</h3></div></div></div>
+        
+        <p>Axon.ivy Engine Windows Service. This program is the implementation of the Axon.ivy
+            Engine Windows Service. But it can also be used to register, unregister, start and stop
+            Axon.ivy Engine as Windows Service. </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                <p>You can also register, unregister, start and stop the Axon.ivy Engine Windows
+                    Service with the <a class="link" href="misc.html#misc.toolreference.servercontrolcenter" title="ControlCenter">Control
+                        Center</a>.</p>
+            </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e5985" class="title"><a name="d5e5985"></a>Options</h4></div></div></div>
+            
+            <p>The following options are available for Axon.ivy Engine Service program:</p>
+            <p><span class="command"><strong>AxonIvyEngineService [-start|-stop|-register [username
+                    password]|-unregister]</strong></span></p>
+            <div class="table"><a name="d5e5990"></a><div class="table-contents">
+                
+                <table class="table table-bordered table-hover" summary="AxonIvyEngineService Options"><colgroup><col class="c1"><col class="c2"><col class="newCol4"><col class="newCol3"></colgroup><thead><tr><th>Options</th><th>Parameters</th><th>Description</th><th>Mandatory</th></tr></thead><tbody><tr><td>-start</td><td> </td><td>Starts the Axon.ivy Engine Windows Service</td><td>no</td></tr><tr><td>-stop</td><td>&nbsp;</td><td>Stops the Axon.ivy Engine Windows Service</td><td>no</td></tr><tr><td>-register</td><td>&nbsp;</td><td>Registers the Axon.ivy Engine Windows Service within
+                                Windows</td><td>no</td></tr><tr><td>&nbsp;</td><td>username</td><td>The user name of the user in which context the windows service
+                                should run</td><td>no</td></tr><tr><td>&nbsp;</td><td>password</td><td>The password of the user in which context the windows service
+                                should run</td><td>yes, if username is specified</td></tr><tr><td>-unregister</td><td>&nbsp;</td><td>Unregisters the Axon.ivy Engine Windows Service from
+                                Windows</td><td>no</td></tr></tbody></table>
+            </div><p class="title">Table&nbsp;8.5.&nbsp;AxonIvyEngineService Options</p></div><br class="table-break">
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6034" class="title"><a name="d5e6034"></a>Launchers</h4></div></div></div>
+            
+            <p>The following program launcher is available for the Axon.ivy Engine Service
+                    program:</p><div class="table"><a name="d5e6037"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="AxonIvyEngineService Launchers"><colgroup><col class="c1"><col class="newCol3"></colgroup><thead><tr><th>Platform</th><th>Launcher</th></tr></thead><tbody><tr><td>Windows</td><td>bin/AxonIvyEngineService.exe</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.6.&nbsp;AxonIvyEngineService Launchers</p></div><p><br class="table-break"></p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-engineconfigcli" class="title"><a name="misc.toolreference.engineconfigcli"></a>EngineConfigCli</h3></div></div></div>
+        
+        <p>The console program is used to configure the Axon.ivy Engine. E.g. configure, create
+            or convert the database.</p>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6053" class="title"><a name="d5e6053"></a>Options</h4></div></div></div>
+            
+            <p>
+                </p><div class="table"><a name="d5e6056"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="EngineConfigCli Options"><colgroup><col class="c1"><col class="c2"><col></colgroup><thead><tr><th>Option</th><th>Description</th><td class="auto-generated">&nbsp;</td></tr></thead><tbody><tr><td>help</td><td>Shows which commands and options are possible.</td><td class="auto-generated">&nbsp;</td></tr><tr><td>&lt;command&gt; help</td><td>Get help to a specific command e.g. <code class="code">EngineConfigCli
+                                        config-db help</code></td><td class="auto-generated">&nbsp;</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;8.7.&nbsp;EngineConfigCli Options</p></div><p><br class="table-break">
+            </p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-servercontrolcenter" class="title"><a name="misc.toolreference.servercontrolcenter"></a>ControlCenter</h3></div></div></div>
+        
+        <p>The Control Center program. With Control Center program you can start and stop the
+            different Axon.ivy Engine types. The Control Center allows you to change the
+            configuration of the Axon.ivy Engine and on Windows even the configuration of Axon.ivy
+            Engine Windows Service. </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                <p>More information can be found in the section <a class="link" href="configuration.html#configuration.controlcenter" title="Control Center">Control Center</a> of chapter <a class="link" href="configuration.html" title="Chapter&nbsp;4.&nbsp;Configuration">Configuration</a></p>
+            </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6080" class="title"><a name="d5e6080"></a>Launchers</h4></div></div></div>
+            
+            <p>The following program launchers are available for the Control Center
+                program:</p>
+            <div class="table"><a name="d5e6083"></a><div class="table-contents">
+                
+                <table class="table table-bordered table-hover" summary="ControlCenter Launchers"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Platform</th><th>Console support</th><th>Launcher</th></tr></thead><tbody><tr><td>Windows</td><td>no</td><td>bin/ControlCenter.exe</td></tr><tr><td>Windows</td><td>yes</td><td>bin/ControlCenterC.exe</td></tr><tr><td>Linux</td><td>yes</td><td>bin/ControlCenter</td></tr></tbody></table>
+            </div><p class="title">Table&nbsp;8.8.&nbsp;ControlCenter Launchers</p></div><br class="table-break">
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-installservice" class="title"><a name="misc.toolreference.installservice"></a>InstallService</h3></div></div></div>
+        
+        <p>The install service program helps to install the Axon.ivy Engine as a systemd Linux
+            daemon. To install the service:</p>
+        <p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p><code class="code">cd</code> to the <code class="code">bin/</code> directory of your Engine</p>
+                </li><li class="listitem">
+                    <p>Run following command as root: <code class="code">./InstallService.sh</code></p>
+                </li><li class="listitem">
+                    <p>Accept the directory of your engine installation.</p>
+                </li><li class="listitem">
+                    <p>Set the user and group under which the Engine service should run. Must not
+                        be <code class="code">root</code>. Typically, a special user with limited access right
+                        should be used.</p>
+                </li><li class="listitem">
+                    <p>Start the Engine service with <code class="code">systemctl start
+                            AxonIvyEngine.service</code> to check if it works.</p>
+                </li><li class="listitem">
+                    <p>Check the current status of the service with <code class="code">systemctl status
+                            AxonIvyEngine.service</code></p>
+                </li><li class="listitem">
+                    <p>If you want to start the Engine service on the system start, execute
+                        following command: <code class="code">systemctl enable
+                        AxonIvyEngine.service</code></p>
+                </li></ol></div><p>
+        </p>
+        <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>For more information about systemd services consult <code class="code">man systemd</code> and
+                    <code class="code">man systemctl</code>.</p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6137" class="title"><a name="d5e6137"></a>Launchers</h4></div></div></div>
+            
+            <div class="table"><a name="d5e6139"></a><div class="table-contents">
+                
+                <table class="table table-bordered table-hover" summary="InstallService Launchers"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Platform</th><th>Console support</th><th>Launcher</th></tr></thead><tbody><tr><td>Linux</td><td>yes</td><td>bin/InstallService.sh</td></tr></tbody></table>
+            </div><p class="title">Table&nbsp;8.9.&nbsp;InstallService Launchers</p></div><br class="table-break">
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-ilc" class="title"><a name="misc.toolreference.ilc"></a>Windows Program Launcher Configuration</h3></div></div></div>
+        
+        <p>All windows program launchers can be reconfigured with an additional ivy launch
+            control file (*.ilc). The ivy launch control file must have the same name like the
+            launcher itself but instead of the extension <span class="italic">*.exe</span> it
+            must use an extension <span class="italic">*.ilc</span>. </p>
+        <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>If you want to reconfigure the AxonIvyEngine.exe launcher, then copy the
+                Example.ilc file and rename it to AxonIvyEngine.ilc. </p>
+        </div>
+        <p>The ivy launch control file is a text-based property file. The file has the following
+            format:</p>
+        <p>
+            </p><pre class="screen"># comment line
+property=value
+property=value</pre><p>
+        </p>
+        <p>Open the file with a text editor to reconfigure it. Most properties found in the ivy
+            launch control file are used to modify java virtual machine options. The following list
+            shows all available options and explains them:</p>
+        <p>
+            </p><div class="table"><a name="d5e6167"></a><div class="table-contents">
+                
+                <table class="table table-bordered table-hover" summary="Ivy Launch Control Properties"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Property</th><th>JVM Option</th><th>Description</th></tr></thead><tbody><tr><td><span class="bold"><strong>ivy.heap.max.ratio</strong></span></td><td>yes</td><td>The maximum heap size (-Xmx) in percentage of the physical memory
+                                of the machine.</td></tr><tr><td><span class="bold"><strong>ivy.heap.max.size</strong></span></td><td>yes</td><td>The maximum heap size (-Xmx) in megabytes.</td></tr><tr><td>ivy.heap.start.size</td><td>yes</td><td>Start heap size (-Xms) in mega bytes.</td></tr><tr><td>ivy.heap.free.max.ratio</td><td>yes</td><td>The maximum free heap memory (-XX:MaxHeapFreeRatio) in percentage
+                                of the current heap size.</td></tr><tr><td>ivy.heap.free.min.ratio</td><td>yes</td><td>The minimum free heap memory (-XX:MinHeapFreeRatio) in percentage
+                                of the current heap size.</td></tr><tr><td>ivy.heap.young.max.size</td><td>yes</td><td>The maximum young heap size (-XX:MaxNewSize) in
+                                megabytes.</td></tr><tr><td>ivy.heap.young.min.size</td><td>yes</td><td>The minimum young heap size (-XX:NewSize) in megabytes.</td></tr><tr><td>ivy.heap.eden.survivor.ratio</td><td>yes</td><td>The survivor heap size as ratio between the eden and the survivor
+                                heap size (-XX:SurvivorRatio)</td></tr><tr><td>ivy.heap.tenured.young.ratio</td><td>yes</td><td>The young heap size as ratio between the tenured and the young
+                                heap size (-XX:NewRatio).</td></tr><tr><td>ivy.jvm.type</td><td>yes</td><td>The Java virtual machine type to use (ClientHotspotJVM,
+                                ServerHotspotJVM).</td></tr><tr><td>ivy.dir.aux</td><td>no</td><td>The directory where the ivyTeam jars are located.</td></tr><tr><td>ivy.dir.jre</td><td>no</td><td>The directory where the java runtime environment is
+                                located.</td></tr><tr><td>ivy.java.main.class</td><td>no</td><td>An own Java class to launch instead of ivy engine's main starter
+                                class.</td></tr><tr><td>ivy.java.main.method</td><td>no</td><td>Another Java static method to launch on the <span class="italic">ivy.java.main.class</span> instead of the
+                                default main method. The called method should take the same
+                                arguments as a Java main method.</td></tr><tr><td>ivy.vm.additional.options</td><td>yes</td><td>Additional Java virtual machine arguments</td></tr><tr><td>ivy.garbage.collector.options</td><td>yes</td><td>Additional garbage collector arguments. See too <a class="link" href="configuration.html#configuration.gc" title="GC Optimization">GC Optimization</a>.</td></tr><tr><td><span class="bold"><strong>ivy.windows.service.name</strong></span></td><td>no</td><td>The name of the Windows service (only for Windows service
+                                launcher).</td></tr><tr><td>ivy.application.name</td><td>no</td><td>The name of the application (only for application
+                                launcher).</td></tr><tr><td>ivy.application.singleton</td><td>no</td><td> Is the application a singleton (true, false; only for
+                                application launcher).</td></tr></tbody></table>
+            </div><p class="title">Table&nbsp;8.10.&nbsp;Ivy Launch Control Properties</p></div><p><br class="table-break">
+        </p>
+        <p>The properties that are bold are the most used properties.</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="misc-toolreference-unix" class="title"><a name="misc.toolreference.unix"></a>Linux Launcher Configuration</h3></div></div></div>
+        
+        <p>The Java virtual machine (JVM) options for the Engine are configured in the
+            <em class="filename">AxonIvyEngine.conf</em> file. For all other helper programs the JVM
+            options are configured in the <em class="filename">control.conf</em> file.</p>
+        <p>
+            </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                <p>If you want to configure the memory (-Xmx, -Xms, etc.) or optimize any other
+                    JVM options of the Engine then edit the <em class="filename">AxonIvyEngine.conf</em>
+                    file.</p>
+            </div><p>
+        </p>
+    </div>
+</div>
+	
+</div></div></div></div><div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><div class="bs-sidebar hidden-print affix" data-spy="affix" data-offset-top="350" data-offset-bottom="250"><ul class="nav bs-sidenav"><li><a href="#d5e5652">Rich Dialogs</a><ul class="nav subnav"><li><a href="#d5e5654">Provide Custom ULC Widgets</a></li><li><a href="#misc-certificate">Provide Customer Rich Dialog Client Certificate</a></li><li><a href="#d5e5665">Rich Dialog Session Timeout</a></li><li><a href="#d5e5672">Rich Dialog Look and Feel</a></li><li><a href="#d5e5676">Compressed client libraries</a></li><li><a href="#misc-ulcloadtests">ULC Load Tests</a></li></ul></li><li><a href="#d5e5797">HTML Dialogs</a><ul class="nav subnav"><li><a href="#d5e5799">Primefaces Theme</a></li></ul></li><li><a href="#misc-replacejdk">Replacing Java Runtime with newer version</a><ul class="nav subnav"></ul></li><li><a href="#misc-updatenotification">Update Notification</a><ul class="nav subnav"></ul></li><li><a href="#misc-toolreference">Tool Reference</a><ul class="nav subnav"><li><a href="#misc-toolreference-xpertivyserver">AxonIvyEngine</a></li><li><a href="#misc-toolreference-xpertivyserverconfig">AxonIvyEngineConfig</a></li><li><a href="#misc-toolreference-xpertivyserverservice">AxonIvyEngineService</a></li><li><a href="#misc-toolreference-engineconfigcli">EngineConfigCli</a></li><li><a href="#misc-toolreference-servercontrolcenter">ControlCenter</a></li><li><a href="#misc-toolreference-installservice">InstallService</a></li><li><a href="#misc-toolreference-ilc">Windows Program Launcher Configuration</a></li><li><a href="#misc-toolreference-unix">Linux Launcher Configuration</a></li></ul></li><li><br><a href="#top">Back to top</a></li></ul></div></div></div><hr></div></div><script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/offcanvas.js"></script></body></html>

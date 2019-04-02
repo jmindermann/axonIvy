@@ -1,0 +1,58 @@
+        _                        _             
+       / \  __  _____  _ __     (_)_   ___   _ 
+      / _ \ \ \/ / _ \| '_ \    | \ \ / / | | |
+     / ___ \ >  < (_) | | | | _ | |\ V /| |_| |
+    /_/   \_/_/\_\___/|_| |_|(_)|_| \_/  \__, |
+                                         |___/ 
+-----------------------------------------------------
+Axon.ivy Engine
+Version 7.0 Patch 6 Revision 59030
+Copyright (c) 2001-2017 AXON IVY AG
+-----------------------------------------------------
+Java Version 1.8.0_201 (Oracle Corporation)
+JVM Version 25.201-b09 (OpenJDK 64-Bit Server VM)
+-----------------------------------------------------
+Starting Axon.ivy Engine ...
+
+*****************************************************
+*                 D E M O   M O D E                 *
+*****************************************************
+
+All configurations made in demo mode are not persistent!
+
+Creating system database in memory ... done.
+[  0%] Initializing server
+[  1%] JMX service started [25ms]
+[  2%] Job Manager started [1ms]
+[  3%] Background Jobs Starter started [1ms]
+[  5%] Extension Manager started [306ms]
+[  6%] Persistency Manager started [45ms]
+[  7%] Single server cluster manager started [0ms]
+[  8%] Security Manager started [329ms]
+[ 10%] Application Configuration Manager started [695ms]
+[ 11%] Resource Data Model Provider Manager started [1ms]
+[ 12%] Project Manager started [1ms]
+[ 14%] Role Configuration Manager started [8ms]
+[ 15%] Library Configuration Manager started [0ms]
+[ 16%] Rest Client Manager started [0ms]
+[ 17%] External Database Configuration Manager started [1ms]
+[ 19%] Override Manager started [1ms]
+[ 20%] Business Data Manager started [472ms]
+[ 21%] Process Manager started [742ms]
+[ 23%] Case Map Manager started [0ms]
+[ 24%] Java Configuration Manager started [85ms]
+[ 25%] IvyScript Manager started [6ms]
+[ 26%] Process Data Persistence Manager started [11ms]
+[ 28%] Global Variable Manager started [0ms]
+[ 29%] Web Server (Apache Tomcat/8.5.20) started [9006ms]
+[ 30%] Data Class Manager started [1ms]
+[ 32%] User Dialog Manager started [8ms]
+[ 33%] Rich Dialog Manager started [1ms]
+[ 34%] Content Manager started [57ms]
+[ 35%] Configuration Manager started [4ms]
+[ 37%] Web Service Configuration Manager started [0ms]
+[ 38%] View Technology Execution Manager started [1ms]
+[ 39%] Rich Dialog Execution Manager started [23ms]
+[ 41%] Rich Dialog Component Manager started [39ms]
+[ 42%] External Database Manager started [30ms]
+[ 43%] Process Data Persistence Configuration Manager started [1ms]

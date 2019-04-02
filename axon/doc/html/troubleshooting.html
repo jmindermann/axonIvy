@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="css/images/ivy_favicon_48.png"><title>Troubleshooting - Axon.ivy 7.0 | Engine Guide</title><link href="css/bootstrap.min.css" rel="stylesheet"><link media="screen" rel="stylesheet" href="css/docs.min.css"><link href="css/ivy-common-6.css" rel="stylesheet"><link href="css/ivy-userguide.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#sidebar" style="height: 100%"><!-- start-top-navigation --><div class="navbar navbar-top" role="navigation"><div class="container" id="headerdiv"><div class="navbar-header"><a class="ivy-logo" href="http://developer.axonivy.com"><img src="css/images/axon_ivy_logo.png" alt="Axon.ivy"></a><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav" id="navbar-ivy-links"><li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li></ul></div></div></div><!-- end-top-navigation --><div id="content"><div class="container"><div class="navbar"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-book"></span> Axon.ivy 7.0 | <b>Engine Guide</b></a></div></div><div class="row"><div><ul class="nav nav-tabs" role="tablist"><li><a accesskey="h" href="introduction.html">Introduction</a></li><li><a accesskey="h" href="gettingstarted.html">Getting Started</a></li><li><a accesskey="h" href="installation.html">Installation</a></li><li><a accesskey="h" href="configuration.html">Configuration</a></li><li><a accesskey="h" href="integration.html">Integration</a></li><li><a accesskey="h" href="administration.html">Administration</a></li><li><a accesskey="h" href="monitoring.html">Monitoring</a></li><li><a accesskey="h" href="misc.html">Miscellaneous</a></li><li class="active"><a accesskey="h" href="troubleshooting.html">Troubleshooting</a></li></ul></div></div></div></div><div class="jumbotron"><div class="container"><h1>Troubleshooting</h1></div></div><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="col-xs-12 col-sm-9"><div class="row"><div class="col-sm-12 "><div class="chapter">
+    
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="ivy-troubleshooting-introduction" class="title" style="clear: both"><a name="ivy.troubleshooting.introduction"></a>Introduction</h2></div></div></div>
+        
+        <p>Here you will find solutions to some of the most common problems related to Axon.ivy
+            Engine. If you can't find your solution here there are some other sources which could
+            help: </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Axon.ivy Q&amp;A</span></dt><dd>
+                        <p>The <a class="ulink" href="http://answers.axonivy.com/" target="_top">Axon.ivy Q&amp;A</a>
+                            contains a considerable amount of questions and answers related to
+                            Axon.ivy Designer and Engine.</p>
+                    </dd><dt><span class="term">Stack Overflow</span></dt><dd>
+                        <p>Problems related to common technologies like Java, JSF, Primefaces are
+                            answered on the web, e.g. on <a class="ulink" href="http://stackoverflow.com/" target="_top">Stack Overflow</a>.</p>
+                    </dd><dt><span class="term">Support</span></dt><dd>
+                        <p>You can get support via ivy@axonivy.com (support may be subject to
+                            charging, depending on your licence agreement).</p>
+                    </dd></dl></div><p>
+        </p>
+    </div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="troubleshooting-startproblems" class="title" style="clear: both"><a name="troubleshooting.startproblems"></a>Program / Engine start problems</h2></div></div></div>
+        
+        <p>If a program or engine does not start, execute it in a console and look at the console
+            output. In most cases error messages are written to the console output giving you an
+            idea about the problem.</p>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e6293" class="title"><a name="d5e6293"></a>JVM cannot allocate enough Memory</h3></div></div></div>
+            
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6295" class="title"><a name="d5e6295"></a>Effect</h4></div></div></div>
+                
+                <p>If the program or engine cannot be started and in the console the following
+                    error message is written:</p>
+                <pre class="screen">&gt;Error occurred during initialization of VM
+Could not reserve enough space for object heap
+Create registry entry 'SYSTEM\CurrentControlSet\Services\EventLog\Application\AxonIvyEngineConfig Launchers' for event log if it does not exists
+Error: Could not initialize java virtual machine (-4)</pre>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6299" class="title"><a name="d5e6299"></a>Cause</h4></div></div></div>
+                
+                <p>The JVM tries to allocate memory for the Java heap, but it does not succeed.
+                    The amount of memory the JVM tries to allocate is too large for the operating
+                    system. Consequently the JVM cannot be started.</p>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6302" class="title"><a name="d5e6302"></a>Solution</h4></div></div></div>
+                
+                <p>On Windows use an <a class="link" href="misc.html#misc.toolreference.ilc" title="Windows Program Launcher Configuration">Ivy launch
+                        control</a> file to set the maximum heap size to a lower value (smaller
+                    or equal to 1 GByte). </p>
+                <p>On Linux modify the <a class="link" href="misc.html#misc.toolreference.unix" title="Linux Launcher Configuration">AxonIvyEngine.conf</a> script to set the maximum heap size to a lower
+                    value. The maximum heap size can be configured with the Java option -Xmx.</p>
+            </div>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e6308" class="title"><a name="d5e6308"></a>Socket name not available on this system</h3></div></div></div>
+            
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6310" class="title"><a name="d5e6310"></a>Effect</h4></div></div></div>
+                
+                <p>If the Enterprise Edition engine cannot be started and in the console the
+                    following error message is
+                    written:</p><pre class="programlisting">Error while starting Axon.ivy Engine org.jgroups.ChannelException: 
+    failed to start protocol stack 
+    ... 
+Caused by: java.net.SocketException: 
+    The socket name is not available on this system 
+    ...</pre>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6314" class="title"><a name="d5e6314"></a>Cause</h4></div></div></div>
+                
+                <p>This happens if your system supports IPv6 and you try to bind a cluster node
+                    to a IPv4 address.</p>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6317" class="title"><a name="d5e6317"></a>Solution</h4></div></div></div>
+                
+                <p>Set the following java option</p>
+                <pre class="screen">-Djava.net.preferIPv4Stack=true </pre>
+                <p>On Windows use an <a class="link" href="misc.html#misc.toolreference.ilc" title="Windows Program Launcher Configuration">Ivy launch
+                        control</a> file. Change the line
+                    </p><pre class="screen">#ivy.vm.additional.options=</pre>
+                <p>to</p><pre class="screen">ivy.vm.additional.options=-Djava.net.preferIPv4Stack=true</pre><p>On
+                    Linux modify the <a class="link" href="misc.html#misc.toolreference.unix" title="Linux Launcher Configuration">serverLauncher.sh</a> script to set java option.</p>
+            </div>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="troubleshooting-startproblems-ajp" class="title"><a name="troubleshooting.startproblems.ajp"></a>Request Entity Too Large</h3></div></div></div>
+            
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6329" class="title"><a name="d5e6329"></a>Effect</h4></div></div></div>
+                
+                <p>If the following error message appears in the browser:</p>
+                <pre class="screen">Request Entity Too Large! - The HTTP method does not allow the data transmitted, or the data volume exceeds the capacity limit.</pre>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6334" class="title"><a name="d5e6334"></a>Cause</h4></div></div></div>
+                
+                <p>If your Active Directory contains large user groups and dependencies among them then it may occur that single sign on for some users that are members in a lot of user groups
+                does not work. This is because the packet size of the AJP13 protocol that is used for the communication between IIS and Axon.ivy Engine is to small to hold all the necessary
+                security information. </p>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6337" class="title"><a name="d5e6337"></a>Solution</h4></div></div></div>
+                
+                    <p>The problem can be solved by increasing the packet size (default
+                        value 8192) of the AJP13 protocol. The packet size must be configured with the same
+                        value on the IIS and Axon.ivy Engine side. If one side is not configured to the same
+                        size as the other, then the communication may fail. On the IIS side the packet size can
+                        be configured in the <em class="filename">workers.properties</em> file by setting the worker
+                        attribute <code class="code">max_packet_size</code>.</p>
+                    <p>Example:</p>
+                    <p>
+                        </p><pre class="screen">worker.AxonIvyEngine.max_packet_size=16384</pre><p>
+                    </p>
+                    <p>On the Axon.ivy Engine side the packet size can be set by changing the value
+                        of the system property <code class="code">WebServer.AJP.PacketSize</code> (See chapter <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System
+                            Properties</a> to learn about how to change a system property).</p>
+            </div>
+        </div>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="troubleshooting-startproblems-random" class="title"><a name="troubleshooting.startproblems.random"></a>Install a secure random provider</h3></div></div></div>
+            
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6350" class="title"><a name="d5e6350"></a>Effect</h4></div></div></div>
+                
+                <p>In the log the following warning appears:</p>
+                <pre class="screen">Failed to generate random number within 10 seconds. This could slow down the JSF runtime dramatically. Please consider installing a secure random provider for 'SHA1PRNG'!</pre>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6355" class="title"><a name="d5e6355"></a>Cause</h4></div></div></div>
+                
+                <p>The Engine is running on a highly virtualized cloud host and can not provide
+                    enough random data trough hardware interrupts (e.g. keyboard input or mouse
+                    moves).</p>
+            </div>
+            <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e6358" class="title"><a name="d5e6358"></a>Solution</h4></div></div></div>
+                
+                <p>Install and run an alternative random provider like 'haveged'. See the
+                    installation instructions here <a class="ulink" href="https://www.digitalocean.com/community/tutorials/how-to-setup-additional-entropy-for-cloud-servers-using-haveged#installing-haveged-on-debianubuntu" target="_top">https://www.digitalocean.com/community/tutorials/how-to-setup-additional-entropy-for-cloud-servers-using-haveged</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="ivy-troubleshooting-blockingui" class="title" style="clear: both"><a name="ivy.troubleshooting.blockingui"></a>Blocking Application/UI</h2></div></div></div>
+        
+        <p>If an application periodically does not answer for a couple of seconds, then the
+            reason can be a long running full GC. Visit the chapter <a class="link" href="configuration.html#configuration.gc" title="GC Optimization">GC Optimization</a> for possible
+            solutions.</p>
+    </div>
+</div></div></div></div><div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><div class="bs-sidebar hidden-print affix" data-spy="affix" data-offset-top="350" data-offset-bottom="250"><ul class="nav bs-sidenav"><li><a href="#ivy-troubleshooting-introduction">Introduction</a><ul class="nav subnav"></ul></li><li><a href="#troubleshooting-startproblems">Program / Engine start problems</a><ul class="nav subnav"><li><a href="#d5e6293">JVM cannot allocate enough Memory</a></li><li><a href="#d5e6308">Socket name not available on this system</a></li><li><a href="#troubleshooting-startproblems-ajp">Request Entity Too Large</a></li><li><a href="#troubleshooting-startproblems-random">Install a secure random provider</a></li></ul></li><li><a href="#ivy-troubleshooting-blockingui">Blocking Application/UI</a><ul class="nav subnav"></ul></li><li><br><a href="#top">Back to top</a></li></ul></div></div></div><hr></div></div><script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/offcanvas.js"></script></body></html>

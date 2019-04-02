@@ -1,0 +1,1710 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="css/images/ivy_favicon_48.png"><title>Administration - Axon.ivy 7.0 | Engine Guide</title><link href="css/bootstrap.min.css" rel="stylesheet"><link media="screen" rel="stylesheet" href="css/docs.min.css"><link href="css/ivy-common-6.css" rel="stylesheet"><link href="css/ivy-userguide.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#sidebar" style="height: 100%"><!-- start-top-navigation --><div class="navbar navbar-top" role="navigation"><div class="container" id="headerdiv"><div class="navbar-header"><a class="ivy-logo" href="http://developer.axonivy.com"><img src="css/images/axon_ivy_logo.png" alt="Axon.ivy"></a><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav" id="navbar-ivy-links"><li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li></ul></div></div></div><!-- end-top-navigation --><div id="content"><div class="container"><div class="navbar"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-book"></span> Axon.ivy 7.0 | <b>Engine Guide</b></a></div></div><div class="row"><div><ul class="nav nav-tabs" role="tablist"><li><a accesskey="h" href="introduction.html">Introduction</a></li><li><a accesskey="h" href="gettingstarted.html">Getting Started</a></li><li><a accesskey="h" href="installation.html">Installation</a></li><li><a accesskey="h" href="configuration.html">Configuration</a></li><li><a accesskey="h" href="integration.html">Integration</a></li><li class="active"><a accesskey="h" href="administration.html">Administration</a></li><li><a accesskey="h" href="monitoring.html">Monitoring</a></li><li><a accesskey="h" href="misc.html">Miscellaneous</a></li><li><a accesskey="h" href="troubleshooting.html">Troubleshooting</a></li></ul></div></div></div></div><div class="jumbotron"><div class="container"><h1>Administration</h1></div></div><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="col-xs-12 col-sm-9"><div class="row"><div class="col-sm-12 "><div class="chapter">
+	
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="d5e3638" class="title" style="clear: both"><a name="d5e3638"></a>Opening the administration tool</h2></div></div></div>
+		
+		<p>After you have successfully started the Axon.ivy Engine, you can start the engine
+			administration tool. This tool allows you to create and manage all your applications on
+			the engine and in addition to set some further configuration properties.</p>
+		<p>To do so, launch your preferred web browser and point it at the following the address:
+					<em class="filename">http://<em class="replaceable"><code>ServerName</code></em>:<em class="replaceable"><code>Port</code></em>/ivy</em>.</p>
+		<p>You should be directed to the Axon.ivy Engine info page: </p><div class="figure"><a name="d5e3646"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/HtmlInfoPage_NoApps.png" alt="Axon.ivy Engine info page"></div>
+			</div><p class="title">Figure&nbsp;6.1.&nbsp;Axon.ivy Engine info page</p></div><p><br class="figure-break"></p>
+		<p>This page displays all your applications and their process models with all contained
+			process starts. When you haven't set up any applications yet, this page will be empty,
+			just like in the screenshot above.</p>
+		<p>Click the <span class="command"><strong>Admin</strong></span> link to open the administration tool. Depending on
+			your computer's settings, you may be asked if you'd like to open or save a JNLP file.
+			Choose to open the file directly and wait for the Java Web Start application to load.</p>
+		<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+			<p>Loading of the administration tool may take a few minutes the first time, because
+				some application data needs to be deployed first internally. Please be
+			patient.</p>
+		</div>
+		<div class="figure"><a name="d5e3656"></a><div class="figure-contents">
+			
+			<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_AfterStart_NoApps.png" alt="Admin Tool"></div>
+		</div><p class="title">Figure&nbsp;6.2.&nbsp;Admin Tool</p></div><br class="figure-break">
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-application" class="title" style="clear: both"><a name="administration.application"></a>Applications</h2></div></div></div>
+		
+		<p>Applications are environments for process models (projects). Applications are strictly
+			separated from each other and do not share anything. Every application has its own
+			process models (and -versions), roles, users, external databases and so on. Projects may
+			only use libraries that are deployed within the same application.</p>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="adminisrator-createapplication" class="title"><a name="adminisrator.createapplication"></a>Create new application</h3></div></div></div>
+			
+			<p>To create a new application, press the new application icon (<span class="inlinemediaobject"><img src="images/ServerAdministration/AdminTool_ApplicationAddIcon.png"></span>) in the Applications section. A dialog will prompt you to enter
+				the following information:</p>
+			<p>
+				<span class="inlinemediaobject"><img src="images/ServerAdministration/AdminTool_CreateApplication.png" align="middle"></span>
+			</p>
+			<p>
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Name</span></dt><dd>
+							<p>The name of the application to create.</p>
+						</dd><dt><span class="term">Description</span></dt><dd>
+							<p>An optional description of the application.</p>
+						</dd><dt><span class="term">File Directory</span></dt><dd>
+							<p>The directory on the file system where all the files of this application and its
+								process models will be stored. You can specify an absolute directory
+								(e.g. C:/Data/IvyApps/App1 or /var/ivy/apps/app1) or a directory
+								relative to the engine's installation directory (e.g. apps/App1).
+								The directory may already exist, but it must be empty.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+									<p>We recommend to configure an absolute directory outside of
+										the installation directory of the engine because the data in
+										the directory has a much longer life time than the current
+										version of the engine. E.g. if you upgrade your engine you
+										have to choose a new installation directory and may want to
+										delete the installation directory of the old version, which
+										is not possible if the file directory is located inside the
+										installation directory.</p>
+								</div><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+									<p>When using an Axon.ivy Engine Enterprise Edition, the file
+										directory must be located on a shared file system which is
+										accessable by all nodes of the cluster with the same file
+										path. This path must be configured here.</p>
+								</div>
+						</dd><dt><span class="term">Owner</span></dt><dd>
+							<p>The owner of the application. This field is used for documentation
+								purposes only.</p>
+						</dd><dt><span class="term">Security System</span></dt><dd>
+							<p>The security system from which the users are imported. By default this is
+									<span class="command"><strong>Axon.ivy</strong></span> which means that all users and
+								roles are completely managed by the Axon.ivy Engine. You can change
+								this to <span class="command"><strong>Microsoft Active Directory</strong></span> or
+									<span class="command"><strong>Novell eDirectory</strong></span> in which case the users
+								come from the selected directory service. See section <a class="link" href="administration.html#administration.externalsecuritysystem" title="Configuring an External Security System">Configuring an External Security System</a> for more details
+								about the integration of external security systems.</p>
+						</dd><dt><span class="term">Create process models</span></dt><dd>
+							<p>Check the process models, that should automatically be created and
+								deployed into the new application. </p>
+							<p><span class="command"><strong>Axon.ivy Addons</strong></span>: Contains some Rich Dialog
+								functionality such as some common dialogs simple questions or
+								messages, document factories to create Office documents and many
+								more. All these features can be used freely. Please read more about
+								the Axon.ivy Addons in the documentation of the Axon.ivy Designer.</p>
+							<p><span class="command"><strong>Axon.ivy Workflow UI (RIA and HTML Version)</strong></span>:
+								Both process models contains a default Workflow UI, which provide
+								process and task lists. Furthermore it is possible to browse through
+								history of already finished tasks. Even more, the RIA version
+								provides functionality for administrating all cases and tasks of the
+								application. More information can be found in the Workflow UI
+							guide.</p>
+						</dd></dl></div><p>
+			</p>
+			<p>Click <span class="command"><strong>Create</strong></span> to create the application. If you have chosen a
+				security system other that <span class="command"><strong>Axon.ivy</strong></span>, a dialog will appear to
+				configure it (see next section). </p>
+		</div>
+		
+			
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-externalsecuritysystem" class="title"><a name="administration.externalsecuritysystem"></a>Configuring an External Security System</h3></div></div></div>
+    
+    <p>When you choose an external security system (e.g. <span class="emphasis"><em>Microsoft Active
+        Directory</em></span>) for a new application, you have to configure the
+        connection to the directory server, to specify which users should be synchronized
+        and how the attributes of these users should be mapped.</p>
+    <p>Users are synchronized as follows:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            <p>Users that exists in the external security system but not in the Axon.ivy Engine are
+                imported to the Axon.ivy Engine if they match the filter
+                criteria.</p>
+        </li><li class="listitem">
+            <p>Users that exists in the Axon.ivy Engine but not in the external security system
+                    or do not match the filter criteria are deleted from the Axon.ivy Engine.</p>
+        </li><li class="listitem">
+            <p>Axon.ivy user attributes that are mapped to exernal security system
+                attributes are updated with the latest values from the external security
+                system.</p>
+        </li></ul></div>
+    <p>The user synchronisation is executed:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            <p>Once a day (see synchronization time).</p>
+        </li><li class="listitem">
+            <p>If one click the <span class="command"><strong>Synchronize</strong></span> button on the
+                <span class="italic">Security System</span> section of the
+                application configuration screen.</p>
+        </li><li class="listitem">
+            <p>If a user tries to login himself. This means that a user can login even if he is not yet
+                imported to the Axon.ivy Engine.</p>
+        </li></ul></div>
+    <p>
+        </p><div class="figure"><a name="d5e3738"></a><div class="figure-contents">
+            
+            <div class="mediaobject"><img src="images/ServerAdministration/AdminTool_ADConfig.png" alt="External security system configuration dialog"></div>
+            <div class="mediaobject"><img src="images/ServerAdministration/AdminTool_ADConfig_LDAPAttrs.png" alt="External security system configuration dialog"></div>
+        </div><p class="title">Figure&nbsp;6.3.&nbsp;External security system configuration dialog</p></div><p><br class="figure-break">
+    </p>
+    <p>
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Host / Port</span></dt><dd>
+                    <p>The hostname (or IP address) and port of the directory
+                        server</p>
+                </dd><dt><span class="term">Authentication kind</span></dt><dd>
+                    <p>The authentication method. Use <span class="command"><strong>none</strong></span> if your
+                        server does not require authentication to connect or
+                        <span class="command"><strong>simple</strong></span> if authentication by username and password
+                        is required</p>
+                </dd><dt><span class="term">Username / Password</span></dt><dd>
+                    <p>The username and corresponding password to use for connecting to
+                        the server. The format of the username can be one of the following (examples):</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                                <p>
+                                    <em class="replaceable"><code>connectionuser@fully.qualified.domain.name</code></em>
+                                </p>
+                            </li><li class="listitem">
+                                <p>
+                                    <em class="replaceable"><code>cn=Connection User, ou=Service Accounts,
+                                        dc=fully, dc=qualified, domain,
+                                        dc=name</code></em>
+                                </p>
+                            </li></ul></div>
+                </dd><dt><span class="term">Use SSL</span></dt><dd>
+                    <p>Activates Secure Sockets Layer (SSL) connection to the Active Directory
+                        server. </p>
+                    <p>The SSL connection to the Active Directory Server will only work if the
+                        JRE of the Axon.ivy Engine has the certificate of the Active Directory
+                        Server in its trust store. The certificate import into the JREs system trust
+                        store can be done with the JRE keytool:</p>
+                    <pre class="screen">bin/keytool.exe -importcert 
+-file <em class="replaceable"><code>yourCertificateFile</code></em> 
+-keystore lib/security/cacerts 
+-storepass <em class="replaceable"><code>changeit</code></em> 
+-alias <em class="replaceable"><code>myCertificateAlias</code></em></pre>
+                    <p>Ensure that the System trust store is activated within the <a class="xref" href="administration.html#administration.systemproperties" title="System Properties">&#8220;System Properties&#8221;</a> table. The System
+                        Property 'SSL.Client.UseSystemTrustStore' must be set to 'true'.</p>
+                </dd><dt><span class="term">Use LDAP connection pool</span></dt><dd>
+                    <p>If selected, the server will try to reuse connections and not open
+                        a new connection each time.</p>
+                </dd><dt><span class="term">Import context</span></dt><dd>
+                    <p>The import context is a global filter. This filter is applied to every
+                        query made to the external security system. Every user and user group
+                        located below this context can bee seen. Everything outside the context
+                        cannot be seen and will be ignored. In most cases the import context is set
+                        to a root object (e.g. for the domain soreco.ch to dc=soreco, dc=ch). </p>
+                    <p>In some cases you may want to set the import context to a
+                        organization unit so that only the users located below the
+                        organization unit are synchronized.</p>
+                    <p>Use the <span class="command"><strong>Browse</strong></span> button to select the import
+                        context from the server specified above (if the connection fails,
+                        check the connection data). </p>
+                </dd><dt><span class="term">Import users of group</span></dt><dd>
+                    <p>Limit the synchronization of users to a specific user group. Only users that are
+                        located below the import context and are members of the specified
+                        user group are synchronized.</p>
+                    <p>Use the <span class="command"><strong>Browse</strong></span> button to select the user group
+                        from the server specified above (if the connection fails, check the
+                        connection data).</p>
+                </dd><dt><span class="term">User Filter</span></dt><dd>
+                    <p>LDAP filter expression to make sure only user objects are
+                        synchronized.</p>
+                </dd><dt><span class="term">Synchronization time</span></dt><dd>
+                    <p>Enter the time of day when synchronization should take place.
+                        Format is HH:MM (24h format).</p>
+                </dd><dt><span class="term">LDAP attribute mapping</span></dt><dd>
+                    <p>Default attribute mappings can be adjusted.</p>
+                    <p>Further LDAP attributes can be mapped to additional user properties. Enter
+                        the LDAP attribute name in the first column and the name of the additional
+                        user attribute in Axon.ivy into the second column.</p>
+                </dd></dl></div><p>
+    </p>
+    <p>The external security system configuration can be changed by using the
+        <span class="command"><strong>Edit</strong></span> button on <span class="italic">Security
+            System</span> section of the application configuration screen.</p>
+    <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+        <p>If you change the security system configuration then some users that where imported before
+            may now no longer match the import filter criteria. This means that those users
+            are deleted from the system and all their tasks will be changed to state
+            UNASSIGNED. All tasks in state UNASSIGNED have to be reassigned manually to
+            other users.</p>
+    </div>
+</div>
+			
+	</div>
+		<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-applicationdefaults" class="title" style="clear: both"><a name="administration.applicationdefaults"></a>Application Default Settings</h2></div></div></div>
+						
+			<p>The button <span class="command"><strong>configure default settings</strong></span> on the application configuration screen leads to the <span class="italic">Application Default Settings</span>.</p>
+			<div class="figure"><a name="d5e3821"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_EmailNotificationSettings.png" alt="Application Default Settings"></div>
+			</div><p class="title">Figure&nbsp;6.4.&nbsp;Application Default Settings</p></div><p><br class="figure-break"></p>
+			<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3826" class="title"><a name="d5e3826"></a>Email Notification Settings</h3></div></div></div>
+				
+				<p>This section contains the default settings for <a class="link" href="administration.html#administration.emailnotification" title="Email Notification">notification emails</a>. The settings are used when a new user is created. </p>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3830" class="title"><a name="d5e3830"></a>Email Notification Settings</h4></div></div></div>
+    
+    <p>It is possible to be notified if a new task is created that is related to you (either by direct assignment or by assignment to a role you own). Furthermore, a daily digest mail with a summary of all open tasks can be sent to you by Axon.ivy. </p>
+    <p>
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Which language should be used for the emails</span></dt><dd>
+                    <p>Choose in which language you would like to receive the emails. If your
+                        preferred language is not contained, please contact your Axon.ivy
+                        administrator.</p>
+                </dd><dt><span class="term">Never (disable email notification)</span></dt><dd>
+                    <p>You can switch off the sending of all notification mails by ticking this
+                        checkbox. If you do so, you cannot set the other options.</p>
+                </dd><dt><span class="term">When a new task for me or one of my roles is created</span></dt><dd>
+                    <p>If this is set, you will receive a notification email whenever a new task
+                        is created that is assigned either directly to you or to one of the roles
+                        you own.</p>
+                </dd><dt><span class="term">Daily Summary on</span></dt><dd>
+                    <p>Choose the days on which you want to receive an email with a summary of
+                        all your open tasks.</p>
+                </dd></dl></div><p>
+        </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>If you want that temporary no mails are sent (e.g. for holidays), then just tick the <span class="command"><strong>Never</strong></span> checkbox. The email sending is now switched off, but the previous settings are still stored. As soon as you untick the <span class="command"><strong>Never</strong></span> check box, your standard configuration is back again.</p>
+        </div><p>
+    </p>
+</div>
+			</div>
+			<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3857" class="title"><a name="d5e3857"></a>Email Content Creation Processes</h3></div></div></div>
+				
+				<p>In this area of the <span class="italic">Application Default User Settings</span> dialog, you can select a deployed process model that contains notification processes for <span class="italic">Daily Summary</span> or for <span class="italic">New Task</span> notification respectively. Before you see any available processes in the combo box you have to <span class="bold"><strong>deploy</strong></span> at least one PMV library including an <a class="link" href="administration.html#administration.emailnotification.design" title="Process Design">Email Notification Process</a>. Notification processes start elements has to conform the criteria described in the section <a class="link" href="administration.html#administration.emailnotification" title="Email Notification">Email Notification</a>. </p>
+				<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+					<p>Choose <span class="emphasis"><em>&lt;System Default&gt;</em></span> to use the built-in
+						notification mails of the Axon.ivy Engine. </p>
+				</div>
+			</div>
+			<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3871" class="title"><a name="d5e3871"></a>Default Executed Processes</h3></div></div></div>
+				
+				<p>This section allows you to override the default pages (Application Home, Task List,
+				Process Start List, Login and End) of an Axon.ivy web application.</p>
+				<p>You can create your own process model to display these pages or you can use the <a class="link" href="administration.html#ServerAdministration.htmlworkflowui" title="HTML Workflow UI">Axon.ivy Workflow UI (HTML Version)</a>. See section <a class="link" href="administration.html#adminisrator.createapplication" title="Create new application">create new application</a> to learn how to use the "Axon.ivy Workflow UI (Html Version)".</p>
+				<div class="variablelist"><dl class="variablelist"><dt><span class="term">Default Pages Implementor</span></dt><dd>
+							<p><span class="italic">&lt;System Default&gt;</span> will show the default Axon.ivy
+								pages.</p>
+							<p><span class="italic">HtmlWfUi</span> will show up, if you have deployed the
+								"Axon.ivy Workflow UI (Html Version)". </p>
+							<p>Any process model deployed, which contains a request start with a signature for at
+								least one page will be shown in the dropdown. Instead of showing the
+								default pages, the corresponding process of the selected process
+								model is started. If the process start signature of the default page
+								is not available in the selected project, the default page from
+								Axon.ivy will be used.</p>
+						</dd></dl></div>
+			</div>
+		</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-processmodel" class="title" style="clear: both"><a name="administration.processmodel"></a>Process Models and Process Model Versions</h2></div></div></div>
+		
+		<p>An application can have multiple process models. Each process model can have different
+			versions. A process model corresponds to the concept of a project on the Axon.ivy
+			Designer. A process model version corresponds to a versioned snapshot of that project at
+			some point of time.</p>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3890" class="title"><a name="d5e3890"></a>The Concept of Versions</h3></div></div></div>
+			
+			<p>A process model can exist in multiple versions called process model versions.
+				These versions allow you to make changes in a project and deploy it again without
+				having to worry about the compatibility of currently running cases. If the new
+				version is not working as expected, you can always go back to a previous working
+				version.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3893" class="title"><a name="d5e3893"></a>Creating Process Models and Process Model Versions</h3></div></div></div>
+			
+			<p>To create a new process model, you have to select the application in which you
+				would like to create it. Press the <span class="command"><strong>new process model</strong></span> button in
+				the toolbar (<span class="inlinemediaobject"><img src="images/ServerAdministration/AdminTool_PMAddIcon.png"></span>). You will be asked for a name (typically you chose the name to
+				be the same as the name of the project you intend to deploy within this process
+				model) and an optional description.</p>
+			<p>Once you have created the process model, you can continue with adding a first
+				process model version. To do so, select the process model from the tree on the left
+				hand side and press the <span class="command"><strong>new process model version</strong></span> button
+					(<span class="inlinemediaobject"><img src="images/ServerAdministration/AdminTool_PMVAddIcon.png"></span>). You will be prompted to enter a name and an optional
+				description again. </p>
+			<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+				<p>It is recommended to use the description field of the new process model
+					version to document the major changes from the previous version. </p>
+			</div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e3907" class="title"><a name="d5e3907"></a>Manage Activation and Release State</h3></div></div></div>
+			
+			<p>Applications, process models and process model versions all have an activation
+				state. The process model version additionally has a release state.</p>
+			<p>
+				</p><div class="figure"><a name="d5e3911"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_PMVActivity.png" alt="Managing the activation state"></div>
+				</div><p class="title">Figure&nbsp;6.5.&nbsp;Managing the activation state</p></div><p><br class="figure-break">
+			</p>
+			<p>To bring a process model version into the <span class="command"><strong>Active</strong></span> state, the process
+				model version itself, the parent process model and the parent application have to be
+				in the state <span class="command"><strong>Active</strong></span>. Furthermore, the release state of the
+				process model version has to be in <span class="command"><strong>RELEASED</strong></span> or
+					<span class="command"><strong>DEPRECATED</strong></span>. The same is necessary for all required libraries
+				of that process model version. </p>
+			<p>When looking at the details of an application, process model or process model version you
+				will always see a <span class="command"><strong>Configured state</strong></span> and a
+				<span class="command"><strong>State</strong></span>. The <span class="command"><strong>Configured state</strong></span> is the one you can
+				freely change and the <span class="command"><strong>State</strong></span> is the actual state that depends on
+				the states of the parent process model and application and of the release state. </p>
+			<p>
+				</p><div class="figure"><a name="d5e3927"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_PMVRelease.png" alt="Managing the release state"></div>
+				</div><p class="title">Figure&nbsp;6.6.&nbsp;Managing the release state</p></div><p><br class="figure-break">
+			</p>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3932" class="title"><a name="d5e3932"></a>Release States</h4></div></div></div>
+				
+				<p>
+					</p><div class="table"><a name="d5e3935"></a><div class="table-contents">
+						
+						<table class="table table-bordered table-hover" summary="Release states"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>
+										<span class="command"><strong>PREPARED</strong></span>
+									</td><td>The process model version has been created and a project
+										may already be deployed. However, the process model version
+										is not used yet. </td></tr><tr><td>
+										<span class="command"><strong>RELEASED</strong></span>
+									</td><td>The process model version is the currently released
+										version. This means that all new cases will be started
+										within this version. Only one version in a process model may
+										be in this state.</td></tr><tr><td>
+										<span class="command"><strong>DEPRECATED</strong></span>
+									</td><td>The process model version has previously been in state <span class="command"><strong>RELEASED</strong></span>.
+										But another process model version was released and activated
+										recently. All cases that were started in this process model
+										version will finish in this version. As soon as there are no
+										more running cases in this version and all process model
+										versions that are using it are not in state
+											<span class="command"><strong>RELEASED</strong></span> nor
+											<span class="command"><strong>DEPRECATED</strong></span>, the state will change to
+											<span class="command"><strong>ARCHIVED</strong></span> automatically.</td></tr><tr><td>
+										<span class="command"><strong>ARCHIVED</strong></span>
+									</td><td>The process model version has previously been in state <span class="command"><strong>RELEASED</strong></span>
+										or <span class="command"><strong>DEPRECATED</strong></span>. There are now no more
+										cases that are running in this version, it is safe to delete
+										it. Process model versions in this state are not started and
+										therefore only use minimal resources. You may set it back
+										again to <span class="command"><strong>RELEASED</strong></span>. </td></tr><tr><td>
+										<span class="command"><strong>DELETED</strong></span>
+									</td><td>The process model version has been deleted. All data that
+										belong to this version are deleted too.</td></tr></tbody></table>
+					</div><p class="title">Table&nbsp;6.1.&nbsp;Release states</p></div><p><br class="table-break">
+				</p>
+			</div>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3972" class="title"><a name="d5e3972"></a>Activation states</h4></div></div></div>
+				
+				<p>
+					</p><div class="table"><a name="d5e3975"></a><div class="table-contents">
+						
+						<table class="table table-bordered table-hover" summary="Activation states"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>
+										<span class="command"><strong>INACTIVE</strong></span>
+									</td><td>No new process in this process model version can be
+										started and all running cases and tasks have been
+									suspended.</td></tr><tr><td>
+										<span class="command"><strong>ACTIVE</strong></span>
+									</td><td>New processes in this version can be started and all
+										tasks are active. </td></tr><tr><td>
+										<span class="command"><strong>LOCKED</strong></span>
+									</td><td>No new process can be started, but the currently running
+										tasks can continue to their next savepoint.</td></tr><tr><td>
+										<span class="command"><strong>DEACTIVATING</strong></span>
+									</td><td>The state is changing to
+									<span class="command"><strong>INACTIVE</strong></span>.</td></tr><tr><td>
+										<span class="command"><strong>ACTIVATING</strong></span>
+									</td><td>The state is changing to
+									<span class="command"><strong>ACTIVE</strong></span>.</td></tr><tr><td>
+										<span class="command"><strong>LOCKING</strong></span>
+									</td><td>The state is changing to
+									<span class="command"><strong>LOCKED</strong></span>.</td></tr></tbody></table>
+					</div><p class="title">Table&nbsp;6.2.&nbsp;Activation states</p></div><p><br class="table-break">
+				</p>
+			</div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4012" class="title"><a name="d5e4012"></a>Project dependencies</h3></div></div></div>
+			
+			<p>Projects can depend on each other. The dependencies are configured in the deployement
+				descriptor of the project. This dependencies are evaluated and resolved during the
+				deployment of a project. On the process model version detail page you can press
+					<span class="command"><strong>Dependencies...</strong></span> to see the resolved dependencies of the
+				project deployed to the process model version. You see the process model versions
+				that the current process model version requires. And also vice versa which process
+				model versions require the current process model version. </p>
+			<p>To change a resolved dependency select the dependency and press <span class="command"><strong>Edit
+					Selection</strong></span>. You can then select another version that fullfils the
+				dependency requirements.</p><div class="figure"><a name="d5e4018"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/EditProjectDependencies.png" alt="Project Dependencies"></div>
+				</div><p class="title">Figure&nbsp;6.7.&nbsp;Project Dependencies</p></div><p><br class="figure-break"></p>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-deployment" class="title" style="clear: both"><a name="administration.deployment"></a>Project Deployment </h2></div></div></div>
+    
+    <p>Project deployment means to take a project created in the Axon.ivy Designer and to load
+        it into a process model version, so that you can execute the project on the engine.</p>
+    <p>Before you begin with the deployment of a project make sure that you also have all
+        required projects either already deployed to the engine or available in the same folder or
+        in the same *.zip file as the major project. </p>
+    <p>
+        </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+            <p>It is highly recommended that you increase the version of your project each time
+                you want to deploy a new version of your project on the engine. This ensures that
+                you will not break currently running cases, and you have the possibility to go back
+                to the previous version if the new version does not work as expected. </p>
+            <p>Even though overwriting an already deployed project version (process model
+                version) with running cases is possible. It is at your own risk and should only be
+                done if you are aware of the possible consequences and ready to accept them. </p>
+        </div><p>
+    </p>
+    
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="administration-deployment-wizard" class="title"><a name="administration.deployment.wizard"></a>Deployment wizard</h3></div></div></div>
+        
+        <p>The deployment wizard can be started on the toolbar.</p><div class="figure"><a name="d5e4034"></a><div class="figure-contents">
+            
+            <div class="mediaobject"><img src="images/ServerAdministration/StartDeploymentWizard.png" alt="Command to Start the Deploment Wizard on the Toolbar"></div>
+        </div><p class="title">Figure&nbsp;6.8.&nbsp;Command to Start the Deploment Wizard on the Toolbar</p></div><p><br class="figure-break">
+        </p>
+        <p>On the first page of the wizard select the projects that you want deploy. The projects can
+            either be located on the server or on the client. If you select a folder then the wizard
+            searches all packed (ivy archive) or unpacked projects located below that folders. If you
+            select a *.zip file then the wizard searches all projects located inside the *.zip file. The
+            found projects will be displayed. Select the projects you want to deployed and press
+            <span class="command"><strong>Next</strong></span>.</p>
+        <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>Read the chapter <span class="italic">Deployment</span> in the Axon.ivy
+                Designer Guide to find out how to create a zip file that contains all files of a
+                project.</p>
+        </div>
+        <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>Read the chapter <span class="italic">Projects</span> in the Axon.ivy Designer
+                Guide to find information about ivy archives and how to export them.</p>
+        </div>
+        <div class="figure"><a name="d5e4047"></a><div class="figure-contents">
+            
+            <div class="mediaobject"><img src="images/ServerAdministration/DeploymentWizardFirstPage.png" alt="Deployment Wizard - Source"></div>
+        </div><p class="title">Figure&nbsp;6.9.&nbsp;Deployment Wizard - Source</p></div><br class="figure-break">
+        <p>On the second page of the wizard select the applications to which you want to deploy your
+            projects and press <span class="command"><strong>Next</strong></span>.</p><div class="figure"><a name="d5e4054"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/ServerAdministration/DeploymentWizardSecondPage.png" alt="Deployment Wizard - Target"></div>
+            </div><p class="title">Figure&nbsp;6.10.&nbsp;Deployment Wizard - Target</p></div><p><br class="figure-break"></p>
+        <p>On the third page of the wizard you see a preview of the actions the wizard will perform.
+            Note, that the wizard automatically choose the process model and process model version where
+            it deploys a project to. If everything is as you expect press <span class="command"><strong>Next</strong></span>. If
+            you do not like the automatically default behaviour press <span class="command"><strong>Previous</strong></span> and
+            then on the previous page <span class="command"><strong>Details</strong></span> to choose another configuration. More
+            information about process model and process model version can be found in the previous chapter.</p><div class="figure"><a name="d5e4063"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/ServerAdministration/DeploymentWizardThirdPage.png" alt="Deployment Wizard - Preview"></div>
+            </div><p class="title">Figure&nbsp;6.11.&nbsp;Deployment Wizard - Preview</p></div><p><br class="figure-break"></p>
+        <p>On the fourth page of the wizard the projects are validated. If no errors are found you
+            can press <span class="command"><strong>Next</strong></span>. If you get warnings please read them carefully and then
+            decide if you want to proceed or not.</p><div class="figure"><a name="d5e4070"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/ServerAdministration/DeploymentWizardForthPage.png" alt="Deployment Wizard - Validate"></div>
+            </div><p class="title">Figure&nbsp;6.12.&nbsp;Deployment Wizard - Validate</p></div><p><br class="figure-break"></p>
+        <p>On the last page of the wizard the projects are deployed. During the deployment a log is
+            written which contains information about the tasks that are executed. Press
+            <span class="command"><strong>Finish</strong></span> to close the wizard.</p><div class="figure"><a name="d5e4077"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/ServerAdministration/DeploymentWizardFifthPage.png" alt="Deployment Wizard - Deploy"></div>
+            </div><p class="title">Figure&nbsp;6.13.&nbsp;Deployment Wizard - Deploy</p></div><p><br class="figure-break"></p>
+    </div>
+    
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="administration-deployment-directory" class="title"><a name="administration.deployment.directory"></a>Deployment directory</h3></div></div></div>
+        
+        <p>Makes simple deployment of Axon.ivy projects to an Axon.ivy Engine possible by copying
+            the project into the deployment directory.</p>
+        <p>The deployment directory is by default the directory with the name 'deploy' in the
+            Axon.ivy Engine root directory. It can be altered trough the system property
+            'Deployment.Directory'.</p>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="administration-deployment-directory-files" class="title"><a name="administration.deployment.directory.files"></a>File based deployment</h4></div></div></div>
+            
+            <p>
+                </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                        <p>Ensure that the Axon.ivy Engine, to which the Axon.ivy project should
+                            be deployed, is up and running.</p>
+                    </li><li class="listitem">
+                        <p>Navigate to the sub directory in the deployment directory which
+                            matches the name of an already created Application on the Axon.ivy
+                            Engine.</p>
+                    </li><li class="listitem">
+                        <p>Copy an Axon.ivy project to deploy into the created application
+                            directory. The project must either be packed as ivy-archive (IAR) or ZIP
+                            or be contained in a file directory.</p>
+                    </li><li class="listitem">
+                        <p>Initialize the deployment by creating a new empty file with the name
+                            of the project file or directory plus the suffix '.doDeploy'. E.g. If
+                            you the project /deploy/MyApp/JsfWorkflowUi.iar has been copied in the
+                            previous step, the creation of the file
+                            /deploy/MyApp/JsfWorkflowUi.iar.doDeploy initializes the
+                            deployment.</p>
+                    </li><li class="listitem">
+                        <p>Wait until the file with the suffix '.doDeploy' disappears, it
+                            indicates that the deployment has finished.</p>
+                    </li><li class="listitem">
+                        <p>Determine whether the deployment was successful. If no file with
+                            suffix '.deploymentError' was created, the deployment has finished
+                            successfully. The detailed log is available in the file with suffix
+                            '.deploymentLog'.</p>
+                        <div class="table"><a name="d5e4102"></a><div class="table-contents">
+                            
+                            <table class="table table-bordered table-hover" summary="Deployment marker files"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>File suffix</th><th>Description</th></tr></thead><tbody><tr><td>.doDeploy</td><td>Initializes the deployment and is deleted when the
+                                            deployment process has finished</td></tr><tr><td>.deploymentLog</td><td>Contains the log output which is written during the
+                                            deployment</td></tr><tr><td>.deploymentError</td><td>Contains the error cause and is only written when the
+                                            deployment fails</td></tr></tbody></table>
+                        </div><p class="title">Table&nbsp;6.3.&nbsp;Deployment marker files</p></div><br class="table-break">
+                    </li></ol></div><p>
+            </p>
+        </div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="administration-deployment-directory-maven" class="title"><a name="administration.deployment.directory.maven"></a>Maven deployment</h4></div></div></div>
+            
+            <p>The Maven <a class="ulink" href="http://axonivy.github.io/project-build-plugin/" target="_top">project-build-plugin</a> makes automated continuous deployment to an
+                Axon.ivy Engine possible.</p>
+            <p>An Axon.ivy project can be deployed by invoking <a class="ulink" href="http://maven.apache.org" target="_top">Maven</a> with the <code class="code">deploy-iar</code> goal of the project-build-plugin.
+                To customize the deployment parameters, consult the goal documentation.</p>
+            <div class="sect4"><div class="titlepage"><div><div><h5 id="administration-deployment-directory-maven-cli" class="title"><a name="administration.deployment.directory.maven.cli"></a>Command line deployment</h5></div></div></div>
+                
+                <p>The 'deploy-iar' goal can be execute on the command line. The following
+                    example deploys the project 'myProject.iar' to the application 'Portal' of the
+                    Engine location under 'c:/axonivy/engine':</p>
+                <pre class="screen">mvn com.axonivy.ivy.ci:project-build-plugin:6.1.0-SNAPSHOT:deploy-iar -Divy.deploy.iarFile=myProject.iar -Divy.deploy.engine.dir=c:/axonviy/engine -Divy.deploy.engine.app=Portal</pre>
+            </div>
+            <div class="sect4"><div class="titlepage"><div><div><h5 id="administration-deployment-directory-maven-build" class="title"><a name="administration.deployment.directory.maven.build"></a>Build goal execution</h5></div></div></div>
+                
+                <p>To deploy an ivy-archive (IAR) during it's Maven build <a class="ulink" href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_top">lifecycle</a> configured an execution which binds the 'deploy-iar' goal
+                    to a phase in the projects pom.xml.</p>
+                <p>The following POM snippet deploys the current project to the application
+                    'Portal' of the Axon.ivy Engine under 'c:/axonivy/engine'.</p>
+                <pre class="screen">&lt;plugin&gt;
+	&lt;groupId&gt;com.axonivy.ivy.ci&lt;/groupId&gt;
+	&lt;artifactId&gt;project-build-plugin&lt;/artifactId&gt;
+	&lt;extensions&gt;true&lt;/extensions&gt;
+	&lt;executions&gt;
+		&lt;execution&gt;
+			&lt;id&gt;deploy.to.engine&lt;/id&gt;
+			&lt;goals&gt;&lt;goal&gt;deploy-iar&lt;/goal&gt;&lt;/goals&gt;
+			&lt;phase&gt;deploy&lt;/phase&gt;
+			&lt;configuration&gt;
+				&lt;deployToEngineApplication&gt;Portal&lt;/deployToEngineApplication&gt;
+				&lt;deployEngineDirectory&gt;c:/axonivy/engine&lt;/deployEngineDirectory&gt;
+			&lt;/configuration&gt;
+		&lt;/execution&gt;
+	&lt;/executions&gt;
+&lt;/plugin&gt;</pre>
+                <p>Further examples are documented on Github in the <a class="ulink" href="https://github.com/axonivy/project-build-examples/tree/6.1" target="_top">project-build-examples</a> repository.</p>
+            </div>
+        </div>
+    </div>
+</div>	
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-businesscalendar" class="title" style="clear: both"><a name="administration.businesscalendar"></a>Business Calendar</h2></div></div></div>
+    
+    <p>A business calendar defines the following three things:</p>
+    <p>
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>Days which are free of work. E.g. 25. December.</p>
+            </li><li class="listitem">
+                <p>Period in a Day which is working time. E.g. 08:00-17:00</p>
+            </li><li class="listitem">
+                <p>First Day of the Week. E.g. Monday</p>
+            </li></ul></div><p>
+    </p>
+    <p>Business calendars are used to calculate time periods in working time. For example a
+        period of 3 working days starting on Friday would end on Tuesday if Saturday and Sunday are
+        defined as free days. For more information consult the documentation of <span class="bold"><strong>ch.ivyteam.ivy.application.calendar.IBusinessCalendar</strong></span> in the
+        Public API.</p>
+    <p>Every application has at least one business calendar. The business calendars can be
+        configured using the<span class="bold"><strong> Configure Calendar Settings</strong></span> Button on
+        the Application Configuration screen.</p>
+    <p>Every environment can have its own default business calendar (see chapter <a class="link" href="administration.html#administration.environment.businesscalendar" title="Business Calendar">Environment Business
+            Calendar</a> ).</p>
+    <div class="mediaobject"><img src="images/ServerAdministration/CalendarConfiguration.png"></div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4161" class="title"><a name="d5e4161"></a>Business Calendar Definition</h3></div></div></div>
+        
+        <p>Business calendars are defined in a hierarchy. The children inherit all definitions of
+            all its parents. All business calendars must directly or indirectly inherit from the
+            Default business calendar.</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4164" class="title"><a name="d5e4164"></a>Start of Week</h3></div></div></div>
+        
+        <p>The<span class="italic"> Start of Week</span> defines the first day of a week.
+            In Switzerland and its neighbour countries this is Monday. In other countries like Great
+            Britain the week starts on Sunday.</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4168" class="title"><a name="d5e4168"></a>Working Time</h3></div></div></div>
+        
+        <p>The <span class="italic">Working Time</span> defines which time of a day is
+            working time. E.g. 08:00-12:00, 13:00-17:00</p>
+        <p>The working time applies to all days which are not defined as free days. It is not
+            possible to define different Working Times for different days.</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4173" class="title"><a name="d5e4173"></a>Free Days of Week</h3></div></div></div>
+        
+        <p>The <span class="italic">Free Days of Week</span> define at which days of the
+            week no work is done. E.g. Saturday, Sunday</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4177" class="title"><a name="d5e4177"></a>Free Days of Year</h3></div></div></div>
+        
+        <p>The <span class="italic">Free Days of Year</span> define at which days of the
+            year no work is done. These free days of the year will be free every year at the same
+            day. E.g. 1.1. (New Years Day), 25.12 (Christmas).</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4181" class="title"><a name="d5e4181"></a>Free Easter Relative Days</h3></div></div></div>
+        
+        <p>The <span class="italic">Free Easter Relative Days</span> define days of the
+            year no work is done. These free easter relative days will be free every year at another
+            day depending on the easter day. E.g. 0 (Easter Day), 1 (Easter Monday), -2 (Good
+            Friday).</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4185" class="title"><a name="d5e4185"></a>Free non-recurring Dates</h3></div></div></div>
+        
+        <p>The <span class="italic">Free non-recurring Dates</span> define non-recurring
+            days when no work is done. These free non-recurring days will only be free once. E.g.
+            7.12.1931.</p>
+    </div>
+</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-environments" class="title" style="clear: both"><a name="administration.environments"></a>Environments</h2></div></div></div>
+	
+	<p>This section briefly discusses the usage of environments in your projects .Developers
+		should have the possibility to configure multiple environments (pointing to an
+		infrastructure) and decide at runtime which environment should be used for the
+		application. For instance you can have a development environment, a test environment and
+		a productive environment. Here are some examples where environments can be used</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+				<p>Companies provide different environments for their software products, like
+					Development, Test and Productive. Each environment has its own
+					infrastructure including databases, web services and other connections used
+					by the project. </p>
+			</li><li class="listitem">
+				<p>Multi Client Capability. When the user logged into the system he can
+					choose the mandant (e.g. Company 1, Company 2, etc.) and works with the data
+					of the selected company. In the background the right databases connections,
+					web services and other services for the selected environment will be
+				used.</p>
+			</li></ul></div>
+	<p>If your projects use environments, you have to configure the respective environment
+		configurations on the engine. The first time you deploy an application that uses
+		environments, the environments of the project will automatically be added on the engine
+		as well. Each application manages his own environments. If you already define your
+		different environments in your project on the designer, you don't need to reconfigure
+		these environments on the engine again. This has the advantage that you can already test
+		different environments at design time, before you deploy your projects on the engine.
+		Each application contains a Default environment where all default values of the global
+		variables and default database configurations are defined. In addition to the default
+		environment, each application has one ore more user defined environments. </p>
+	<p>In order to change the environment for an application at runtime you must go to the
+		details of an application and change the active environment for that application and
+		press <span class="command"><strong>Set</strong></span></p>
+	<p></p>
+	<p>
+		</p><div class="figure"><a name="d5e4202"></a><div class="figure-contents">
+			
+			<div class="mediaobject"><img src="images/ServerAdministration/Environment_SetActiveEnvironment.png" alt="Set active environment for an application"></div>
+		</div><p class="title">Figure&nbsp;6.14.&nbsp;Set active environment for an application</p></div><p><br class="figure-break">
+	</p>
+	<p>Environments acts as a container for </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+				<p>Global Variables</p>
+			</li><li class="listitem">
+				<p>External Database Configurations</p>
+			</li><li class="listitem">
+				<p>Web Service Configurations</p>
+			</li><li class="listitem">
+				<p>REST Client Configurations</p>
+			</li><li class="listitem">
+				<p>Business Calendar Configurations</p>
+			</li></ul></div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-environments-configuration" class="title"><a name="administration.environments.configuration"></a>Configuration of environments</h3></div></div></div>
+		
+		<p>Environment configurations can be changed by double-click on the environment entry
+			in the list. You will see that the environment acts as a container for global
+			variables and external database configurations. The description of the environment
+			can be used to provide important infrastructure information about the server,
+			databases and other stuff, which can be relevant to other users.</p>
+		<p>
+			</p><div class="figure"><a name="d5e4223"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/Environment_Details.png" alt="Environment details"></div>
+			</div><p class="title">Figure&nbsp;6.15.&nbsp;Environment details</p></div><p><br class="figure-break">
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-environments-globalvariable" class="title"><a name="administration.environments.globalvariable"></a>Global Variables</h3></div></div></div>
+		
+		<p>Global Variables acts as global constants which can be used in your application.
+			Global Variables are simple Key/Value pairs which can be specified by the developer.
+			Some examples for global variables are:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+					<p>Company data (name, address, contacts)</p>
+				</li><li class="listitem">
+					<p>Simple Rule Values (e.g. credit account)</p>
+				</li><li class="listitem">
+					<p>Path values for saving files</p>
+				</li><li class="listitem">
+					<p>Path values for 3rd party systems and some other variables</p>
+				</li></ul></div>
+		<p>Global variables must be defined at design time. <span class="bold"><strong>It is not possible
+				to create new variables on the engine</strong></span>. Each variable has a default
+			value, configured at design time or in the default environment. In order to override
+			the values of global variables for a environment just double-click the variable
+			entry and override the values in the detail dialog. The default value of a global
+			variable must be set in the Default environment.</p>
+		<p></p>
+		<p>
+			</p><div class="figure"><a name="d5e4244"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/Environment_GlobalVariables.png" alt="Details of a global variable"></div>
+			</div><p class="title">Figure&nbsp;6.16.&nbsp;Details of a global variable</p></div><p><br class="figure-break">
+		</p>
+		<p>If the global variable is a default one, the system asks you to override the value
+			for the environment. If you press "yes" the value of the global variable is
+			overridden for the environment. You can always reset the global variable, by
+			pressing <span class="command"><strong>Reset to Default</strong></span>. </p>
+		<p></p>
+		<p>
+			</p><div class="figure"><a name="d5e4253"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/Environment_GlobalVariableQuestion.png" alt="Question to override the default value of the global variable"></div>
+			</div><p class="title">Figure&nbsp;6.17.&nbsp;Question to override the default value of the global variable</p></div><p><br class="figure-break">
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-externaldatabase" class="title"><a name="administration.externaldatabase"></a>External Databases</h3></div></div></div>
+		
+		<p>If your projects use external databases, you have to configure the respective database
+			connections on the engine. The first time you deploy a project that uses external
+			databases, the database configurations of the project will automatically be added on
+			the engine as well. Also available environment configurations which already done at
+			design time, will be added. Since you probably use a test database during
+			development and you want to use your production database on the engine, you can use
+			the different environments to set a different configurations. Overridden Database
+			configurations for an environment will be displayed with the icon <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_DatabaseIcon.png"></span>. Default database configurations or database configurations
+			which are not overridden for the environment will be displayed with the icon <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_DefaultDatabase.png"></span>.</p>
+		<p>To change the connection settings, select on the entry for a database in the list.
+			You will see the connection URL used to connect to the database in the selected
+			environment, the maximum number of connections, all currently open connections and
+			the last executed statements.</p>
+		<p>If the selected environment is not the default environment, and you select a
+			database configuration, which has no environment connection settings, you only can
+			configure it. If you press <span class="command"><strong>Configure</strong></span>, the system asks you to
+			override the database configuration for the selected environment. Press
+			<span class="command"><strong>Yes</strong></span> to override the database configuration for the environment.
+			You can always reset the database configuration to the default one, by pressing the
+			button <span class="command"><strong>Restore to Default</strong></span> in the detail dialog, or right click on
+			the database in the list and use the Menu item <span class="command"><strong>Restore to
+			Default</strong></span>.</p>
+		<p>
+			</p><div class="figure"><a name="d5e4274"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/Environment_Databases.png" alt="Databases"></div>
+			</div><p class="title">Figure&nbsp;6.18.&nbsp;Databases</p></div><p><br class="figure-break">
+		</p>
+		<p>You can directly edit the maximum number of connections that may be simultaneously
+			used. </p>
+		<p>To change the connection settings, press the <span class="command"><strong>Configure</strong></span> button
+			next to the driver and connection URL fields. This will bring up a dialog in which
+			you can configure the database product, driver, hostname, database, username,
+			password and additional connection properties.</p>
+		<div class="figure"><a name="d5e4282"></a><div class="figure-contents">
+			
+			<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_ExternalDbEditConnection.png" alt="Configuring the connection of an external database"></div>
+		</div><p class="title">Figure&nbsp;6.19.&nbsp;Configuring the connection of an external database</p></div><br class="figure-break">
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-webservices" class="title"><a name="administration.webservices"></a>Web Services</h3></div></div></div>
+		
+		<p>If your projects use web services, you have to configure the respective Web Service on the
+			engine. The first time you deploy a project that uses Web Services, the Web Service
+			configurations of the project will automatically be added on the engine as well. Also
+			available environment configurations which already done at design time, will be added.
+			Since you probably use a test environment during development and you want to use your
+			production environment on the engine, you can use the different environments to set a
+			different configurations. Overridden Web Service configurations for an environment will
+			be displayed with the icon: <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_WebServiceIcon.png"></span>. Default Web Service configurations or Web Service configurations
+			which are not overridden for the environment will be displayed with the icon <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_DefaultWebService.png"></span>. </p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_WebServices.png"></span></p>
+		<p>In order to edit a Web Service configuration just select the Web Service from the
+			list and the details of the selected Web Service will be displayed in the detail
+			panel. </p>
+		<div class="variablelist"><dl class="variablelist"><dt><span class="term">Name</span></dt><dd>
+					<p>The name of the Web Service. This attribute can not be modified on the engine.</p>
+				</dd><dt><span class="term">Description</span></dt><dd>
+					<p>An optional description of the Web Service. This attribute can note be modified on the
+						engine</p>
+				</dd><dt><span class="term">Use Authentication</span></dt><dd>
+					<p>The directory on the file system where all the files of this application and its process
+						models will be stored. You can specify an absolute directory (e.g.
+						C:/Data/IvyApps/App1 or /var/ivy/apps/app1) or a directory relative to
+						the engine's installation directory (e.g. apps/App1). The directory may
+						already exist, but it must be empty.</p>
+				</dd><dt><span class="term">Session Handling Mode</span></dt><dd>
+					<p>You can chose session handling mode for current configuration. There
+						are 3 modes available now: </p>
+					<p>
+						</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+								<p>
+									<span class="bold"><strong>NO </strong></span> there will be no
+									session handling when you use this configuration </p>
+							</li><li class="listitem">
+								<p>
+									<span class="bold"><strong>WSELEMENT </strong></span> invoking the
+									same service from the same "WS step" process entry existing
+									sessions will be reused</p>
+							</li><li class="listitem">
+								<p>
+									<span class="bold"><strong>APPLICATION </strong></span> Within ivy
+									applications whenever you invoke the same service existing
+									session will be reused</p>
+							</li></ul></div><p>
+					</p>
+				</dd><dt><span class="term">Authentication Type</span></dt><dd>
+					<p>You can chose a authentication Mode for current configuration. There
+						are 3 types available now: </p>
+					<p>
+						</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+								<p>
+									<span class="bold"><strong>HTTP BASIC </strong></span>Use the HTTP
+									basic authentication for the Web Service call </p>
+							</li><li class="listitem">
+								<p>
+									<span class="bold"><strong>HTTPS</strong></span> Use HTTPS transport
+								</p>
+							</li><li class="listitem">
+								<p>
+									<span class="bold"><strong>DIGEST </strong></span> Use DIGEST
+									authentication</p>
+							</li></ul></div><p>
+					</p>
+				</dd><dt><span class="term">Username</span></dt><dd>
+					<p>When authentication is used, this username will be applied to get
+						access to this web service. You can use IvyScripts in this field.</p>
+					<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+						<p> When you specify authentication in "WS step" process element,
+							these settings (Username and Password) will be overridden. Use
+							Scripts like "in.user" carefully, since you might use this WS entry
+							in multiple processes with different data types. </p>
+					</div>
+				</dd><dt><span class="term">Password</span></dt><dd>
+					<p>When authentication is used, the username above and this password will
+						be applied to get access to web service. IvyScript is also interpreted
+						in this field.</p>
+				</dd><dt><span class="term">Endpoint Addresses for Port Types</span></dt><dd>
+					<p>The name of the Web Service. This attribute can not be modified on the engine.</p>
+				</dd></dl></div>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-environment-rest-client" class="title"><a name="administration.environment.rest.client"></a>REST Clients</h3></div></div></div>
+		
+		<p>If your projects use REST Clients, you have to configure the respective REST Clients on the
+			engine. The first time you deploy a project that uses REST Clients, the REST Client
+			configurations of the project will automatically be added on the engine as well. Also
+			available environment configurations which already done at design time, will be added.
+			Since you probably use a test environment during development and you want to use your
+			production environment on the engine, you can use the different environments to set a
+			different configurations. Overridden REST Client configurations for an environment will
+			be displayed with the icon: <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_RestClientIcon.png"></span>. Default REST Client configurations or REST Client configurations
+			which are not overridden for the environment will be displayed with the icon <span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_DefaultRestClientIcon.png"></span>. </p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_RestClients.png"></span></p>
+		<p>In order to edit a REST Client configuration just select the REST Client from the list and
+		the details of the selected REST Client will be displayed in the detail panel. </p>
+		<p>
+			</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">UUID</span></dt><dd>
+						<p>Universal unique identifier of the REST Client. The REST
+							Client can be referenced by this uuid. Cannot be
+							modified.</p>
+					</dd><dt><span class="term">Name</span></dt><dd>
+						<p>The name of the REST Client. The REST Client can be referenced
+							by this name. Can be modified. Note that references using the
+							name will break if you change it.</p>
+					</dd><dt><span class="term">Description</span></dt><dd>
+						<p>Description of the REST Client.</p>
+					</dd><dt><span class="term">URI</span></dt><dd>
+						<p>The base URI under which the remote service publishes its
+							resources (e.g. https://api.twitter.com/1.1). </p>
+						<p>The URI can contain template placeholders which are resolved
+							later by the client user (e.g.
+							https://api.twitter.com/{version}).
+							</p><pre class="screen">ivy.rest.client("twitter").resolveTemplate("version", "1.1").get()</pre>
+						<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+							<p>To consume a REST service running in the same Axon.ivy
+								Engine / Application as the client a set of Axon.ivy
+								placeholders can be used. These placeholders are
+								automatically resolved: {ivy.engine.host},
+								{ivy.engine.http.port}, {ivy.engine.context},
+								{ivy.request.application}. </p>
+							<p>E.g.
+								<code class="code">http://{ivy.engine.host}:}{ivy.engine.http.port}/{ivy.engine.context}/api/{ivy.request.application}/my/service</code></p>
+						</div>
+					</dd><dt><span class="term">Authentication</span></dt><dd>
+						<p>
+							</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">HTTP Basic</span></dt><dd>
+										<p>Adds support for HTTP Basic authentication.</p>
+									</dd><dt><span class="term">HTTP Digest</span></dt><dd>
+										<p>Adds support for HTTP Digest authentication.</p>
+									</dd><dt><span class="term">Username</span></dt><dd>
+										<p>The name of the user used to authenticate the
+											client.</p>
+									</dd><dt><span class="term">Password</span></dt><dd>
+										<p>The password of the user used to authenticate the
+											client.</p>
+									</dd></dl></div><p>
+						</p>
+					</dd><dt><span class="term">Features</span></dt><dd>
+						<p>
+							</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">JSON</span></dt><dd>
+										<p>Adds a feature so that responses in JSON are mapped to
+											Java Objects and Java Objects in requests are mapped to
+											JSON.</p>
+									</dd><dt><span class="term">Features List</span></dt><dd>
+										<p>Shows the configured "features" classes. The classes
+											configured here are registered in the WebTarget using
+											the method <code class="code">register(Class)</code>. The classes
+											needs to implement a JAX-RS contract interface and must
+											have a default constructor.</p>
+									</dd><dt><span class="term">Add</span></dt><dd>
+										<p>Adds a new feature class. </p>
+									</dd><dt><span class="term">Remove</span></dt><dd>
+										<p>Removes the selected feature.</p>
+									</dd></dl></div><p>
+						</p>
+					</dd><dt><span class="term">Properties</span></dt><dd>
+						<p>
+							</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Properties Table</span></dt><dd>
+										<p>Properties can customize the settings of the REST
+											Client or one of its features. Well known properties of
+											the client are documented here: <a class="ulink" href="https://jersey.github.io/apidocs/latest/jersey/org/glassfish/jersey/client/ClientProperties.html" target="_top">org.glassfish.jersey.client.ClientProperties</a>.</p>
+										<p>The properties configured here are registered in the
+											WebTarget using the method <code class="code">property(String,
+												Object)</code>.</p>
+									</dd><dt><span class="term">Add</span></dt><dd>
+										<p>Adds a new property.</p>
+									</dd><dt><span class="term">Add Password</span></dt><dd>
+										<p>Adds a new password property. The value of a password
+											property is not visible in the table and is stored
+											decrypted in the configuration file.</p>
+									</dd><dt><span class="term">Remove</span></dt><dd>
+										<p>Removes the selected property.</p>
+									</dd></dl></div><p>
+						</p>
+					</dd></dl></div><p>
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-environment-businesscalendar" class="title"><a name="administration.environment.businesscalendar"></a>Business Calendar</h3></div></div></div>
+		
+		<p>Each environment can define its own default business calendar which is going to be used to
+			calculate time periods in working time if the environment is active. By default the
+			global default business calendar is set.</p>
+		<p>Business calendars are defined on the Application (see chapter <a class="link" href="administration.html#administration.businesscalendar" title="Business Calendar">Application Business
+				Calendar</a>)</p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/Environment_BusinessCalendar.png"></span></p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4472" class="title"><a name="d5e4472"></a>Export/Import Environment(s)</h3></div></div></div>
+		
+		<p>One or multiple environments can be exported into or be imported from a XML file. All
+			configurations that belong to the selected environments will be exported or imported
+			(see previous sub chapters). This can be used to transfer environment configurations
+			from one Axon.ivy Engine installation to another. It is even possible to modify the
+			exported XML before it is re-imported on the same or another engine. </p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/environment export.png"></span>
+			<span class="inlinemediaobject"><img src="images/ServerAdministration/environment import.png"></span></p>
+		<p>The files can be chosen from the local computer that the user is working on or
+			from the server. </p>
+		<p>Note, that the export/import log file does not have to be set. In any case, you
+			will see an graphical log of the results during the export or import.</p>
+		<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+			<p>The imported environment data has always precedence over the data in any
+				existing environments. Exactly speaking, the following rules apply:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+						<p>If a configuration exists both in the import file and in the
+							target environment, then the data for this configuration will be
+							taken from the import file.</p>
+					</li><li class="listitem">
+						<p>If a configuration exists in the import file but in the target
+							environment, then the configuration from the import file will be
+							created in the target environment.</p>
+					</li><li class="listitem">
+						<p>If a configuration does not exist in the import file but exists in
+							the target environment, then the configuration in the target
+							environment will be deleted.</p>
+					</li><li class="listitem">
+						<p>If a configuration is defined in the import file but does not have
+							a corresponding default configuration in the target application then
+							nothing happens.</p>
+					</li><li class="listitem">
+						<p>If the import file contains an environment that does not exist in
+							the target application, this environment is not imported.</p>
+					</li></ul></div>
+		</div>
+	</div>
+</div>
+
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-usersandroles" class="title" style="clear: both"><a name="administration.usersandroles"></a>Users and Roles</h2></div></div></div>
+		
+		<p>Roles and users are always configured per application. On the application details
+			panel, you will find a group <span class="command"><strong>Security System</strong></span>. There the number of all
+			existing users and roles are shown. </p>
+		<p>If you are using an external security system such as <span class="emphasis"><em>Microsoft Active
+				Directory</em></span> you can force a
+			synchronization with the directory using the <span class="command"><strong>Synchronize</strong></span> button. To
+			change the connection and import configuration, press the <span class="command"><strong>Edit...</strong></span> button.</p><div class="figure"><a name="d5e4505"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_AppSecuritySystem.png" alt="Overview of roles and users"></div>
+			</div><p class="title">Figure&nbsp;6.20.&nbsp;Overview of roles and users</p></div><p><br class="figure-break"></p>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-users" class="title"><a name="administration.users"></a>User list</h3></div></div></div>
+			
+			<p>When clicking the <span class="command"><strong>Show...</strong></span> button next to number of users,
+				you will be presented with a list of all existing users. You can create, edit
+				and delete users. You can also set roles and permissions of any users
+				individually.</p>
+			<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+				<p>When using Microsoft Active Directory or Novell eDirectory as security system, you will
+					not be able to create, edit or delete users. All these tasks need to be
+					performed on the Active Directory or eDirectory directly and will then be synchronized with
+					Axon.ivy.</p>
+			</div>
+			<p>
+				</p><div class="figure"><a name="d5e4519"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_Users.png" alt="List of all users"></div>
+				</div><p class="title">Figure&nbsp;6.21.&nbsp;List of all users</p></div><p><br class="figure-break">
+			</p>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4524" class="title"><a name="d5e4524"></a>Creating a New User</h4></div></div></div>
+					
+					<p>To create a new user press the <span class="command"><strong>Create...</strong></span> button. Enter
+						the information for the new user (the username must be unique within the
+						application). All other fields are optional.</p>
+					<div class="figure"><a name="d5e4528"></a><div class="figure-contents">
+						
+						<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_NewUser.png" alt="Creating a new user"></div>
+					</div><p class="title">Figure&nbsp;6.22.&nbsp;Creating a new user</p></div><br class="figure-break">
+					<p>For the email notification settings you can decide whether the user uses
+						the defaults defined by the application (they are shown in light gray if you
+						choose so) or whether you want to define specific settings for the user.
+						Note that each user can manipulate these settings in the <span class="command"><strong>Workflow
+							UI</strong></span>. </p>
+				</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4535" class="title"><a name="d5e4535"></a>Email Notification Settings</h4></div></div></div>
+    
+    <p>It is possible to be notified if a new task is created that is related to you (either by direct assignment or by assignment to a role you own). Furthermore, a daily digest mail with a summary of all open tasks can be sent to you by Axon.ivy. </p>
+    <p>
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Which language should be used for the emails</span></dt><dd>
+                    <p>Choose in which language you would like to receive the emails. If your
+                        preferred language is not contained, please contact your Axon.ivy
+                        administrator.</p>
+                </dd><dt><span class="term">Never (disable email notification)</span></dt><dd>
+                    <p>You can switch off the sending of all notification mails by ticking this
+                        checkbox. If you do so, you cannot set the other options.</p>
+                </dd><dt><span class="term">When a new task for me or one of my roles is created</span></dt><dd>
+                    <p>If this is set, you will receive a notification email whenever a new task
+                        is created that is assigned either directly to you or to one of the roles
+                        you own.</p>
+                </dd><dt><span class="term">Daily Summary on</span></dt><dd>
+                    <p>Choose the days on which you want to receive an email with a summary of
+                        all your open tasks.</p>
+                </dd></dl></div><p>
+        </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+            <p>If you want that temporary no mails are sent (e.g. for holidays), then just tick the <span class="command"><strong>Never</strong></span> checkbox. The email sending is now switched off, but the previous settings are still stored. As soon as you untick the <span class="command"><strong>Never</strong></span> check box, your standard configuration is back again.</p>
+        </div><p>
+    </p>
+</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4562" class="title"><a name="d5e4562"></a>Editing an Existing User</h4></div></div></div>
+					
+					<p>You can change the details of an existing user by pressing the
+							<span class="command"><strong>Edit...</strong></span> button. You can change all fields except the
+						username. If the password field is left blank, it will not be changed.
+						Otherwise the password of the user will be overwritten with the new value of
+						the password field.</p>
+				</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4566" class="title"><a name="d5e4566"></a>Deleting a User</h4></div></div></div>
+					
+					<p>To delete a user, press the <span class="command"><strong>Delete...</strong></span> button and
+						confirm the deletion.</p>
+					<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+						<p>Deleting a user will change the state of all tasks, for which the user
+							is currently responsible, to <span class="command"><strong>UNASSIGNED</strong></span>! </p>
+						<p>All those tasks must be reassigned to another user or role by a
+							workflow administrator or they will never be finished.</p>
+					</div>
+				</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4574" class="title"><a name="d5e4574"></a>Edit roles</h4></div></div></div>
+					
+					<p>Click the <span class="command"><strong>Roles...</strong></span> button to change the roles of a
+						user. </p>
+					<p>You can add a role to a user by selecting the role from the list and then
+						pressing <span class="command"><strong>Add</strong></span>. To remove a role, select it and press
+							<span class="command"><strong>Remove</strong></span>. </p>
+					<p>Some roles may not be editable. This can have multiple reasons: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+								<p>The role may be <span class="emphasis"><em>inherited</em></span> (indicated by a
+									grey checkbox and the text Inherited). A role is inherited if it
+									is not explicitly set, but the user owns a sub role (see
+									example: Role 1 is inherited because user owns Role 1.1 and Role
+									1.3).</p>
+							</li><li class="listitem">
+								<p>You are using an external security system (e.g. ADS). In this
+									case, you can not edit roles that are linked to a group on the
+									directory server. To add such a role, add the user to the
+									corresponding group on the directory server.</p>
+							</li></ul></div>
+					<div class="figure"><a name="d5e4588"></a><div class="figure-contents">
+						
+						<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_RolesOfUser.png" alt="Manage roles of a user"></div>
+					</div><p class="title">Figure&nbsp;6.23.&nbsp;Manage roles of a user</p></div><br class="figure-break">
+				</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4593" class="title"><a name="d5e4593"></a>Properties</h4></div></div></div>
+					
+					<p>In this dialog it is possible to manipulate the properties of all users.
+						Properties are key/value pairs that can be accessed at runtime trough
+						IvyScript. If using the internal security system of Axon.ivy (see <a class="link" href="administration.html#administration.externalsecuritysystem" title="Configuring an External Security System">Configuring
+							an External Security System</a> for more information), then creation,
+						editing and deletion are supported for all properties. If the users are
+						synchronized with an external data source such as an <span class="command"><strong>MS Active
+							Directory</strong></span> and a mapping between attributes from the
+						corresponding user in the external system to the properties of the Axon.ivy
+						user is configured, then editing and deletion of such properties is usually
+						prohibited by the external security system and therefore not possible within
+						Axon.ivy. Just use the interface to the external security system to
+						manipulate the attributes directly there.</p><div class="figure"><a name="d5e4598"></a><div class="figure-contents">
+							
+							<div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;"><tr><td valign="middle"><img src="images/ServerAdministration/AdminTool_UserProperties.png" alt="User properties"></td></tr></table></div>
+						</div><p class="title">Figure&nbsp;6.24.&nbsp;User properties</p></div><p><br class="figure-break"></p>
+					<p>Just use the <span class="emphasis"><em>Add</em></span> button to create new properties, the
+							<span class="italic">Edit</span> button to manipulate the
+						property value and the <span class="emphasis"><em>Delete</em></span> button to remove the
+						property again. Note, that editing of the value can be done directly in the
+						table.</p>
+				</div>
+				<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4607" class="title"><a name="d5e4607"></a>Edit Permissions / System Permissions</h4></div></div></div>
+					
+					<p>You can edit the permissions of a user by selecting the user and clicking
+							<span class="command"><strong>Permissions...</strong></span> or <span class="command"><strong>System
+						Permissions...</strong></span> respectively.</p>
+					<p>See section <a class="link" href="administration.html#administration.permissions" title="Permissions">Permissions</a> for more information.</p>
+				</div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4614" class="title"><a name="d5e4614"></a>Roles</h3></div></div></div>
+			
+			<p>Press the <span class="command"><strong>Show...</strong></span> button next to the number of roles on the
+				Security System section of an application to see a list of all existing roles. </p>
+			<p>The roles are defined in the projects that you deploy in your application. <span class="emphasis"><em>You
+					can not add or delete roles on the engine!</em></span>
+			</p>
+			<p>The list shows the roles with their name plus, if available, the external security
+				name in square brackets.</p>
+			<p>
+				</p><div class="figure"><a name="d5e4622"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_Roles.png" alt="List of all roles"></div>
+				</div><p class="title">Figure&nbsp;6.25.&nbsp;List of all roles</p></div><p><br class="figure-break">
+			</p>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4627" class="title"><a name="d5e4627"></a>Users of a Role</h4></div></div></div>
+				
+				<p>To add or remove users of a role, click the <span class="command"><strong>Users...</strong></span>
+					button. You should now see a list of users not owning the role on the left and a
+					list of user that do own the role on the right. You can move users with the
+					buttons in the middle from one list to another.</p>
+				<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+					<p>When a user only inherits a role by owning a sub role thereof, the user
+						will appear in the list of users <span class="emphasis"><em>not owning</em></span> the role.</p>
+					<p>When a role is linked to a group in an external security system, you will not be able to
+						edit the users of a role. </p>
+				</div>
+				<div class="figure"><a name="d5e4635"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_UsersOfRole.png" alt="Users of a role"></div>
+				</div><p class="title">Figure&nbsp;6.26.&nbsp;Users of a role</p></div><br class="figure-break">
+			</div>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4640" class="title"><a name="d5e4640"></a>Edit Permissions / System permissions</h4></div></div></div>
+				
+				<p>You can edit the permissions of a role by selecting a role and clicking
+						<span class="command"><strong>Permissions...</strong></span> or <span class="command"><strong>System
+					Permissions...</strong></span> respectively.</p>
+				<p>See section <a class="link" href="administration.html#administration.permissions" title="Permissions">Permissions</a> for more information.</p>
+			</div>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4647" class="title"><a name="d5e4647"></a>External Security Name</h4></div></div></div>
+				
+				<p>If you are using an external security system (e.g. Microsoft Active Directory) then you
+					can link an Axon.ivy <span class="italic">role</span> to a <span class="italic">group</span> or another <span class="italic">structural
+						node</span> (e.g. Organisation Unit) on the directory server. If a
+						<span class="italic">group</span> is selected then all users that are
+					members of this <span class="italic">group</span> will automatically
+					receive the associated Axon.ivy <span class="italic">role</span>. If a
+						<span class="italic">structural node</span> is selected then all
+					users located below the <span class="italic">structural node</span> will
+					automatically receive the associated Axon.ivy <span class="italic">role</span>.</p>
+				<p>Press <span class="command"><strong>External security name</strong></span> to edit or browse the name of the
+						<span class="italic">group</span> or <span class="italic">structural node</span> whose users should receive the selected
+					Axon.ivy <span class="italic">role</span>. </p>
+			</div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-permissions" class="title"><a name="administration.permissions"></a>Permissions</h3></div></div></div>
+			
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4666" class="title"><a name="d5e4666"></a>Permission Kinds</h4></div></div></div>
+				
+				<p> There are two kinds of permissions: </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">System Permissions</span></dt><dd>
+								<p>System permissions are valid system wide, e.g. on the whole engine.</p>
+							</dd><dt><span class="term">Permissions</span></dt><dd>
+								<p>Regular permissions are valid only within the application for
+									which they are defined.</p>
+							</dd></dl></div>
+			</div>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e4678" class="title"><a name="d5e4678"></a>Assignment of Permissions</h4></div></div></div>
+				
+				<p>You can assign different permissions and system permissions to each user or
+					role. </p>
+				<p>A permission can either be granted, denied or unspecified (not granted). The
+					actual permissions of an user depend on the permissions set on the user itself
+					and the permissions set on all roles that the user owns. </p>
+				<p>Grant permissions take precedence over Deny permissions, if set on the same
+					level. On a user, inherited permissions can be overridden with an explicit Grant
+					or Deny.</p>
+				<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+					<p>Inherited Deny permissions have no effect if the user has an explicit
+						Grant permission or another role on which the permission is Granted.
+						Explicit permissions always take precedence over inherited
+					permissions.</p>
+				</div>
+				<p>
+					</p><div class="figure"><a name="d5e4686"></a><div class="figure-contents">
+						
+						<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_Permissions.png" alt="Editing the permissions of a user"></div>
+					</div><p class="title">Figure&nbsp;6.27.&nbsp;Editing the permissions of a user</p></div><p><br class="figure-break">
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-systemproperties" class="title" style="clear: both"><a name="administration.systemproperties"></a>System Properties</h2></div></div></div>
+		
+		<p>System properties are engine wide settings and are therefore valid for all applications. Be
+			careful when changing those settings, since some particular combinations of settings may
+			stop the engine from working properly.</p>
+		<p>The system properties can be accessed through the button <span class="command"><strong>System
+				Properties</strong></span> in the <span class="command"><strong>Engine</strong></span> section of the left navigation
+			bar.</p>
+		<p>
+			</p><div class="figure"><a name="d5e4698"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_SystemProperties.png" width="486" alt="Overview of system properties"></div>
+			</div><p class="title">Figure&nbsp;6.28.&nbsp;Overview of system properties</p></div><p><br class="figure-break">
+		</p>
+		<p>To change any properties, select the corresponding row in the table and press the
+				<span class="command"><strong>Edit</strong></span> button or simply double-click on the row.</p>
+		<p>
+			</p><div class="figure"><a name="d5e4706"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_SystemPropertiesEdit.png" alt="Editing a system property"></div>
+			</div><p class="title">Figure&nbsp;6.29.&nbsp;Editing a system property</p></div><p><br class="figure-break">
+		</p>
+		<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+			<p>Some settings may not take effect until you restart the engine.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4713" class="title"><a name="d5e4713"></a>Data Cache </h3></div></div></div>
+			
+			<p>Use the system property <code class="code">DataCache.InvalidationJob.Interval</code> to configure the
+				time in seconds between two executions of the job that invalidates expired data
+				cache entries.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-systemproperties-emailserver" class="title"><a name="administration.systemproperties.emailserver"></a>Email Server </h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">EMail.Server.*</code> to configure a SMTP mail
+				server that is used to send mails. The available properties are similar to the Email
+				preferences of the designer. For more information see Designer Guide &gt; Introduction
+				&gt; Axon.ivy Preferences (Workspace Preferences) &gt; Email Settings.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4721" class="title"><a name="d5e4721"></a>Errors</h3></div></div></div>
+			
+			<p>Use the system property <code class="code">Errors.ShowDetailsToEndUser</code> to configure wether
+				details about an error should be shown to an end user. For security reasons no
+				details should be shown. For debugging reasons this option could be turned on
+				temporary. For more information see <a class="link" href="configuration.html#configuration.errorhandling.showdetails" title="Show Error Details to End Users">Show Error Details to End
+					Users</a>.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4726" class="title"><a name="d5e4726"></a>Process Engine Firing Statistic</h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">ProcessEngine.FiringStatistic.*</code> to configure the
+				process element performance statistic. For more details see <a class="link" href="monitoring.html#monitoring.performancestatistic" title="Process Element Performance Statistic and Analysis">Process Element Performance Statistic
+					and Analysis</a>.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-systemproperties-sslclient" class="title"><a name="administration.systemproperties.sslclient"></a>SSL Client</h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">SSL.Client.*</code> to configure the key and trust
+				store used for the client side of SSL connections. The available properties are
+				similar to the SSL Client preferences of the designer. For more information see
+				Designer Guide &gt; Introduction &gt; Axon.ivy Preferences (Workspace Preferences) &gt; SSL
+				Client Settings.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4735" class="title"><a name="d5e4735"></a>System Work Directory</h3></div></div></div>
+			
+			<p>Use the system property <code class="code">System.WorkDirectory</code> to configure the
+				directory where temporary work files are stored.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4739" class="title"><a name="d5e4739"></a>System Database Cache</h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">SystemDb.Cache.*</code> to configure how many and how long
+				entities from the system database are cached in memory.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4743" class="title"><a name="d5e4743"></a>System Tasks</h3></div></div></div>
+			
+			<p>Use the system property <code class="code">SystemTask.SearchJob.Interval</code> to configure
+				the time in seconds between two executions of the System Task Search Job. The job
+				searches system tasks that were not executed because of failures and initiate their
+				execution.</p>
+			<p>Use the system property <code class="code">SystemTask.Failure.Behaviour</code> to configure the
+				behaviour in case a System Task execution fails. A system task is a task that is
+				executed by the system.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4749" class="title"><a name="d5e4749"></a>Thread Pool</h3></div></div></div>
+			
+			<p>Use the system property <code class="code">ThreadPool.*.CorePoolSize</code> to configure the
+				number of threads that are at least used in the thread pool.</p>
+			<p>Use the system property <code class="code">ThreadPool.*.MaximumPoolSize</code> to configure the
+				maximum number of threads that are used in the thread pool. This property is not
+				available for fixed sized thread pools.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4755" class="title"><a name="d5e4755"></a>Update Checker</h3></div></div></div>
+			
+			<p>Use the system property <code class="code">UpdateChecker.Enabled</code> to configure if the update
+				checker is enabled or disabled. The update checker checks if a new update release is
+				available. It also sends some statistic information to the vendor. For more details
+				see <a class="link" href="misc.html#misc.updatenotification" title="Update Notification">Update Notification</a>.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4760" class="title"><a name="d5e4760"></a>Web Server</h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">WebServer.AJP.*</code> to configure the AJP
+				protocol used for the communication between IIS or Apache web server and the
+				Axon.ivy Engine. For more information see <a class="link" href="integration.html" title="Chapter&nbsp;5.&nbsp;Integration">Integration</a>.</p>
+			<p>Use the system properties <code class="code">WebServer.HTTP.*</code> to configure the HTTP
+				protocol used for the communication with Web Browsers and Rich Dialog
+				clients.</p>
+			<p>Use the system properties <code class="code">WebServer.HTTPS.*</code> to configure the HTTPS
+				protocol used for the communication with Web Browsers and Rich Dialog
+				clients.</p>
+			<p>Use the system properties <code class="code">WebServer.External*</code> and
+					<code class="code">WebServer.IvyContextName</code> to configure the external host name, port
+				and protocol used to provide links in mails. For more information see <a class="link" href="integration.html#integration.external.url" title="Update external base URL">Update external base URL</a>.</p>
+			<p>Use the system property <code class="code">WebServer.WellKnownServerPorts</code> to configure
+				additionally well known external web servers that forwards requests to Axon.ivy
+				engine. Format is <code class="code">host:protocol=port, host:protocol=port, ...</code> .
+				Example: <code class="code">developer.axonivy.com:http=80,
+				developer.axonivy.com:https=443</code>.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4777" class="title"><a name="d5e4777"></a>Elasticsearch configuration</h3></div></div></div>
+			
+			<p>Use the system properties <code class="code">Elasticsearch.*</code> to configure the bundled or external
+				Elasticsearch server installation. For more details, see <a class="link" href="installation.html#installation.elasticsearch" title="Elasticsearch installation">Elasticsearch installation</a>.</p>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="administration-serverinfos" class="title" style="clear: both"><a name="administration.serverinfos"></a>Engine infos</h2></div></div></div>
+		
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-runtimeinformation" class="title"><a name="administration.runtimeinformation"></a>Runtime information</h3></div></div></div>
+			
+			<p>Pressing the button <span class="command"><strong>Information</strong></span> in the <span class="command"><strong>Engine</strong></span> section
+				of the left navigation bar will provide you with runtime information about the
+				engine. This includes memory usage and stack-traces for all running threads.</p>
+			<p>
+				</p><div class="figure"><a name="d5e4790"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_Runtime.png" alt="Runtime information"></div>
+				</div><p class="title">Figure&nbsp;6.30.&nbsp;Runtime information</p></div><p><br class="figure-break">
+			</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-about" class="title"><a name="administration.about"></a>About</h3></div></div></div>
+			
+			<p>Pressing the button <span class="command"><strong>About</strong></span> in the <span class="command"><strong>Engine</strong></span> section of
+				the left navigation bar will provide you with information about the version of
+				Axon.ivy Engine and your operating system. </p>
+			<p>
+				</p><div class="figure"><a name="d5e4801"></a><div class="figure-contents">
+					
+					<div class="mediaobject"><img src="images/ServerAdministration/AdminTool_About.png" alt="About"></div>
+				</div><p class="title">Figure&nbsp;6.31.&nbsp;About</p></div><p><br class="figure-break">
+			</p>
+		</div>
+	</div>
+
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="ServerAdministration-htmlworkflowui" class="title" style="clear: both"><a name="ServerAdministration.htmlworkflowui"></a>HTML Workflow UI</h2></div></div></div>
+	
+	<p>Axon.ivy does not provide a User Interface to manage tasks. There are APIs to access and
+		manipulate the tasks of an application. But the user interface to access the tasks must be
+		implemented according to the needs of the application. </p>
+	<p>This chapter describes the possibilities which can be used in a HTML based Axon.ivy web
+		application. For RIA based task management please consult the RIA Workflow UI documentation. </p>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4810" class="title"><a name="d5e4810"></a>Replacement Project</h3></div></div></div>
+		
+		<p>In a HTML based workflow application there are certain pages displayed depending on the
+			state of your application and/or workflow. You can override these default pages for each of
+			your applications, to adopt it to your needs. </p>
+		<p>For each kind of page there is a predefined process start signature, which allows you
+			to render the page in your own process instead of using the default page. The following
+			table shows which signature is needed to override each type of page.</p>
+		<p>
+			</p><div class="table"><a name="d5e4815"></a><div class="table-contents">
+				
+				<table class="table table-bordered table-hover" summary="Default Pages"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Page</th><th>Description</th><th>Process Start Signature</th></tr></thead><tbody><tr><td>Application Home</td><td>Home Page of the application. </td><td>DefaultApplicationHomePage()</td></tr><tr><td>Task List</td><td>Contains a list of all Tasks the currently logged in user can
+								work on.</td><td>DefaultTaskListPage()</td></tr><tr><td>Process Start List</td><td>Contains a list of all Processes the currently logged in user can
+								work on.</td><td>DefaultProcessStartListPage()</td></tr><tr><td>End</td><td>Is displayed whenever a Task or Process ends</td><td>DefaultEndPage(Number endedTaskId)</td></tr><tr><td>Login</td><td>Is displayed whenever an authenticated user is required and none
+								is available</td><td>DefaultLoginPage(String originalUrl)</td></tr></tbody></table>
+			</div><p class="title">Table&nbsp;6.4.&nbsp;Default Pages</p></div><p><br class="table-break">
+		</p>
+		<p>How to override the default pages: </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					<p>To override the pages create one project containing all processes with the
+						overriding signatures.</p>
+				</li><li class="listitem">
+					<p>
+						<a class="link" href="administration.html#administration.deployment" title="Project Deployment">Deploy this
+							project</a> to the application for which you want to override the
+						behaviour. </p>
+				</li><li class="listitem">
+					<p>Configure the application to use the deployed project to override the
+						default pages. For more details see <a class="link" href="administration.html#administration.applicationdefaults" title="Application Default Settings">Application
+							Default Settings</a>. </p>
+				</li></ol></div>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4857" class="title"><a name="d5e4857"></a>Application Home Page replacement</h3></div></div></div>
+		
+		<p>By default Axon.ivy shows a page which simply says hello to the user.</p>
+		<p>Use a Request Start with the signature <span class="italic">DefaultApplicationHomePage()
+			</span>to overwrite this behaviour. </p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultApplicationHomePage_Signature.png"></span></p>
+		<p>This Request Start must either lead to an Web Page Element or an End Page Element. </p>
+		<p>
+			<span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultApplicationHomePage_example.png"></span>
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4871" class="title"><a name="d5e4871"></a>Task List Page replacement</h3></div></div></div>
+		
+		<p>By default this page displays all tasks the currently logged in user can work on. You can
+			override this page to adopt it to your look and feel or to display your own list of
+			tasks.</p>
+		<p>Use a Request Start with the signature <span class="italic">DefaultTaskListPage()
+			</span>to overwrite this behaviour. </p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultTaskListPage_Signature.png"></span></p>
+		<p>This Request Start must either lead to an Web Page Element or an End Page Element. </p>
+		<p>
+			<span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultTaskListPage_example.png"></span>
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4885" class="title"><a name="d5e4885"></a>Process Start List Page replacement</h3></div></div></div>
+		
+		<p>By default this page displays all Processes the currently logged in user can work on. You
+			can override this page to adopt it to your look and feel or to display your own list of
+			process starts.</p>
+		<p>Use a Request Start with the signature <span class="italic">DefaultProcessStartListPage()
+			</span>to overwrite this behaviour.</p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultProcessStartListPage_Signature.png"></span></p>
+		<p>This Request Start must either lead to an Web Page Element or an End Page Element.</p>
+		<p>
+			<span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultProcessStartListPage_example.png"></span>
+		</p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4899" class="title"><a name="d5e4899"></a>End Page replacement</h3></div></div></div>
+		
+		<p>By default Axon.ivy will show a page which says "You have successfully finished the task", when a task is finished and the process does not define a specific End Page. </p>
+		<p>Use a Request Start with the signature <span class="italic">DefaultEndPage(Number
+				endedTaskId) </span>to overwrite this behaviour</p>
+		<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultEndPage_Signature.png"></span></p>
+								<p>This Request Start must either lead to an Web Page Element or an End Page Element.</p>
+								<p>
+									<span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultEndPage_example.png"></span>
+								</p>
+							
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4913" class="title"><a name="d5e4913"></a>Login Page replacement</h3></div></div></div>
+		
+		<p>By default Axon.ivy will show a simple login page, whenever a login is required. The page allows you to login with username and password and then redirects you to the original URL requested. </p>
+		<p>Use a Request Start  with the Signature <span class="italic">DefaultLoginPage(String originalUrl) </span> to overwrite this behaviour</p>
+								<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultLoginPage_Signature.png"></span></p>
+								<p>This Request Start must lead to an activity which does login a user. Normally this is done using a dialog which asks for username and password. But you are free to do anything to identify the user.</p>
+								<p>Normally the process should lead to an End Page which redirects to the original requested url. But you are free to do anything after the user is logged in.</p>
+								<p><span class="inlinemediaobject"><img src="images/ServerAdministration/concepts_DefaultLoginPage_example.png"></span></p>
+	</div>
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e4928" class="title"><a name="d5e4928"></a>Sample HTML Workflow UI Project</h3></div></div></div>
+		
+		<p>Axon.ivy Engine is delivered with a sample HTML Workflow UI project. You can find it in the installation directory in the folder <span class="italic">projects/HtmlWfUi</span>. </p>
+		<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p> We suggest to adopt the sample project to your needs and use it as described above instead of creating a new project from scratch. </p></div>
+		<p>If you want to use the sample project as it is, consult the section <a class="link" href="administration.html#adminisrator.createapplication" title="Create new application">create a new application</a>.</p>
+	</div>
+</div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="administration-emailnotification" class="title" style="clear: both"><a name="administration.emailnotification"></a>Email Notification</h2></div></div></div>
+    
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-emailnotification-overview" class="title"><a name="administration.emailnotification.overview"></a>Overview</h3></div></div></div>
+		
+		<p>Axon.ivy Engine can send out email notifications on user task changes. These emails
+			contain information on tasks that are available for users to work on. Notification
+			subscriptions are configurable and the email content can be highly customized. In order to
+			understand how it generally works it is recommended to read this section. This feature works
+			only on engine versions, not in the Axon.ivy Designer. There are two types of notification
+			emails: </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">New Task</span></dt><dd>
+						<p>One email is sent when a new task is available (created, inherited,
+							assigned) for a given user </p>
+					</dd><dt><span class="term">Daily Summary</span></dt><dd>
+						<p>One email is sent daily with a summary of all open tasks are available
+							(created, inherited, assigned) for given user</p>
+					</dd></dl></div><p>Whether a user receives email notifications or not depends on application and
+			user configurations. Engine administrators can set up initial settings for both notification
+			types at user creation (see <a class="link" href="administration.html#administration.applicationdefaults" title="Application Default Settings">Application Default Settings</a>). Later, users can specify their own notification
+			settings using WorkflowUI (see WorkflowUI documentation). Email notification messages are
+			created by the system and sent as email messages. Therefore make sure, that SMTP settings
+			are set up correctly, check it in the <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System properties</a> of your
+			application. </p>
+		<p>Axon.ivy supports own email notification processes to influence the content of the
+			emails. In case you set up such a notification process, then this process will be executed
+			before the notification email is sent. There are two types of email notification processes:</p>
+		<div class="variablelist"><dl class="variablelist"><dt><span class="term">New Task Mail Notification Process</span></dt><dd>
+						<p>This process provides the email content for new task notification
+						emails.</p>
+					</dd><dt><span class="term">Daily Summary Mail Notification Process</span></dt><dd>
+						<p>This process provides the email content for daily summary notification
+							emails.</p>
+					</dd></dl></div><p> Mentioned notification processes will be executed, and their HTML result
+			will be used as email content.</p>
+	</div>
+	
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-emailnotification-design" class="title"><a name="administration.emailnotification.design"></a>Process Design</h3></div></div></div>
+		
+		<p>Email Notification Process are used to customize the design and contnet of the mails sent 
+		if the standard mail notification is not proper for your company.
+		It is advised to prepare the important details you want to display in the
+		notification mails and prepare some screen designs as well.</p>
+		<p>Quick overview how to create notification processes:</p>
+		<p>
+			</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Open designer</span></dt><dd>
+						<p>Start Axon.ivy designer</p>
+					</dd><dt><span class="term">Create mail notification process</span></dt><dd>
+						<p>Create new process(-es) which provide email content for your notification
+							mail.</p>
+					</dd><dt><span class="term">Deploy</span></dt><dd>
+						<p><a class="link" href="administration.html#administration.deployment" title="Project Deployment">Deploy project
+								library</a> as process model and PMV on your Axon.ivy Engine</p>
+					</dd><dt><span class="term">Configure notification</span></dt><dd>
+						<p>Configure Axon.ivy Engine to use notification process(-es) for mail
+							notification. For more details see <a class="link" href="administration.html#administration.applicationdefaults" title="Application Default Settings">Application Default Settings</a>.</p>
+					</dd><dt><span class="term">Backup</span></dt><dd>
+						<p>Make sure that your process models and PMV-s are backuped, just like your
+							System DB, so that in case of some hardware failure your Axon.ivy Engine
+							can be restored easily.</p>
+					</dd></dl></div><p>
+		</p>
+		<p>More detailed description of non trivial steps are documented in the following section.</p>
+		<p><span class="bold"><strong>Create mail notification process</strong></span></p>
+		<p>Create a normal process within your fresh Axon.ivy project. Place some process start
+			element(-s), and put a simple process together. This process should display an HTML page,
+			preferably using an Endpage process element to save engine resources. The HTML page defines
+			the content of the notification mail while the &lt;title&gt; tag in the &lt;header&gt;
+			section will be used as mail subject.</p><div class="figure"><a name="d5e4996"></a><div class="figure-contents">
+				
+				<div class="mediaobject"><img src="images/ServerAdministration/EmailNotificationProcessExample.png" alt="Example for both email notification process types"></div>
+			</div><p class="title">Figure&nbsp;6.32.&nbsp;Example for both email notification process types</p></div><p><br class="figure-break"> Notification process start elements must follow some naming and parameter
+			conventions in order to be recognised by Axon.ivy Engine as potential email notification
+			processes. Please create process starts as follows: </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">New Task Mail Notification Process Start</span></dt><dd>
+						<p>This process has to accept the new task you want to notify about and the
+							user to which the notification will be sent to. </p>
+						<p>The name of the Process start must be:</p>
+						<p>
+							</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+									<p>MailNotification_NewTask </p>
+								</li></ul></div><p>
+						</p>
+						<p>Process start parameters: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+									<p>notificationUserId : Number (java.lang.Number) - The ID of the
+										recipient that the new task notification is created for</p>
+								</li><li class="listitem">
+									<p>notificationTaskId : Number (java.lang.Number) - The ID of the
+										task that is ready to be processed by the user</p>
+								</li></ul></div><div class="figure"><a name="d5e5017"></a><div class="figure-contents">
+								
+								<div class="mediaobject"><img src="images/ServerAdministration/EmailNotificationProcessSignatureNewTask.png" alt="Correct declaration of process start element for a &#34;New task&#34; email notification"></div>
+							</div><p class="title">Figure&nbsp;6.33.&nbsp;Correct declaration of process start element for a "New task"
+									email notification</p></div><p><br class="figure-break"></p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+								<p>You can get a user object (<code class="code">IUser</code>) using a
+										<code class="code">userID</code> calling the method
+										<code class="code">findUser(int)</code> on
+										<code class="code">ivy.session.getSecurityContext()</code> (see
+										<code class="code">ISecurityContext</code> interface in the <span class="italic">PublicAPI</span> documentation for more
+									details) </p>
+							</div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+								<p>You can get a task object (<code class="code">ITask</code>) using a
+										<code class="code">taskID</code> using the method <code class="code">findTask(int)</code>
+									on <code class="code">ivy.wf</code> (see <code class="code">IWorkflowContext</code> interface
+									in the <span class="italic">PublicAPI</span> documentation
+									for more details)</p>
+							</div>
+					</dd><dt><span class="term">Daily Summary Mail Notification Process Start</span></dt><dd>
+						<p>This process has to accept only the user we want to send the daily summary
+							to, therefore define the process start element as follows: </p>
+						<p>The name of the Process start must be:</p>
+						<p>
+							</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+									<p>MailNotification_DailyTaskSummary</p>
+								</li></ul></div><p>
+						</p>
+						<p>Process start parameters: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+									<p>notificationUserId : Number (java.lang.Number) - The ID of the
+										recipient that the new task notification is created for</p>
+								</li></ul></div><div class="figure"><a name="d5e5051"></a><div class="figure-contents">
+								
+								<div class="mediaobject"><img src="images/ServerAdministration/EmailNotificationProcessSignatureDaily.png" alt="Correct declaration of process start element for a &#34;Daily summary&#34; email notification"></div>
+							</div><p class="title">Figure&nbsp;6.34.&nbsp;Correct declaration of process start element for a "Daily
+									summary" email notification</p></div><p><br class="figure-break"></p>
+					</dd></dl></div><p>It is not supported to create multiple processes or process starts within the
+			same project (PMV) for the same notification type (daily/new task). In case you create
+			multiple matching process starts then it cannot be forecasted which process start will be
+			used within the project (PMV library). </p>
+		<p>Created notification processes will be executed, and their HTML result - the page they
+			display - will be used as content in the notification email.</p>
+		<p>
+			<span class="bold"><strong>Deploy</strong></span></p>
+		<p>Start the Engine Administrator, <a class="link" href="administration.html#administration.deployment" title="Project Deployment">deploy your project library</a> as a process model and a PMV. It is important to
+			deploy your notification project within the application you want to use it for.</p>
+		<p><span class="bold"><strong>Configure notification</strong></span></p>
+		<p>Having deployed your notification process model in the application where you want to
+			customize the notification make sure that the PMV is active. Go to the <a class="link" href="administration.html#administration.applicationdefaults" title="Application Default Settings">Application Default Settings</a>, refresh GUI if
+			necessary, and select the library ID of the PMV that implements the notification process you
+			want to use for email notification. In case you implemented the process start properly, and
+			the project including the notification process is deployed properly, you should see the
+			library ID.</p>
+		<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+			<p>Should you have difficulties implementing an email notification process, open a
+				WorkflowUI project. It contains two example email notification processes. </p>
+		</div>
+		<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+			<p>In a Daily notification mail you might need a task list for a user that she may
+				activate and work on. The method <code class="code">findWorkTasks(..)</code> on <code class="code">ivy.wf</code>
+				does this job. It uses even substitutions and absences to collect the correct task list
+				(see <code class="code">IWorkflowContext</code> interface in the <span class="italic">PublicAPI</span> documentation for more details) </p>
+		</div>
+	</div>
+
+	<div class="sect2"><div class="titlepage"><div><div><h3 id="administration-emailnotification-summary" class="title"><a name="administration.emailnotification.summary"></a>Email Notification Summary</h3></div></div></div>
+		
+		<p>Having customized your email notification process(-es) users of specific application
+			should receive their email notification prepared by your notification process.</p>
+		<p>You might still have some questions left:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">How can a process provide email content?</span></dt><dd>
+						<p>Defined process should look like a simple process with an HTML dialog end.
+							This process will be executed and the HTML dialog will be taken as content
+							for notification email. In case you use normal HTML Page Step process
+							element(s), then the process will be executed only up to the first HTML Page
+							and this page will be sent as notification email.</p>
+					</dd><dt><span class="term">What can be customized exactly?</span></dt><dd>
+						<p>These processes going to "display" an HTML page. Whatever is included in
+							this HTML page, will be sent as content of the specific notification
+						email.</p>
+					</dd><dt><span class="term">How often is this process executed?</span></dt><dd>
+						<p>Processes for "new task" notification are executed whenever a new task is
+							created (e.g. with a trigger), an existing task expires and needs to be
+							escalated, or the creator of an existing task is changed. On mentioned
+							events the process is executed separately for each user that is responsible
+							for the given task directly, indirectly by his roles or by substitutions
+							(e.g. if a task is created for the role <span class="emphasis"><em>secretary</em></span>, then
+							the process is executed for each user that own the role
+							<span class="emphasis"><em>secretary</em></span>, or substitutes an absent secretary over her
+							role). </p>
+						<p>Processes for "daily summary" notification are executed once a day for
+							each user that is subscribed for notification on that day.</p>
+					</dd><dt><span class="term">When is the daily summary process executed?</span></dt><dd>
+						<p>You can setup the execution time in the engine's <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System
+								properties</a>, under the
+								property:<code class="code">EMail.DailyTaskSummary.TriggerTime</code></p>
+					</dd><dt><span class="term">What happens with images of the HTML page used for email notification?</span></dt><dd>
+						<p>In case this page includes some local images (e.g. CMS, ivy file), then
+							they will be downloaded by Axon.ivy Engine, attached as MIME parts, and
+							re-linked to the email to look just like the HTML page would look in an
+							Internet browser.</p>
+						<p>You may also include images from remote hosts. If you do so, then Axon.ivy does not download and attach these images, but leaves the links as they are. Some Email clients will block these images (protecting their user from phishing attacks) until the user explicitly says to download external images. </p>
+					</dd><dt><span class="term">How notification processes can be set?</span></dt><dd>
+						<p>Notification processes can be set for each application independently.
+							First of all you have to deploy a notification process, then select
+							notification process in the <a class="link" href="administration.html#administration.applicationdefaults" title="Application Default Settings">Application Default Settings</a> dialog. </p>
+					</dd><dt><span class="term">Can I cancel a notification?</span></dt><dd>
+						<p>Yes, in case your process terminates normally without displaying any HTML
+							page.</p>
+					</dd></dl></div>
+		<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+			<p>Use EndPage process element to reduce resource usage of your email notification
+				process(-es). </p>
+		</div>
+	</div>
+
+	
+</div>
+
+</div></div></div></div><div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><div class="bs-sidebar hidden-print affix" data-spy="affix" data-offset-top="350" data-offset-bottom="250"><ul class="nav bs-sidenav"><li><a href="#d5e3638">Opening the administration tool</a><ul class="nav subnav"><li><a href="#d5e3656">Admin Tool</a></li></ul></li><li><a href="#administration-application">Applications</a><ul class="nav subnav"><li><a href="#adminisrator-createapplication">Create new application</a></li><li><a href="#administration-externalsecuritysystem">Configuring an External Security System</a></li></ul></li><li><a href="#administration-applicationdefaults">Application Default Settings</a><ul class="nav subnav"><li><a href="#d5e3826">Email Notification Settings</a></li><li><a href="#d5e3857">Email Content Creation Processes</a></li><li><a href="#d5e3871">Default Executed Processes</a></li></ul></li><li><a href="#administration-processmodel">Process Models and Process Model Versions</a><ul class="nav subnav"><li><a href="#d5e3890">The Concept of Versions</a></li><li><a href="#d5e3893">Creating Process Models and Process Model Versions</a></li><li><a href="#d5e3907">Manage Activation and Release State</a></li><li><a href="#d5e4012">Project dependencies</a></li></ul></li><li><a href="#administration-deployment">Project Deployment </a><ul class="nav subnav"><li><a href="#administration-deployment-wizard">Deployment wizard</a></li><li><a href="#administration-deployment-directory">Deployment directory</a></li></ul></li><li><a href="#administration-businesscalendar">Business Calendar</a><ul class="nav subnav"><li><a href="#d5e4161">Business Calendar Definition</a></li><li><a href="#d5e4164">Start of Week</a></li><li><a href="#d5e4168">Working Time</a></li><li><a href="#d5e4173">Free Days of Week</a></li><li><a href="#d5e4177">Free Days of Year</a></li><li><a href="#d5e4181">Free Easter Relative Days</a></li><li><a href="#d5e4185">Free non-recurring Dates</a></li></ul></li><li><a href="#administration-environments">Environments</a><ul class="nav subnav"><li><a href="#administration-environments-configuration">Configuration of environments</a></li><li><a href="#administration-environments-globalvariable">Global Variables</a></li><li><a href="#administration-externaldatabase">External Databases</a></li><li><a href="#administration-webservices">Web Services</a></li><li><a href="#administration-environment-rest-client">REST Clients</a></li><li><a href="#administration-environment-businesscalendar">Business Calendar</a></li><li><a href="#d5e4472">Export/Import Environment(s)</a></li></ul></li><li><a href="#administration-usersandroles">Users and Roles</a><ul class="nav subnav"><li><a href="#administration-users">User list</a></li><li><a href="#d5e4614">Roles</a></li><li><a href="#administration-permissions">Permissions</a></li></ul></li><li><a href="#administration-systemproperties">System Properties</a><ul class="nav subnav"><li><a href="#d5e4713">Data Cache </a></li><li><a href="#administration-systemproperties-emailserver">Email Server </a></li><li><a href="#d5e4721">Errors</a></li><li><a href="#d5e4726">Process Engine Firing Statistic</a></li><li><a href="#administration-systemproperties-sslclient">SSL Client</a></li><li><a href="#d5e4735">System Work Directory</a></li><li><a href="#d5e4739">System Database Cache</a></li><li><a href="#d5e4743">System Tasks</a></li><li><a href="#d5e4749">Thread Pool</a></li><li><a href="#d5e4755">Update Checker</a></li><li><a href="#d5e4760">Web Server</a></li><li><a href="#d5e4777">Elasticsearch configuration</a></li></ul></li><li><a href="#administration-serverinfos">Engine infos</a><ul class="nav subnav"><li><a href="#administration-runtimeinformation">Runtime information</a></li><li><a href="#administration-about">About</a></li></ul></li><li><a href="#ServerAdministration-htmlworkflowui">HTML Workflow UI</a><ul class="nav subnav"><li><a href="#d5e4810">Replacement Project</a></li><li><a href="#d5e4857">Application Home Page replacement</a></li><li><a href="#d5e4871">Task List Page replacement</a></li><li><a href="#d5e4885">Process Start List Page replacement</a></li><li><a href="#d5e4899">End Page replacement</a></li><li><a href="#d5e4913">Login Page replacement</a></li><li><a href="#d5e4928">Sample HTML Workflow UI Project</a></li></ul></li><li><a href="#administration-emailnotification">Email Notification</a><ul class="nav subnav"><li><a href="#administration-emailnotification-overview">Overview</a></li><li><a href="#administration-emailnotification-design">Process Design</a></li><li><a href="#administration-emailnotification-summary">Email Notification Summary</a></li></ul></li><li><br><a href="#top">Back to top</a></li></ul></div></div></div><hr></div></div><script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/offcanvas.js"></script></body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
+  <title>Migration Notes Server</title>
+  <link href="../shared/css/ivystyle-50.css" rel="stylesheet"
+  type="text/css">
+</head>
+
+<body>
+
+<div id="mainContent">
+
+<div id="header">
+<h1>Migration Notes for Xpert.ivy Server 4.3 (Pilatus) ... 5.0 (Rothorn)</h1>
+</div>
+
+<div class="content">
+<p>This document informs you in detail <strong>how to migrate the data and
+projects of an existing Xpert.ivy Server 4.3 installation</strong> to a new 5.0
+installation. </p>
+
+<table
+style="border: 1px solid red; color: red; background-color: rgb(255, 255, 153);"
+cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td><img style="width: 24px; height: 24px;" alt=""
+        src="images/warning.png"></td>
+      <td colspan="1" rowspan="1"><span
+        style="color: rgb(255, 0, 0);">Xpert.ivy Server 5.0 is able to work
+        with projects that are developed with Xpert.ivy Designer 4.2 (Project
+        version 41917) and newer. </span><span
+        style="color: rgb(255, 0, 0);">However, because of the stricter <a
+        href="#genericJavaList">generic java.util.List support</a> we suggest
+        that you check your deployed projects in the Designer before migrating
+        a server to 5.0 to ensure that the projects will run without problems.
+        </span> 
+
+        <p>Older projects need to be converted in the Xpert.ivy Designer first
+        and then need to be redeployed to the upgraded server.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ul style="margin-bottom: 30px;">
+  <li><a href="#jgroups">Updated  JGroups version for Clustering</a></li>
+  <li><a href="#newLicence">New Server licence required</a></li>
+  <li><a href="#webXml">Configuration in web.xml</a> 
+  <li><a href="#genericJavaList">Generic java.util.List</a></li>
+  <li><a href="#64BitsDatabaseKeys">BIGINT (64 Bits) Database Keys</a></li>
+  <li><a href="#adSyncFilter">Active Directory Synchronisation Filter</a></li>
+</ul>
+</div>
+
+<h2><a name="jgroups">Updated  JGroups version for Clustering</a></h2>
+<div class="content">
+	<p>Since 5.0.4 the ivy server contains an updated library for cluster communication. This library called JGroups, has been updated to the latest stable version 3.3.4. Therefore the configuration under <i>configurations/jgroups.xml</i> is no longer compatible with older cluster configurations which have been created before 5.0.3. So please do not copy this configuration file from an older version.</p>
+</div>
+
+<h2><a name="newLicence">New Server licence required</a> </h2>
+<div class="content">
+	<p>The Xpert.ivy Server 5.0 requires a new licence. Please contact your sales agent to upgrade your license.</p>
+       
+    <p>Consult the article "Installing a Licence" in the Installation chapter of the Server Guide to learn how to install the new license.</p>
+</div>
+
+<a name="webXml"></a> 
+<h2>Configuration in web.xml</h2>
+<div class="content">
+<p>If you have modified the <i>web.xml</i> under <i>webapps/ivy/WEB-INF</i>,
+please do not copy the whole content of your current web.xml to the new Server.
+Only copy parts you have modified, otherwise the Server will not start.</p>
+</div>
+
+<h2><a name="genericJavaList">Generic java.util.List</a> </h2>
+<div class="content">
+The support for generic instances of <code>java.util.List</code> has been
+enhanced. IvyScript now evaluates the member type of a
+<code>java.util.List&lt;?&gt;</code> implementation (see <a
+href="../newAndNoteworthy/NewAndNoteworthyDesigner.html">NewAndNoteworthyDesigner</a>). 
+
+<p>Java instances of <code>java.util.List</code> which had generic type
+information lost their membertype when they were used with IvyScript before 5.0
+and were treated as instances of <code>List&lt;Object&gt;.</code> Therefore
+IvyScript allowed to add objects to a list, which did not have the required
+member type. </p>
+
+<p>For example, the parked work tasks of a session have the type
+<code>List&lt;ITask&gt;</code> . Using the session API, the following
+assignment was possible:
+<code>ivy.session.findParkedWorkTasks(0,1).add("iAmNotATask");</code> </p>
+
+<p>With Xpert.ivy 5.0 this bug has been fixed and untyped assignments of this
+kind are no longer tolerated. If your code contains assignments as shown above,
+Validation will now show an error marker for it at design time and exceptions
+will be thrown at runtime.</p>
+
+<p>If you have used <code>java.util.List</code> instances in IvyScript you
+should check your project for error markers before you execute it on a
+Xpert.ivy 5.0 server. </p>
+</div>
+
+<h2><a name="64BitsDatabaseKey">BIGINT (</a>64 Bits) Database Keys</h2>
+
+<div class="content">
+<p>All primary and foreign keys in the system database have been changed from
+32 bit to 64 bit numbers. Therefore, the system database will need a bit more
+storage space after converting it to the latest version. The conversion of the
+system database may need several minutes up to hours depending on the amount of
+data.</p>
+
+<p>Therefore, all API's which uses Integer (32 bit) identifers are deprecated.
+For more details see the <a href="MigrationNotesDesigner.html">Designer
+Migration Notes.</a> Everytime a deprecated API is called a warning will be
+logged. To suppress this warning you can enable the following configuration in
+the <code>configuration/log4jconfig.xml</code> file by removing the comment
+tags around it:</p>
+<pre><code>&lt;category name="ch.ivyteam.ivy.persistence.restricted.TableKeyCompatibilityConvertor"
+    class="ch.ivyteam.log.Logger"&gt;
+  &lt;priority value="ERROR"/&gt;
+&lt;/category&gt;</code></pre>
+
+<p>For system databases that are stored in IBM Db2 System i (AS400, iSeries) a
+special setting is necessary before converting the system database. See <a
+href="SystemDbConversion.html">system database conversion</a> document for more
+information.</p>
+</div>
+
+<h2><a name="adSyncFilter">Active Directory Synchronisation Filter</a></h2>
+
+<div class="content">
+<p>The advanced configuration of the Active Directory has been enhanced.</p>
+
+<p>When a administrator changes the 'User Filter' to a more restrictive one,
+then users who are no longer part of the user filter should be deleted. This
+was not the case and is fixed now. Therefore:</p>
+<ul>
+  <li>If the configuration of the the <strong>'User Filter' was
+    changed</strong> on a existing Xpert.Ivy Server, then an update to this
+    version will delete obsolete users on next synchronisation.</li>
+  <li>If the configuration was never changed and it it still the default
+    "<code>(&amp;(objectClass=user)(!(objectClass=computer)))</code>", an
+    update will have no effect.</li>
+</ul>
+
+<p><img src="images/AD_UserFilter.png" alt="AD User Filter"><br>
+To view the advanced configuration, press 'show advanced settings' on the
+bottom of the panel.</p>
+</div>
+</div>
+</body>
+</html>

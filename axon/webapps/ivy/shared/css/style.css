@@ -1,0 +1,97 @@
+th
+{
+  font-weight: bold;
+  background-color: #eaeaea;
+  color: #575656
+}
+
+div .messages {
+	padding: 15px;
+}
+
+.startTable thead tr th,
+.startTable tbody tr th,
+.startTable tfoot tr th,
+.startTable thead tr td,
+.startTable tbody tr td,
+.startTable tfoot tr td {
+  padding: 1px 12px 1px 0;
+  line-height: 1.42857143;
+  vertical-align: top;
+}
+
+.prozessStartTable > tbody > tr > td {
+  padding: 0 12px 2px 0;
+  line-height: 1.42857143;
+  vertical-align: top;
+}
+
+.WithIcon16,
+.startTable .WithIcon16
+{
+  min-height: 16px;
+  background-repeat:no-repeat;
+  background-position: 1px center;
+  padding-left: 20px;
+}
+
+input.WithIcon16
+{
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.IconAbout
+{
+    background-image: url('../../images/about.gif');
+}
+
+.IconGearOk
+{
+    background-image: url('../../images/gear_ok.gif');
+}
+
+.IconGearStop
+{
+    background-image: url('../../images/gear_stop.gif');
+}
+
+.IconWindowGear
+{
+    background-image: url('../../images/window_gear.gif');
+}
+
+.loginFormTable thead tr th,
+.loginFormTable tbody tr th,
+.loginFormTable tfoot tr th,
+.loginFormTable thead tr td,
+.loginFormTable tbody tr td,
+.loginFormTable tfoot tr td {
+  padding: 4px;
+  line-height: 1.42857143;
+}
+
+input {
+  border: 1px solid #dfdfdf;
+  color: #272727;
+  padding: 4px;
+}
+
+input:focus {
+  border: 1px solid #afca05;
+  outline: none;
+}
+
+input[type="submit"] {
+  border: 1px solid #cccccc;
+  background: #dfdfdf;
+  font-weight: bold;
+  color: #272727;
+  padding: .3em 1em;
+}
+
+input[type="submit"]:focus {
+	border: 1px solid #afca05;
+	background: #afca05;
+}
+

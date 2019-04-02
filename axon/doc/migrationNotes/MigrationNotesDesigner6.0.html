@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Migration Notes Designer</title>
+  <link rel="shortcut icon" href="../shared/images/ivy_favicon_48.png" />
+  <link href="../shared/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/docs.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-common-6.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-designer-doc.css" rel="stylesheet" type="text/css">
+  <script src="../shared/js/jquery.min.js"></script>
+  <script src="../shared/js/bootstrap.min.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div id="mainContent">
+
+	<!-- start-top-navigation -->
+		<div class="navbar navbar-top" role="navigation">
+		  <div class="container" id="headerdiv">
+			<div class="navbar-header">
+			  <a class="ivy-logo" href="http://developer.axonivy.com">
+                <img src="../shared/images/axon_ivy_logo.png" alt="Axon.ivy" />
+              </a>
+			</div>
+			
+			<div class="navbar">
+			  <ul class="nav nav-pills" id="navbar-ivy-links">
+				<li><a href="http://developer.axonivy.com/download/" target="blank"><span class="glyphicon glyphicon-download" aria-hidden="true"></span><br>Download</a></li>
+				<li><a href="http://developer.axonivy.com/doc/" target="blank"><span class="glyphicon glyphicon-book" aria-hidden="true"></span><br>Documentation</a></li>
+				<li><a href="http://answers.axonivy.com" target="blank"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Q &amp; A</a></li>
+				<li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><br>Blog</a></li>
+			  </ul>
+			</div>
+		  </div><!-- /.container -->
+		</div>
+    <div class="navbar ivy-subnav">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <ul class="nav nav-pills">
+              <li><a href="../newAndNoteworthy/NewAndNoteworthyDesigner.html">N&N Designer</a></li>
+              <li><a href="../newAndNoteworthy/NewAndNoteworthyEngine.html">N&N Engine</a></li>
+              <li><a href="../../ReleaseNotes.txt">Realease Notes</a></li>
+              <li class="active"><a href="../../MigrationNotes.html">Migration Notes</a></li>
+              <li><a href="../../ReadMe.html">Read Me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end-top-navigation -->
+
+	
+	
+<div class="container">
+	<h1 class="page-header">Migration Notes for Axon.ivy Designer 6.0 (Säntis)</h1>
+	
+		<p>This document informs you in detail about <span
+	style="font-weight: bold;">incompatibilities that were introduced between
+	Axon.ivy 5.1 (Lauberhorn) and Axon.ivy 6.0 (Säntis)</span> and tells you what
+	needs to be done to get your existing 5.1 projects working with Axon.ivy 
+	6.0.</p>
+
+
+	<p>Table of Content:</p>
+	<ul style="margin-bottom: 30px;">
+		<li><a href="#AutomaticConversion">Migration of projects</a></li>
+		<li><a href="#UpdatePrimeFaces">Updated to PrimeFaces 5.3</a></li>
+		<li><a href="#NewDefaultPrimefacesTheme">New default PrimeFaces theme</a></li>
+		<li><a href="#UpdateSubclipse">Updated to SVN 1.9 (Subclipse 1.12)</a></li>
+        <li><a href="#UpdateJava">Updated to Java 8</a></li>
+		<li><a href="#PublicApiChange">Public API change</a></li>
+		<li><a href="#deprecatedInNextVersion">Removal of deprecated Public API in next version</a></li>
+		<li><a href="#puiElementRemoved">Program User Interface (PUI) element removed</a></li>
+        <li><a href="#NewNamespace">Use new JSF namespaces for the new Html Dialog Editor</a></li>
+	</ul>
+
+<hr/>
+
+	<h3><a name="AutomaticConversion"></a>Migration of projects (project conversion)</h3>
+
+	<p>Most of the incompatibilities can be resolved automatically by invoking the
+	<a href="ProjectConversion.html">project conversion</a> in the Designer. </p>
+
+	<p>However, some issues may have to be fixed manually (after the automatic
+	conversion). Those are described in the next sections.
+	</p>
+		
+	<hr /> 
+	
+	<h3><a name="UpdatePrimeFaces"></a>Updated to PrimeFaces 5.3</h3>
+	
+	<p>
+	PrimeFaces and PrimeFaces extensions have been updated to the newest versions. Two already deprecated features have been removed:
+	<ul>
+	<li>Support for literal texts in filterBy-sortBy expressions were deprecated in Axon.ivy 5.0 and removed in 5.1. These attributes now only work with value expression again like it was before 5.0.</li>
+	<li>Deprecated chart components were removed.</li>
+	</ul>
+	See also: <a href="https://github.com/primefaces/primefaces/wiki/Migration-Guide">PrimeFaces Migration Guide</a>
+	</p>
+	
+    <hr/>
+	<h3><a name="NewDefaultPrimefacesTheme"></a>New default PrimeFaces theme</h3>
+
+	<p>The default PrimeFaces theme is now <strong>modena-ivy</strong> and now longer <strong>ivy</strong>.
+	The new theme is required by the portal application.
+	To use the ivy theme from 5.1 configure it in the <i>/webapps/ivy/WEB-INF/lib/web.xml</i>.
+	If another theme than the default was defined in the <i>/webapps/ivy/WEB-INF/lib/web.xml</i> it will still be used and no change is needed.
+	</p>
+	
+	<hr />
+
+	<h3><a name="UpdateSubclipse"></a>Updated to SVN 1.9 (Subclipse 1.12)</h3>
+	
+	<p>
+	The integrated Subversion client (subclipse) has been updated to version 1.12. It works now with Subversion 1.9. Since Subversion 1.9 has a new working copy format, an upgrade of the working copy is required.</p>
+	<p>If you want to execute team operations on a project, that has an old working copy, it fails with the following error:<br/>
+	<img src="images/60_svnWorkingCopyVersionProblem.png"/></p>
+	<p>To update an existing working copy with the Designer proceed as follows:<ul>
+	<li>Change the SVN client to SVNkit: <br/><code>Windows -> Preferences -> Team -> SVN -> Client -> SVNkit</code></li>
+	<li>Run the working copy upgrade: <br/><code>Project context menu -> Team -> Upgrade</code></li>
+	<li>Restart the Designer</li>
+	<li>Change the SVN client back to JavaHL as it performs much bettern than SVNkit: <br/><code>Windows -> Preferences -> Team -> SVN -> Client -> JavaHL</code></li>
+	</ul>
+	
+	<p>If you use an external SVN client like Tortoise SVN be aware that:</p>
+	<ul>
+		<li>The client must be updated as well to a version that supports Subversion 1.9. </li>
+		<li>If the new SVN client works with Subversion 1.9, it will no longer be able to manage an older working copy that is still used in combination with a Designer older than 6.0. Unless you update the old working copy as well.</li>
+		<li>5.1 Designer working copies can be updated to Subversion 1.9. But then the 5.1 Designer will no longer be able to execute team operations. Unless you update the Designer 5.1 manually to Subclipse 1.12.</li>
+	</ul>
+    <hr />
+    
+    <h3><a name="UpdateJava"></a>Updated to Java 8</h3>
+	
+	<p>
+        Java 7 is out of support since April 2015. Therefore, we moved our whole development to Java 8 thus the new minimal version to run Rich Dialogs is now Java 8. Rich Dialogs will not run any more with older Java versions.
+    </p>
+		
+	<hr />
+    
+		<h3><a name="PublicApiChange"></a>Public API change</h3>
+  <h5>Removed Method <code>IIvyScriptContext.getContext(IResponse response)</code></h5>
+  <p>The <b>Java only</b> Public API method <code>IIvyScriptContext.getContext(IResponse response)</code> has been removed from the interface <code>IRequest</code>. Projects using this method will fail.
+	If the IIvyScriptContext is still needed an <code>IRequest</code> could be upcasted to a <code>IProcessModelVersionRequest</code>. <code>Ivy.request()</code> already returned an <code>IProcessModelVersionRequest</code>.
+	<p>
+<hr>
+  <h5>Changed behaviour of <code>ISession.loginSessionUser(String username, String password)</code> and <code>ISession.logoutSessionUser()</code></h5>
+  <p>The Public API method to login or logout has changed. In past, both methods had reset all currently running tasks of the current session, even the current running one. Therefore the related methods
+  <code>ISession.loginSessionUser(String username, String password, long currentTaskId)</code> or <code>ISession.logoutSessionUser(long currentTaskId)</code> had to be used instead commonly inside a process.<br/>
+  With this version, the named method does no longer reset the currently running task. But it still resets other running tasks of the session. Conveniently some example IvyScript calls old vs. new:
+    </p><ul>
+      <li><code>ivy.session.loginSessionUser("user", "pass", ivy.task.getId())</code> is now the same as <code>ivy.session.loginSessionUser("user", "pass")</code></li>
+      <li><code>ivy.session.logoutSessionUser(ivy.task.getId())</code> is now the same as <code>ivy.session.logoutSessionUser()</code></li>
+    </ul>
+  
+	
+	<hr/>
+
+  <h3><a name="deprecatedInNextVersion"></a>Removal of deprecated Public API in next version</h3>
+  <p>The following Public API is deprecated for several years and will be removed in the next minor version:</p>
+    <ul>
+      <li><code>ivyteam.cs.webapp.pi.ConfigurationEditor</code></li>
+    </ul>
+  <hr/>
+  
+  <h3><a name="puiElementRemoved"></a>Program User Interface (PUI) element removed</h3>
+  <p>The execution and UI support for the PUI element has been removed. It was already deprecated since years. Third party PUI implementations are also no longer supported.</p>
+  <hr/>
+    
+  <h3><a name="NewNamespace"></a>Use new JSF namespaces for the new Html Dialog Editor</h3>
+    <p>The graphical part of the new Html Dialog Editor does not support the old namespaces of JSF (the ones that start with http://java.sun.com/jsf/...) but only the new ones (http://xmlns.jcp.org/jsf/...). If you still use the old ones (from Xpert.ivy 5.0), then please update the namespaces. You can do this by simply do a workspace global search and replace of the old prefix with the new prefix.</p>
+    <table border="true" style="border-spacing: 5px;">
+        <tr>
+            <th>Library</th>
+            <th>Old URI</th>
+            <th>New URI</th>
+        </tr>
+        <tr>
+            <td>Composite Components</td>
+            <td>http://java.sun.com/jsf/composite</td>
+            <td>http://xmlns.jcp.org/jsf/composite</td>
+        </tr>
+        <tr>
+            <td>Faces Core</td>
+            <td>http://java.sun.com/jsf/core</td>
+            <td>http://xmlns.jcp.org/jsf/core</td>
+        </tr>
+        <tr>
+            <td>HTML_BASIC</td>
+            <td>http://java.sun.com/jsf/html</td>
+            <td>http://xmlns.jcp.org/jsf/html</td>
+        </tr>
+        <tr>
+            <td>JSTL Core</td>
+            <td>http://java.sun.com/jsp/jstl/core</td>
+            <td>http://xmlns.jcp.org/jsp/jstl/core</td>
+        </tr>
+        <tr>
+            <td>Functions</td>
+            <td>http://java.sun.com/jsp/jstl/functions </td>
+            <td>http://xmlns.jcp.org/jsp/jstl/functions</td>
+        </tr> 
+        <tr>
+            <td>Facelets Templating</td>
+            <td>http://java.sun.com/jsf/facelets</td>
+            <td>http://xmlns.jcp.org/jsf/facelets</td>
+        </tr>
+        <tr>
+            <td>Pass Through Attributes</td>
+            <td>http://java.sun.com/jsf/passthrough</td>
+            <td>http://xmlns.jcp.org/jsf/passthrough</td>
+        </tr>
+        <tr>
+            <td>Pass Through Elements</td>
+            <td>http://java.sun.com/jsf</td>
+            <td>http://xmlns.jcp.org/jsf</td>
+        </tr>    
+    </table>
+    
+  <hr/>
+
+	</div>
+<br/><br/><br/>
+</div>
+</body>
+</html>

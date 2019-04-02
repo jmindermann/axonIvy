@@ -1,0 +1,54 @@
+#content
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align:left;
+}
+
+.navfooter hr {
+    margin-bottom:0px;
+}
+.subnav
+{
+	padding-left: 5px;
+}
+
+#topNavigation
+{
+    background: white;
+	vertical-align: bottom;
+}
+
+#leftNavigation
+{
+	position:fixed;
+	vertical-align: bottom;
+	text-align:left;
+}
+
+#bottomNavigation
+{
+    background: white;
+	vertical-align: bottom;
+	height: 30px;
+}
+
+.figure .title {
+	color: #606060;
+}
+
+table
+{
+	font-size: 14px;
+}
+
+.table
+{
+	margin-bottom: 5px;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}

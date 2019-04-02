@@ -1,0 +1,72 @@
+
+.navbar-top {
+	border-bottom: #eeeeee solid 1px;
+}
+
+.sidebar, .note, .tip, .warning, .important {
+	margin:20px 0;
+	padding:20px;
+	border-left:3px solid #eee
+}
+
+.sidebar h3, .note h3, .tip h3, .warning h3, .important h3{margin-top:0;margin-bottom:5px}
+.sidebar p:last-child,.note p:last-child, .tip p:last-child, .warning p:last-child{margin-bottom:0}
+.sidebar code,.note code, .tip code, .warning code, .important code {background-color:#fff; border-radius:3px}
+
+.tip {
+	background-color:#f4f8fa;
+	border-color:#5bc0de
+}
+
+.tip h3 {
+	color:#5bc0de
+}
+
+.note {
+	background-color: #EFFFF5;
+	border-color: #339966;
+}
+.note h3 {
+	color: #339966;
+}
+
+.sidebar{
+	background-color: #FBFFE1;
+	border-color: #FBFF42;
+}
+.sidebar .titlepage{
+	font-size: 24px;
+}
+
+.warning, .important {
+	background-color: #fcf8f2;
+	border-color: #f0ad4e;
+}
+.warning h3, .important h3 {
+	color: #f0ad4e;
+}
+
+.toc dl {
+	margin-left: 25px;
+}
+
+.figure .title, .table .title {
+	color: #606060;
+	font-size: 12px;
+}
+
+table
+{
+	font-size: 14px;
+}
+
+.table
+{
+	margin-bottom: 5px;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}

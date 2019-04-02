@@ -1,0 +1,25 @@
+StatisticWidgetData #class
+ch.ivy.addon.portalkit.component.StatisticWidget #namespace
+compactMode Boolean #field
+compactMode PERSISTENT #fieldModifier
+username String #field
+username PERSISTENT #fieldModifier
+serverId Long #field
+serverId 'the id of the selected server' #fieldComment
+serverId PERSISTENT #fieldModifier
+involvedApplications List<String> #field
+involvedApplications 'the name of the selected app' #fieldComment
+involvedApplications PERSISTENT #fieldModifier
+jsonQuery String #field
+jsonQuery 'Customized TaskQuery' #fieldComment
+jsonQuery PERSISTENT #fieldModifier
+createMode Boolean #field
+createMode PERSISTENT #fieldModifier
+statisticChartList java.util.List<ch.ivy.addon.portalkit.statistics.StatisticChart> #field
+statisticChartList PERSISTENT #fieldModifier
+isDrilldownElapsedTime Boolean #field
+isDrilldownElapsedTime PERSISTENT #fieldModifier
+isDrilldownExpiryChart Boolean #field
+isDrilldownExpiryChart PERSISTENT #fieldModifier
+isBackFromDrilldown Boolean #field
+isBackFromDrilldown PERSISTENT #fieldModifier

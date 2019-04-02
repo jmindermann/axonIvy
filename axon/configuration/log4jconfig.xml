@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--
+  This is the logging configuration file for Axon.ivy Engine.
+  It defines which log messages are logged (category/priority) and where the logs are written to. 
+   
+  Logging in Axon.ivy Engine is based on a 3rd party library called Log4J 
+  (see http://logging.apache.org/log4j for more information).
+   
+-->
+<log4j:configuration debug="false" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <!--
+   Defines an appender that will write log messages with at least priority INFO to a file
+   that is located in the logs directory and is called ch.ivyteam.ivy.log with
+   a prefix of the current date.
+   Every day a new file will be created.  
+  --> 
+  <appender name="FileLog" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="Threshold" value="INFO"/>
+    <param name="File" value="${user.dir}/logs/ch.ivyteam.ivy.log"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <layout class="ch.ivyteam.log.layout.IvyLog4jLayout">
+      <param name="DateFormat" value="HH:mm:ss.SSS"/>
+    </layout>
+  </appender>
+
+  <!--
+   Defines an appender that will write log messages with at least a priority WARN to the console  
+  -->  
+  <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="WARN"/>
+    <layout class="ch.ivyteam.log.layout.IvyLog4jLayout">
+      <param name="DateFormat" value="HH:mm:ss.SSS"/>
+      <param name="ContextPrinting" value="false"/>
+      <param name="FixedCategoryLength" value="20"/>
+      <param name="ThreadPrinting" value="false"/>
+    </layout>
+  </appender>
+
+  <!-- Disable CXF warning at startup (missing META-INF/cxf/cxf.xml) -->
+  <category name="org.apache.cxf.bus.spring" class="ch.ivyteam.log.Logger">
+    <priority value="ERROR"/>
+  </category>
+  
+  <!-- Prevent "ClientAbortException: java.io.IOException: Broken pipe" from filling the log -->
+  <category name="org.apache.myfaces.application.ResourceHandlerImpl" class="ch.ivyteam.log.Logger">
+    <priority value="FATAL"/>
+  </category>
+  
+  <!-- Disable deprecated integer API warnings -->
+  <!--
+  <category name="ch.ivyteam.ivy.persistence.restricted.TableKeyCompatibilityConvertor" class="ch.ivyteam.log.Logger">
+    <priority value="ERROR"/>
+  </category>
+  -->
+
+  <!-- 
+    Enables WebService SOAP Message logging for a certain application and process model. 
+    Replace {application} and {process_model} in the logger name below with the name of the application and process model you want to enable the logging. 
+  -->
+  <!-- 
+  <category name="runtimelog.{application}.{process_model}.web_service" class="ch.ivyteam.log.Logger">
+    <priority value="DEBUG"/>
+  </category>
+  -->
+  
+  <!--
+   Defines that every log message is written that has at least a priority of INFO. 
+   Defines that log messages are written to the file and console appender defined above.
+  -->
+  <root> 
+    <level value ="INFO" />
+    <appender-ref ref="FileLog"/>
+    <appender-ref ref="ConsoleAppender"/>
+  </root>
+
+</log4j:configuration>

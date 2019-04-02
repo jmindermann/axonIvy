@@ -1,0 +1,99 @@
+
+/*
+Needed contents taken from bootstrap (docs.min.css)
+*/
+
+
+.bs-sidebar.affix {
+    position: static
+}
+
+
+@media (min-width:582px) {
+    .bs-sidebar {
+        padding-left: 20px
+    }
+}
+
+.bs-sidebar .nav>li>a {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #999;
+    background-color: #ffffff;
+    padding: 4px 20px
+}
+
+.bs-sidebar .nav>li>a:hover,.bs-sidebar .nav>li>a:focus {
+    padding-left: 19px;
+    color: #272727;
+    text-decoration: none;
+    border-left: 1px solid #afca05
+}
+
+/* hide navbar link "Back to top" when already on top */
+.active .top-nav-item {
+    display: none !important;
+}
+
+
+.bs-sidebar .nav>.active>a,.bs-sidebar .nav>.active:hover>a,.bs-sidebar .nav>.active:focus>a {
+    padding-left: 18px;
+    font-weight: 800;
+    color: #272727;
+    border-left: 2px solid #afca05
+}
+
+.bs-sidebar .nav .nav {
+    display: none;
+    padding-bottom: 10px
+}
+
+
+.bs-sidebar .nav .nav>li>a {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 30px;
+    font-size: 11px;
+    font-weight: 300
+}
+
+
+.bs-sidebar .nav .nav>li>a:hover,.bs-sidebar .nav .nav>li>a:focus {
+    padding-left: 29px
+}
+
+.bs-sidebar .nav .nav>.active>a,.bs-sidebar .nav .nav>.active:hover>a,.bs-sidebar .nav .nav>.active:focus>a {
+    font-weight: 400;
+    padding-left: 28px
+}
+
+@media (min-width:768px) {
+    .bs-sidebar .nav>.active>ul {
+        display: block
+    }
+}
+
+ .bs-sidebar.affix,.bs-sidebar.affix-bottom {
+     width: 213px
+ }
+
+ .bs-sidebar.affix {
+     position: fixed;
+     top: 20px
+ }
+
+ .bs-sidebar.affix-bottom {
+     position: absolute
+ }
+
+ .bs-sidebar.affix-bottom .bs-sidenav,.bs-sidebar.affix .bs-sidenav {
+     margin-top: 0;
+     margin-bottom: 0
+ }
+
+@media (min-width:992px) {
+    .bs-sidebar.affix-bottom,.bs-sidebar.affix {
+        width: 263px
+    }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>New and Noteworthy Axon.ivy Engine Säntis</title>
+  <link rel="shortcut icon" href="../shared/images/ivy_favicon_48.png" />
+  <link href="../shared/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/docs.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-common-6.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-designer-doc.css" rel="stylesheet" type="text/css">
+  <script src="../shared/js/jquery.min.js"></script>
+  <script src="../shared/js/bootstrap.min.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div id="mainContent">
+
+	<!-- start-top-navigation -->
+		<div class="navbar navbar-top" role="navigation">
+		  <div class="container" id="headerdiv">
+			<div class="navbar-header">
+			  <a class="ivy-logo" href="http://developer.axonivy.com">
+                <img src="../shared/images/axon_ivy_logo.png" alt="Axon.ivy" />
+              </a>
+			</div>
+			
+			<div class="navbar">
+			  <ul class="nav nav-pills" id="navbar-ivy-links">
+				<li><a href="http://developer.axonivy.com/download/" target="blank"><span class="glyphicon glyphicon-download" aria-hidden="true"></span><br>Download</a></li>
+				<li><a href="http://developer.axonivy.com/doc/" target="blank"><span class="glyphicon glyphicon-book" aria-hidden="true"></span><br>Documentation</a></li>
+				<li><a href="http://answers.axonivy.com" target="blank"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>Q &amp; A</a></li>
+				<li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><br>Blog</a></li>
+			  </ul>
+			</div>
+
+		  </div><!-- /.container -->
+		</div>
+    <div class="navbar ivy-subnav">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <ul class="nav nav-pills">
+              <li><a href="NewAndNoteworthyDesigner.html">N&N Designer</a></li>
+              <li class="active"><a href="NewAndNoteworthyEngine.html">N&N Engine</a></li>
+              <li><a href="../../ReleaseNotes.txt">Realease Notes</a></li>
+              <li><a href="../../MigrationNotes.html">Migration Notes</a></li>
+              <li><a href="../../ReadMe.html">Read Me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end-top-navigation -->
+
+<div class="container">
+	
+	<h1 class="page-header">New and Noteworthy for Axon.ivy Engine 6.0 (Säntis)</h1>
+	
+	<p class="lead">This document describes all new and noteworthy features of the Axon.ivy
+	<em>Engine 6.0 (Säntis)</em> release.</p>
+
+	<p>Only a brief overview of important new features is provided here. It is
+	recommended that you consult the respective sections of the updated <span
+	style="font-style: italic;">Engine Guide</span> if you desire more detailed
+	information about individual new features.</p>
+
+	<p>If you are interested in features introduced in the previous release have a look at the <a href="https://developer.axonivy.com/doc/5.1.latest/newAndNoteworthy/NewAndNoteworthyEngine.html">Axon.ivy Engine 5.1 New and Noteworthy</a></p>
+
+	<p>The contents of this file have been grouped into different sections with
+	related content: </p>
+	<ul>
+	  <li><a href="#newengine">New Process Engine</a></li>
+	  <li><a href="#portal">Portal</a></li>
+	  <li><a href="#configuration">Configuration</a></li>
+	  <li><a href="#interfaces">Interfaces</a></li>
+      <li><a href="#misc">Miscellaneous</a></li>
+	</ul>
+
+	<div class="bs-callout bs-callout-info">
+		<h4>MIGRATION OF 5.1 ENGINE INSTALLATIONS</h4>
+		<p>See the separate <a
+	href="../migrationNotes/MigrationNotesEngine.html">Migration Notes</a> to learn
+	about what needs to be done to get your projects running with Axon.ivy 6.0
+	(Säntis).</p>
+	</div>
+
+		<h1 class="page-header">Selected Features</h1>
+		
+		    <h2><a id="newengine"></a>New Process Engine</h2>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>New Process Engine</h4></div>
+      <div class="col-md-10"><p>Completly new and rewritten process engine. Based on the latest available technologies.</p></div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>100% Java</h4></div>
+      <div class="col-md-10"><p>100% implemented in Java.<br>
+      IvyScript is no longer used in the engine itself.<br>
+      Completly new java based execution model. There is no longer a PetriNet model used to execute your processes.</p></div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-2"><h4>Improved Performance</h4></div>
+      <div class="col-md-10"><p>The new process engine is 20% faster. This really boost your processes.</p>
+      <p>The startup of the Axon.ivy Engine is 50% faster.</p></div>
+    </div>
+    <hr />
+		
+		<h2><a name="portal"></a>Portal</h2>
+		
+		<hr />
+		<div class="row">
+		  <div class="col-md-2"><h4>The portal</h4></div>
+		  <div class="col-md-10"><p>The new portal provides a smart overview for 
+		  users to start their daily work. It's capable of loading tasks and processes 
+		  from any application of one or multiple ivy servers if the same user 
+		  exists on that application. It has been built by developers for developers. 
+		  Feel free to customize it.</p>
+		  
+		  <p>Three users are created as initial defaults:
+		  <ul>
+		   <li>admin: with same password</li>
+		   <li>demo: with same password</li>
+		   <li>guest: with same password</li>
+		  </ul>
+		  Please change credentials and allow others to profit from portal access.
+		  We recommend to use IIS for sleak user experience.
+		  </p></div>
+		</div>
+
+		<h2><a name="configuration"></a>Configuration</h2>
+		
+		<hr />
+		<div class="row">
+		  <div class="col-md-2"><h4>Customizable Error Pages</h4></div>
+		  <div class="col-md-10"><p>The content and appearance of the ivy
+		   error page can now be customized.</p>
+		   <p> It is possible to adjust the
+		   default error page <i>webapps/ivy/ivy-error-page.xhtml</i>. Alternatively
+		   custom error pages can be defined in <i>webapps/ivy/WEB-INF/web.xml</i>.</p>
+		   <p>See also the chapter <i>Configuration -> Error Handling -> <a href="http://developer.axonivy.com/doc/latest/EngineGuideHtml/configuration.html#configuration-errorhandling-customized">Custom Error Page</a></i> in 
+		   the Engine Guide.</p></div>
+		</div>
+
+		<h2><a name="interfaces"></a>Interfaces</h2>
+		
+		<hr />
+		<div class="row">
+			<div class="col-md-2"><h4>REST API</h4></div>
+			<div class="col-md-10">There is a REST API available that uses HTTP, JSON (application/json) as content type and HTTP basic as authentication method. Over this interface the following services are available:<br>
+				<ul>
+					<li>HTTP GET /ivy/api/{application name}/engine/info - Returns the version and the name of the engine.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/task/{taskId} - Returns the task with the given task identifier.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/tasks - Returns the tasks the authenticated user can work on.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/tasks/count - Returns the number of tasks the authenticated user can work on.</li>
+					<li>HTTP GET /ivy/api/{application name}/workflow/case/{caseId}/document/{documentId} - Returns the content of the document.</li>
+				</ul>
+			</div>
+		</div>
+		
+	<h2><a name="misc"></a>Miscellaneous</h2>
+		
+		<hr />
+       <div class="row">
+			<div class="col-md-2"><h4>New certificate</h4></div>
+			<div class="col-md-10"><p>The client libraries for the Rich Dialog technology in this release are signed with a new certificate. The certificate is now issued to AXON IVY AG. ivyTeam the former provider company of Axon.ivy Designer and Engine was merged into this new company. All users of Rich Dialog UI's will see a security warning dialog the first time they start the process/application on a new Designer/Engine. 
+                </p>
+                <p>See also the <a href="http://java.com/en/download/help/appsecuritydialogs.xml">official information on the Java website</a> for more information.</p>
+			</div>
+		</div>
+		<hr/>       
+		<div class="row">
+			<div class="col-md-2"><h4>Java 8</h4></div>
+            <div class="col-md-10">
+                <p>Axon.ivy Designer is now bundled with the Java 8 JRE. If you use Rich Dialogs in your projects, make sure that your users work with Java 8.</p>                
+            </div>
+		</div>
+        <hr />
+		<div class="row">
+			<div class="col-md-2"><a name="StatusCodes"></a><h4>Enhanced Error Messages and Status Codes</h4></div>
+			<div class="col-md-10"><p>The responses and corresponding HTTP status codes have been enhanced for task-resume requests.  
+				Now, the following status codes are returned in case of failure:
+				<ul>
+					<li><code>403 - FORBIDDEN</code>: The user is not allowed to work on the task.</li>
+					<li><code>404 - NOT FOUND</code>: 
+						<ul>
+							<li>The task does not exist.</li>
+							<li>The task is in an unavailable state.</li>
+							<li>The task was finished and the user was not allowed to work on it.</li>
+						</ul>
+					</li>
+					<li><code>409 - CONFLICT</code>: The user is allowed to work on the task but:
+						<ul>
+							<li>The task was finished by another user.</li>
+							<li>Another user is currently working on the task.</li>
+						</ul>
+					</li>
+				</ul>			
+				The error message for <code>409 - CONFLICT</code> will additionally mention the user that has finished or is currently working on the task.
+			</div>
+		</div>
+		<hr/>
+		<div class="row">
+			<div class="col-md-2"><h4>Java 8</h4></div>
+			<div class="col-md-10">Axon.ivy Engine is now bundled with the Java 8 JRE.</div>
+		</div>
+    
+		<hr />
+			
+		
+		<br><br>
+</div>
+</div>
+</body>
+</html>

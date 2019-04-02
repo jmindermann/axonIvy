@@ -1,0 +1,1109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="css/images/ivy_favicon_48.png"><title>Integration - Axon.ivy 7.0 | Engine Guide</title><link href="css/bootstrap.min.css" rel="stylesheet"><link media="screen" rel="stylesheet" href="css/docs.min.css"><link href="css/ivy-common-6.css" rel="stylesheet"><link href="css/ivy-userguide.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#sidebar" style="height: 100%"><!-- start-top-navigation --><div class="navbar navbar-top" role="navigation"><div class="container" id="headerdiv"><div class="navbar-header"><a class="ivy-logo" href="http://developer.axonivy.com"><img src="css/images/axon_ivy_logo.png" alt="Axon.ivy"></a><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav" id="navbar-ivy-links"><li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li></ul></div></div></div><!-- end-top-navigation --><div id="content"><div class="container"><div class="navbar"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-book"></span> Axon.ivy 7.0 | <b>Engine Guide</b></a></div></div><div class="row"><div><ul class="nav nav-tabs" role="tablist"><li><a accesskey="h" href="introduction.html">Introduction</a></li><li><a accesskey="h" href="gettingstarted.html">Getting Started</a></li><li><a accesskey="h" href="installation.html">Installation</a></li><li><a accesskey="h" href="configuration.html">Configuration</a></li><li class="active"><a accesskey="h" href="integration.html">Integration</a></li><li><a accesskey="h" href="administration.html">Administration</a></li><li><a accesskey="h" href="monitoring.html">Monitoring</a></li><li><a accesskey="h" href="misc.html">Miscellaneous</a></li><li><a accesskey="h" href="troubleshooting.html">Troubleshooting</a></li></ul></div></div></div></div><div class="jumbotron"><div class="container"><h1>Integration</h1></div></div><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="col-xs-12 col-sm-9"><div class="row"><div class="col-sm-12 "><div class="chapter">
+    
+
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="integration-introduction" class="title" style="clear: both"><a name="integration.introduction"></a>Introduction</h2></div></div></div>
+        
+        <p>We recommend to run Axon.ivy Engine behind a web front-end server (Apache httpd,
+            Microsoft IIS, Reverse Proxy, Web Application Firewall, etc.).</p>
+        <p>In those cases the web front-end server receives all requests from the clients and
+            forwards them to the Axon.ivy Engine which handles them. This allows to integrate the
+            processes and applications that you are running on an Axon.ivy Engine into a company or
+            web portal. Some web front-end server provide Single Sign On (SSO) functionality. The
+            front-end server then is responsible to identify the user (either automatically or by
+            login). After that the user is able to operate on all web sites that are integrated into
+            the web front-end server.</p>
+        <div class="figure"><a name="d5e2528"></a><div class="figure-contents">
+            
+            <div class="mediaobject"><img src="images/Integration/web_frontend_server.png" alt="Web Front-End Server"></div>
+        </div><p class="title">Figure&nbsp;5.1.&nbsp;Web Front-End Server</p></div><br class="figure-break">
+        <p>The integration for Apache httpd and Microsoft IIS is technically solved by using
+            Tomcat Connectors. More technical details about those connectors can be found on the
+                <a class="ulink" href="http://tomcat.apache.org" target="_top">Apache Tomcat web site</a>.</p>
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-directory" class="title"><a name="integration.directory"></a>Integration Directory</h3></div></div></div>
+            
+            <p>All necessary files that you need to integrate an Axon.ivy Engine into a Web Server
+                can be found in the following directories inside the Axon.ivy Engine installation
+                directory: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                        <p>Apache HTTP Server for Windows (x64):
+                                <em class="filename">misc/apache/</em></p>
+                    </li><li class="listitem">
+                        <p>Apache HTTP Server for Linux (x64):
+                            <em class="filename">misc/apache/</em></p>
+                    </li><li class="listitem">
+                        <p>IIS for Windows (x64): <em class="filename">misc/iis/</em></p>
+                    </li></ul></div>
+            <p>The directory that matches the platform and webserver where you plan to integrate the
+                Axon.ivy Engine will be called <span class="italic">integration directory</span>
+                in this chapter.</p>
+            <p>The integration binaries for Linux are not delivered with the Axon.ivy Engine as it
+                is best practice to use the Tomcat Connector binaries that are provided by the Linux
+                distribution. See <a class="xref" href="integration.html#integration.apacheserver.linux" title="Linux example configuration">&#8220;Linux example configuration&#8221;</a></p>
+        </div>
+
+        <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-external-url" class="title"><a name="integration.external.url"></a>Update external base URL</h3></div></div></div>
+            
+            <p>Update the <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System
+                    properties</a> with your external base URL after the web server integration.
+                Those properties are required for creating external links (e.g. links in <a class="link" href="administration.html#administration.emailnotification" title="Email Notification">task
+                mails</a>): </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                        <p><code class="code">WebServer.ExternalProtocol</code>(e.g. https)</p>
+                    </li><li class="listitem">
+                        <p><code class="code">WebServer.ExternalHostName</code>(The external host name)</p>
+                    </li><li class="listitem">
+                        <p><code class="code">WebServer.ExternalPort</code>(e.g. 443 for https)</p>
+                    </li></ul></div><p>
+            </p>
+        </div>
+    </div>
+
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="integration-apacheserver" class="title" style="clear: both"><a name="integration.apacheserver"></a>Apache Integration</h2></div></div></div>
+    
+    <p>An Apache HTTP Server 2.x can be configured as web frontend of an Axon.ivy Engine. The
+        communication between the Apache HTTP Server and the Tomcat from Axon.ivy is possible by
+        using the <a class="ulink" href="http://tomcat.apache.org/connectors-doc/index.html" target="_top">Apache Tomcat
+            Connector</a>.</p>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-apacheserver-windows" class="title"><a name="integration.apacheserver.windows"></a>Windows example configuration</h3></div></div></div>
+        
+        <p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p>If your Apache HTTP Server is not running on the same host as the
+                        Axon.ivy Engine then the integration directory content must be copied to
+                        the host where your Apache HTTP Server is running. </p>
+                    <p>
+                        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                                <p>Copy the mod_jk binaries and the sample configuration files
+                                    from the directory that matches your OS in <em class="filename">[[Axon.ivy
+                                        Engine install dir]]/misc/apache</em> to the Apache
+                                    Host under <em class="filename">C:\Program Files\ivy</em></p>
+                            </li></ul></div><p>
+                    </p>
+                    <p>All next steps have to be done on the host where the Apache HTTP Server is
+                        running on.</p>
+                </li><li class="listitem">
+                    <p>Include the copied <span class="italic">jk_module</span>
+                        configuration in the <em class="filename">[[Apache Install
+                            Dir]]/conf/httpd.conf</em>. Add the following lines to do
+                        so:</p><pre class="screen"># Axon.ivy Engine Integration
+Include C:/Program Files/ivy/mod_jk.conf</pre>
+                </li><li class="listitem">
+                    <p>Replace all &lt;path&gt; strings in the file <em class="filename">C:\Program
+                            Files\ivy\mod_jk.conf</em> so that the file reflects your local
+                        paths:</p><pre class="screen"># Load mod_jk module
+LoadModule    jk_module  c:/program files/ivy/mod_jk-1.2.42-httpd-2.4.so
+# Where to find workers.properties
+JkWorkersFile c:/program files/ivy/workers.properties
+# Where to put jk shared memory
+JkShmFile     c:/program files/ivy/mod_jk.shm
+# Where to put jk logs
+JkLogFile     c:/program files/ivy/mod_jk.log
+# Set the jk log level [debug/error/info]
+JkLogLevel    info
+# Select the timestamp log format
+JkLogStampFormat "[%a %b %d %H:%M:%S %Y] "
+
+# Mount the uri "/ivy/*" to the worker AxonIvyEngine.
+JkMount  /ivy/* AxonIvyEngine</pre>
+                </li><li class="listitem">
+                    <p>If you have configured virtual hosts in your apache configuration you have
+                        to map the URI <code class="code">/ivy/*</code> in all virtual host you want to integrate
+                        Axon.ivy Engine into. This can be done by copying the following line from
+                        the <em class="filename">mod_jk.conf</em> file to the appropriate virtual host
+                        definitions:</p>
+                    <p>
+                        </p><pre class="screen">JkMount /ivy/* AxonIvyEngine</pre><p>
+                    </p>
+                    <p>Copy this to the appropriate virtual host definitions, e.g.:</p>
+                    <p>
+                        </p><pre class="screen">&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@ivy.soreco.wan
+    DocumentRoot "C:/Program Files (x86)/Apache Software Foundation/Apache2.2/docs/ivy.soreco.wan"
+    ServerName ivy.soreco.wan
+    ServerAlias www.ivy.soreco.wan
+    ErrorLog "logs/ivy.soreco.wan-error.log"
+    CustomLog "logs/ivy.soreco.wan-access.log" common
+    <span class="bold"><strong>JkMount /ivy/* AxonIvyEngine</strong></span>
+&lt;/VirtualHost&gt;</pre><p>
+                    </p>
+                </li><li class="listitem">
+                    <p>Define the hostname and port, where the Axon.ivy Engine is running.
+                        Adjust the content of the  file <em class="filename">C:\Program
+                            Files\ivy\worker.properties</em> to do so.
+                        </p><pre class="screen">worker.list=AxonIvyEngine
+worker.AxonIvyEngine.type=ajp13 
+worker.AxonIvyEngine.port=8009
+worker.AxonIvyEngine.host=ivyserver</pre>
+                </li><li class="listitem">
+                    <p>Update the <a class="link" href="integration.html#integration.external.url" title="Update external base URL">external base URL</a> in the Admin UI</p>
+                </li><li class="listitem">
+                    <p>Restart the Apache HTTP Server and the Axon.ivy overview page should be
+                        accessible under <em class="uri">http://apacheHostName/ivy</em></p>
+                </li></ol></div><p>
+        </p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-apacheserver-linux" class="title"><a name="integration.apacheserver.linux"></a>Linux example configuration</h3></div></div></div>
+        
+        <p>Within this example an Apache HTTP Server is configured so that it can connect to the
+            Tomcat of an Axon.ivy Engine. The configuration step descriptions are generic and can
+            be used under any Linux distribution. But the concrete examples assume that an Ubuntu
+            distribution is installed as Operating System.</p>
+        <p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p>Install the latest Tomcat Connector (mod_JK) by console.
+                        </p><pre class="screen">sudo apt-get install libapache2-mod-jk</pre>
+                </li><li class="listitem">
+                    <p>Enable the new module</p><pre class="screen">sudo a2enmod jk</pre>
+                </li><li class="listitem">
+                    <p>Update the <em class="filename">worker.properties</em> file according to the
+                        examples in the <em class="filename">[[Axon.ivy Engine install
+                            path]]/misc/apache/</em>. The following example
+                        content would connect to an Axon.ivy Engine on the host "<span class="italic">ivyserver</span>" under the default AJP port <span class="italic">8009</span>.</p>
+                    <p><span class="underline"><span class="bold"><strong><em class="filename">/etc/libapache2-mod-jk/worker.properties</em></strong></span>:</span></p><pre class="screen">worker.list=AxonIvyEngine
+worker.AxonIvyEngine.type=ajp13 
+worker.AxonIvyEngine.port=8009
+worker.AxonIvyEngine.host=ivyserver</pre>
+                </li><li class="listitem">
+                    <p>Mount the Axon.ivy Engine in the virtual host definition of the Apache
+                        HTTP Server. The context URI must match the context of the Axon.ivy
+                        Engine.</p>
+                    <p><span class="underline"><span class="bold"><strong><em class="filename">/etc/apache2/sites-available/default</em></strong></span>:</span></p><pre class="screen">&lt;VirtualHost *:80&gt;
+    ...
+    <span class="bold"><strong>#Mounts the URI /ivy/* to the worker AxonIvyEngine
+    JkMount /ivy/* AxonIvyEngine</strong></span>
+&lt;/VirtualHost&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>If the Apache HTTP Server is used as Load Balancer for a clustered Axon.ivy Engine
+                            installation, the JK Status Manager can be used to display debugging
+                            informations. The Manager is accessible when it is mounted in the
+                            virtual host definition configuration.</p>
+    <p>
+        </p><pre class="screen">&lt;VirtualHost *:80&gt;
+    ...
+    <span class="bold"><strong>#Mounts the URI /jkmanager/* to the JK Status Manager interface.
+    JkMount /jkmanager/* jkstatus</strong></span>
+&lt;/VirtualHost&gt;</pre><p>
+    </p></div>
+                </li><li class="listitem">
+                    <p>Update the <a class="link" href="integration.html#integration.external.url" title="Update external base URL">external base URL</a> in the Admin UI</p>
+                </li><li class="listitem">
+                    <p>Restart the Apache HTTP Server and the Axon.ivy overview page should be
+                        accessible under <em class="uri">http://apacheHostName/ivy</em></p>
+                </li></ol></div><p>
+            
+        </p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-apacheserver-contexturi" class="title"><a name="integration.apacheserver.contexturi"></a>Change context URI /ivy/</h3></div></div></div>
+        
+        <p>The context URI <code class="code">/ivy/</code> can be changed inside the Axon.ivy Engine by
+            changing the system property <code class="code">WebServer.IvyContextName</code> (See chapter
+            <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System
+                Properties</a> to learn about how to change a system property). However, if
+            you change the context URI on the Axon.ivy Engine you also have to change the
+            context URI in the Apache HTTP Server integration. This can be done by changing the
+            last line of the <em class="filename">mod_jk.conf</em> configuration
+            file:</p><pre class="screen">JkMount  /ivy/* AxonIvyEngine </pre>
+        <p>If you want to have <code class="code">/xpertline/</code> as the context URI change this line
+            to the following:</p><pre class="screen">JkMount  /xpertline/* AxonIvyEngine </pre>
+        <p>If you have a virtual host configuration, the <span class="command"><strong>JkMount</strong></span> command with
+            the new context URI must also be applied to the virtual host definition:
+            </p><pre class="screen">&lt;VirtualHost *:80&gt;
+    ...
+    <span class="bold"><strong>JkMount /xpertline/* AxonIvyEngine</strong></span>
+&lt;/VirtualHost&gt;</pre>
+    </div>
+</div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="integration-iis" class="title" style="clear: both"><a name="integration.iis"></a>Microsoft IIS Integration</h2></div></div></div>
+    
+    <p>
+        </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3>
+            <p>To successfully integrate Axon.ivy Engine into Microsoft Internet Information
+                Server (IIS) it is important that you exactly execute all the integration steps
+                described below. If the integration does not work verify each integration step
+                again. </p>
+        </div><p>
+    </p>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-iis7" class="title"><a name="integration.iis7"></a>IIS 7 (Windows Server 2008)</h3></div></div></div>
+    
+    
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>There is a batch script <em class="filename">autoconfig.bat</em> in the folder
+                <em class="filename">misc\iis</em> of your engine installation, which installs and
+            configures the IIS automatically on a Windows 2008 Server. </p>
+        <p>If you are setting up a new IIS Server you can use this script instead of
+        following the instructions below.</p></div>
+    <p>
+        </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                <p>If your Microsoft Internet Information Server is not running on the
+                    same host as the Axon.ivy Engine then copy the integration directory to
+                    the host where your IIS is running. All next steps have to be done on
+                    the host the IIS is running on.</p>
+            </li><li class="listitem">
+                <p>Allow the user groups <code class="code">Authenticated Users</code> and
+                    <code class="code">IUSR</code> to have <code class="code">Full control</code> permission on
+                    the integration directory.</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/DirectorySecurity.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Install Features </strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>Instead of installing the features manually you can run the
+                        following command which ensures that all necessary IIS Features
+                        are installed: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>PKGMGR.EXE
+                                            /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-ApplicationDevelopment;IIS-CGI;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Security;IIS-WindowsAuthentication;IIS-RequestFiltering;IIS-Performance;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementScriptingTools;IIS-ManagementService</strong></span></td></tr></tbody></table>
+                        </div><p>
+                    </p>
+                </div>
+                <p>Open the Server Manager <span class="italic">(Start &gt; Control Panel
+                    &gt; Administrative Tools &gt; Server Manager</span>). Navigate to the
+                    node <span class="italic">Server Manager &gt; Roles &gt; Web Server
+                        (IIS)</span> and select it. Validate that under the <code class="code">Role
+                            Services</code> the services <code class="code">CGI</code>, <code class="code">ISAPI
+                                Extensions</code> and <code class="code">ISAPI Filters</code> are installed. If
+                    this is not the case select the menu <code class="code">Add Role Services</code> to
+                    install the missing services. </p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ServerManager.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Feature delegation</strong></span>
+                    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically sets the feature
+                            delegation:</p>
+                        <p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>powershell -ExecutionPolicy
+                                            unrestricted -ImportSystemModules
+                                            Set-WebConfiguration //System.webServer/handlers
+                                            -metadata overrideMode -value Allow -PSPath
+                                            IIS:/</strong></span></td></tr></tbody></table></div>
+                    </div><p> Open the Internet Information Services (IIS) Manager (<span class="italic">Start &gt; Control Panel &gt; Administrative Tools &gt;
+                        Internet Information Services (IIS) Manager</span>). In the
+                    <code class="code">Connections</code> pane select the node that represent your
+                    machine. In the <code class="code">Feature View</code> open the <code class="code">Feature
+                        Delegation</code> entry. </p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/FeatureDelegation.png"></span></p>
+                <p>Ensure that the <code class="code">Delegation</code> of the <code class="code">Handler
+                    Mappings</code> are set to <code class="code">Read/Write</code>. Use the menu
+                    <code class="code">Read/Write</code> on the <code class="code">Actions</code> pane to change
+                    the <code class="code">Delegation</code> to Read/Write.</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/EditFeatureDelegation.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Virtual ivy directory </strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following commands automatically creates the virtual
+                        directory ivy: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>set
+                                            path=%path%;%windir%\system32\inetsrv</strong></span></td></tr></tbody></table>
+                        </div><p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe add vdir
+                                            /app.name:"Default Web Site/" /path:/ivy
+                                            /physicalPath:&lt;replace this with the path to
+                                            the integration directory&gt;</strong></span></td></tr></tbody></table></div>
+                </div><p> In the <code class="code">Connections</code> pane navigate to the Web Site
+                    you want integrate the Axon.ivy Engine into. Use the context menu
+                    <code class="code">Add Virtual Directory ...</code> of the Web Site to add a new
+                    Virtual Directory. A dialog opens. Configure the <code class="code">Alias</code> of
+                    the Virtual Directory with <code class="code">ivy</code> and the <code class="code">Physical
+                        path</code> of the Virtual Directory with the path of the
+                    integration directory. Click <code class="code">OK</code> to close the dialog and
+                    create the Virtual Directory:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddVirtualDirectory.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Handler Mapping Permissions</strong></span>
+                    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically sets the feature
+                            permission for the ivy virtual directory:</p>
+                        <p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web Site/ivy" 
+                                            /section:system.webServer/handlers 
+                                            /accessPolicy:Read,Write,Execute</strong></span></td></tr></tbody></table></div>
+                    </div><p>Select the new created Virtual Directory <code class="code">ivy</code> in the
+                    <code class="code">Connections</code> pane and open the <code class="code">Handler
+                        Mappings</code> entry in the <code class="code">Feature View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/HandlerMappings.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Edit Feature
+                    Permissions ...</code> menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/EditFeaturePermission.png"></span></p>
+                <p>On the <code class="code">Edit Feature Permission</code> dialog select all three
+                    permission and click <code class="code">OK</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddExecutePermission.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Configure Error Page</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically configures that the detailed error
+                            page of the Engine is shown:</p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web
+                                                  Site/ivy" /section:system.webServer/httpErrors
+                                                  /errorMode:Detailed</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                </div><p>
+                    </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                        <p>
+                            See chapter <a class="link" href="configuration.html#configuration.errorhandling" title="Error Handling">Error Handling</a> for more information about this configuration.
+                        </p>
+                    </div><p>
+                    Select the new created Virtual Directory <code class="code">ivy</code> in the
+                        <code class="code">Connections</code> pane and open the <code class="code">Error Pages</code> entry in
+                    the <code class="code">Feature View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesSelect.png"></span></p>
+                <p>Right click and select the <code class="code">Edit Feature Settings...</code> or select the same from the <code class="code">Actions</code> pane (in the right hand side)</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesEditFeature.png"></span></p>
+                <p>Select the <code class="code">Detailed errors</code> radio button and click on <code class="code">OK</code></p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesSetDetailedErrors.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Install ISAPI filter</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following command automatically adds the ISAPI
+                        Filter:</p>
+                    <p>  </p><div class="informaltable">
+                        <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config
+                                        /section:isapiFilters
+                                        /+[@start,name='Tomcat',path='&lt;replace this
+                                        with the path to the integration
+                                        directory&gt;\isapi_redirect-1.2.42.dll']</strong></span></td></tr></tbody></table></div>
+                </div><p> Select the Web Site in the <code class="code">Connections</code> pane and
+                    open the <code class="code">ISAPI Filters</code> entry in the <code class="code">Feature
+                        View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/IsapiFilter.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Add ...</code>
+                    menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiFilter.png"></span></p>
+                <p>On the <code class="code">Add ISAPI Filter</code> dialog configure the <code class="code">Filter
+                    name</code> with <code class="code">Axon.ivy Engine</code> and the
+                    <code class="code">Executable</code> with the path of the
+                    <em class="filename">isapi_redirect-1.2.42.dll</em> located in the
+                    integration directory. Click <code class="code">OK</code> to add the ISAPI
+                    Filter:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiFilter2.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Change ISAPI filter restriction</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following command automatically adds the ISAPI
+                        Restriction: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config
+                                            /section:isapiCgiRestriction
+                                            /+[@start,description='Tomcat',path='&lt;replace
+                                            this with the path to the integration
+                                            directory&gt;\isapi_redirect-1.2.42.dll',allowed='true']</strong></span></td></tr></tbody></table>
+                        </div><p>
+                    </p>
+                </div><p> In the <code class="code">Connections</code> pane select the node that
+                    represent your machine and open the <code class="code">ISAPI and CGI
+                        Restrictions</code> entry in the <code class="code">Features View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/IsapiRestriction.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Add ...</code>
+                    menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiRestriction.png"></span></p>
+                <p>On the <code class="code">Add ISAPI or CGI Restriction</code> dialog configure the
+                        <code class="code">ISAPI or CGI path</code> with the path of the
+                        <em class="filename">isapi_redirect-1.2.42.dll</em> located in the integration
+                    directory. As <code class="code">Description</code> use <code class="code">Axon.ivy Engine</code>. Select
+                    the <code class="code">Allow extension path to execute</code> check box. Click
+                        <code class="code">OK</code> to add the ISAPI or CGI Restriction:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapRestriction2.png"></span></p>
+            </li><li class="listitem">
+                <p>If your Microsoft Internet Information Server is not running on the same host
+                    as the Axon.ivy Engine or if you have changed the AJP port of the Axon.ivy
+                    Engine then open the file <em class="filename">worker.properties</em> inside the
+                    integration directory in a text editor. Change the following line if you have
+                    changed the AJP port to another value than
+                    <code class="code">8009</code>:</p><pre class="screen">worker.AxonIvyEngine.port=8009</pre>
+                <p>Change the value <code class="code">localhost</code> in the following line to the host
+                    where your Axon.ivy Engine is running if your Microsoft Internet Information
+                    Server is not running on the same host as the Axon.ivy
+                    Engine:</p><pre class="screen">worker.AxonIvyEngine.host=localhost</pre>
+            </li><li class="listitem">
+                <p>Update the <a class="link" href="integration.html#integration.external.url" title="Update external base URL">external base URL</a> in the Admin UI</p>
+            </li><li class="listitem">
+                <p>Check if the integration is working by opening a web browser on the
+                    address <code class="code">http://&lt;your host&gt;/ivy/</code></p>
+            </li></ol></div><p>
+    </p>
+</div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-iis8" class="title"><a name="integration.iis8"></a>IIS 8 (Windows Server 2012)</h3></div></div></div>
+    
+    
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>There is a batch script <em class="filename">autoconfig.bat</em> in the folder
+                <em class="filename">misc\iis</em> of your engine installation, which installs and
+            configures the IIS automatically on a Windows 2012 Server. </p>
+        <p>If you are setting up a new IIS Server you can use this script instead of
+            following the instructions below.</p></div>
+    <p>
+        </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                <p>If your Microsoft Internet Information Server is not running on the
+                    same host as the Axon.ivy Engine then copy the integration directory to
+                    the host where your IIS is running. All next steps have to be done on
+                    the host the IIS is running on.</p>
+            </li><li class="listitem">
+                <p>Allow the user groups <code class="code">Authenticated Users</code> and
+                    <code class="code">IUSR</code> to have <code class="code">Full control</code> permission on
+                    the integration directory.</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/DirectorySecurity.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Install Features </strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>Instead of installing the features manually you can run the
+                        following command which ensures that all necessary IIS Features
+                        are installed: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>PKGMGR.EXE
+                                            /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-ApplicationDevelopment;IIS-CGI;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Security;IIS-WindowsAuthentication;IIS-RequestFiltering;IIS-Performance;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementScriptingTools;IIS-ManagementService</strong></span></td></tr></tbody></table>
+                        </div><p>
+                    </p>
+                </div>
+                <p>Open the Server Manager <span class="italic">(Start &gt; Server Manager</span>). Select the
+                    <span class="italic">Web Server
+                        (IIS)</span>. Validate that under the <code class="code">Role
+                            Services</code> the services <code class="code">CGI</code>, <code class="code">ISAPI
+                                Extensions</code> and <code class="code">ISAPI Filters</code> are installed. If
+                    this is not the case select the menu <code class="code">Add Role Services</code> to
+                    install the missing services. </p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ServerManager.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Feature delegation</strong></span>
+                    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically sets the feature
+                            delegation:</p>
+                        <p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>powershell -ExecutionPolicy
+                                            unrestricted -ImportSystemModules
+                                            Set-WebConfiguration //System.webServer/handlers
+                                            -metadata overrideMode -value Allow -PSPath
+                                            IIS:/</strong></span></td></tr></tbody></table></div>
+                    </div><p> Open the Internet Information Services (IIS) Manager (<span class="italic">Start &gt;
+                        Internet Information Services (IIS) Manager</span>). In the
+                    <code class="code">Connections</code> pane select the node that represent your
+                    machine. In the <code class="code">Feature View</code> open the <code class="code">Feature
+                        Delegation</code> entry. </p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/FeatureDelegation.png"></span></p>
+                <p>Ensure that the <code class="code">Delegation</code> of the <code class="code">Handler
+                    Mappings</code> are set to <code class="code">Read/Write</code>. Use the menu
+                    <code class="code">Read/Write</code> on the <code class="code">Actions</code> pane to change
+                    the <code class="code">Delegation</code> to Read/Write.</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/EditFeatureDelegation.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Virtual ivy directory </strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following commands automatically creates the virtual
+                        directory ivy: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>set
+                                            path=%path%;%windir%\system32\inetsrv</strong></span></td></tr></tbody></table>
+                        </div><p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe add vdir
+                                            /app.name:"Default Web Site/" /path:/ivy
+                                            /physicalPath:&lt;replace this with the path to
+                                            the integration directory&gt;</strong></span></td></tr></tbody></table></div>
+                </div><p> In the <code class="code">Connections</code> pane navigate to the Web Site
+                    you want integrate the Axon.ivy Engine into. Use the context menu
+                    <code class="code">Add Virtual Directory ...</code> of the Web Site to add a new
+                    Virtual Directory. A dialog opens. Configure the <code class="code">Alias</code> of
+                    the Virtual Directory with <code class="code">ivy</code> and the <code class="code">Physical
+                        path</code> of the Virtual Directory with the path of the
+                    integration directory. Click <code class="code">OK</code> to close the dialog and
+                    create the Virtual Directory:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddVirtualDirectory.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Handler Mapping Permissions</strong></span>
+                    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically sets the feature
+                            permission for the ivy virtual directory:</p>
+                        <p>  </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web Site/ivy" 
+                                            /section:system.webServer/handlers 
+                                            /accessPolicy:Read,Write,Execute</strong></span></td></tr></tbody></table></div>
+                    </div><p>Select the new created Virtual Directory <code class="code">ivy</code> in the
+                    <code class="code">Connections</code> pane and open the <code class="code">Handler
+                        Mappings</code> entry in the <code class="code">Feature View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/HandlerMappings.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Edit Feature
+                    Permissions ...</code> menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/EditFeaturePermission.png"></span></p>
+                <p>On the <code class="code">Edit Feature Permission</code> dialog select all three
+                    permission and click <code class="code">OK</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddExecutePermission.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Configure Error Page</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following command automatically configures that the detailed error
+                            page of the Engine is shown:</p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web
+                                            Site/ivy" /section:system.webServer/httpErrors
+                                            /errorMode:Detailed</strong></span></td></tr></tbody></table>
+                        </div><p>
+                    </p>
+                </div><p>
+                    </p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                        <p>
+                        See chapter <a class="link" href="configuration.html#configuration.errorhandling" title="Error Handling">Error Handling</a> for more information about this configuration.
+                        </p>
+                    </div><p>
+                    Select the new created Virtual Directory <code class="code">ivy</code> in the
+                    <code class="code">Connections</code> pane and open the <code class="code">Error Pages</code> entry in
+                    the <code class="code">Feature View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesSelect.png"></span></p>
+                <p>Right click and select <code class="code">Edit Feature Settings...</code> or select the
+                    same from the <code class="code">Actions</code> pane (in the right hand side)</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesEditFeature.png"></span></p>
+                <p>Select the <code class="code">Detailed errors</code> radio button and click on <code class="code">OK</code></p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/ErrorPagesSetDetailedErrors.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Install ISAPI filter</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following command automatically adds the ISAPI
+                        Filter:</p>
+                    <p>  </p><div class="informaltable">
+                        <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config
+                                        /section:isapiFilters
+                                        /+[@start,name='Tomcat',path='&lt;replace this
+                                        with the path to the integration
+                                        directory&gt;\isapi_redirect-1.2.42.dll']</strong></span></td></tr></tbody></table></div>
+                </div><p> Select the Web Site in the <code class="code">Connections</code> pane and
+                    open the <code class="code">ISAPI Filters</code> entry in the <code class="code">Feature
+                        View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/IsapiFilter.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Add ...</code>
+                    menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiFilter.png"></span></p>
+                <p>On the <code class="code">Add ISAPI Filter</code> dialog configure the <code class="code">Filter
+                    name</code> with <code class="code">Axon.ivy Engine</code> and the
+                    <code class="code">Executable</code> with the path of the
+                    <em class="filename">isapi_redirect-1.2.42.dll</em> located in the
+                    integration directory. Click <code class="code">OK</code> to add the ISAPI
+                    Filter:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiFilter2.png"></span></p>
+            </li><li class="listitem">
+                <p><span class="bold"><strong>Change ISAPI filter restriction</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                    <p>The following command automatically adds the ISAPI
+                        Restriction: </p>
+                    <p>
+                        </p><div class="informaltable">
+                            <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config
+                                            /section:isapiCgiRestriction
+                                            /+[@start,description='Tomcat',path='&lt;replace
+                                            this with the path to the integration
+                                            directory&gt;\isapi_redirect-1.2.42.dll',allowed='true']</strong></span></td></tr></tbody></table>
+                        </div><p>
+                    </p>
+                </div><p> In the <code class="code">Connections</code> pane select the node that
+                    represent your machine and open the <code class="code">ISAPI and CGI
+                        Restrictions</code> entry in the <code class="code">Features View</code>:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/IsapiRestriction.png"></span></p>
+                <p>In the <code class="code">Actions</code> pane select the <code class="code">Add ...</code>
+                    menu:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapiRestriction.png"></span></p>
+                <p>On the <code class="code">Add ISAPI or CGI Restriction</code> dialog configure the
+                        <code class="code">ISAPI or CGI path</code> with the path of the
+                        <em class="filename">isapi_redirect-1.2.42.dll</em> located in the integration
+                    directory. As <code class="code">Description</code> use <code class="code">Axon.ivy Engine</code>. Select
+                    the <code class="code">Allow extension path to execute</code> check box. Click
+                        <code class="code">OK</code> to add the ISAPI or CGI Restriction:</p>
+                <p><span class="inlinemediaobject"><img src="images/Integration/AddIsapRestriction2.png"></span></p>
+            </li><li class="listitem">
+                <p>If your Microsoft Internet Information Server is not running on the same host
+                    as the Axon.ivy Engine or if you have changed the AJP port of the Axon.ivy
+                    Engine then open the file <em class="filename">worker.properties</em> inside the
+                    integration directory in a text editor. Change the following line if you have
+                    changed the AJP port to another value than
+                    <code class="code">8009</code>:</p><pre class="screen">worker.AxonIvyEngine.port=8009</pre>
+                <p>Change the value <code class="code">localhost</code> in the following line to the host
+                    where your Axon.ivy Engine is running if your Microsoft Internet Information
+                    Server is not running on the same host as the Axon.ivy
+                    Engine:</p><pre class="screen">worker.AxonIvyEngine.host=localhost</pre>
+            </li><li class="listitem">
+                <p>Update the <a class="link" href="integration.html#integration.external.url" title="Update external base URL">external base URL</a> in the Admin UI</p>
+            </li><li class="listitem">
+                <p>Check if the integration is working by opening a web browser on the
+                    address <code class="code">http://&lt;your host&gt;/ivy/</code></p>
+            </li></ol></div><p>
+    </p>
+</div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-context-uri" class="title"><a name="integration.context.uri"></a>Change context URI /ivy/</h3></div></div></div>
+        
+        <p>The context URI <code class="code">/ivy/</code> can be changed inside the Axon.ivy Engine by
+            changing the system property <code class="code">WebServer.IvyContextName</code> (See chapter <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System Properties</a> to
+            learn about how to change a system property). However, if you change the context URI on
+            the Axon.ivy Engine you also have to change the context URI in the Microsoft IIS
+            integration. This can be done by changing the last line of the
+                <em class="filename">uriworkermap.properties</em> configuration
+            file:</p><pre class="screen">/ivy/*=AxonIvyEngine</pre>
+        <p>If you want to have <code class="code">/xpertline/</code> as the context URI change this line to
+            the following:</p><pre class="screen">/xpertline/*=AxonIvyEngine</pre>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-iis-multiple-instances" class="title"><a name="integration.iis.multiple.instances"></a>Access multiple Axon.ivy Engines through one IIS</h3></div></div></div>
+        
+        <p>Multiple Axon.ivy Engine instances can be accessed through a single IIS server. This
+            is especially useful if multiple Axon.ivy versions must be accessible during a migration
+            phase. The following explanation shows a solution for the scenario, where a legacy
+            Xpert.ivy 3.9 Server and an Axon.ivy 5.x Engine must be accessible through a single IIS
+            host. </p>
+        <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                <p>Make the newer Axon.ivy Engine accessible through the IIS as if only one
+                    engine would be behind the IIS. For detailed instructions follow <a class="xref" href="integration.html#integration.iis" title="Microsoft IIS Integration">&#8220;Microsoft IIS Integration&#8221;</a>.</p>
+                <p>In our scenario the integration directory from the Axon.ivy 5.x Engine was used
+                    to make the engine instance accessible under
+                    <code class="code">http://localhost/ivy</code>.</p>
+            </li><li class="listitem">
+                <p>The contexts of the Axon.ivy Engines must be unique. By default the context is
+                    set to <code class="code">/ivy/</code> . If different versions of ivy engines are accessed
+                    from the same IIS host, it's useful to change the contexts so that it matches
+                    the ivy version. For detailed explanation see <a class="xref" href="integration.html#integration.context.uri" title="Change context URI /ivy/">&#8220;Change context URI /ivy/&#8221;</a>
+                </p>
+                <p>In our scenario the context URI of the Axon.ivy 5.x Engine was changed to
+                        <code class="code">/ivy5/</code> and the Xpert.ivy 3.9 Server kept his default context
+                        <code class="code">/ivy/</code>. </p>
+            </li><li class="listitem">
+                <p>All Axon.ivy Engines, which are accessed from the same IIS, must listen on a
+                    different port for AJP communication. Therefore the AJP port must be changed.
+                    For detailed explanation see <a class="xref" href="configuration.html#configuration.webserver" title="Web Server Ports">&#8220;Web Server Ports&#8221;</a>. </p>
+                <p>In our scenario the AJP port of the Axon.ivy 5.x Engine was changed to 8010 and
+                    the Xpert.ivy 3.9 Server kept his default AJP port 8009.</p>
+            </li><li class="listitem">
+                <p>The Axon.ivy Engines must be declared in the
+                        <em class="filename">worker.properties</em> file of the integration directory.
+                    It's important that each worker has a unique name and that they are listed in
+                    the <code class="code">worker.list</code> property.</p>
+                <p>In our scenario the <em class="filename">worker.properties</em> looks as follows:
+                    </p><pre class="screen">worker.XpertIvyServer3x.type=ajp13 
+worker.XpertIvyServer3x.port=8009
+worker.XpertIvyServer3x.host=ivyhostname39
+
+worker.AxonIvyEngine5x.type=ajp13 
+worker.AxonIvyEngine5x.port=8010
+worker.AxonIvyEngine5x.host=ivyhostname50
+
+worker.list=XpertIvyServer3x,AxonIvyEngine5x</pre>
+            </li><li class="listitem">
+                <p>The contexts of the Axon.ivy Engines must be registered in the
+                        <em class="filename">uriworkermap.properties</em> file of the integration
+                    directory. </p>
+                <p>In our scenario we make Axon.ivy 5.x available under
+                        <code class="code">http://localhost/ivy5/</code> and Xpert.ivy 3.9 under
+                        <code class="code">http://localhost/ivy</code>. So the
+                        <em class="filename">uriworkermap.properties</em> file looks as follows:
+                    </p><pre class="screen">/ivy/*=XpertIvyServer3x
+/ivy5/*=AxonIvyEngine5x</pre>
+            </li></ol></div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-single_sign_on" class="title"><a name="integration.single_sign_on"></a>Single Sign On </h3></div></div></div>
+    
+    <p>Axon.ivy Engine supports single sign on in Windows environments. The following
+        preconditions must be fulfilled for single sign on:</p>
+    <p>
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>The application on the Axon.ivy Engine must use Active Directory
+                    Security System</p>
+            </li><li class="listitem">
+                <p>The Axon.ivy Engine must be integrated into a Microsoft Internet
+                    Information Server (IIS)</p>
+            </li></ul></div><p>
+    </p>
+    <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3271" class="title"><a name="d5e3271"></a>IIS 6 (Windows Server 2003)</h4></div></div></div>
+        
+        <p>To activate the single sign on open the Internet Information Services (IIS)
+            Manager (<span class="italic">Start &gt; Control Panel &gt; Administrative Tools &gt;
+                Internet Information Services (IIS) Manager</span>). On the left pane
+            select the context menu <code class="code">Properties</code> on the <code class="code">ivy</code> Virtual
+            Directory node. A dialog appears. On the tab <code class="code">Directory Security</code>
+            click on the <code class="code">Edit ...</code> button in section <code class="code">Authentication and
+                access control</code>. A new dialog appears.</p>
+        <p>Select the check box <code class="code">Integrated Windows authentication</code>. Make sure
+            that all other authentication modes such as <code class="code">Enable anonymous access</code>
+            or <code class="code">Digest authentication for Windows domain servers</code> are disabled,
+            otherwise IIS will use those authentication modes and Single Sign On will not
+            work. </p>
+        <p>Click <code class="code">OK</code> again to close the <code class="code">Properties</code>
+        dialog.</p>
+        <p>To use only NTLM as security provider for the whole IIS, change into the
+            <span class="italic">InetPub\Adminscripts\</span> directory and
+            execute following command: </p>
+        <p>
+            </p><pre class="screen">Cscript adsutil.vbs set w3svc/NTAuthenticationProviders "NTLM"</pre><p>
+        </p>
+        <p><span class="inlinemediaobject"><img src="images/Integration/IIS_6_SingleSignOn.png"></span></p>
+    </div>
+    <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3295" class="title"><a name="d5e3295"></a>IIS 7 (Windows Server 2008)</h4></div></div></div>
+        
+        <p>
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>There is a batch script <em class="filename">autoconfigSSO.bat</em> in the folder
+                        <em class="filename">misc\iis</em> of your engine installation. This script
+                    automatically sets up SSO on a Windows 2008 Server. </p>
+                <p>If you are setting up a new IIS Server you can use this script instead of
+                    following the instructions below.</p></div><p>
+            
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p><span class="bold"><strong>Install Windows Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                            <p>The following command automatically installs the Windows
+                                Authentication: </p>
+                            <p>
+                                </p><div class="informaltable">
+                                    <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>PKGMGR.EXE /iu:IIS-WindowsAuthentication</strong></span></td></tr></tbody></table>
+                                </div><p>
+                            </p>
+                        </div><p> Open the Server Manager (<span class="italic">Start &gt;
+                            Control Panel &gt; Administrative Tools &gt; Server
+                        Manager</span>). Navigate to the node <span class="italic">Server Manager &gt; Roles &gt; Web Server (IIS)</span> and select
+                        it. Validate that under the <code class="code">Role Services</code> the service
+                            <code class="code">Window Authentication</code> is installed. If this is not
+                        the case select the menu <code class="code">Add Role Services</code> to install
+                        the missing service. </p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/SingleSignOn.png"></span></p>
+                </li><li class="listitem">
+                    <p><span class="bold"><strong>Deactivate Anonymous Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically deactivates the Anonymous
+                                Authentication: </p>
+                        <p>
+                                </p><div class="informaltable">
+                                    <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>set
+                                          path=%path%;%windir%\system32\inetsrv</strong></span></td></tr></tbody></table>
+                                </div><p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web Site/ivy" -section:system.webServer/security/authentication/anonymousAuthentication /enabled:"False" /commit:apphost</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p>Open the Internet Information Services (IIS) Manager (<span class="italic">Start &gt; Control Panel &gt; Administrative Tools &gt;
+                            Internet Information Services (IIS) Manager</span>). In the
+                            <code class="code">Connections</code> pane select the <code class="code">ivy</code>
+                        Virtual Directory node. In the <code class="code">Feature View</code> open the
+                            <code class="code">Authentication</code> entry. Select the <code class="code">Windows
+                            Authentication</code> and use the menu <code class="code">Enable</code> in
+                        the <code class="code">Actions</code> pane to enable Windows
+                        Authentication.</p>
+                    <p>Make sure that all other authentication modes such as
+                            <code class="code">Anonymous Authentication</code> or <code class="code">Digest
+                            Authentication</code> are disabled, otherwise IIS will use those
+                        authentication modes and Single Sign On will not work.</p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/SingleSignOn2.png"></span></p>
+                </li><li class="listitem">
+                    <p><span class="bold"><strong>Activate Windows Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically activates the Windows
+                                Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default
+                                          Web Site/ivy"
+                                          -section:system.webServer/security/authentication/windowsAuthentication
+                                          /enabled:"True" /-"providers.[value='Negotiate']"
+                                          /commit:apphost</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p>Remove all providers expect <code class="code">NTLM</code> from Windows
+                        Authentication, otherwise Single Sign On may not work with the RIA
+                        clients.</p>
+                    <p><span class="bold"><strong>IIS 7.5 (Windows Server 2008
+                        R2)</strong></span></p>
+                    <p>Select the <code class="code">Windows Authentication</code> and use the menu
+                            <code class="code">Providers ...</code> in the <code class="code">Actions</code> pane to
+                        configure the enabled providers. Remove all providers expect
+                            <code class="code">NTLM</code> from this list.</p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/SingelSingeOnProviders.png"></span></p>
+                </li></ol></div><p>
+        </p>
+    </div>
+    <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3386" class="title"><a name="d5e3386"></a>IIS 8 (Windows Server 2012)</h4></div></div></div>
+        
+        <p>
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>There is a batch script <em class="filename">autoconfigSSO.bat</em> in the folder
+                        <em class="filename">misc\iis</em> of your engine installation. This script
+                    automatically sets up SSO on a Windows 2012 Server. </p>
+                <p>If you are setting up a new IIS Server you can use this script instead of
+                    following the instructions below.</p></div><p>
+            
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p><span class="bold"><strong>Install Windows Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically installs the Windows
+                            Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>PKGMGR.EXE /iu:IIS-WindowsAuthentication</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p> Open the Server Manager (<span class="italic">Start &gt; Server
+                        Manager</span>). Select the <span class="italic">Web Server (IIS)</span>. Validate that under the <code class="code">Role Services</code> the service
+                        <code class="code">Window Authentication</code> is installed. If this is not
+                        the case select the menu <code class="code">Add Role Services</code> to install
+                        the missing service. </p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/SingleSignOn.png"></span></p>
+                </li><li class="listitem">
+                    <p><span class="bold"><strong>Deactivate Anonymous Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically deactivates the Anonymous
+                            Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>set
+                                                path=%path%;%windir%\system32\inetsrv</strong></span></td></tr></tbody></table>
+                            </div><p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web Site/ivy" -section:system.webServer/security/authentication/anonymousAuthentication /enabled:"False" /commit:apphost</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p>Open the Internet Information Services (IIS) Manager (<span class="italic">Start &gt;
+                        Internet Information Services (IIS) Manager</span>). In the
+                        <code class="code">Connections</code> pane select the <code class="code">ivy</code>
+                        Virtual Directory node. In the <code class="code">Feature View</code> open the
+                        <code class="code">Authentication</code> entry. Select the <code class="code">Windows
+                            Authentication</code> and use the menu <code class="code">Enable</code> in
+                        the <code class="code">Actions</code> pane to enable Windows
+                        Authentication.</p>
+                    <p>Make sure that all other authentication modes such as
+                        <code class="code">Anonymous Authentication</code> or <code class="code">Digest
+                            Authentication</code> are disabled, otherwise IIS will use those
+                        authentication modes and Single Sign On will not work.</p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/SingleSignOn2.png"></span></p>
+                </li><li class="listitem">
+                    <p><span class="bold"><strong>Activate Windows Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically activates the Windows
+                            Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default
+                                                Web Site/ivy"
+                                                -section:system.webServer/security/authentication/windowsAuthentication
+                                                /enabled:"True" /-"providers.[value='Negotiate']"
+                                                /commit:apphost</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p>Remove all providers expect <code class="code">NTLM</code> from Windows
+                        Authentication, otherwise Single Sign On may not work with the RIA
+                        clients.</p>
+                </li></ol></div><p>
+        </p>
+    </div>
+    <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3466" class="title"><a name="d5e3466"></a>Troubleshooting</h4></div></div></div>
+        
+        <p>See <a class="xref" href="troubleshooting.html#troubleshooting.startproblems.ajp" title="Request Entity Too Large">&#8220;Request Entity Too Large&#8221;</a></p>
+    </div>
+</div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-basic_auth" class="title"><a name="integration.basic_auth"></a>Basic Authentication </h3></div></div></div>
+    
+    <p>In the following situations Basic Authentication is required: </p>
+    <p>
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>to use the Axon.ivy Mobile App </p>
+            </li><li class="listitem">
+                <p>to provide REST services which require authentication</p>
+            </li></ul></div><p>
+    </p>
+    <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3479" class="title"><a name="d5e3479"></a>IIS 8 (Windows Server 2012)</h4></div></div></div>
+        
+        <p>
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>There is a batch script <em class="filename">autoconfigBasicAuth.bat</em> in the folder
+                <em class="filename">misc\iis</em> of your engine installation. This script
+                automatically sets up Basic Authentication on a Windows 2012 Server. </p>
+                <p>If you are setting up a new IIS Server you can use this script instead of
+                    following the instructions below.</p></div><p>               
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p><span class="bold"><strong>Install Basic Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically installs Basic Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>PKGMGR.EXE /iu:IIS-BasicAuthentication</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p> Open the Server Manager (<span class="italic">Start &gt; Server
+                        Manager</span>). Select the <span class="italic">Web Server (IIS)</span>. Validate that under the <code class="code">Role Services</code> the service
+                        <code class="code">Basic Authentication</code> is installed. If this is not
+                        the case select the menu <code class="code">Add Role Services</code> to install
+                        the missing service. </p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/BasicAuthentication.png"></span></p>
+                </li><li class="listitem">
+                    <p><span class="bold"><strong>Activate Basic Authentication</strong></span></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                        <p>The following command automatically activates the Basic
+                            Authentication: </p>
+                        <p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>set
+                                                path=%path%;%windir%\system32\inetsrv</strong></span></td></tr></tbody></table>
+                            </div><p>
+                            </p><div class="informaltable">
+                                <table class="table table-bordered table-hover"><colgroup><col align="left" class="c1"></colgroup><tbody><tr><td align="left"><span class="command"><strong>appcmd.exe set config "Default Web Site/ivy" -section:system.webServer/security/authentication/basicAuthentication /enabled:true /commit:apphost</strong></span></td></tr></tbody></table>
+                            </div><p>
+                        </p>
+                    </div><p>Open the Internet Information Services (IIS) Manager (<span class="italic">Start &gt;
+                        Internet Information Services (IIS) Manager</span>). In the
+                        <code class="code">Connections</code> pane select the <code class="code">ivy</code>
+                        Virtual Directory node. In the <code class="code">Feature View</code> open the
+                        <code class="code">Authentication</code> entry. Select the <code class="code">Basic
+                            Authentication</code> and use the menu <code class="code">Enable</code> in
+                        the <code class="code">Actions</code> pane to enable Basic
+                        Authentication.</p>
+                    <p><span class="inlinemediaobject"><img src="images/Integration/BasicAuthentication2.png"></span></p>
+                </li></ol></div><p>
+        </p>
+    </div>
+</div>
+</div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="integration-ivyclusterserver" class="title" style="clear: both"><a name="integration.ivyclusterserver"></a>Axon.ivy Cluster Integration</h2></div></div></div>
+    
+    <p>Axon.ivy Engine Enterprise Edition (Cluster) works with sticky sessions. This means that the load balancer
+        must forward all requests from a session to the same cluster node. Of course if a
+        cluster node is no longer available then the request can be sent to another cluster
+        node. Note, that this will cause that the user gets a new session and he loses his
+        current work.</p>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-ivyclusterserver-iis_tomcat" class="title"><a name="integration.ivyclusterserver.iis_tomcat"></a>Load Balancing with Tomcat connector (IIS, Apache)</h3></div></div></div>
+        
+        <p>The Tomcat connector can be configured to act as a load balancer for multiple Axon.ivy
+            Engine Enterprise Edition nodes. The load balancer and the cluster nodes can be
+            configured in the <em class="filename">workers.properties</em> file that is located in the
+                <a class="link" href="integration.html#integration.directory" title="Integration Directory">integration directory</a>. An
+            example load balancer configuration can be found in the file
+                <em class="filename">cluster_loadbancer_workers.properties</em>. In this file one worker
+            is configured called <code class="code">AxonIvyEngine</code> that is a load balance worker (type=lb).
+            The property <code class="code">balance_workers</code> of the AxonIvyEngine worker defines the
+            workers between which the load balance worker will balance the load. Here one worker per
+            each Axon.ivy Engine Node should be configured. In the example file three workers are
+            configured <code class="code">AxonIvyEngineNode1</code>, <code class="code">AxonIvyEngineNode2</code> and
+                <code class="code">AxonIvyEngineNode3</code>. </p>
+        <p>The node workers are similar to a normal standalone worker. You can use the attributes
+            <code class="code">hostname</code> and <code class="code">port</code> as explained above. Additionally they
+            have two extra attributes called <code class="code">lbfactor</code> and <code class="code">route</code>. With the
+            <code class="code">lbfactor</code> attribute you can influence how the load balancer distributes
+            the load to the workers. The higher the <code class="code">lbfactor</code> of a worker relative to
+            the other workers is the more load the worker gets.</p>
+        <p>The <code class="code">route</code> attribute is necessary for realizing sticky sessions. An
+            Axon.ivy Engine Enterprise Edition will only work correctly, if the load balancer sends all
+            request of the same http session to the same node (sticky sessions). To support this
+            requirement, each Axon.ivy Engine Enterprise Edition node will add a special identifier
+            called<span class="italic"> jvm route</span> to the http session identifier.
+            The <span class="italic"> jvm route</span> identifier is calculated from the host
+            name and the <a class="link" href="configuration.html#configuration.cluster" title="Cluster">Local Cluster Node
+                Identifier</a>. The <code class="code">route</code> attribute configured on a node worker must
+            be equal with the jvm route of the node:</p>
+        <p><code class="code">worker.AxonIvyEngineNode1.route=&lt;JVM route identifier of Node
+            1&gt;</code></p>
+        <p><code class="code">worker.AxonIvyEngineNode2.route=&lt;JVM route identifier of Node
+            2&gt;</code></p>
+        <p>The <span class="italic">JVM route identifier</span> of a cluster node can be
+            found on the <span class="italic">cluster node detail page</span> for an
+            Axon.ivy Cluster Node. This information can be retrieved as follows:</p>
+        <p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                    <p>Using a web browser, navigate to the main page
+                            (<code class="code">http://&lt;host&gt;:&lt;port&gt;/ivy</code>) of an Axon.ivy Engine
+                        installation.</p>
+                </li><li class="listitem">
+                    <p>Select the <span class="italic">Cluster</span> link in the page
+                        header.</p>
+                </li><li class="listitem">
+                    <p>In the appearing list of cluster nodes press the name of a cluster node to
+                        see it's details.</p>
+                </li></ol></div><p>
+        </p>
+        <p>
+            </p><div class="figure"><a name="d5e3587"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/Integration/cluster_node_detail.png" alt="Axon.ivy Cluster Node Details page"></div>
+            </div><p class="title">Figure&nbsp;5.2.&nbsp;Axon.ivy Cluster Node Details page</p></div><p><br class="figure-break">
+        </p>
+        <p>More technical details about load balancing and sticky sessions can be found on the
+            <a class="ulink" href="http://tomcat.apache.org" target="_top">Apache Tomcat web site</a>.</p>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e3594" class="title"><a name="d5e3594"></a>Example</h4></div></div></div>
+            
+            <p>Let's assume that we have an Axon.ivy Engine Enterprise Edition with two Cluster
+                Nodes. Node 1 is installed on host <code class="code">ivynode1</code> and the AJP port is
+                configured to 8009. Node 2 is installed on host <code class="code">ivynode2</code> and the AJP
+                port is configured to 8010. <code class="code">ivynode1</code> is a new machine with a lot of
+                power. <code class="code">ivynode2</code> is an old machine and we want that
+                    <code class="code">ivynode1</code> is working twice as hard as <code class="code">ivynode2</code>. The jvm
+                route of the nodes are <code class="code">ivynode1.soreco.ch</code> and
+                    <code class="code">ivynode2.soreco.ch</code>.</p>
+            <p>The <em class="filename">workers.properties</em> file must then look like
+                this:</p><pre class="screen">worker.list=XIvy
+
+# Load Balanced Cluster Worker
+worker.AxonIvyEngine.type=lb
+worker.AxonIvyEngine.balance_workers=AxonIvyEngineNode1,AxonIvyEngineNode2
+
+# 1st Axon.ivy Engine Cluster Node
+worker.AxonIvyEngineNode1.type=ajp13 
+worker.AxonIvyEngineNode1.port=8009
+worker.AxonIvyEngineNode1.host=ivynode1
+worker.AxonIvyEngineNode1.route=ivynode1.soreco.ch
+worker.AxonIvyEngineNode1.lbfactor=2
+
+# 2nd Axon.ivy Engine Cluster Node
+worker.AxonIvyEngineNode2.type=ajp13 
+worker.AxonIvyEngineNode2.port=8010
+worker.AxonIvyEngineNode2.host=ivynode2
+worker.AxonIvyEngineNode2.route=ivynode2.soreco.ch
+worker.AxonIvyEngineNode2.lbfactor=1</pre>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-ivyclusterserver-other" class="title"><a name="integration.ivyclusterserver.other"></a>Load Balancing with other Load Balancer Products</h3></div></div></div>
+        
+        <p>As described above the load balancer must ensure that all requests from the same
+            user session is forwarded to the same cluster node. This can be done by configuring
+            the load balancer so that all requests sent by one client IP address is always
+            forwarded to the same cluster node (IP based stickiness). Another possible
+            configuration is to use the Axon.ivy Session Id to provide session stickiness. The
+            session id is provided by Axon.ivy Engine Enterprise Edition with two different methods.
+            Either as HTTP session cookie with the name JSESSIONID or at the end of request URLs
+            as <code class="code">;jsessionid=</code>  parameter. The load balancer must be able to read the
+            session id with both methods otherwise RIA clients will not work correctly.</p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+                <p>Some load balancer provide session stickiness using their own HTTP session
+                    cookie. If you use this method then RIA clients will fail to start. </p>
+            </div>
+    </div>            
+</div>
+    <div class="sect1"><div class="titlepage"><div><div><h2 id="integration-waf" class="title" style="clear: both"><a name="integration.waf"></a>Web Application Firewall</h2></div></div></div>
+    
+    <p>A web application firewall (WAF) or web shield is a firewall which protects web
+        applications against attacks over the HTTP protocol. Combined with an Identity and Access
+        Management (IAM) System it also protects against unauthorized access and supports single
+        sign on (SSO).</p>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="integration-waf-sso" class="title"><a name="integration.waf.sso"></a>Single Sign On</h3></div></div></div>
+        
+        <p>Most WAF or IAM systems allow to configure a way how the user name of the identified
+            user is transmitted to the web applications. With Axon.ivy Engine a typical system
+            landscape will look like this:</p><div class="figure"><a name="d5e3620"></a><div class="figure-contents">
+                
+                <div class="mediaobject"><img src="images/Integration/waf_iam_integration.png" alt="Single Sign On Infrastructure using a Web Application Firewall, Identity and Access Management and Active Directory"></div>
+            </div><p class="title">Figure&nbsp;5.3.&nbsp;Single Sign On Infrastructure using a Web Application Firewall, Identity and
+                    Access Management and Active Directory</p></div><p><br class="figure-break">The only available access point must be the WAF. Any traffic has to be routed
+            over it. The WAF tries to protect the web application behind it (e.g. Axon.ivy Engine)
+            from attacks. The WAF uses the IAM to identify users and to protect certain resources
+            from unauthorized access. The IAM itself may use a directory server like Microsoft
+            Active Directory to know users. The WAF can be configured to provide the name of the
+            identified user either as HTTP header or HTTP cookie to the web application (Axon.ivy
+            Engine).</p>
+        <p>On the other side Axon.ivy Engine provides a Valve that reads the user name from a
+            HTTP header. If Axon.ivy Engine knows the user it automatically authenticates the user
+            to the current Axon.ivy Engine session. This works best if Axon.ivy Engine also uses a
+            directory server like Microsoft Active Directory to synchronize users. The Valve that
+            reads the user name from a HTTP header is disabled by default. To enable it, open the
+            file <em class="filename">webapps/ivy/META-INF/context.xml</em> from the Axon.ivy Engine
+            installation directory and uncomment the following line:</p>
+        <pre class="screen">  &lt;Valve className="ch.ivyteam.ivy.webserver.security.SingleSignOnValve" userNameHeader="user"/&gt;</pre>
+        <p>The attribute <code class="code">userNameHeader</code> can be used to configure the HTTP header
+            that should be read.</p>
+        <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+            <p>If you activate this Valve you must ensure that the Axon.ivy Engine cannot be
+                accessed directly. All traffic must be routed over the WAF. Otherwise, an attacker
+                could simple send a valid user name as header in a HTTP request and immediately has
+                access bypassing the authentication!</p>
+        </div>
+        <p>Instead of sending the plain user name in a HTTP header there are multiple other ways
+            and technologies (SAML token, Kerberos, etc.) how the WAF can transmit the current user
+            identity to the web applications. You can support this cases by registering your own
+            Valve in the <em class="filename">context.xml</em> file. Your value reads the current user
+            identity from the request and puts a user principal object with the user name to it.
+            Axon.ivy Engine will check if a user principal is set on a request and automatically
+            searches the user and authenticates it. The code of your valve can look like
+            this:</p>
+        <pre class="screen">  @Override
+  public void invoke(Request request, Response response) throws IOException, ServletException
+  {
+    String userName = getUserNameFromRequest(request);
+    if (StringUtils.isBlank(userName))
+    {
+      getNext().invoke(request, response);
+      return;
+    }
+    Principal userPrincipal = createUserPrincipalWith(userName);
+    request.setUserPrincipal(userPrincipal);
+    getNext().invoke(request, response);
+  }</pre>
+        <p>The method getUserNameFromRequest depends on the technology the WAF sends the user
+            identity.</p>
+    </div>
+</div>
+</div></div></div></div><div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><div class="bs-sidebar hidden-print affix" data-spy="affix" data-offset-top="350" data-offset-bottom="250"><ul class="nav bs-sidenav"><li><a href="#integration-introduction">Introduction</a><ul class="nav subnav"><li><a href="#d5e2528">Web Front-End Server</a></li><li><a href="#integration-directory">Integration Directory</a></li><li><a href="#integration-external-url">Update external base URL</a></li></ul></li><li><a href="#integration-apacheserver">Apache Integration</a><ul class="nav subnav"><li><a href="#integration-apacheserver-windows">Windows example configuration</a></li><li><a href="#integration-apacheserver-linux">Linux example configuration</a></li><li><a href="#integration-apacheserver-contexturi">Change context URI /ivy/</a></li></ul></li><li><a href="#integration-iis">Microsoft IIS Integration</a><ul class="nav subnav"><li><a href="#integration-iis7">IIS 7 (Windows Server 2008)</a></li><li><a href="#integration-iis8">IIS 8 (Windows Server 2012)</a></li><li><a href="#integration-context-uri">Change context URI /ivy/</a></li><li><a href="#integration-iis-multiple-instances">Access multiple Axon.ivy Engines through one IIS</a></li><li><a href="#integration-single_sign_on">Single Sign On </a></li><li><a href="#integration-basic_auth">Basic Authentication </a></li></ul></li><li><a href="#integration-ivyclusterserver">Axon.ivy Cluster Integration</a><ul class="nav subnav"><li><a href="#integration-ivyclusterserver-iis_tomcat">Load Balancing with Tomcat connector (IIS, Apache)</a></li><li><a href="#integration-ivyclusterserver-other">Load Balancing with other Load Balancer Products</a></li></ul></li><li><a href="#integration-waf">Web Application Firewall</a><ul class="nav subnav"><li><a href="#integration-waf-sso">Single Sign On</a></li></ul></li><li><br><a href="#top">Back to top</a></li></ul></div></div></div><hr></div></div><script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/offcanvas.js"></script></body></html>

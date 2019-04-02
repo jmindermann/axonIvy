@@ -1,0 +1,739 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='Bundle pool' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.system' value='true'/>
+    <property name='p2.timestamp' value='1531910532728'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='143'>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.jsf.primefaces' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='47254'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.scripting.objects' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='194438'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.server.configuration' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='89710'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.simpleconfigurator.manipulator' version='2.0.0.v20131217-1203'>
+      <properties size='1'>
+        <property name='download.size' value='25640'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.project' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='83283'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='ch.ivyteam.ivy.server.thirdparty.feature' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='3634'/>
+      </properties>
+      <repositoryProperties size='1'>
+        <property name='artifact.folder' value='true'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.enginemanagerbase' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='18082'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.director' version='2.3.100.v20140224-1921'>
+      <properties size='1'>
+        <property name='download.size' value='102906'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.service' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='16246'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.macroexpandbridge' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='4194'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.hibernate' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='7056361'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.base.services.facade' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='753'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webserver' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='351077'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.repository' version='2.3.0.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='129529'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.validation' version='1.2.600.v201501211647'>
+      <properties size='1'>
+        <property name='download.size' value='414774'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.security' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='497950'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.request' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='129554'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.user.role' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='77315'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.cm' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='429090'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.sat4j.core' version='2.3.5.v201308161310'>
+      <properties size='1'>
+        <property name='download.size' value='363576'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.environment' version='1.0.400.v200912181832'>
+      <properties size='1'>
+        <property name='download.size' value='43239'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.artifact.repository' version='1.1.300.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='135802'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.simpleconfigurator' version='1.1.0.v20131217-1203'>
+      <properties size='1'>
+        <property name='download.size' value='43387'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.jdt.core' version='3.10.2.v20150120-1634'>
+      <properties size='1'>
+        <property name='download.size' value='5575866'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.casemap.exec' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='154913'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.aspectj.runtime' version='1.7.2.20120920133900'>
+      <properties size='1'>
+        <property name='download.size' value='112269'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.publisher.eclipse' version='1.1.200.v20140414-0825'>
+      <properties size='1'>
+        <property name='download.size' value='213031'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.database' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='200020'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.console' version='1.1.0.v20140131-1639'>
+      <properties size='1'>
+        <property name='download.size' value='118678'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.server' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='102805'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.frameworkadmin' version='2.0.100.v20131209-2144'>
+      <properties size='1'>
+        <property name='download.size' value='36535'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.common' version='2.10.1.v20150123-0348'>
+      <properties size='1'>
+        <property name='download.size' value='353695'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.extension' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='29918'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.commands' version='3.6.100.v20140528-1422'>
+      <properties size='1'>
+        <property name='download.size' value='109245'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.renderer' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='94868'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.cluster' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='2070899'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.scripting' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='766462'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.launcher' version='1.3.0.v20140415-2008'>
+      <properties size='1'>
+        <property name='download.size' value='50200'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore' version='2.10.2.v20150123-0348'>
+      <properties size='1'>
+        <property name='download.size' value='1189464'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.expressions' version='3.4.600.v20140128-0851'>
+      <properties size='1'>
+        <property name='download.size' value='88716'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.text' version='3.5.300.v20130515-1451'>
+      <properties size='1'>
+        <property name='download.size' value='249432'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.core' version='1.2.0.v200908251833'>
+      <properties size='1'>
+        <property name='download.size' value='56243'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.publisher' version='1.3.0.v20140911-0143'>
+      <properties size='1'>
+        <property name='download.size' value='109351'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.page.engine' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='64325'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='javax.xml' version='1.3.4.v201005080400'>
+      <properties size='1'>
+        <property name='download.size' value='231607'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.event' version='1.3.100.v20140115-1647'>
+      <properties size='1'>
+        <property name='download.size' value='32352'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.ds' version='1.4.200.v20131126-2331'>
+      <properties size='1'>
+        <property name='download.size' value='194802'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.garbagecollector' version='1.0.200.v20131115-1210'>
+      <properties size='1'>
+        <property name='download.size' value='25061'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.util' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='10420573'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.reconciler.dropins' version='1.1.200.v20131119-0908'>
+      <properties size='1'>
+        <property name='download.size' value='48552'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.apache.felix.gogo.runtime' version='0.10.0.v201209301036'>
+      <properties size='1'>
+        <property name='download.size' value='79641'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.process.data.persistence.config' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='24468'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.macro' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='32646'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.registry' version='3.5.400.v20140428-1507'>
+      <properties size='1'>
+        <property name='download.size' value='183511'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.data.cache' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='42613'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.jobs' version='3.6.1.v20141014-1248'>
+      <properties size='1'>
+        <property name='download.size' value='97486'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.apache.felix.gogo.shell' version='0.10.0.v201212101605'>
+      <properties size='1'>
+        <property name='download.size' value='60225'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.runtime' version='3.10.0.v20140318-2214'>
+      <properties size='1'>
+        <property name='download.size' value='75169'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.richdialog.config' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='202599'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.server.exec' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='17563'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.metadata.repository' version='1.2.100.v20131209-2144'>
+      <properties size='1'>
+        <property name='download.size' value='114776'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webservice.exec.axis2' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='8574502'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.casemap' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='39459'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.bpmn2' version='0.7.0.201211251037'>
+      <properties size='1'>
+        <property name='download.size' value='649702'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem' version='1.4.100.v20140514-1614'>
+      <properties size='1'>
+        <property name='download.size' value='58234'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.util' version='1.0.500.v20130404-1337'>
+      <properties size='1'>
+        <property name='download.size' value='77932'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webservice.configuration' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='162832'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.htmldialog' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='75915'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.application' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='541747'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.database.configuration' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='30710'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.developmenttools.facade' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='636'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore.xmi' version='2.10.2.v20150123-0348'>
+      <properties size='1'>
+        <property name='download.size' value='229547'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.utility.facade' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='1840'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.awtExt' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='484649'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.sat4j.pb' version='2.3.5.v201404071733'>
+      <properties size='1'>
+        <property name='download.size' value='242556'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.resources' version='3.9.1.v20140825-1431'>
+      <properties size='1'>
+        <property name='download.size' value='833742'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.deployment' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='136699'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.app' version='1.3.200.v20130910-1609'>
+      <properties size='1'>
+        <property name='download.size' value='86245'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.scripting.dataclass' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='101560'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.rule.engine' version='7.0.0.201806260645'>
+      <properties size='1'>
+        <property name='download.size' value='65226'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.dialog.jsf' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='265383'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.parserGenerator' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='13303'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='ch.ivyteam.ivy.server.file.feature' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='2024'/>
+      </properties>
+      <repositoryProperties size='1'>
+        <property name='artifact.folder' value='true'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webservice.exec.axis1' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='3235177'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webservice.process' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='16152311'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.db' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='12111725'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.osgi.services' version='3.4.0.v20140312-2051'>
+      <properties size='1'>
+        <property name='download.size' value='90686'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.icons' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='8832107'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.eclipse.util' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='48686'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.apache.felix.gogo.command' version='0.10.0.v201209301215'>
+      <properties size='1'>
+        <property name='download.size' value='57040'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.frameworks' version='1.2.200.v201304241450'>
+      <properties size='1'>
+        <property name='download.size' value='117940'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.tomcat' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='12242957'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.rule.engine.libs' version='7.0.0.201806260645'>
+      <properties size='1'>
+        <property name='download.size' value='18906723'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.resource.datamodel' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='103967'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.process.event' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='163364'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.bpm.engine' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='383074'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.ibm.icu' version='52.1.1.v201501240615'>
+      <properties size='1'>
+        <property name='download.size' value='10731420'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.library' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='55981'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.richdialog.components' version='7.0.0.201806260645'>
+      <properties size='1'>
+        <property name='download.size' value='718929'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.bpm.exec' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='306668'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='ch.ivyteam.ivy.server.feature' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='3166'/>
+      </properties>
+      <repositoryProperties size='1'>
+        <property name='artifact.folder' value='true'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.osgi.util' version='3.3.0.v20131023-1243'>
+      <properties size='1'>
+        <property name='download.size' value='26465'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.rmiinterface.base' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='3723'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.xsd' version='2.10.0.v20150123-0452'>
+      <properties size='1'>
+        <property name='download.size' value='996103'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.project.facet.core' version='1.4.300.v201111030424'>
+      <properties size='1'>
+        <property name='download.size' value='354355'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.server.richdialog.application.launcher' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='25583'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.persistence' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='1564013'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.datawrapper' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='450490'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.updatesite' version='1.0.400.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='92216'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.base' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='4142442'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.directorywatcher' version='1.1.0.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='33147'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.process.data.persistence' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='976242'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.extensionlocation' version='1.2.100.v20131119-0908'>
+      <properties size='1'>
+        <property name='download.size' value='35308'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ulc.base' version='7.0.0.201806260645'>
+      <properties size='1'>
+        <property name='download.size' value='34328822'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.boot.osgi' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='9727'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.security' version='1.2.0.v20130424-1801'>
+      <properties size='1'>
+        <property name='download.size' value='107313'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.touchpoint.natives' version='1.1.100.v20140523-0116'>
+      <properties size='1'>
+        <property name='download.size' value='53869'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.osgi' version='3.10.2.v20150203-1939'>
+      <properties size='1'>
+        <property name='download.size' value='1265319'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.core' version='2.3.0.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='71246'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.core.contenttype' version='3.4.200.v20140207-1251'>
+      <properties size='1'>
+        <property name='download.size' value='93948'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.job' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='29193'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ulc.extension' version='7.0.0.201806260645'>
+      <properties size='1'>
+        <property name='download.size' value='53702469'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.workflow' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='1176728'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.touchpoint.eclipse' version='2.1.200.v20140512-1650'>
+      <properties size='1'>
+        <property name='download.size' value='127549'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.projectconfiguration.facade' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='796'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.components' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='1231435'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.updatechecker' version='1.1.200.v20131119-0908'>
+      <properties size='1'>
+        <property name='download.size' value='17665'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.commons.lib' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='15208382'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.frameworkadmin.equinox' version='1.0.500.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='63663'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.common' version='3.6.200.v20130402-1505'>
+      <properties size='1'>
+        <property name='download.size' value='106701'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.server.control.center' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='64591'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.richdialog.exec' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='823752'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.swt' version='3.103.2.v20150203-1313'>
+      <properties size='1'>
+        <property name='download.size' value='18481'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.jarprocessor' version='1.0.300.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='68515'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.dataclasses.build' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='36538'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.webservice.execution' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='94846'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.preferences' version='3.5.200.v20140224-1527'>
+      <properties size='1'>
+        <property name='download.size' value='127161'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.reporting.base' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='82624'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.engine' version='2.3.0.v20140506-1720'>
+      <properties size='1'>
+        <property name='download.size' value='204376'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.config' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='101125'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.equinox.p2.metadata' version='2.2.0.v20131211-1531'>
+      <properties size='1'>
+        <property name='download.size' value='337848'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='ch.ivyteam.ivy.java' version='7.0.6.201807181026'>
+      <properties size='1'>
+        <property name='download.size' value='94418'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.osgi.compatibility.state' version='1.0.1.v20140709-1414'>
+      <properties size='1'>
+        <property name='download.size' value='242131'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

@@ -1,0 +1,32 @@
+body 
+{
+	font-size: 9pt;
+	font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+  
+td, th 
+{
+	font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 9pt;
+	font-weight: normal;
+}
+
+table.resulttable, table.resulttable td, table.resulttable tr
+{
+	border: 1px white solid;
+}
+
+img
+{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#Header
+{
+	background-color: #ffffff;
+	width: 100%;
+}

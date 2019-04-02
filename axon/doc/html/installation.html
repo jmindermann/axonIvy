@@ -1,0 +1,939 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content=""><meta name="author" content=""><link rel="shortcut icon" href="css/images/ivy_favicon_48.png"><title>Installation - Axon.ivy 7.0 | Engine Guide</title><link href="css/bootstrap.min.css" rel="stylesheet"><link media="screen" rel="stylesheet" href="css/docs.min.css"><link href="css/ivy-common-6.css" rel="stylesheet"><link href="css/ivy-userguide.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#sidebar" style="height: 100%"><!-- start-top-navigation --><div class="navbar navbar-top" role="navigation"><div class="container" id="headerdiv"><div class="navbar-header"><a class="ivy-logo" href="http://developer.axonivy.com"><img src="css/images/axon_ivy_logo.png" alt="Axon.ivy"></a><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav" id="navbar-ivy-links"><li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li><li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li></ul></div></div></div><!-- end-top-navigation --><div id="content"><div class="container"><div class="navbar"><div class="row"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-book"></span> Axon.ivy 7.0 | <b>Engine Guide</b></a></div></div><div class="row"><div><ul class="nav nav-tabs" role="tablist"><li><a accesskey="h" href="introduction.html">Introduction</a></li><li><a accesskey="h" href="gettingstarted.html">Getting Started</a></li><li class="active"><a accesskey="h" href="installation.html">Installation</a></li><li><a accesskey="h" href="configuration.html">Configuration</a></li><li><a accesskey="h" href="integration.html">Integration</a></li><li><a accesskey="h" href="administration.html">Administration</a></li><li><a accesskey="h" href="monitoring.html">Monitoring</a></li><li><a accesskey="h" href="misc.html">Miscellaneous</a></li><li><a accesskey="h" href="troubleshooting.html">Troubleshooting</a></li></ul></div></div></div></div><div class="jumbotron"><div class="container"><h1>Installation</h1></div></div><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="col-xs-12 col-sm-9"><div class="row"><div class="col-sm-12 "><div class="chapter">
+	
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-upgrade" class="title" style="clear: both"><a name="installation.upgrade"></a>Upgrading from an older version</h2></div></div></div>
+		
+		<p>
+			</p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+				<p>Upgrading from Xpert.ivy Server 3.x to Axon.ivy Engine 5.x and later is not
+					supported.</p>
+			</div><p>
+		</p>
+		<p>If you upgrade to a new update release within the same Long Term Support (LTS) or
+			Leading Edge (LE) version (e.g. 7.0.3 to 7.0.4) then follow the steps in the section
+				<a class="link" href="installation.html#installation.systemdatabase.oracle" title="Oracle">Preparation</a> and <a class="link" href="installation.html#installation.systemdatabase.oracle" title="Oracle">Upgrade</a>. A project migration and
+			system database conversion are normally not needed if not explicit communicated
+			otherwise in the <span class="emphasis"><em>Migration Notes</em></span>. Therefore, you can skip section
+				<a class="link" href="installation.html#installation.upgrade.project.migration" title="Project Migration">Project Migration</a> and
+			steps 2 and 4 in the section <a class="link" href="installation.html#installation.upgrade.upgrade" title="Upgrade">Upgrade</a>.</p>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="installation-upgrade-preparation" class="title"><a name="installation.upgrade.preparation"></a>Preparation</h3></div></div></div>
+			
+			<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+				<p>Before upgrading of an Axon.ivy Engine read the <span class="italic">Migration
+						Notes</span> document of the new version. This document will tell you
+					exactly what has changed since the last version and will list any additional
+					steps to be undertaken, which might not be described here.</p>
+			</div>
+			<p>
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p>Install the new Axon.ivy Engine version to a new installation
+							directory (See section <a class="link" href="installation.html#installation.standard" title="Install Axon.ivy Engine">Install Axon.ivy Engine</a>).</p>
+					</li><li class="listitem">
+						<p>Read the <span class="italic">Migration Notes</span> document
+							of the new version.</p>
+					</li><li class="listitem">
+						<p>If necessary (according to the <span class="italic">Migration Notes</span>),
+							request a new licence (see section <a class="link" href="installation.html#installation.licence" title="Installing a Licence">Installing a
+								Licence</a>).</p>
+					</li><li class="listitem">
+						<p>Back up the system database and the application file directories of the old
+							installation.</p>
+					</li><li class="listitem">
+						<p>Copy the file <em class="filename">serverconfig.xml</em> from the
+								<em class="filename">configuration</em> directory of the old installation
+							directory to the  <em class="filename">configuration</em>  directory of the
+							new installation. This file contains the system database configuration
+							and connection parameters. </p>
+					</li><li class="listitem">
+						<p>Unless a new licence is required (see 3.) you should also copy the old
+							licence file to the new installation.</p>
+					</li><li class="listitem">
+						<p>Modifications on any other configuration files located in the
+								<em class="filename">configuration</em>,
+								<em class="filename">elasticsearch/config</em>,
+								<em class="filename">webapps/ivy/WEB-INF</em> or
+								<em class="filename">webapps/ivy/META-INF</em> directories of the old
+							installation may be ported over to the corresponding files in the new
+							installation, if required. To see what has been changed, we recommend
+							the usage of some diff tool to compare the individual config files of
+							old and new installation.</p>
+					</li><li class="listitem">
+						<p>If you have installed additional extension plugins into the
+								<em class="filename">dropins</em> directory then copy them to the
+								<em class="filename">dropins</em> directory of the new installation
+							directory if they are compatible with the new Engine version. For those
+							which are not compatible try to get new compatible versions and install
+							them.</p>
+					</li></ol></div><p>
+			</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="installation-upgrade-project-migration" class="title"><a name="installation.upgrade.project.migration"></a>Project Migration</h3></div></div></div>
+			
+			<p>Project migration is only necessary if mentioned in the <span class="italic">Migration
+					Notes</span>. If migration is required, all projects deployed to process
+				model versions in state PREPARED, RELEASED, DEPRECATED and ARCHIVED must be
+				converted. The following steps are necessary for every process model version:</p>
+			<div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					<p>Copy the project from the process model version file directory on the engine to a local
+						directory on your developer machine.</p>
+				</li><li class="listitem">
+					<p>Import the project into your Designer workspace.</p>
+				</li><li class="listitem">
+					<p>Migrate the project according the <span class="italic">Migration Notes</span> of
+						the Designer. Usually this is achieved by invoking the <span class="italic">project conversion</span> action on each project (see
+						Designer Guide for more information). Some manual adaptions may be
+						necessary.</p>
+				</li><li class="listitem">
+					<p>Test the migrated project in the Designer.</p>
+				</li></ol></div>
+			<p>All migrated projects must be redeployed to the new, upgraded engine version (see next
+				section).</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="installation-upgrade-upgrade" class="title"><a name="installation.upgrade.upgrade"></a>Upgrade</h3></div></div></div>
+			
+			<p>
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p>Stop the engine of the old version (See section <a class="link" href="configuration.html#configuration.controlcenter.start" title="Start / Stop">Start / Stop
+								Engine</a>).</p>
+					</li><li class="listitem">
+						<p>Either convert the system database with the Axon.ivy Engine Configuration Application (see section
+							<a class="link" href="configuration.html#configuration.properties.systemdatabase" title="System Database">System
+								Database</a>). Or set <span class="italic">autoConvert</span> property to <span class="italic">true</span>
+							in the <em class="filename">serverconfig.xml</em> in the <em class="filename">configuration</em> directory.</p>
+					</li><li class="listitem">
+						<p>Start the engine of the new version (see section <a class="link" href="configuration.html#configuration.controlcenter.start" title="Start / Stop">Start / Stop
+								Engine</a>).</p>
+					</li><li class="listitem">
+						<p>Redeploy all converted/migrated Axon.ivy projects using the Axon.ivy Engine
+							Administration (see section <a class="link" href="administration.html#administration.deployment" title="Project Deployment">Deploying a
+								Project</a>).</p>
+					</li><li class="listitem">
+						<p>You may now delete the old engine installation directory, <span class="bold"><strong>unless</strong></span> the following warning applies to your
+							installation:</p>
+					</li></ol></div><p>
+				</p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+					<p>Please note that the new, upgraded engine installation will still refer to the
+						application file directories that were used by the old installation. As a
+						consequence, you must never delete the directory of an old installation, if
+						it contains application file directories (you can check the file directory
+						by displaying the application information inside the Axon.ivy Engine
+						Administration). If the application file directories of your installation
+						are stored elsewhere, then the deletion of the old engine installation will
+						not cause any problems.</p>
+				</div><p>
+			</p>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-standardsteps" class="title" style="clear: both"><a name="installation.standardsteps"></a>Standard Edition Installation</h2></div></div></div>
+		
+		<p>It is recommended to read the <a class="link" href="introduction.html" title="Chapter&nbsp;1.&nbsp;Introduction">Introduction</a> chapter before installing an Axon.ivy Engine. The following list
+			shows the necessary steps that are required to install and run an Axon.ivy Engine:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					<p>Gather all the information you need:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+								<p>The server platform the engine will be installed on.</p>
+							</li><li class="listitem">
+								<p>The database system used to host the system database.</p>
+							</li><li class="listitem">
+								<p>Order a licence file for your installation. You need to know the host name of the
+									machine you want to install the Axon.ivy Engine on. More
+									information about the licence can be found in the section <a class="link" href="installation.html#installation.licence" title="Installing a Licence">Install a
+										Licence</a> of the <a class="link" href="installation.html" title="Chapter&nbsp;3.&nbsp;Installation">Installation</a>
+									chapter.</p>
+							</li><li class="listitem">
+								<p>If an integration with a web server is planned, then get all
+									the necessary configuration information of the web
+								server.</p>
+							</li><li class="listitem">
+								<p>If an integration with an external security system is planned,
+									then get all the necessary configuration information of the
+									external security system (e.g. Active Directory or Novell
+									eDirectory).</p>
+							</li><li class="listitem">
+								<p>Ivy uses a bundled Elasticsearch server to search through Business Data.
+									If the use of an external Elasticsearch server is planned, then get the necessary
+									configuration information for it. When running an Axon.ivy Engine Enterprise Edition the use of an external
+									Elasticsearch server is mandatory. See <a class="link" href="installation.html#installation.elasticsearch" title="Elasticsearch installation">Elasticsearch installation</a> for more information.</p>
+							</li></ul></div>
+				</li><li class="listitem">
+					<p>Install all required operating systems, web servers and <a class="link" href="installation.html#installation.systemdatabase" title="System Database">database systems</a>.</p>
+				</li><li class="listitem">
+					<p><a class="link" href="installation.html#installation.standard" title="Install Axon.ivy Engine">Install</a> the
+						Axon.ivy Engine</p>
+				</li><li class="listitem">
+					<p><a class="link" href="installation.html#installation.licence" title="Installing a Licence">Install your licence file</a></p>
+				</li><li class="listitem">
+					<p><a class="link" href="configuration.html" title="Chapter&nbsp;4.&nbsp;Configuration">Configure</a> the Axon.ivy Engine</p>
+				</li><li class="listitem">
+					<p><a class="link" href="configuration.html#configuration.controlcenter.start" title="Start / Stop">Start</a>
+						the Axon.ivy Engine and test if it is running.</p>
+				</li></ol></div><p> If everything is fine so far, you can perform the following optional
+			configuration steps: </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+					<p>Install Axon.ivy Engine as <a class="link" href="configuration.html#configuration.controlcenter.windowsservice" title="Configuring Windows Service (Windows only)">Windows
+							Service</a> or <a class="link" href="misc.html#misc.toolreference.installservice" title="InstallService">Linux systemd service</a> if desired.</p>
+				</li><li class="listitem">
+					<p><a class="link" href="integration.html" title="Chapter&nbsp;5.&nbsp;Integration">Integrate</a> Axon.ivy Engine
+						into web servers if necessary.</p>
+				</li><li class="listitem">
+					<p><a class="link" href="administration.html" title="Chapter&nbsp;6.&nbsp;Administration">Configure</a> Axon.ivy Engine system
+						properties and create and configure applications.</p>
+				</li></ol></div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="installation-demomode" class="title"><a name="installation.demomode"></a>Demo Mode</h3></div></div></div>
+			
+			<p>Axon.ivy Engine offers a demo mode for demonstration purposes. The demo mode
+				allows you to install and start the Axon.ivy Engine without configuration and
+				without a productive licence. To install and start an Axon.ivy Engine in demo mode
+				simply execute the steps 3 and 6 from the list above.</p>
+			<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+				<p>The Axon.ivy Engine uses a memory database as system database in demo mode. This means
+					that everything you configure and all cases that are created by any sessions in
+					demo mode are lost when you shut down the engine.</p>
+			</div>
+			<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+				<p>In demo mode you can login to the <a class="link" href="administration.html" title="Chapter&nbsp;6.&nbsp;Administration">Engine
+						Administration</a> using with the predefined user <span class="bold"><strong>AxonIvy</strong></span> and password <span class="bold"><strong>AxonIvy</strong></span>.</p>
+			</div>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-cluster" class="title" style="clear: both"><a name="installation.cluster"></a>Enterprise Edition Installation</h2></div></div></div>
+		
+		<p>The installation process of an Axon.ivy Engine Enterprise Edition node is very similar to the
+			standard installation process. To save time you can copy the configuration from the
+			first node you have installed to other nodes. See the next chapters to learn how to
+			install the first node, and how to proceed to install further nodes either on different
+			machines or on the same machine. </p>
+		<p>Once you've installed all Axon.ivy Engine Enterprise Edition nodes you may want to integrate
+			them into a web server that will act as single frontend. The web server can be
+			configured to work as a load balancer that distributes the incoming requests evenly to
+			the Axon.ivy Engine Enterprise Edition nodes. Consult the chapter <a class="link" href="integration.html" title="Chapter&nbsp;5.&nbsp;Integration">Web Server Integration</a> for more information.</p>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e797" class="title"><a name="d5e797"></a>Installation of the first engine node</h3></div></div></div>
+			
+			<p>Follow the <a class="link" href="installation.html#installation.standardsteps" title="Standard Edition Installation">standard
+					installation process</a> to install the first Axon.ivy Engine Enterprise Edition node. </p>
+			<p>For an Axon.ivy Engine Enterprise Edition installation an external Elasticsearch server
+				installation is mandatory. See <a class="link" href="installation.html#installation.elasticsearch" title="Elasticsearch installation">Elasticsearch installation</a> for more information.</p>
+			<p>At point 4 you must make sure that you install an Axon.ivy Enterprise Edition licence. </p>
+			<p>At point 5 an additional <a class="link" href="configuration.html#configuration.cluster" title="Cluster">Cluster</a>
+				configuration tab will be displayed in the <a class="link" href="configuration.html#configuration.properties" title="Engine Configuration">Engine Configuration</a>.
+				Inside this tab use the <span class="italic">Add local node</span> button to
+				add the new node to the list of nodes of the Axon.ivy Engine Enterprise Edition. </p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e808" class="title"><a name="d5e808"></a>Installation of another engine node on a different machine</h3></div></div></div>
+			
+			<p>To install further Axon.ivy Engine Enterprise Edition nodes on other machines proceed as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p><a class="link" href="installation.html#installation.standard" title="Install Axon.ivy Engine">Install</a> the
+							Axon.ivy Engine</p>
+					</li><li class="listitem">
+						<p>Copy the <span class="italic">configuration</span> directory
+							inside the installation directory of the first Axon.ivy Engine Enterprise Edition
+							node to the installation directory of the currently installing node.
+							Overwriting all existing files.</p>
+					</li><li class="listitem">
+						<p>Replace the licence file from the first Axon.ivy Engine Enterprise Edition node with the
+							Axon.ivy Enterprise Edition licence for this node in the <span class="italic">configuration</span> directory. </p>
+					</li><li class="listitem">
+						<p>Start the <a class="link" href="configuration.html#configuration.properties" title="Engine Configuration">Engine
+								Configuration</a> program. The system database and administrators
+							and web server tab should display the values you have configured on the
+							first node. Change to the <a class="link" href="configuration.html#configuration.cluster" title="Cluster">Cluster</a> tab and
+							use the <span class="italic">Add local node</span> button to add
+							the node to the list of nodes of the Axon.ivy Engine Enterprise Edition.
+							Save your changes.</p>
+					</li><li class="listitem">
+						<p><a class="link" href="configuration.html#configuration.controlcenter.start" title="Start / Stop">Start</a> the Axon.ivy Engine Enterprise Edition node and test if it is
+							running.</p>
+					</li></ol></div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e829" class="title"><a name="d5e829"></a>Installation of another engine node on the same machine</h3></div></div></div>
+			
+			<p>To install further engine nodes on the same machine where a node
+				is already installed proceed as follows:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p><a class="link" href="installation.html#installation.standard" title="Install Axon.ivy Engine">Install</a> the
+							Axon.ivy Engine</p>
+					</li><li class="listitem">
+						<p>Copy the <span class="italic">configuration</span> directory
+							inside the installation directory of the first engine
+							node to the installation directory of the currently installing node.
+							Overwrite all existing files.</p>
+					</li><li class="listitem">
+						<p>Replace the licence file from the first engine node with the Axon.ivy Enterprise Edition
+							licence for this node in the <span class="italic">configuration</span> directory. </p>
+						<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+							<p>Every cluster node needs its own licence file even if nodes run on
+								the same machine.</p>
+						</div>
+					</li><li class="listitem">
+						<p>Start the <a class="link" href="configuration.html#configuration.properties" title="Engine Configuration">Engine
+								Configuration</a> program. The system database and administrators
+							tab should display the values you have configured for the first node. </p>
+						<p>Change to the <a class="link" href="configuration.html#configuration.webserver" title="Web Server Ports">WebServer</a> tab and specify different port numbers than those
+							you have specified for the other nodes on this machine.</p>
+						<p>Change to the <a class="link" href="configuration.html#configuration.cluster" title="Cluster">Cluster</a> tab and use the <span class="italic">Add local
+							node</span> button to add the node to the list of nodes of the
+							Axon.ivy Engine Enterprise Edition. Save your changes.</p>
+					</li><li class="listitem">
+						<p><a class="link" href="configuration.html#configuration.controlcenter.start" title="Start / Stop">Start</a> the Axon.ivy Engine Enterprise Edition node and test if it is
+							running.</p>
+					</li></ol></div>
+		</div>
+	</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-standard" class="title" style="clear: both"><a name="installation.standard"></a>Install Axon.ivy Engine</h2></div></div></div>
+		
+		<p>To install the Axon.ivy Engine extract the correct zip file for your platform to the
+			directory where you want to install the Axon.ivy Engine.</p>
+		<p>The following platforms are supported: </p><div class="table"><a name="d5e859"></a><div class="table-contents">
+				
+				<table class="table table-bordered table-hover" summary="Supported Axon.ivy Engine Platforms"><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup><thead><tr><th>CPU</th><th>Architecture</th><th>Operation System</th><th>Installation ZIP File</th></tr></thead><tbody><tr><td>Intel</td><td>x64</td><td>Windows</td><td>AxonIvyEngineX.Y.Z_Windows_x64.zip</td></tr><tr><td>Intel</td><td>x64</td><td>Linux and Windows*</td><td>AxonIvyEngineX.Y.Z_All_x64.zip</td></tr><tr><td>Intel</td><td>x64</td><td>Linux and Windows*</td><td>AxonIvyEngineX.Y.Z_Slim_All_x64.zip</td></tr></tbody></table>
+		</div><p class="title">Table&nbsp;3.1.&nbsp;Supported Axon.ivy Engine Platforms</p></div><p><br class="table-break"></p>
+		<p>* The 'All' and 'Slim_All' engines are delivered with launchers for Linux and Windows, but
+			without a JRE. To use the slim engine set up the <em class="filename">IVY_JAVA_HOME</em>
+			environment variable pointing to a supported x64 Oracle JRE, or the
+				<em class="filename">JAVA_HOME</em> environment variable pointing to a supported x64
+			Oracle JDK. The Slim engine comes without projects like the Portal.</p>
+		<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+			<p>Note, that the installation procedure implies sufficient administration and access
+				rights on the system. For example the access to drive C: on a Windows Server 2008
+				system is very restrictive that you might install the programs on drive D:
+			instead.</p>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="d5e893" class="title"><a name="d5e893"></a>Installed Files and Directories</h3></div></div></div>
+			
+			<p>After the installation the following files and folders are located in the
+				Axon.ivy Engine installation folder:</p><div class="table"><a name="d5e896"></a><div class="table-contents">
+					
+					<table class="table table-bordered table-hover" summary="Installed Files and Directories"><colgroup><col class="c1"><col class="c2"><col class="c4"></colgroup><thead><tr><th colspan="2">Folder or File Name</th><th>Description</th></tr></thead><tbody><tr><td colspan="2"><em class="filename">bin/</em></td><td>Contains programs to start and configure the Axon.ivy Engine</td></tr><tr><td colspan="2"><em class="filename">clientlib/</em></td><td>Contains libraries that are deployed to the client
+									machines</td></tr><tr><td>&nbsp;</td><td><em class="filename">signed/linux/</em></td><td>Linux specific libraries </td></tr><tr><td>&nbsp;</td><td><em class="filename">signed/linux_native/</em></td><td>Native Linux libraries</td></tr><tr><td>&nbsp;</td><td><em class="filename">signed/windows/</em></td><td>Windows specific libraries</td></tr><tr><td>&nbsp;</td><td><em class="filename">signed/windows_native/</em></td><td>Native Windows libraries</td></tr><tr><td colspan="2"><em class="filename">configuration/</em></td><td>Contains the Axon.ivy Engine configuration data</td></tr><tr><td>&nbsp;</td><td><em class="filename">demo.lic</em></td><td>Demo licence file</td></tr><tr><td>&nbsp;</td><td><em class="filename">keystore.jks</em></td><td>Keystore with the default signature of the Axon.ivy Engine
+									(for https/ssl)</td></tr><tr><td>&nbsp;</td><td><em class="filename">truststore.jks</em></td><td>Empty truststore can be used to add trusted server certificate for SSL connection clients</td></tr><tr><td>&nbsp;</td><td><em class="filename">log4jconfig.xml</em></td><td>Logging configuration</td></tr><tr><td>&nbsp;</td><td><em class="filename">serverconfig.xml</em></td><td>System database configuration</td></tr><tr><td>&nbsp;</td><td><em class="filename">servercontrolcenter.configuration</em></td><td>Control Center configuration</td></tr><tr><td colspan="2"><em class="filename">doc/</em></td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><em class="filename">html/</em></td><td>Axon.ivy Engine Guide as HTML documentations</td></tr><tr><td>&nbsp;</td><td><em class="filename">pdf/</em></td><td>Axon.ivy Engine Guide as PDF document</td></tr><tr><td>&nbsp;</td><td><em class="filename">newAndNoteworthy/</em></td><td>Contains new and noteworthy features of the latest Axon.ivy Engine and Designer
+									releases</td></tr><tr><td>&nbsp;</td><td><em class="filename">migrationNotes/</em></td><td>Contains migration notes of the latest Axon.ivy Engine and
+									Designer releases</td></tr><tr><td colspan="2"><em class="filename">dropins/</em></td><td>Third party extension libraries that contribute to the Axon.ivy runtime</td></tr><tr><td colspan="2"><em class="filename">elasticsearch/</em></td><td>Bundled Elasticsearch server</td></tr><tr><td colspan="2"><em class="filename">jre/</em></td><td>Java Runtime Environment for Axon.ivy Engine</td></tr><tr><td colspan="2"><em class="filename">logs/</em></td><td>Contains the log files</td></tr><tr><td colspan="2"><em class="filename">misc/</em></td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><em class="filename">apache</em></td><td>Files to integrate Axon.ivy into an Apache web server</td></tr><tr><td>&nbsp;</td><td><em class="filename">iis</em></td><td>Files to integrate Axon.ivy into a Microsoft Internet Information Server (IIS)</td></tr><tr><td>&nbsp;</td><td><em class="filename">visualvm</em></td><td>The Axon.ivy VisualVM plugin file</td></tr><tr><td colspan="2"><em class="filename">system/</em></td><td>The OSGi system</td></tr><tr><td>&nbsp;</td><td><em class="filename">applications/</em></td><td>The system provided applications</td></tr><tr><td>&nbsp;</td><td><em class="filename">configuration/</em></td><td>The OSGi configuration</td></tr><tr><td>&nbsp;</td><td><em class="filename">features/</em></td><td>Installed OSGi features</td></tr><tr><td>&nbsp;</td><td><em class="filename">lib/boot/</em></td><td>OSGi boot classpath libraries</td></tr><tr><td>&nbsp;</td><td><em class="filename">plugins/</em></td><td>Installed OSGi plugins. Basically all default or
+									automatically installed java libraries of the Axon.ivy
+									Engine</td></tr><tr><td colspan="2"><em class="filename">projects/</em></td><td>Contains deployable Axon.ivy projects</td></tr><tr><td colspan="2"><em class="filename">webapps/</em></td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td><em class="filename">ivy/</em></td><td>Contains the Axon.ivy Engine web interface</td></tr><tr><td>&nbsp;</td><td><em class="filename">ivy/info/</em></td><td>Contains the info web pages</td></tr><tr><td>&nbsp;</td><td><em class="filename">ivy/WEB-INF/</em></td><td>Contains the web.xml file</td></tr><tr><td>&nbsp;</td><td><em class="filename">ivy/META-INF/</em></td><td>Contains the context.xml file</td></tr><tr><td>&nbsp;</td><td><em class="filename">ivy/wf/</em></td><td>Contains the workflow web interface</td></tr><tr><td colspan="2"><em class="filename">work/</em></td><td>Contains temporary files that are created and used by the
+									Axon.ivy Engine</td></tr><tr><td colspan="2"><em class="filename">NewAndNoteworthy.html</em></td><td>Overview / entry point for list of new and noteworthy
+									features in this release</td></tr><tr><td colspan="2"><em class="filename">MigrationNotes.html</em></td><td>Overview / entry point for migration of last to current
+									release</td></tr><tr><td colspan="2"><em class="filename">Readme.html</em></td><td>Important information about this engine release</td></tr><tr><td colspan="2"><em class="filename">ReleaseNotes.txt</em></td><td>Release notes with bug fixes and new features</td></tr></tbody></table>
+				</div><p class="title">Table&nbsp;3.2.&nbsp;Installed Files and Directories</p></div><p><br class="table-break"></p>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1110" class="title"><a name="d5e1110"></a>Windows Programs</h4></div></div></div>
+				
+				<p>The <em class="filename">bin</em> folder of a windows installation contains the
+					following native dynamic link libraries and executable files:</p>
+				<p>
+					</p><div class="table"><a name="d5e1115"></a><div class="table-contents">
+						
+						<table class="table table-bordered table-hover" summary="Windows Programs"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>File</th><th>Description</th></tr></thead><tbody><tr><td><em class="filename">Example.ilc</em></td><td>Example of an ivy launch control file. For more
+										information see section <a class="link" href="misc.html#misc.toolreference.ilc" title="Windows Program Launcher Configuration">Windows Program Launcher Configuration</a> .</td></tr><tr><td><em class="filename">JavaWindowsServiceHandler.dll</em></td><td>Library that contains native methods to register,
+										unregister, configure, start and stop windows
+									services</td></tr><tr><td><em class="filename">JVMLauncher.dll</em></td><td>Library containing code to launch the Java virtual
+										machine.</td></tr><tr><td><em class="filename">NTEventLogAppender.dll</em></td><td>Library that implements native methods to log into the windows event log (32 Bit
+										only).</td></tr><tr><td><em class="filename">ControlCenter.exe</em></td><td>Program that allows to configure, start and stop the
+										Axon.ivy Engine. It also permits to configure the Windows
+										services. For more information see section <a class="link" href="misc.html#misc.toolreference.servercontrolcenter" title="ControlCenter">ControlCenter</a> .</td></tr><tr><td><em class="filename">ControlCenterC.exe</em></td><td>Same as <em class="filename">ControlCenter.exe</em> but
+										additionally logs any output to a console window.</td></tr><tr><td><em class="filename">AxonIvyEngine.exe</em></td><td>Starts the Axon.ivy Engine. For more information see
+										section <a class="link" href="misc.html#misc.toolreference.xpertivyserver" title="AxonIvyEngine">AxonIvyEngine</a> .</td></tr><tr><td><em class="filename">AxonIvyEngineC.exe</em></td><td>Same as <em class="filename">AxonIvyEngine.exe</em> but
+										additionally logs any output to a console window.</td></tr><tr><td><em class="filename">AxonIvyEngineConfig.exe</em></td><td>Program to configure the Axon.ivy Engine. For more
+										information see section <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">AxonIvyEngineConfig</a> .</td></tr><tr><td><em class="filename">AxonIvyEngineConfigC.exe</em></td><td>Same as <em class="filename">AxonIvyEngineConfig.exe</em> but
+										additionally logs any output to a console window.</td></tr><tr><td><em class="filename">AxonIvyEngineService.exe</em></td><td>Executable of the Windows service. For more information see section <a class="link" href="misc.html#misc.toolreference.xpertivyserverservice" title="AxonIvyEngineService">AxonIvyEngineService</a> .</td></tr></tbody></table>
+					</div><p class="title">Table&nbsp;3.3.&nbsp;Windows Programs</p></div><p><br class="table-break">
+				</p>
+			</div>
+			<div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1177" class="title"><a name="d5e1177"></a>Linux Programs</h4></div></div></div>
+				
+				<p>The <em class="filename">bin</em> folder of a Linux installation contains the following script
+						files:</p><div class="table"><a name="d5e1181"></a><div class="table-contents">
+						
+						<table class="table table-bordered table-hover" summary="Linux Programs"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>File</th><th>Description</th></tr></thead><tbody><tr><td><em class="filename">AxonIvyEngine</em></td><td>Starts the Axon.ivy Engine. For more information see
+										section <a class="link" href="misc.html#misc.toolreference.xpertivyserver" title="AxonIvyEngine">AxonIvyEngine</a>
+										.</td></tr><tr><td><em class="filename">AxonIvyEngine.conf</em></td><td>Java virtual machine configuration (Xms, Xmx, JMX, ...)
+										for the Engine.</td></tr><tr><td><em class="filename">AxonIvyEngineConfig</em></td><td>Program to configure the Axon.ivy Engine. For more
+										information see section <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">AxonIvyEngineConfig</a> .</td></tr><tr><td><em class="filename">AxonIvyEngine.service</em></td><td>Template systemd script of the Linux service. It will be
+										copied to <em class="filename">/etc/systemd/system/</em> by
+										running <em class="filename">InstallService.sh</em>. </td></tr><tr><td><em class="filename">AxonIvyEngineService.sh</em></td><td>Helper scripts for systemd to start and stop the Axon.ivy Engine service.</td></tr><tr><td><em class="filename">control.conf</em></td><td>Java virtual machine configuration (Xms, Xmx, JMX, ...)
+										for the control tools (ControlCenter &amp;
+										AxonIvyEngineConfig)</td></tr><tr><td><em class="filename">ControlCenter</em></td><td>Program that allows to configure, start and stop the
+										Axon.ivy Engine. For more information see section <a class="link" href="misc.html#misc.toolreference.servercontrolcenter" title="ControlCenter">ControlCenter</a>
+										.</td></tr><tr><td><em class="filename">InstallService.sh</em></td><td>Script to install the Axon.ivy Engine as a daemon. For
+										more information see section <a class="link" href="misc.html#misc.toolreference.installservice" title="InstallService">InstallService</a>.</td></tr><tr><td><em class="filename">launcher.sh</em></td><td>Helper script to launch a Java program. </td></tr></tbody></table>
+					</div><p class="title">Table&nbsp;3.4.&nbsp;Linux Programs</p></div><p><br class="table-break"></p>
+			</div>
+		</div>
+		<div class="sect2"><div class="titlepage"><div><div><h3 id="installation-licence" class="title"><a name="installation.licence"></a>Installing a Licence</h3></div></div></div>
+			
+			<p>By default a demo licence is installed that allows you to run the Axon.ivy Engine in <a class="link" href="installation.html#installation.demomode" title="Demo Mode">demo mode</a>. You have to install
+				a licence in order to run Axon.ivy Engine in a production environment.</p>
+			<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+				<p>The licence file contains the name of the host where the engine is installed on. The
+					licence will only work if the name of the machine exactly matches the name
+					stored in the licence file.</p>
+			</div>
+			<p>To install a licence file follow the steps below:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						<p>Copy the licence file <em class="filename">*.lic</em> to the directory
+								<em class="filename">configuration/</em>.</p>
+					</li><li class="listitem">
+						<p>Change the extension of your old licence files to anything, but
+								<em class="filename">*.lic</em> (e.g. from
+								<em class="filename">foo_bar_another_licence.lic</em> to
+								<em class="filename">foo_bar_another_licence.lic.old</em> ).</p>
+					</li></ol></div>
+			<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+				<p>You may leave <em class="filename">demo.lic</em> in the
+					<em class="filename">configuration</em> folder, because this licence is taken only if
+					no other licence files are found.</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-systemdatabase" class="title" style="clear: both"><a name="installation.systemdatabase"></a>System Database</h2></div></div></div>
+    
+    <p>The Axon.ivy Engine system database is used by the server to store configuration,
+        security, content and workflow information. See chapter <a class="link" href="configuration.html" title="Chapter&nbsp;4.&nbsp;Configuration">Configuration</a> to find out how you can create
+        and configure Axon.ivy Engine system databases. Axon.ivy Engine supports the following
+        database systems to host the system database:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                <p>
+                    <a class="link" href="installation.html#installation.systemdatabase.mysql" title="MySQL">MySQL</a>
+                </p>
+            </li><li class="listitem">
+                <p>
+                    <a class="link" href="installation.html#installation.systemdatabase.oracle" title="Oracle">Oracle</a>
+                </p>
+            </li><li class="listitem">
+                <p>
+                    <a class="link" href="installation.html#installation.systemdatabase.mssqlserver" title="Microsoft SQL Server">Microsoft SQL
+                    Server</a>
+                </p>
+            </li><li class="listitem">
+                <p>
+                    <a class="link" href="installation.html#installation.systemdatabase.DB2.iSeries" title="DB2 for iSeries (AS400)">DB2 for iSeries
+                    (AS400)</a>
+                </p>
+            </li><li class="listitem">
+                <p><a class="link" href="installation.html#installation.systemdatabase.postgresql" title="PostgreSQL">Postgre SQL</a></p>
+            </li></ul></div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e1274" class="title"><a name="d5e1274"></a>Password Encryption</h3></div></div></div>
+        
+        <p>Passwords are stored encrypted in the system database using state of the art
+            encryption algorithms. More information can be found in the chapter <a class="link" href="configuration.html#configuration.systemdatabase.encryption" title="System Database Encryption">System Database
+            Encryption</a>.</p>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="d5e1278" class="title"><a name="d5e1278"></a>Character set and collation</h3></div></div></div>
+        
+        <p>All characters in databases are encoded with a specific charset (e.g. utf8, latin1,
+            cp1257). Lastly it defines which kind of characters can be stored at all. </p>
+        <p>The collation is a set of rules that defines how the database management system
+            compares and orders the data (e.g. utf8_unicode_ci, latin2_general_ci). Common
+            abbreviations in the name of the collations are the following: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                    <p>ci = case insensitive</p>
+                </li><li class="listitem">
+                    <p>cs = case sensitive</p>
+                </li><li class="listitem">
+                    <p>ai = accent insensitive</p>
+                </li><li class="listitem">
+                    <p>as = accent sensitive</p>
+                </li></ul></div><p>As well as the character set the collation can be defined mostly on
+            several levels: server, database, table or column. Everything about this subject is very
+            dependent on the actual database management system. </p>
+            
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1291" class="title"><a name="d5e1291"></a>Support case insensitive searches</h4></div></div></div>
+        
+        <p>If a case insensitive search is required, it must be guaranteed that the affected
+                column has a case insensitive collation.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+                        <p>1. Check character set &amp; collation of the column</p>
+                    </li><li class="listitem">
+                        <p>2. Change character set &amp; collation if necessary</p>
+                    </li></ul></div><p>Look at the specific chapters for your database below.</p>
+    	</div>
+    	
+    </div>
+    
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-systemdatabase-mysql" class="title"><a name="installation.systemdatabase.mysql"></a>MySQL</h3></div></div></div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1301" class="title"><a name="d5e1301"></a>Information</h4></div></div></div>
+            
+            <p>MySQL is an Open Source database. For more information go to <a class="ulink" href="http://www.mysql.com" target="_top">www.mysql.com</a>. You can download the
+                latest mysql JDBC driver (Connector/J) from <a class="ulink" href="http://www.mysql.com" target="_top">www.mysql.com.</a></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1306" class="title"><a name="d5e1306"></a>Compatibility</h4></div></div></div>
+            
+            <p>You have to use at least MySQL Version 5.1 and the database engine InnoDb. </p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1309" class="title"><a name="d5e1309"></a>Configuration</h4></div></div></div>
+            
+            <p>The following table explains the fields you have to configure on <span class="italic"> System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program:</p>
+            <p>
+                </p><div class="table"><a name="d5e1315"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="MySQL Configuration"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database</td><td>
+                                    <span class="bold"><strong>MySQL</strong></span>
+                                </td><td>The database system to use.</td></tr><tr><td>Driver</td><td>
+                                    <span class="bold"><strong>MySQL</strong></span>
+                                </td><td>The database JDBC driver to use.</td></tr><tr><td>Host</td><td>localhost, testdbserv, ...</td><td>The name of the host where the database system is
+                                running</td></tr><tr><td>Port</td><td><span class="bold"><strong>3306</strong></span>, 3307, 3308, ...</td><td>The IP port where the database system is listening for
+                                    request</td></tr><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the Axon.ivy Engine system database</td></tr><tr><td>User Name</td><td>root, admin, AxonIvy, ...</td><td>The name of the database user who is used to connect to the
+                                    database system</td></tr><tr><td>Password</td><td>****</td><td>The password of the database user who is used to connect to
+                                    the database system</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.5.&nbsp;MySQL Configuration</p></div><p><br class="table-break">
+            </p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1358" class="title"><a name="d5e1358"></a>Creation</h4></div></div></div>
+            
+            <p>The following table explains the additional creation parameters you have to
+                configure on <span class="italic"> System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program, if you want to create a new system database on a
+                MySQL database system:</p><div class="table"><a name="d5e1363"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="MySQL Creation Parameter"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the database to create </td></tr><tr><td>Engine Type</td><td>
+                                    <span class="bold"><strong>InnoDb</strong></span>
+                                </td><td>The type of the MySQL database engine to use. At the moment
+                                    only InnoDb is possible.</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.6.&nbsp;MySQL Creation Parameter</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1384" class="title"><a name="d5e1384"></a>Driver</h4></div></div></div>
+            
+            <p>The following table shows information about the JDBC driver that Axon.ivy Engine
+                uses to connect to MySQL database systems:</p><div class="table"><a name="d5e1387"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="MySQL Driver"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>JDBC Driver Name</td><td>com.mysql.jdbc.Driver</td></tr><tr><td>JDBC Connection URL Format</td><td>jdbc:mysql://&lt;host&gt;[:&lt;port&gt;]/&lt;database name&gt;</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.7.&nbsp;MySQL Driver</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1399" class="title"><a name="d5e1399"></a>Character set &amp; collation</h4></div></div></div>
+            
+            <p>If you want to check the collation of a specified column you can use the following
+                query:</p>
+            <p><code class="code">SELECT character_set_name, collation_name FROM information_schema.columns
+                    WHERE table_schema = "AXON_IVY_SYSTEM_DATABASE" AND table_name = "iwa_case" AND
+                    column_name = "name"</code></p>
+            <p>If you need to change the collation look at the official MySQL reference for all
+                    <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html" target="_top">supported character sets and collations</a>. The simplest way is to use a
+                case insensitive collation of the current character set. The following code will
+                apply a new collation.</p>
+            <p><code class="code">ALTER TABLE iwa_case MODIFY name VARCHAR(200) CHARACTER SET utf8 COLLATE
+                    utf8_general_ci;</code></p>
+            <p>You can find more information about modifying the column in the <a class="ulink" href="http://dev.mysql.com/doc/refman/5.7/en/charset-conversion.html" target="_top">MySQL reference</a>. </p>
+            <p>If the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> creates a new database, the following parameters will be
+                automatically applied. If you want to use different charset or collation create an
+                empty database manually with your configuration and then use the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> to create the tables, views and indexes in that
+                    database.</p><div class="table"><a name="d5e1413"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="MySQL Default Database Configuration"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td>Charset</td><td>utf8</td></tr><tr><td>Collation</td><td>utf8_unicode_ci</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.8.&nbsp;MySQL Default Database Configuration</p></div><p><br class="table-break"></p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-systemdatabase-oracle" class="title"><a name="installation.systemdatabase.oracle"></a>Oracle</h3></div></div></div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1431" class="title"><a name="d5e1431"></a>Information</h4></div></div></div>
+            
+            <p>Oracle database is a database management system from the Oracle Corporation. For
+                more information go to <a class="ulink" href="http://www.oracle.com" target="_top">www.oracle.com</a></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1435" class="title"><a name="d5e1435"></a>Compatibility</h4></div></div></div>
+            
+            <p>You have to use at least Oracle 10g. </p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1438" class="title"><a name="d5e1438"></a>Configuration</h4></div></div></div>
+            
+            <p> The following table explains the fields you have to configure on the System
+                Database tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine Configuration</a> program: </p><div class="table"><a name="d5e1442"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Oracle Configuration"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database</td><td>
+                                    <span class="bold"><strong>Oracle</strong></span>
+                                </td><td>The database system to use.</td></tr><tr><td>Driver</td><td><span class="bold"><strong>Oracle Thin</strong></span>, <span class="bold"><strong>Oracle Oci</strong></span></td><td>The database JDBC driver to use. Either Thin or OCI
+                                driver.</td></tr><tr><td>Host</td><td>localhost, testdbserv, ...</td><td>The name of the host where the database system is
+                                running</td></tr><tr><td>Port</td><td><span class="bold"><strong>1521</strong></span>, 1522, 1523, ...</td><td>The IP port where the database system is listening for
+                                    request</td></tr><tr><td>Oracle Service ID (SID)</td><td>oracle, db, ...</td><td>The identifier of the oracle service</td></tr><tr><td>User Name</td><td>root, admin, AxonIvy, ...</td><td>The name of the database user who is used to connect to the
+                                    database system</td></tr><tr><td>Password</td><td>****</td><td>The password of the database user who is used to connect to
+                                    the database system</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.9.&nbsp;Oracle Configuration</p></div><p><br class="table-break"></p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
+                    <p>On all (reused) oracle database connections the maximum number of open
+                        cursors is set to 1000, independently from the default setting that may be
+                        set on the database itself. Those cursors are needed to cache all prepared
+                        statements and also for PL/SQL blocks.</p>
+                    <p>It may turn out that the number of open cursors is exceeded, which is
+                        indicated by an error message similar to the following:</p>
+                    <pre class="screen">
+ch.ivyteam.ivy.persistence.PersistencyException: java.sql.SQLException: 
+ORA-00604: error occurred at recursive SQL level 1
+ORA-01000: maximum open cursors exceeded</pre>
+                    <p>If this should happen, then you may customize (and increase) the number of
+                        open cursors per connection with the Java system property
+                            <code class="code">ch.ivyteam.ivy.persistence.db.oracle.MaxOpenCursors</code>. This
+                        must be done in either the <a class="link" href="misc.html#misc.toolreference.ilc" title="Windows Program Launcher Configuration">.ilc
+                            file</a> (on Windows) or the shell script (on Linux) of the server
+                        instance that you're starting.</p>
+                    <p>System properties are set as additional Java VM properties, e.g.
+                            <code class="code">-Dch.ivyteam.ivy.persistence.db.oracle.MaxOpenCursors=2000</code>
+                        to set the maximum number of open cursors to 2000. See Java VM help if you
+                        need further information.</p>
+                </div>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1495" class="title"><a name="d5e1495"></a>Creation</h4></div></div></div>
+            
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                <p>With Oracle database the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                        Configuration</a> program will not create a new database instance for
+                    Axon.ivy Engine instead it will create only the user/schema and the tables into
+                    a given tablespace.</p>
+            </div>
+            <p>Before you can create the system database tables on a Oracle Database you have to
+                do the following steps:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+                        <p>You may want to create a new Oracle database where the Axon.ivy Engine
+                            System Database is located. This is optional you can use an already
+                            existing Oracle database.</p>
+                    </li><li class="listitem">
+                        <p>Create a new user (e.g. AxonIvy). Grant all necessary permissions to
+                            the user so that he can create and alter tables, indexes, sequences. Of
+                            course the user must be able to insert, update, delete and select data
+                            from the tables of the system database. This is optional you can use an
+                            already existing Oracle user or let the Axon.ivy Engine create one for
+                            you with the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine Configuration</a>.</p>
+                    </li><li class="listitem">
+                        <p>You may want to create a new tablespace (e.g. AxonIvy) where the
+                            Axon.ivy Engine System Database can store the table data. This is
+                            optional you can use an already existing tablespace.</p>
+                    </li></ol></div>
+            <div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
+                <p>Be sure that the configuration of the database connection uses the new
+                    database and the Oracle Service ID reflecting the database you want to create
+                    the system database tables in.</p>
+            </div>
+            <p>The following table explains the additional creation parameters you have to
+                configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program if you want to create a new system database on
+                Oracle database system: </p><div class="table"><a name="d5e1514"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Oracle Creation Parameter"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Tablespace</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the tablespace where the system database tables
+                                    will store their data in.</td></tr><tr><td>User</td><td>AxonIvy, ...</td><td>The name of the user which will be created if she is not
+                                    already existing. Tables, indexes and views are created in the
+                                    schema of this user.</td></tr><tr><td>Password</td><td>***</td><td>The password for the given user.</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.10.&nbsp;Oracle Creation Parameter</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1538" class="title"><a name="d5e1538"></a>Driver</h4></div></div></div>
+            
+            <p>The following table shows information about the JDBC driver Axon.ivy Engine uses
+                to connect to Oracle database systems:</p><div class="table"><a name="d5e1541"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Oracle Driver"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>JDBC Driver Name</td><td>oracle.jdbc.OracleDriver</td></tr><tr><td>JDBC Connection URL Format</td><td>jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;service id&gt;</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.11.&nbsp;Oracle Driver</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1553" class="title"><a name="d5e1553"></a>Character set &amp; collation</h4></div></div></div>
+            
+            <p>The character set is defined with the <code class="code">CREATE DATABASE</code> statement which
+                is part of the customer configuration (look at creation). We recommend to use
+                AL32UTF8 (unicode) or at least WE8ISO8859P1, which supports Western European
+                languages. By the use of AL32UTF8 all text fields like VARCHAR or CHAR supports
+                unicode characters.</p>
+            
+            <p>Oracle databases works with session parameters for sorting and comparing data. The
+                concept is called <a class="ulink" href="https://docs.oracle.com/database/121/NLSPG/ch5lingsort.htm#NLSPG005." target="_top"> Linguistic Sorting and Matching</a>. In the Oracle Database Manager you can
+                configure the initialization parameters. For case insensitive sorting and comparing
+                you can set <code class="code">NLS_SORT</code> to <code class="code">AMERICAN</code> (select an appropriate
+                language) and <code class="code">NLS_COMP</code> to <code class="code">LINGUISTIC</code>. At the moment, you
+                can't override the <code class="code">NLS_LANGUAGE</code> and <code class="code">NLS_TERRITORY</code> which is
+                set to <code class="code">AMERICAN</code>. </p>
+        </div>
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-systemdatabase-mssqlserver" class="title"><a name="installation.systemdatabase.mssqlserver"></a>Microsoft SQL Server</h3></div></div></div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1568" class="title"><a name="d5e1568"></a>Information</h4></div></div></div>
+            
+            <p>Microsoft SQL Server is a database system from Microsoft. For more information go
+                to <a class="ulink" href="http://www.microsoft.com" target="_top">www.microsoft.com</a>.  We support
+                two different JDBC Drivers for Microsoft SQL Server. First, the official JDBC Driver
+                from Microsoft that provides support for the latest SQL Server features like high
+                availability with multi subnet fail-over. Second, the matured and long-time used
+                jTDS JDBC Driver.</p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1572" class="title"><a name="d5e1572"></a>Compatibility</h4></div></div></div>
+            
+            <p>You have to use at least Microsoft SQL Server 2005.</p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1575" class="title"><a name="d5e1575"></a>Configuration</h4></div></div></div>
+            
+            <p> The following table explains the fields you have to configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program: </p><div class="table"><a name="d5e1580"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Microsoft SQL Configuration"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database</td><td>
+                                    <span class="bold"><strong>Microsoft SQL Server</strong></span>
+                                </td><td>The database system to use.</td></tr><tr><td>Driver</td><td>
+                                    <span class="bold"><strong>jTDS</strong></span>
+                                </td><td>The database JDBC driver to use.</td></tr><tr><td>Host</td><td>localhost, testdbserv, ...</td><td>The name of the host where the database system is
+                                running</td></tr><tr><td>Port</td><td><span class="bold"><strong>3306</strong></span>, 3307, 3308, ...</td><td>The IP port where the database system is listening for
+                                    request</td></tr><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the Axon.ivy Engine system database </td></tr><tr><td>User Name</td><td>sa, root, admin, AxonIvy, ...</td><td>The name of the database user who is used to connect to the
+                                    database system</td></tr><tr><td>Password</td><td>****</td><td>The password of the database user who is used to connect to
+                                    the database system</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.12.&nbsp;Microsoft SQL Configuration</p></div><p><br class="table-break"></p>
+            <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3>
+                <p>If you want to connect to an existing instance of a MS SQL Server you have to
+                    configure an additional connection property that is called <code class="code">instance</code>
+                    containing the name of the corresponding database instance.</p>
+            </div>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1626" class="title"><a name="d5e1626"></a>Creation</h4></div></div></div>
+            
+            <p>The following table explains the additional creation parameters you have to
+                configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program if you want to create a new system database on
+                Microsoft SQL Server database system:</p><div class="table"><a name="d5e1631"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Microsoft SQL Server Creation Parameter"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the database to create </td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.13.&nbsp;Microsoft SQL Server Creation Parameter</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1647" class="title"><a name="d5e1647"></a>Driver</h4></div></div></div>
+            
+            <p>The following table shows information about the JDBC driver Axon.ivy Engine uses
+                to connect to Microsoft SQL Server database systems:</p><div class="table"><a name="d5e1650"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Microsoft SQL Server Driver"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Driver Name</th><th>Connection URL Format</th><th>Documentation</th></tr></thead><tbody><tr><td>net.sourceforge.jtds.jdbc.Driver</td><td>jdbc:jtds:sqlserver://&lt;host&gt;[:&lt;port&gt;]/&lt;database
+                                   name&gt;</td><td><a class="ulink" href="http://jtds.sourceforge.net/" target="_top">jTDS JDBC
+                                        Driver Documentation</a></td></tr><tr><td>com.microsoft.sqlserver.jdbc.SQLServerDriver</td><td>jdbc:sqlserver://&lt;host&gt;[:&lt;port&gt;];DatabaseName=&lt;database
+                                    name&gt;</td><td><a class="ulink" href="https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server" target="_top">Microsoft SQL Server JDBC Driver
+                                    Documentation</a></td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.14.&nbsp;Microsoft SQL Server Driver</p></div><p><br class="table-break"></p>
+        </div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1672" class="title"><a name="d5e1672"></a>Character set &amp; collation</h4></div></div></div>
+            
+            <p>MSSQL Server supports different (one byte-) character sets with the COLLATE
+                parameter. If you need a unicode character set you have to modify the text fields to
+                type NVARCHAR, NCHAR or NTEXT. First create a new column of this type, copy data
+                from the old column, drop the old column and rename the new column to the old
+                column. </p>
+                        
+            <p>If you want to check the collation of a specific column you can use the following
+                query:</p>
+            <p>
+                <code class="code">SELECT columns.collation_name FROM information_schema.columns
+                    WHERE table_name = 'iwa_case' AND
+                    column_name = 'name';</code></p>
+            <p> Probably you need to change the collation. Look at the official MSSQL reference
+                for all <a class="ulink" href="https://msdn.microsoft.com/en-us/library/ms143726.aspx" target="_top">supported character sets and collations</a>. The simplest way is to use a
+                case insensitive collation of the current character set. The following code will
+                apply a new collation.</p>
+            <p><code class="code">ALTER TABLE iwa_case ALTER COLUMN name VARCHAR(200) COLLATE Latin1_General_CS_AI;</code></p>
+            <p>If the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> creates a new database, the following parameters will be
+                automatically applied. If you want to use different collation create an empty
+                database manually with your configuration and then use the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> to create the tables, views and indexes in that
+                database.</p>
+            <p>
+                </p><div class="table"><a name="d5e1686"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="Microsoft SQL Server Default Database Configuration"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td>COLLATE</td><td>Latin1_General_CI_AI</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.15.&nbsp;Microsoft SQL Server Default Database Configuration</p></div><p><br class="table-break">
+            </p>            
+        </div>
+        
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-systemdatabase-DB2-iSeries" class="title"><a name="installation.systemdatabase.DB2.iSeries"></a>DB2 for iSeries (AS400)</h3></div></div></div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1701" class="title"><a name="d5e1701"></a>Information</h4></div></div></div>
+            
+            <p>IBM calls its database products DB2. It is important to understand that DB2 for
+                z/OS is not the same as DB2 for LUW (Linux, Unix, Windows) and not the same as DB2
+                for iSeries. This chapter describes DB2 for iSeries (formally AS400). For more
+                information go to <a class="ulink" href="http://www.ibm.com" target="_top">www.ibm.com</a>. </p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1705" class="title"><a name="d5e1705"></a>Compatibility</h4></div></div></div>
+            
+            <p>You have to use at least DB2 for iSeries V6R1M0.</p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1708" class="title"><a name="d5e1708"></a>Configuration</h4></div></div></div>
+            
+            <p> The following table explains the fields you have to configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program: </p><div class="table"><a name="d5e1713"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="DB2 for iSeries Configuration"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database</td><td>
+                                    <span class="bold"><strong>DB2 iSeries (AS400)</strong></span>
+                                </td><td>The database system to use.</td></tr><tr><td>Driver</td><td>
+                                    <span class="bold"><strong>DB2 iSeries (AS400)</strong></span>
+                                </td><td>The database JDBC driver to use.</td></tr><tr><td>Host</td><td>localhost, testdbserv, ...</td><td>The name of the host where the database system is
+                                running</td></tr><tr><td>Port</td><td><span class="bold"><strong>50000</strong></span>, 50001, 50002, ...</td><td>The IP port where the database system is listening for
+                                    request</td></tr><tr><td>Schema Name</td><td>AxonIvy, AxonIvyEngine, ....</td><td>
+                                    <p>The name of the SQL schema (library) to use. </p>
+                                    <p>Name with more than 10 characters are not
+                                    supported.</p>
+                                </td></tr><tr><td>User Name</td><td>sa, root, admin, AxonIvy, ...</td><td>The name of the database user who is used to connect to the
+                                    database system</td></tr><tr><td>Password</td><td>****</td><td>The password of the database user who is used to connect to
+                                    the database system</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.16.&nbsp;DB2 for iSeries Configuration</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1758" class="title"><a name="d5e1758"></a>Creation</h4></div></div></div>
+            
+            <p>The following table explains the additional creation parameters you have to
+                configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program if you want to create a new system database on a
+                DB2 for iSeries database system:</p><div class="table"><a name="d5e1763"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="DB2 for iSeries Creation Parameter"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Schema</td><td>AxonIvy, Ivy, ...</td><td>The name of the database schema that will be created and
+                                    where the Axon.ivy Engine system database tables will be
+                                    created in.</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.17.&nbsp;DB2 for iSeries Creation Parameter</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1779" class="title"><a name="d5e1779"></a>Driver</h4></div></div></div>
+            
+            <p>The following table shows information about the JDBC driver used by Axon.ivy
+                Engine to connect to DB2 database systems:</p><div class="table"><a name="d5e1782"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="DB2 for iSeries Driver"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>JDBC Driver Name</td><td>com.ibm.as400.access.AS400JDBCDriver</td></tr><tr><td>JDBC Connection URL Format</td><td>jdbc:as400://&lt;host&gt;[:&lt;port&gt;]/&lt;schema name&gt;</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.18.&nbsp;DB2 for iSeries Driver</p></div><p><br class="table-break"></p>
+        </div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1794" class="title"><a name="d5e1794"></a>Character set &amp; Collation</h4></div></div></div>
+            
+            <p>DB2 for iSeries (AS400) uses <a class="ulink" href="http://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzakb/rzakbmsttdccsid.htm" target="_top"> CCSID (coded character set identifier)</a> for encoding definitions which
+                can be configured on system level. To influence the sorting and comparing you can
+                configure the additional connection properties in the engine config ui. The
+                supported properties are  listed in the <a class="ulink" href="https://www.ibm.com/support/knowledgecenter/SSAE4W_9.5.0/com.ibm.etools.iseries.toolbox.doc/javadoc/com/ibm/as400/access/doc-files/JDBCProperties.html" target="_top"> IBM Toolbox for Java JDBC properties</a>. Especially the sort properties
+                    <code class="code">sort</code>, <code class="code">sort language</code> and <code class="code">sort weight</code> are
+                interesting for case insensitive searches.</p> 
+            
+        </div>
+    </div>
+    
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-systemdatabase-postgresql" class="title"><a name="installation.systemdatabase.postgresql"></a>PostgreSQL</h3></div></div></div>
+        
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1804" class="title"><a name="d5e1804"></a>Information</h4></div></div></div>
+            
+            <p>PostgreSQL is an Open Source database. For more information go to <a class="ulink" href="http://www.postgresql.org" target="_top">www.postgresql.org</a>. You can
+                download the latest PostgreSQL JDBC driver from <a class="ulink" href="http://jdbc.postgresql.org" target="_top">jdbc.postgresql.org</a></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1809" class="title"><a name="d5e1809"></a>Compatibility</h4></div></div></div>
+            
+            <p>You have to use at least PostgreSQL 8.3.</p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1812" class="title"><a name="d5e1812"></a>Configuration</h4></div></div></div>
+            
+            <p> The following table explains the fields you have to configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program: </p><div class="table"><a name="d5e1817"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="PostgreSQL Configuration"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database</td><td><span class="bold"><strong>PostgreSQL</strong></span></td><td>The database system to use.</td></tr><tr><td>Driver</td><td><span class="bold"><strong>PostgreSQL</strong></span></td><td>The database JDBC driver to use.</td></tr><tr><td>Host</td><td>localhost, testdbserv, ...</td><td>The name of the host where the database system is
+                                running</td></tr><tr><td>Port</td><td><span class="bold"><strong>5432</strong></span>, 5433, 5434, ...</td><td>The IP port where the database system is listening for
+                                    request</td></tr><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the database to use.</td></tr><tr><td>User Name</td><td>sa, root, admin, AxonIvy, ...</td><td>The name of the database user who is used to connect to the
+                                    database system</td></tr><tr><td>Password</td><td>****</td><td>The password of the database user who is used to connect to
+                                    the database system</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.19.&nbsp;PostgreSQL Configuration</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1860" class="title"><a name="d5e1860"></a>Creation</h4></div></div></div>
+            
+            <p>The following table explains the additional creation parameters you have to
+                configure on the <span class="italic">System Database</span> tab in the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> program if you want to create a new system database on
+                PostgreSQL database system: </p><div class="table"><a name="d5e1865"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="PostgreSQL Creation Parameter"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Field Name</th><th>Value(s)</th><th>Description</th></tr></thead><tbody><tr><td>Database Name</td><td>AxonIvy, AxonIvyEngine, AxonIvySystemDatabase, ...</td><td>The name of the database to create </td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.20.&nbsp;PostgreSQL Creation Parameter</p></div><p><br class="table-break"></p>
+        </div>
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1881" class="title"><a name="d5e1881"></a>Driver</h4></div></div></div>
+            
+            <p>The following table shows information about the JDBC driver Axon.ivy Engine uses
+                to connect to PostgreSQL database systems:</p><div class="table"><a name="d5e1884"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="PostgreSQL Driver"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>JDBC Driver Name</td><td>org.postgresql.Driver</td></tr><tr><td>JDBC Connection URL Format</td><td>jdbc:postgresql://&lt;host&gt;[:&lt;port&gt;]/&lt;database
+                                system&gt;</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.21.&nbsp;PostgreSQL Driver</p></div><p><br class="table-break"></p>
+        </div>
+
+        <div class="sect3"><div class="titlepage"><div><div><h4 id="d5e1896" class="title"><a name="d5e1896"></a>Character set &amp; collation</h4></div></div></div>
+            
+            <p>The character set can only be defined by the <code class="code">CREATE DATABASE</code>
+                statement.</p>
+            
+            <p>If you want to know the collation of a column you can use the following
+                query:</p>
+            <p><code class="code"> SELECT character_set_name, collation_name FROM information_schema.columns
+                    WHERE table_name = 'iwa_case' and column_name = 'name'; </code></p>
+  
+            <p> Maybe there is no collation defined, so PostgreSQL won't show you any value. Ask
+                the DBMS for the default value:</p>
+            
+            <p><code class="code">SELECT datname, datcollate FROM pg_database;</code></p>
+            
+            <p>Propably you need to change the collation. Look at the official PostgreSQL
+                reference for all <a class="ulink" href="https://www.postgresql.org/docs/9.3/static/multibyte.html" target="_top">supported
+                    character sets and collations</a>. Look also at <a class="ulink" href="https://www.postgresql.org/docs/9.1/static/collation.html" target="_top">Collation
+                    Support</a> and <a class="ulink" href="https://www.postgresql.org/docs/9.1/static/sql-altertable.html" target="_top">ALTER TABLE</a> for more information about collations in PostgreSQL. </p>
+            <p><code class="code">ALTER TABLE iwa_case ALTER COLUMN name varchar(200) COLLATE "de_DE.utf8";</code></p>
+            <p>If the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> creates a new database, the following parameters will be
+                automatically applied. If you want to use different charset or collation create an
+                empty database manually with your configuration and then use the <a class="link" href="misc.html#misc.toolreference.xpertivyserverconfig" title="AxonIvyEngineConfig">Axon.ivy Engine
+                    Configuration</a> to create the tables, views and indexes in that
+                database.</p>
+            <p>
+                </p><div class="table"><a name="d5e1916"></a><div class="table-contents">
+                    
+                    <table class="table table-bordered table-hover" summary="PostgreSQL Default Database Configuration"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody><tr><td>ENCODING</td><td>UTF8</td></tr></tbody></table>
+                </div><p class="title">Table&nbsp;3.22.&nbsp;PostgreSQL Default Database Configuration</p></div><p><br class="table-break">
+            </p>     
+        </div>
+    </div>
+</div>
+	<div class="sect1"><div class="titlepage"><div><div><h2 id="installation-elasticsearch" class="title" style="clear: both"><a name="installation.elasticsearch"></a>Elasticsearch installation</h2></div></div></div>
+    
+    <p>To quickly search through Business Data, ivy makes use of the powerful Elasticsearch
+        search engine. You can use the bundled Elasticsearch server or use an external Elasticsearch
+        cluster.</p>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-elasticsearch-bundledInstance" class="title"><a name="installation.elasticsearch.bundledInstance"></a>Bundled Elasticsearch server</h3></div></div></div>
+        
+        <p>By default an Elasticsearch server is bundled with the Axon.ivy Engine. This Elasticsearch instance is started when the Engine starts
+        and runs in an own process. The default Elasticsearch installation is reachable only on <code class="code">localhost</code> and is unprotected.</p>
+        
+        <p>The following <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System properties</a>
+            can be customized to configure the bundled Elasticsearch servers. The
+                <code class="code">Elasticsearch.BundledServer.DataPath</code> should be set to a directory
+            outsite of the Engine installation directory. Typically, there's no need to change the
+            other ones.</p>
+        
+        <div class="table"><a name="d5e1939"></a><div class="table-contents">
+            
+            <table class="table table-bordered table-hover" summary="System properties for the bundled Elasticsearch server"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>System Property name</th><th>Description</th></tr></thead><tbody><tr><td>Elasticsearch.BundledServer.DataPath</td><td>The path to the directory where the bundled Elasticsearch server
+                            stores data. By default the data is store in the
+                                <code class="code">elasticsearch/data</code> directory inside the Engine
+                            installation directory. We recommend to use a seperate data directory
+                            that is located outsite of the Engine installation directory to ease the
+                            Engine migration.</td></tr><tr><td>Elasticsearch.BundledServer.ClusterName</td><td>The name of the cluster of the bundled Elasticsearch server.</td></tr></tbody></table>
+        </div><p class="title">Table&nbsp;3.23.&nbsp;System properties for the bundled Elasticsearch server</p></div><br class="table-break">
+        <p>The Java virtual machine arguments used to start the bundled Elasticsearch server can
+            be configured in the file <em class="filename">elasticsearch/config/jvm.options</em>.</p>
+        
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-elasticsearch-externalInstance" class="title"><a name="installation.elasticsearch.externalInstance"></a>External Elasticsearch server</h3></div></div></div>
+        
+        <p>If you perform an Axon.ivy Engine Enterprise Edition installation or choose to install
+            an external Elasticsearch server, you can follow the <a class="ulink" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html" target="_top">Elasticsearch installation steps</a>.
+            Currently we support Elasticsearch server versions in the 5.5.x range. If your
+            Elasticsearch server is running on another server instance you have to secure the access
+            to that instance.</p>
+            
+        <p>You have to let the engine know where your Elasticsearch server instance is running by configuring the following <a class="link" href="administration.html#administration.systemproperties" title="System Properties">System properties</a>:</p>
+        
+        <div class="table"><a name="d5e1964"></a><div class="table-contents">
+            
+            <table class="table table-bordered table-hover" summary="System properties for an external Elasticsearch server"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>System Property name</th><th>Description</th></tr></thead><tbody><tr><td>Elasticsearch.ExternalServer.Url</td><td>The URL of the external Elasticsearch server.</td></tr><tr><td>Elasticsearch.ExternalServer.UserName</td><td>Name of the user to use to authenticate in the external Elasticsearch
+                            server.</td></tr><tr><td>Elasticsearch.ExternalServer.Password</td><td>Password of the user to use to authenticate in the external
+                            Elasticsearch server.</td></tr><tr><td>Elasticsearch.IndexNamePrefix</td><td>The name prefix of the indices to use to store business data. If
+                            multiple ivy Engines use the same Elasticsearch server instance, you
+                            need to change this property, that every ivy Engine has an unique
+                            indices. For every business data type an Elasticsearch index will be
+                            created. E.g. for type <code class="code">ch.ivy.Dossier</code> the index name is
+                                <code class="code">&lt;IndexNamePrefix&gt;-ch.ivy.dossier</code>. Default:
+                            ivy.businessdata</td></tr></tbody></table>
+        </div><p class="title">Table&nbsp;3.24.&nbsp;System properties for an external Elasticsearch server</p></div><br class="table-break">
+        
+    </div>
+    <div class="sect2"><div class="titlepage"><div><div><h3 id="installation-elasticsearch-diskSpace" class="title"><a name="installation.elasticsearch.diskSpace"></a>Disk Space</h3></div></div></div>
+        
+        <p>The disk space needed to store business data on the Elasticsearch and system database
+            server depends on the size and number of values that are stored. The following table
+            shows how much space is needed for business data values with a size between 2 and 4
+            KB.</p>
+        <p>
+            </p><div class="table"><a name="d5e1992"></a><div class="table-contents">
+                
+                <table class="table table-bordered table-hover" summary=""><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Number of Values</th><th>System Database (MySQL)</th><th>Elasticsearch</th></tr></thead><tbody><tr><td>20'000</td><td>150 MB</td><td>110 MB</td></tr><tr><td>100'000</td><td>720 MB</td><td>230 MB</td></tr><tr><td>1'000'000</td><td>6.9 GB</td><td>2.2 GB</td></tr></tbody></table>
+            </div><p class="title">Table&nbsp;3.25.&nbsp;</p></div><p><br class="table-break">
+        </p>
+    </div>
+    
+</div>
+</div></div></div></div><div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation"><div class="bs-sidebar hidden-print affix" data-spy="affix" data-offset-top="350" data-offset-bottom="250"><ul class="nav bs-sidenav"><li><a href="#installation-upgrade">Upgrading from an older version</a><ul class="nav subnav"><li><a href="#installation-upgrade-preparation">Preparation</a></li><li><a href="#installation-upgrade-project-migration">Project Migration</a></li><li><a href="#installation-upgrade-upgrade">Upgrade</a></li></ul></li><li><a href="#installation-standardsteps">Standard Edition Installation</a><ul class="nav subnav"><li><a href="#installation-demomode">Demo Mode</a></li></ul></li><li><a href="#installation-cluster">Enterprise Edition Installation</a><ul class="nav subnav"><li><a href="#d5e797">Installation of the first engine node</a></li><li><a href="#d5e808">Installation of another engine node on a different machine</a></li><li><a href="#d5e829">Installation of another engine node on the same machine</a></li></ul></li><li><a href="#installation-standard">Install Axon.ivy Engine</a><ul class="nav subnav"><li><a href="#d5e893">Installed Files and Directories</a></li><li><a href="#installation-licence">Installing a Licence</a></li></ul></li><li><a href="#installation-systemdatabase">System Database</a><ul class="nav subnav"><li><a href="#d5e1274">Password Encryption</a></li><li><a href="#d5e1278">Character set and collation</a></li><li><a href="#installation-systemdatabase-mysql">MySQL</a></li><li><a href="#installation-systemdatabase-oracle">Oracle</a></li><li><a href="#installation-systemdatabase-mssqlserver">Microsoft SQL Server</a></li><li><a href="#installation-systemdatabase-DB2-iSeries">DB2 for iSeries (AS400)</a></li><li><a href="#installation-systemdatabase-postgresql">PostgreSQL</a></li></ul></li><li><a href="#installation-elasticsearch">Elasticsearch installation</a><ul class="nav subnav"><li><a href="#installation-elasticsearch-bundledInstance">Bundled Elasticsearch server</a></li><li><a href="#installation-elasticsearch-externalInstance">External Elasticsearch server</a></li><li><a href="#installation-elasticsearch-diskSpace">Disk Space</a></li></ul></li><li><br><a href="#top">Back to top</a></li></ul></div></div></div><hr></div></div><script src="js/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/offcanvas.js"></script></body></html>

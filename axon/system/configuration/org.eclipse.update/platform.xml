@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1531910543471" transient="false">
+	<site updateable="true" url="platform:/base/" enabled="true" policy="USER-EXCLUDE">
+		<feature id="ch.ivyteam.ivy.server.feature" version="7.0.6.201807181026" url="features/ch.ivyteam.ivy.server.feature_7.0.6.201807181026/">
+		</feature>
+		<feature id="ch.ivyteam.ivy.server.thirdparty.feature" version="7.0.6.201807181026" url="features/ch.ivyteam.ivy.server.thirdparty.feature_7.0.6.201807181026/">
+		</feature>
+		<feature id="ch.ivyteam.ivy.server.file.feature" version="7.0.6.201807181026" url="features/ch.ivyteam.ivy.server.file.feature_7.0.6.201807181026/">
+		</feature>
+	</site>
+</config>

@@ -1,0 +1,61 @@
+body{
+	font-family: Helvetica,Arial,sans-serif;
+    font-size: 11pt;
+    width:100%;
+    margin:0;
+    text-align:center; /* hack for centered content in IE */
+}
+
+div#mainContent{
+	width:1040px;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid #6B6B6B;
+	text-align:left; /* hack for centered content in IE */
+}
+
+div.content{
+	margin:0;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+div#header{
+	background-image: url(../images/xivy_header5.png); 
+	background-repeat: no-repeat;
+	background-color: A1b426;
+	height: 80px; 
+	border-bottom: 1px solid #6B6B6B;
+}
+
+h1, h2{
+	color: white;
+}
+
+h1, h2, h3{
+	font-weight:bold;
+}
+
+div#header h1{
+	font-size: 18pt;
+	text-align: right;
+	margin:0;
+	padding-top:24px;
+	padding-right:20px;
+}
+
+h2{
+	font-size: 16pt;
+	background-color: #6B6B6B;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 14pt;
+	background-color: #f0f0f0;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}

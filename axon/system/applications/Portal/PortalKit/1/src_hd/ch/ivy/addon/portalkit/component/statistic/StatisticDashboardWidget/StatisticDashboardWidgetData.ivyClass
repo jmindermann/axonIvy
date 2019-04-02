@@ -1,0 +1,32 @@
+StatisticDashboardWidgetData #class
+ch.ivy.addon.portalkit.component.statistic.StatisticDashboardWidget #namespace
+selectedStatisticChart ch.ivy.addon.portalkit.statistics.StatisticChart #field
+selectedStatisticChart PERSISTENT #fieldModifier
+event org.primefaces.event.ItemSelectEvent #field
+event PERSISTENT #fieldModifier
+statisticChartList java.util.List<ch.ivy.addon.portalkit.statistics.StatisticChart> #field
+statisticChartList PERSISTENT #fieldModifier
+taskQuery ch.ivyteam.ivy.workflow.query.TaskQuery #field
+taskQuery PERSISTENT #fieldModifier
+caseQuery ch.ivyteam.ivy.workflow.query.CaseQuery #field
+caseQuery PERSISTENT #fieldModifier
+hasStatistic Boolean #field
+hasStatistic PERSISTENT #fieldModifier
+selectedItemOfDrilldown String #field
+selectedItemOfDrilldown PERSISTENT #fieldModifier
+isDrilldownToTaskList Boolean #field
+isDrilldownToTaskList PERSISTENT #fieldModifier
+selectedCaseCategory String #field
+selectedCaseCategory PERSISTENT #fieldModifier
+previousSelectedMonth String #field
+previousSelectedMonth PERSISTENT #fieldModifier
+previousSelectedWeek String #field
+previousSelectedWeek PERSISTENT #fieldModifier
+previousSelectedDay String #field
+previousSelectedDay PERSISTENT #fieldModifier
+showTaskListImmediately Boolean #field
+showTaskListImmediately PERSISTENT #fieldModifier
+taskListName String #field
+taskListName PERSISTENT #fieldModifier
+isBackFromDrilldown Boolean #field
+isBackFromDrilldown PERSISTENT #fieldModifier

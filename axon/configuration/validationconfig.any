@@ -1,0 +1,23 @@
+# Validation configuration file for the validationframework of Axon.ivy
+{	
+	# The message that will be displayed on the tooltip to the user 
+	# if the mandatory field has no user changes.
+	# @deprecated: use the CMS key /system/validation/mandatoryerrormessage to set a mandatory message
+	# /mandatory-error-message "<%= ivy.cms.co(\"/system/validation/mandatoryerrormessage\") %>"
+	
+	# Color of the background if the mandatory field has no user 
+	# changes.
+	/mandatory-background-color "#EBEBFF"
+	
+	# Color of the background if the field has errornous user 
+	# changes.
+	/error-background-color "#FFD7D7"
+	
+	# Set this flag to true if the background feedback should 
+	# be enabled.
+	/background-feedback true
+	
+	# Set this flag to true if the background feedback should 
+	# be enabled even if the widget is disabled.
+	/show-highlight-color-when-disabled false
+}

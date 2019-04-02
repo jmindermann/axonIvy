@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Migration Notes Designer</title>
+  <link rel="shortcut icon" href="../shared/images/ivy_favicon_48.png" />
+  <link href="../shared/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/docs.min.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-common.css" rel="stylesheet" type="text/css">
+  <link href="../shared/css/ivy-designer-doc.css" rel="stylesheet" type="text/css">
+  <script src="../shared/js/jquery.min.js"></script>
+  <script src="../shared/js/bootstrap.min.js"></script>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div id="mainContent">
+
+	<!-- start-top-navigation -->
+		<div class="navbar navbar-top navbar-inverse" role="navigation">
+		  <div class="container" id="headerdiv">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" id="navbar-ivy-title" href="http://developer.axonivy.com">Axon.ivy Developer</a>
+			</div>
+			
+			<div class="collapse navbar-collapse">
+			  <ul class="nav navbar-nav" id="navbar-ivy-links">
+				<li><a href="http://developer.axonivy.com/download/" target="blank">Download <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://developer.axonivy.com/doc/" target="blank">Documentation <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://answers.axonivy.com" target="blank">Q &amp; A <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.ivyteam.ch/flatpress/?paged=1" target="blank">Blog <span class="glyphicon glyphicon-new-window"></span></a></li>
+			  </ul>
+			</div><!-- /.nav-collapse -->
+		  </div><!-- /.container -->
+		</div>
+    <div class="navbar ivy-subnav">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <ul class="nav nav-pills">
+              <li><a href="../newAndNoteworthy/NewAndNoteworthyDesigner.html">N&N Designer</a></li>
+              <li><a href="../newAndNoteworthy/NewAndNoteworthyEngine.html">N&N Engine</a></li>
+              <li><a href="../../ReleaseNotes.txt">Realease Notes</a></li>
+              <li class="active"><a href="../../MigrationNotes.html">Migration Notes</a></li>
+              <li><a href="../../ReadMe.html">Read Me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end-top-navigation -->
+
+	
+	
+<div class="container">
+	<h1 class="page-header">Migration Notes for Axon.ivy Designer 5.1 (Lauberhorn)</h1>
+	
+		<p>This document informs you in detail about <span
+	style="font-weight: bold;">incompatibilities that were introduced between
+	Xpert.ivy versions 5.0 (Rothorn) and Axon.ivy 5.1 (Lauberhorn)</span> and tells you what
+	needs to be done to get your existing 5.0 projects working with Axon.ivy 
+	5.1.</p>
+
+
+	<p>Table of Content:</p>
+	<ul style="margin-bottom: 30px;">
+	  <li><a href="#AutomaticConversion">Migration of projects</a></li>
+	  <li><a href="#UpdateJsfPrimeFaces">Updated to JSF 2.2 &amp; PrimeFaces 5.0</a></li>
+	  <li><a href="#DefaultPrimefacesThemeRename">Renamed default PrimeFaces theme</a></li>
+	  <li><a href="#keystore">Default keystore renamed</a></li>
+	  <li><a href="#java7">Java 7 required for Rich Dialog clients</a></li>
+	</ul>
+
+<hr/>
+	<h3><a name="AutomaticConversion"></a>Migration of projects (project conversion)</h3>
+
+	<p>Most of the incompatibilities can be resolved automatically by invoking the
+	<a href="ProjectConversion.html">project conversion</a> in the Designer. </p>
+
+	<p>However, some issues may have to be fixed manually (after the automatic
+	conversion). Those are described in the next sections.
+	</p>
+		
+	<hr /> <h3><a name="UpdateJsfPrimeFaces"></a>Updated to JSF 2.2 &amp; PrimeFaces 5.0</h3>
+	
+	<p>
+	JSF and PrimeFaces libraries have been updated to the newest versions. You have to test your Html Dialog application with the new version
+	before upgrading your productive environments, because there are some incompatible changes.
+	</p>
+	<p><b>JSF 2.2</b> (from 2.1)<br />
+	<ul>
+		<li>Auto generated ids of jsf components changed in the html output, e.g. from "j_id_14:j_id_16" to "j_id_18:j_id_1a". This has no impact as long as you not used them in JavaScript code or referenced them in test cases.</li>
+		<li>If you want to use new tags (like <i>&lt;f:passThroughAttribute /&gt;</i>) you have to change the declared taglib namespaces form <i>http://java.sun.com/</i> to <i>http://xmlns.jcp.org/</i>.<br />
+		e.g. <i>xmlns:f="http://java.sun.com/jsf/core"</i> should be changed to <i>xmlns:f="http://xmlns.jcp.org/jsf/core"</i>.</li>
+	</ul>
+	</p>
+	<p><b>PrimeFaces 5.0</b> (from 3.5)<br />
+	<ul>
+		<li><b>MenuModel</b> is rewritten and <b>not backward
+				compatible</b> with the old version.</li>
+		<li>Widgets in JavaScript must be referenced via <b>PF('widgetVarName')</b>.
+			e.g. <i>PF('dialogWidgetVar').show()</i> instead of <i>dialogWidgetVar.show()</i>.
+		</li>
+		<li>Dialog: <i>appendToBody</i> attribute was removed in
+			favor of <b>appendTo="@(body)"</b> to gain more flexibility.
+		</li>
+		<li>Watermark: <i>forElement</i> attribute was removed
+			in favor of <b>for="@(yourSelector)"</b>.
+		</li>
+		<li>LazyDataModel's filters parameter changed to <i>Map&lt;String,Object&gt;</i>
+			instead of <i>Map&lt;String,String&gt;</i> as a
+			requirement of the new Advanced Filtering Feature (No change needed
+			for already compiled projects on server).
+		</li>
+		<li>FileUpload is reimplemented and it is backward compatible
+			except <i>showButtons</i> option is removed.
+		</li>
+		<li>Chart components are deprecated in favor of new generic chart
+			component with new Chart API. Old chart components are still supported
+			but will be removed in a future release.</li>
+		<li><b>PrimeFaces Mobile</b> is reimplemented from scratch and now
+			merged in PrimeFaces Core. The tag <b>&lt;pm:view
+					/&gt;</b> was removed.</li>
+		<li><b>PrimeFaces Push</b> is reimplemented, <i>PushContext</i> is
+			deprecated, use <i>EventBus</i> instead along with the new Push API.</li>
+		<li>disabledSelection option of column, moved to DataTable, change
+			is backward compatible and the option will be removed from column in a
+			future release.</li>
+		<li>Some additional css style classes are added. Check your own css style overwrites.</li>
+		<li>Automatic Html Dialogs test cases running with Selenium could
+			fail if the <i>HtmlUnitDriver</i> in combination with Ajax is used. As
+			simple workaround use the <i>FirefoxDriver</i> or <i>ChromeDriver</i>
+			instead.
+		</li>
+	</ul>
+	<p>The newly introduced, extended <a href="../newAndNoteworthy/NewAndNoteworthyDesigner.html#hdTagValidation">JSF tag and attribute validation</a> could reveal outdated API usages, that have become incompatible  to JSF 2.2 or PrimeFaces 5.
+		Please consult the official tag and attribute documentation to find new compatible API: 
+		<a href="http://www.primefaces.org/docs/vdl/5.0/core/">Primefaces 5 VDL docs</a>,
+		<a href="http://docs.oracle.com/javaee/7/javaserverfaces/2.2/vdldocs/facelets/">Oracle JSF 2.2 VDL docs</a>
+	<p>
+	Migrating back to PrimeFaces 3.5 with Axon.ivy 5.1 (JSF 2.2) is not supported.
+	</p>
+	<p>
+	Please check our <a href="http://answers.axonivy.com">Q&amp;A</a> for more information if there are any other problems.
+	</p>	
+
+
+    <hr/>
+	<h3><a name="DefaultPrimefacesThemeRename"></a>Renamed default PrimeFaces theme</h3>
+
+	<p>The default PrimeFaces theme has been renamed to <strong>ivy</strong>, with 5.0 it was called xpertivy-theme.
+	If the xpertivy-theme is explicitly defined in the <i>/webapps/ivy/WEB-INF/lib/web.xml</i> just remove the entry (nothing configured means the default ivy theme will be used).
+	If another theme than the xpertivy-theme is defined this will work as before, no change is needed.
+	</p>
+
+	<a name="keystore"></a> 
+	<hr /> <h3>Default keystore renamed</h3>
+
+	<p>The default keystore file <i>configuration/keystore</i> has been renamed to <i>configuration/keystore.jks</i>. 
+	If you imported custom keys into the old keystore then you either have to reimport those keys into the new keystore or
+	overwrite the new keystore file with the old one.</p>
+
+	<p>See <i>Help > Designer Guide > Introduction > Axon.ivy Preferences (Workspace Preferences) > SSL Client Settings</i> for more information.</p>
+
+	<a name="java7"></a> 
+	<hr /> <h3>Java 7 required for Rich Dialog clients</h3>
+
+	Rich Dialog clients require Java 7 on the client side. 
+	We recommend you to update to the newest JRE and to use the automatic update feature to stay up-to-date on the 
+	newest security fixes.</p>
+	<hr/>
+	</div>
+<br/><br/><br/>
+</div>
+</body>
+</html>
