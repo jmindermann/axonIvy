@@ -14,7 +14,7 @@ pipeline {
                      // clean up. keep the image stream
                      sh "oc delete bc,dc,svc,route -l app=tasks -n cicd"
                      // create build. override the exit code since it complains about exising imagestream
-                     sh "oc new-build --name=tasks --image-stream=jboss-eap70-openshift --binary=true --labels=app=tasks -n dev || true"
+                     sh "oc new-build --name=tasks --image-stream=jenkins2 --binary=true --labels=app=tasks -n cicd || true"
                      // build image
                      sh "oc start-build tasks --from-dir=oc-build --wait=true -n cicd"
                      // deploy image
