@@ -14,7 +14,7 @@ pipeline {
                      // clean up. keep the image stream
                      sh "oc delete bc,dc,svc,route -l app=axonivy -n cicd"
                      // create build. override the exit code since it complains about exising imagestream
-                     sh "oc new-build --name=axonivy --fromFile="Dockerfile" . -n cicd"
+                     sh "oc new-build https://github.com/jmindermann/axonIvy --name=axonivy"
                      // build image
                      sh "oc start-build axonivy . --wait=true -n cicd"
                      // deploy image
