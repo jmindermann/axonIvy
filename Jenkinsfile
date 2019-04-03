@@ -7,14 +7,6 @@ pipeline {
                 git 'https://github.com/jmindermann/axonIvy.git'
             }
         }
-        stage('Build') {
-            steps{
-                script {
-                    // build with gradle
-                    sh "chmod +x ./gradlew build"
-                }
-            }
-        }
         stage('Deploy') {
             steps{
                 script {
