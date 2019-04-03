@@ -16,7 +16,7 @@ pipeline {
                      // create build. override the exit code since it complains about exising imagestream
                      sh "oc new-build --name=axonivy --strategy=docker . -n cicd"
                      // build image
-                     sh "oc start-build axonivy --from-dir=oc-build --wait=true -n cicd"
+                     sh "oc start-build axonivy . --wait=true -n cicd"
                      // deploy image
                      sh "oc new-app localhost:5000/axonivy:latest --name=axonivy"
                      sh "oc expose svc/axonivy"
