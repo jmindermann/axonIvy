@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 script {
-                     //sh "oc login -s=20.154.66.152:22 -u=jmindermann -p=poc2019"
+                     sh "oc login -s=https://console.openshift.nip.io:8443 -u=jmindermann -p=poc2019"
                      sh "oc project cicd"
                      //sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax11"
                      /*sh "oc project cicd"
