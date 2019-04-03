@@ -14,9 +14,9 @@ pipeline {
                      // clean up. keep the image stream
                      //sh "oc delete bc,dc,svc,route -l app=a1 -n cicd"
                      // create build. override the exit code since it complains about exising imagestream
-                     sh "oc new-build https://github.com/jmindermann/axonIvy --name=a1"
+                     sh "oc new-build https://github.com/jmindermann/axonIvy --name=a2"
                      // build image
-                     sh "oc start-build a1 --from-build=a1" //--from-dir=oc-build"
+                     sh "oc start-build a2" //--from-dir=oc-build"
                      //sh "oc start-build axonivy2 . --wait=true -n cicd"
                      // deploy image
                      //sh "oc new-app localhost:5000/test999:latest --name=test999"
