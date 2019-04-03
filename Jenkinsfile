@@ -10,6 +10,7 @@ pipeline {
         stage('Deploy') {
             steps{
                 script {
+                     sh "oc project cicd"
                      sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax10"
                      /*sh "oc project cicd"
                      // clean up. keep the image stream
