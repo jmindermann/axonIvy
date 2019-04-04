@@ -10,10 +10,10 @@ pipeline {
         stage('Deploy') {
             steps{
                 script {
-                     sh "oc whoami"                     
+                     //sh "oc whoami"                     
                      //sh "oc login https://console.openshift.nip.io:8443 --username=jmindermann --password=poc2019"
                      //sh "oc project cicd"
-                     //sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax11"
+                     sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax12"
                      /*sh "oc project cicd"
                      // clean up. keep the image stream
                      sh "oc delete bc,dc,svc,route -l app=a1 -n cicd"
