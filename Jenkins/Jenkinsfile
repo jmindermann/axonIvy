@@ -4,7 +4,8 @@ pipeline {
         stage('build') {
             steps{
                 script {
-                     sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax13"
+                     sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=ax14"
+                     sh "oc expose svc/ax14"
                 }
             }
         }
