@@ -18,11 +18,12 @@ pipeline {
                 }
             }
             stage('deploy') {
-            steps{
-                script {
-                     // deploy image
-                     /*sh "oc new-app localhost:5000/test999:latest --name=test999"
-                     sh "oc expose svc/test999"*/
+                steps{
+                    script {
+                        // deploy image
+                        /*sh "oc new-app localhost:5000/test999:latest --name=test999"
+                        sh "oc expose svc/test999"*/
+                    }
                 }
             }
         }
