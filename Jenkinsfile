@@ -5,8 +5,8 @@ pipeline {
             steps{
                 script {
                     //sh "oc login -u jmindermann"
-                    sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=axonivyengine1 --strategy=docker"
-                    sh "oc expose svc/axonivyengine1"
+                    sh "oc new-app https://github.com/jmindermann/axonIvy.git --name=axon1 --strategy=docker"
+                    sh "oc expose svc/axon1"
                 }
             }
         }
