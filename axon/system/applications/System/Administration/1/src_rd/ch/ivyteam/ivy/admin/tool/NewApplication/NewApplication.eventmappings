@@ -1,6 +1,0 @@
-# Ivy RichDialog Event-Mapping Data
-# 2017-09-20 09:37:48 | 6.7.0.55457 | 1.0
-~.cancelButton@ACTION[]--->ch.ivyteam.ivy.process.ProcessStart:116D8A61F0C90FCC/116D8B2BD7BBB037
-~.createButton@ACTION[]--->ch.ivyteam.ivy.process.ProcessStart:116D8A61F0C90FCC/116D8B2C90113D7D
-~.getDirectoryButton@ACTION[]--->ch.ivyteam.ivy.process.ProcessStart:116D8A61F0C90FCC/11DF2102984F7CDF
-~@RD_METHODCALL[createApplication()]--->ch.ivyteam.ivy.process.ProcessStart:116D8A61F0C90FCC/116D8B280274163E

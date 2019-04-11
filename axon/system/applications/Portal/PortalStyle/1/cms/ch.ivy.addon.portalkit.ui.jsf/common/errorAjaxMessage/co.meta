@@ -1,4 +1,0 @@
-co: name={errorAjaxMessage} description={} changed={2018-07-13 05:34:58 CEST} changedby={dhtlong} visualorder={0} guid={16491B423E88DCC1} parentguid={} typeguid={E6AFEA2034301F66} id={} parentid={} typeid={}
-val: guid={16491B4240945056} datatype={} isdefault={true} langid={en} description={} validfrom={2018-07-13 05:34:19 CEST} validto={} changed={2018-07-13 05:34:58 CEST} changedby={dhtlong} properties={} id={}
-val: guid={16491B423FA91BC9} datatype={} isdefault={false} langid={de} description={} validfrom={2018-07-13 05:34:19 CEST} validto={} changed={2018-07-13 05:34:58 CEST} changedby={dhtlong} properties={} id={}
-val: guid={16491B4241095F6C} datatype={} isdefault={false} langid={fr} description={} validfrom={2018-07-13 05:34:19 CEST} validto={} changed={2018-07-13 05:34:58 CEST} changedby={dhtlong} properties={} id={}

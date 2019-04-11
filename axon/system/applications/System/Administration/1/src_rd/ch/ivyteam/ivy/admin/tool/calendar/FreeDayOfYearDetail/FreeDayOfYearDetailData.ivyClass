@@ -1,5 +1,0 @@
-FreeDayOfYearDetailData #class
-ch.ivyteam.ivy.admin.tool.calendar.FreeDayOfYearDetail #namespace
-data ch.ivyteam.ivy.application.calendar.FreeDayOfYear #field
-configuredFreeDaysOfYear List<ch.ivyteam.ivy.application.calendar.FreeDayOfYear> #field
-configuredFreeDaysOfYear PERSISTENT #fieldModifier

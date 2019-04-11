@@ -1,4 +1,0 @@
-LogViewerData #class
-ch.ivyteam.ivy.admin.tool.report.LogViewer #namespace
-dataList List<ch.ivyteam.ivy.admin.tool.report.ReportEntry> #field
-reports ch.ivyteam.ivy.admin.tool.report.IReport #field

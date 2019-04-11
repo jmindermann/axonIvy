@@ -1,4 +1,0 @@
-DeploymentChooseDirectoryData #class
-ch.ivyteam.ivy.admin.tool.deployment.DeploymentChooseDirectory #namespace
-file java.io.File #field
-file PERSISTENT #fieldModifier

@@ -1,8 +1,0 @@
-{
-  /PROCESS {
-    /Functional-Processes.CustomPortalStandardCaseDetailsConfig "Functional Processes/CustomPortalStandardCaseDetailsConfigOverride"
-    /Functional-Processes.CustomPortalConfig "Functional Processes/CustomPortalConfigOverride"
-    /Functional-Processes.CustomPortalListsConfig "Functional Processes/CustomPortalListsConfigOverride"
-  }
-  /RICH_DIALOG *
-}

@@ -1,3 +1,0 @@
-ErrorHandlerData #class
-ch.ivy.add.portalkit #namespace
-wsExceptions java.util.List<ch.ivy.ws.addon.WsException> #field

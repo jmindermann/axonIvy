@@ -1,4 +1,0 @@
-DayTimeFieldData #class
-ch.ivyteam.rd.common.DayTimeField #namespace
-hour Number #field
-minute Number #field

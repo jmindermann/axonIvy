@@ -1,4 +1,0 @@
-IssueDetailsData #class
-ch.ivyteam.ivy.admin.tool.deployment.IssueDetails #namespace
-issue ch.ivyteam.ivy.deployment.restricted.IProjectDeploymentValidationIssue #field
-issue PERSISTENT #fieldModifier

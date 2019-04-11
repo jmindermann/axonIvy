@@ -1,6 +1,0 @@
-PropertyEditorData #class
-ch.ivyteam.ivy.rd.common.PropertyEditor #namespace
-name String #field
-value String #field
-successful Boolean #field
-editName Boolean #field

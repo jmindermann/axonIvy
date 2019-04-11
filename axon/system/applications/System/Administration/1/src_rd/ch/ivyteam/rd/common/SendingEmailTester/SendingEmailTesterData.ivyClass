@@ -1,4 +1,0 @@
-SendingEmailTesterData #class
-ch.ivyteam.rd.common.SendingEmailTester #namespace
-receiverAddress String #field
-receiverAddress PERSISTENT #fieldModifier

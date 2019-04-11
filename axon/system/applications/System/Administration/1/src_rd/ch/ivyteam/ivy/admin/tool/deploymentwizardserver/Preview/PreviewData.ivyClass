@@ -1,3 +1,0 @@
-PreviewData #class
-ch.ivyteam.ivy.admin.tool.deploymentwizardserver.Preview #namespace
-projectToDeploy List<ch.ivyteam.ivy.admin.tool.deploymentwizardserver.ProjectInfo> #field
