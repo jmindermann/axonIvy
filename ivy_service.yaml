@@ -6,7 +6,7 @@ metadata:
     app: ivyService
 spec:
   selector:
-    app: ivy1
+    app: axonivy-engine
   ports:
   - name: http
     port: 8080
